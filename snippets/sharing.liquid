@@ -1,0 +1,34 @@
+{% comment %}ly_global_begin{% endcomment %}{% include 'ly-global' %}{% comment %}ly_global_end{% endcomment %}<div class="sharing">
+  
+  <span class="label">{% comment %}ly_i18n_replace_for_[ 'general.social.share_link' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'general.social.share_link' | t }}{% endcapture %}{% include 'ly-static-string' with '2473681' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</span>
+  
+  
+  {% if template contains 'product' or sharing.featured_image %}
+  
+  {% assign url_to_share = shop.url | append: product.url %}
+  {% capture img_to_share %}http:{{ product.featured_image | product_img_url: 'master' }}{% endcapture %}
+  {% assign title_to_share = product.title %}
+
+  {% else %}
+  {% assign url_to_share = shop.url | append: sharing.url %}
+  {% assign img_to_share = false %}
+  {% assign title_to_share = sharing.title %}
+  {% endif %}
+
+  {% capture social_check_out %}{% comment %}ly_i18n_replace_for_[ 'general.social.check_out' | t: title: title_to_share ]_begin{% endcomment %}{% capture ly_template %}{{ 'general.social.check_out' | t: title: title_to_share }}{% endcapture %}{% include 'ly-static-string' with '2473683' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% assign replacement = title_to_share  %}{% assign ly_template = ly_template | replace: '[[title]]', replacement %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}{% endcapture %}
+  <ul class="plain inline">
+
+    <li class="facebook"><a title="{% comment %}ly_i18n_replace_for_[ 'general.social.on_facebook' | t | escape ]_begin{% endcomment %}{% capture ly_template %}{{ 'general.social.on_facebook' | t | escape }}{% endcapture %}{% include 'ly-static-string' with '2473684' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape | escape }}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{ url_to_share | url_param_escape }}"><i class="icon-facebook"></i></a></li>
+
+    <li class="twitter"><a title="{% comment %}ly_i18n_replace_for_[ 'general.social.on_twitter' | t | escape ]_begin{% endcomment %}{% capture ly_template %}{{ 'general.social.on_twitter' | t | escape }}{% endcapture %}{% include 'ly-static-string' with '2473685' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape | escape }}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}" target="_blank" href="https://twitter.com/intent/tweet?text={{ social_check_out | url_param_escape }}: {{ url_to_share | url_param_escape }}"><i class="icon-twitter"></i></a></li>
+
+    {% if img_to_share != false %}
+    <li class="pinterest"><a title="{% comment %}ly_i18n_replace_for_[ 'general.social.on_pinterest' | t | escape ]_begin{% endcomment %}{% capture ly_template %}{{ 'general.social.on_pinterest' | t | escape }}{% endcapture %}{% include 'ly-static-string' with '2473686' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape | escape }}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}" target="_blank" href="//pinterest.com/pin/create/button/?url={{ url_to_share | url_param_escape }}&amp;media={{ img_to_share | url_param_escape }}&amp;description={{ title_to_share | url_param_escape }}"><i class="icon-pinterest"></i></a></li>
+    {% endif %}
+
+    <li class="google"><a title="{% comment %}ly_i18n_replace_for_[ 'general.social.on_google' | t | escape ]_begin{% endcomment %}{% capture ly_template %}{{ 'general.social.on_google' | t | escape }}{% endcapture %}{% include 'ly-static-string' with '2473687' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape | escape }}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}" target="_blank" href="https://plus.google.com/share?url={{ url_to_share | url_param_escape }}"><i class="icon-googleplus"></i></a></li>
+
+    <li class="email"><a title="{% comment %}ly_i18n_replace_for_[ 'general.social.by_email' | t | escape ]_begin{% endcomment %}{% capture ly_template %}{{ 'general.social.by_email' | t | escape }}{% endcapture %}{% include 'ly-static-string' with '2473688' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape | escape }}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}" href="mailto:?subject={{ social_check_out | url_param_escape }}&amp;body={{ social_check_out | url_param_escape }}:%0D%0A%0D%0A{{ url_to_share | url_param_escape }}"><i class="icon-mail"></i></a></li>
+
+  </ul>
+</div>

@@ -1,0 +1,34 @@
+{% comment %}ly_global_begin{% endcomment %}{% include 'ly-global' %}{% comment %}ly_global_end{% endcomment %}{% if settings.social_links_show %}
+<ul class="social-links plain">
+  {% if settings.social_twitter_url != blank %}
+  <li><a title="<ly-as-2473689>Twitter</ly-as-2473689>" class="icon-twitter" target="_blank" href="{{ settings.social_twitter_url }}"><span><ly-as-2473689>Twitter</ly-as-2473689></span></a></li>
+  {% endif %}
+  {% if settings.social_facebook_url != blank %}
+  <li><a title="<ly-as-2473690>Facebook</ly-as-2473690>" class="icon-facebook" target="_blank" href="{{ settings.social_facebook_url }}"><span><ly-as-2473690>Facebook</ly-as-2473690></span></a></li>
+  {% endif %}
+  {% if settings.social_tumblr_url != blank %}
+  <li><a title="<ly-as-2473691>Tumblr</ly-as-2473691>" class="icon-tumblr" target="_blank" href="{{ settings.social_tumblr_url }}"><span><ly-as-2473691>Tumblr</ly-as-2473691></span></a></li>
+  {% endif %}
+  {% if settings.social_rss_url != blank %}
+  <li><a title="<ly-as-2473692>RSS</ly-as-2473692>" class="icon-rss" target="_blank" href="{{ settings.social_rss_url }}"><span><ly-as-2473692>RSS</ly-as-2473692></span></a></li>
+  {% endif %}
+  {% if settings.social_youtube_url != blank %}
+  <li><a title="<ly-as-2473699>Youtube</ly-as-2473699>" class="icon-youtube" target="_blank" href="{{ settings.social_youtube_url }}"><span><ly-as-2473693>YouTube</ly-as-2473693></span></a></li>
+  {% endif %}
+  {% if settings.social_vimeo_url != blank %}
+  <li><a title="<ly-as-2473694>Vimeo</ly-as-2473694>" class="icon-vimeo" target="_blank" href="{{ settings.social_vimeo_url }}"><span><ly-as-2473694>Vimeo</ly-as-2473694></span></a></li>
+  {% endif %}
+  {% if settings.social_instagram_url != blank %}
+  <li><a title="<ly-as-2473695>Instagram</ly-as-2473695>" class="icon-instagram" target="_blank" href="{{ settings.social_instagram_url }}"><span><ly-as-2473695>Instagram</ly-as-2473695></span></a></li>
+  {% endif %}
+  {% if settings.social_pinterest_url != blank %}
+  <li><a title="<ly-as-2473696>Pinterest</ly-as-2473696>" class="icon-pinterest" target="_blank" href="{{ settings.social_pinterest_url }}"><span><ly-as-2473696>Pinterest</ly-as-2473696></span></a></li>
+  {% endif %}
+  {% if settings.social_flickr_url != blank %}
+  <li><a title="<ly-as-2473697>Flickr</ly-as-2473697>" class="icon-flickr" target="_blank" href="{{ settings.social_flickr_url }}"><span><ly-as-2473697>Flickr</ly-as-2473697></span></a></li>
+  {% endif %}
+  {% if settings.social_google_url != blank %}
+  <li><a title="<ly-as-2473700>Google+</ly-as-2473700>" class="icon-googleplus" target="_blank" href="{{ settings.social_google_url }}"><span><ly-as-2473698>Google Plus</ly-as-2473698></span></a></li>
+  {% endif %}
+</ul>
+{% endif %}

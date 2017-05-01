@@ -1,0 +1,790 @@
+{% comment %}ly_global_begin{% endcomment %}{% include 'ly-global' %}{% comment %}ly_global_end{% endcomment %}
+{% comment %}ly_static_code_begin{% endcomment %}{% capture ly_content %}{% comment %}ly_static_code_end{% endcomment %}<!doctype html>
+<!--[if IE 8]><html class="no-js ie8" lang="en"{% comment %}ly_dir_replace_for_[]_begin{% endcomment %}{% assign language = cart.attributes["language"] %}{% if language == nil %}{% assign language = shop.metafields["languages"]["default"] %}{% endif %}{% if shop.metafields.languages_dir[language] == 'rtl' %} dir="rtl" {% endif %}{% comment %}ly_dir_replace_end{% endcomment %}> <![endif]-->
+<!--[if IE 9]><html class="no-js ie9" lang="en"{% comment %}ly_dir_replace_for_[]_begin{% endcomment %}{% assign language = cart.attributes["language"] %}{% if language == nil %}{% assign language = shop.metafields["languages"]["default"] %}{% endif %}{% if shop.metafields.languages_dir[language] == 'rtl' %} dir="rtl" {% endif %}{% comment %}ly_dir_replace_end{% endcomment %}> <![endif]-->
+<!--[if (gt IE 10)|!(IE)]><!--> <html class="no-js" lang="en"{% comment %}ly_dir_replace_for_[]_begin{% endcomment %}{% assign language = cart.attributes["language"] %}{% if language == nil %}{% assign language = shop.metafields["languages"]["default"] %}{% endif %}{% if shop.metafields.languages_dir[language] == 'rtl' %} dir="rtl" {% endif %}{% comment %}ly_dir_replace_end{% endcomment %}> <!--<![endif]--><head>
+{{ 'geolizr-lib.js' | asset_url | script_tag }}
+{{ 'geolizr-lib.css' | asset_url | stylesheet_tag }}
+<script>Geolizr.config({"currency_widget_enabled":"{% if shop.metafields.geolizr.currency_widget_enabled == 'true' %}true{% else %}false{% endif %}"});</script>
+  <!-- Canopy v1.0.10 -->
+  <meta charset="utf-8" />
+  <meta name="google-site-verification" content="Cov0s6yXH2yimc1uQbmedSAB794xfckUNq4fYL-nXKE">
+  <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1' /><![endif]-->
+  
+<link rel="shortcut icon" href="{% comment %}ly_asset_replace_for_[ 'favicon.png' | asset_url ]_begin{% endcomment %}{% assign ly_asset = 'favicon.png' %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  }}{% comment %}ly_asset_replace_end{% endcomment %}" type="image/png" />
+
+  <title>
+  {{ langify_title }}{% if current_tags %} &ndash; {{ 'general.meta.tagged' | t }} "{{ current_tags | join: ', ' }}"{% endif %}{% if current_page != 1 %} &ndash; {{ 'general.meta.page' | t }} {{ current_page }}{% endif %}{% unless langify_title contains langify_shop_name %} &ndash; {{ langify_shop_name }}{% endunless %}
+  </title>
+
+  {% if langify_description %}
+    
+<meta name="description" content="{{ langify_description | escape }}" />
+  {% endif %}
+<meta name="google-site-verification" content="7_hBlyoMBrJA-t3GikJzqVY1SlNa84j0gvInIV42WS0" />
+  <meta name="google-site-verification" content="llbVWBEQ_JnNIeMNkq6UuWfaVcjN3TK1h45sbi7HRnA" />
+  {% comment %}<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />{% endcomment %}
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=12.0, minimum-scale=.25, user-scalable=yes"/>
+  <meta name="msvalidate.01" content="0C0638265DB078357F8582F42D67896E" />
+  <link rel="canonical" href="{{ canonical_url }}" />
+
+  
+  {% include 'fb-open-graph-tags' %}
+  {% include 'twitter-card' %}
+  
+  {% comment %} Google Fonts {% endcomment %}
+  {% assign gfonts = '' %}
+  {% assign setting_indexes = 'body_font|heading_font|nav_font|logo_font' | split: '|'%}
+  {% for index in setting_indexes %}
+  {% if settings[index] contains 'GWF' %}
+  {% assign custom_index = index | append: '_custom' %}
+  {% capture gfonts %}{{ gfonts }}|{% if settings[index] contains 'GWF|CUSTOM' %}{{ settings[custom_index] }}{% else %}{{ settings[index] | split: '|' | last }}{% endif %}{% endcapture %}
+  {% endif %}
+  {% endfor %}
+  {% if gfonts != '' %}
+    <link href="//fonts.googleapis.com/css?family={{ gfonts | remove_first: '|' | replace: ' ', '+' | replace: "'", '' }}" rel="stylesheet" type="text/css">
+  {% endif %}
+
+  {% comment %}ly_asset_replace_for_[ 'styles.scss.css' | asset_url | stylesheet_tag ]_begin{% endcomment %}{% assign ly_asset = 'styles.scss.css' %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  | stylesheet_tag }}{% comment %}ly_asset_replace_end{% endcomment %}
+  
+  {{ '//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js' | script_tag }}
+  {{ 'exitintent.js' | asset_url | script_tag }}
+  {{ 'api.jquery.js' | shopify_asset_url | script_tag }}
+  
+  <!--[if lt IE 9]>
+  {{ '//html5shiv.googlecode.com/svn/trunk/html5.js' | script_tag }}
+  {% comment %}ly_asset_replace_for_[ 'selectivizr-min.js' | asset_url | script_tag ]_begin{% endcomment %}{% assign ly_asset = 'selectivizr-min.js' %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  | script_tag }}{% comment %}ly_asset_replace_end{% endcomment %}
+  {% comment %}ly_asset_replace_for_[ 'ie8.css' | asset_url | stylesheet_tag ]_begin{% endcomment %}{% assign ly_asset = 'ie8.css' %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  | stylesheet_tag }}{% comment %}ly_asset_replace_end{% endcomment %}
+  <![endif]-->
+  
+  {% if template contains 'customers' %}
+  {{ 'shopify_common.js' | shopify_asset_url | script_tag }}
+  {{ 'customer_area.js'  | shopify_asset_url | script_tag }}
+  {% endif %}
+
+  {{ 'option_selection.js' | shopify_asset_url | script_tag }}
+  <script src="{% comment %}ly_asset_replace_for_[ 'jquery.bxslider.min.js' | asset_url ]_begin{% endcomment %}{% assign ly_asset = 'jquery.bxslider.min.js' %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  }}{% comment %}ly_asset_replace_end{% endcomment %}"></script>
+  {% comment %}ly_asset_replace_for_[ 'jquery.bxslider.css' | asset_url | stylesheet_tag ]_begin{% endcomment %}{% assign ly_asset = 'jquery.bxslider.css' %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  | stylesheet_tag }}{% comment %}ly_asset_replace_end{% endcomment %}
+  
+  {{ content_for_header }}
+  
+  <script>
+    document.documentElement.className = document.documentElement.className.replace('no-js', '');
+    products = {};
+    Shopify.money_format = {{ shop.money_format | json }};
+  </script>
+  
+  {% comment %}{% comment %}ly_asset_replace_for_[ 'parallax.js' | asset_url | script_tag ]_begin{% endcomment %}{% assign ly_asset = 'parallax.js' %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  | script_tag }}{% comment %}ly_asset_replace_end{% endcomment %}{% endcomment %}
+
+  {% if template contains 'product' %}
+  	{{ 'jquery.elevatezoom.js' | asset_url | script_tag }}
+  {% endif %}
+
+  {{ 'jquery.fancybox.js' | asset_url | script_tag }}
+  {{ 'jquery.fancybox.css' | asset_url | stylesheet_tag }}
+  <!-- Pinterest Pixel Code -->
+  <img height="1" width="1" style="display:none;" alt="" src="https://ct.pinterest.com/?tid=8HcMxz0bQxu&value=0.00&quantity=1"/>
+  <script src="//code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+  <!-- Facebook Pixel Code -->
+  <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+                             n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+                             t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+                                                                                                    document,'script','//connect.facebook.net/en_US/fbevents.js');
+
+    fbq('init', '1034963433252089');
+    fbq('track', "PageView");
+
+    {% if template == 'cart' and cart.items.size > 0 %}
+    fbq('track', 'AddToCart', {
+      content_ids: [
+        {% for item in cart.items %}
+        '{{ item.sku }}'
+        {% unless forloop.last %}, {% endunless %}
+        {% endfor %}
+      ],
+        content_type: 'product'
+        });
+
+        {% elsif template == "product" %}
+        fbq('track', 'ViewContent', {
+        content_ids: ['{{ product.variants[0].sku }}'],
+        content_type: 'product'
+        });
+        {% endif %}
+
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+                 src="https://www.facebook.com/tr?id=1034963433252089&ev=PageView&noscript=1"
+                 /></noscript>
+  <!-- End Facebook Pixel Code -->
+  
+  <!-- Pinterest visitor -->
+  <img height="1" width="1" style="display:none;" alt="" src="https://ct.pinterest.com/?tid=8HcMxz0bQxu&value=0.00&quantity=1"/>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery-instagram/0.3.1/instagram.min.js"></script>
+ {% comment %}ly_asset_replace_for_[ 'isotope.pkgd.min.js' | asset_url | script_tag ]_begin{% endcomment %}{% assign ly_asset = 'isotope.pkgd.min.js' %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  | script_tag }}{% comment %}ly_asset_replace_end{% endcomment %}
+ {% comment %}ly_asset_replace_for_[ 'main-belen.js' | asset_url | script_tag ]_begin{% endcomment %}{% assign ly_asset = 'main-belen.js' %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  | script_tag }}{% comment %}ly_asset_replace_end{% endcomment %}     
+{% comment %}ly_dir_styles_begin{% endcomment %}{% assign language = cart.attributes["language"] %}{% if language == nil %}{% assign language = shop.metafields["languages"]["default"] %}{% endif %}{% if shop.metafields.languages_dir[language] == 'rtl' %}{% comment %}ly_asset_replace_for_[ 'ly-rtl.css' | asset_url | stylesheet_tag ]_begin{% endcomment %}{% assign ly_asset = 'ly-rtl.css' %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  | stylesheet_tag }}{% comment %}ly_asset_replace_end{% endcomment %}{% endif %}{% comment %}ly_dir_styles_end{% endcomment %}</head>
+
+<body class="template-{{ template | split: '.' | first }} {{ langify_title | handle }}">
+ 		<div id="header" class="cart" style="width:100%;">
+                              <div class="container">
+                              <div class="page-header">
+                                <div id="toolbar" class="toolbar cf">
+                                    <div class="logo-nav">
+                                          <div class="logo">
+                                            {% if settings.use_logo %}{% comment %}ly_asset_replace_for_[ 'cart-header-logo.png' | asset_url | img_tag | link_to: shop.url ]_begin{% endcomment %}{% assign ly_asset = 'cart-header-logo.png' %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  | img_tag | link_to: shop.url }}{% comment %}ly_asset_replace_end{% endcomment %}{% else %}{{ langify_shop_name | link_to: shop.url }}{% endif %}
+                                          </div>                     
+                        
+                                      {% unless settings.header_layout == 'nav' %}<div class="cf">{{ logo_html }}</div>{% endunless %}
+                        
+                                      {% unless settings.header_layout == 'mobile' %}
+                                        {% include 'main-navigation' %}
+                                      {% endunless %}
+                                    </div>
+                                    {% comment %}
+                                      <span class="mobile-toolbar">
+                                        {% comment %}<a class="toggle-mob-nav" href="#"><i class="icon-nav"></i></a>{% endcomment %}
+                                        {% if settings.use_compact_mobile_header %}
+                                        <a class="compact-logo" href="{{ shop.url }}">{% if settings.use_logo %}{% comment %}ly_asset_replace_for_[ 'compact_logo.png' | asset_url | img_tag ]_begin{% endcomment %}{% assign ly_asset = 'compact_logo.png' %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  | img_tag }}{% comment %}ly_asset_replace_end{% endcomment %}{% else %}{{ langify_shop_name }}{% endif %}</a>
+                                        {% endif %}
+                                      </span>    
+                                    {% endcomment %}         
+                                
+                                  {% unless settings.header_layout == 'mobile' %}
+                                  <span class="toolbar-links">
+                                    {% if shop.customer_accounts_enabled %}
+                                    {% if customer  %}
+                                    <a href="/account">{% comment %}ly_i18n_replace_for_[ 'layout.customer.your_account' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'layout.customer.your_account' | t }}{% endcapture %}{% include 'ly-static-string' with '2473604' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</a>
+                                    <span class="divider">/</span> {% comment %}ly_i18n_replace_for_[ 'layout.customer.logout' | t | customer_logout_link ]_begin{% endcomment %}{% capture ly_template %}{{ 'layout.customer.logout' | t | customer_logout_link }}{% endcapture %}{% include 'ly-static-string' with '2473605' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape | customer_logout_link }}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}
+                                    {% else %}
+                                    {% comment %}ly_i18n_replace_for_[ 'layout.customer.login' | t | customer_login_link ]_begin{% endcomment %}{% capture ly_template %}{{ 'layout.customer.login' | t | customer_login_link }}{% endcapture %}{% include 'ly-static-string' with '2473606' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape | customer_login_link }}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}
+                                    {% if shop.customer_accounts_optional %}
+                                    <span class="divider">/</span> {% comment %}ly_i18n_replace_for_[ 'layout.customer.create_account' | t | customer_register_link ]_begin{% endcomment %}{% capture ly_template %}{{ 'layout.customer.create_account' | t | customer_register_link }}{% endcapture %}{% include 'ly-static-string' with '2473607' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape | customer_register_link }}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}
+                                    {% endif %}
+                                    {% endif %}
+                                    {% if settings.show_header_search %}<span class="divider">/</span>{% endif %}
+                                    {% endif %}
+                                    {% if settings.show_header_search %}
+                                    <form class="search-form" action="/search" method="get">
+                                      {% if settings.search_prods_only %}<input type="hidden" name="type" value="product">{% endif %}
+                                      <button class="icon-mag"></button>
+                                      <input type="text" name="q" placeholder="{% comment %}ly_i18n_replace_for_[ 'layout.header.search' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'layout.header.search' | t }}{% endcapture %}{% include 'ly-static-string' with '2473608' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}"/>
+                                    </form>
+                                    {% endif %}
+                                  </span>
+                                  {% endunless %}
+								  <div style="display:none;">
+                                  <span class="toolbar-cart">
+                                    <span class="{% unless settings.show_cart_as_button %}no-{% endunless %}btn">
+                                      <a class="current-cart {% if template != 'cart' %}toggle-cart-summary{% endif %}" href="/cart">
+                                        {{ cart.item_count }} / {% assign geolizr_price =  cart.total_price  %}{% include 'geolizr-currency' with geolizr_price %}{{ cart.total_price | money | prepend: geolizr_prepend_code | append: geolizr_append_code }} <i class="icon-cart"></i>
+                                      </a>
+                                    </span>
+                                  </span>
+                                  </div>
+                                    <div class="main-menu">
+                                    <nav class="menu">
+                                        <ul class="site-nav" id="accessibleNav">
+                                          {% for link in linklists.main-menu.links %}
+                                            {% comment %}
+                                              Create a dropdown menu by naming a linklist the same as a link in the parent nav
+                                        
+                                              More info on dropdowns:
+                                                - http://docs.shopify.com/manual/your-website/navigation/create-drop-down-menu
+                                            {% endcomment %}
+                                            {% assign child_list_handle = link.title | handleize %}
+                                            {% if linklists[child_list_handle].links != blank %}
+                                            {% comment %}  <li class="site-nav--has-dropdown{% if link.active %} site-nav--active{% endif %}" aria-haspopup="true">
+                                                <a href="{{ link.url }}">{% comment %}ly_code_replace_for_[ link.title ]_begin{% endcomment %}{% include 'ly-title' with link %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</a>
+                                                <ul class="site-nav--dropdown">
+                                                  {% for childlink in linklists[child_list_handle].links %}
+                                                    <li {% if childlink.active %}class="site-nav--active"{% endif %}><a href="{{ childlink.url }}">{% comment %}ly_code_replace_for_[ childlink.title | escape ]_begin{% endcomment %}{% include 'ly-title' with childlink %}{{ ly_translation | escape }}{% comment %}ly_code_replace_end{% endcomment %}</a></li>
+                                                  {% endfor %}
+                                                </ul>
+                                              </li>{% endcomment %}
+                                            {% else %}
+                                             {% comment %} <li {% if link.active %}class="site-nav--active"{% endif %}>
+                                                <a href="{{ link.url }}">{% comment %}ly_code_replace_for_[ link.title ]_begin{% endcomment %}{% include 'ly-title' with link %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</a>
+                                              </li>{% endcomment %}
+                                            {% endif %}
+                                          {% endfor %}
+                                          {% comment %}
+                                          <li>
+                                            <div class="menu-cart">
+                                                <div class="{% unless settings.show_cart_as_button %}no-{% endunless %}btn">
+                                                  <a class="current-cart {% if template != 'cart' %}toggle-cart-summary{% endif %}" href="/cart">
+                                                      <i class="icon-cart"></i> {% comment %}<span class="cart-label">Your Cart</span><span class="cart-count">{{ cart.item_count }}</span>cart ( {% assign geolizr_price =  cart.total_price  %}{% include 'geolizr-currency' with geolizr_price %}{{ cart.total_price | money | prepend: geolizr_prepend_code | append: geolizr_append_code }} ) {% endcomment %}
+                                                  </a>
+                                                </div>
+                                            </div>
+                                          </li>
+                                          {% endcomment %}
+                                          <a class="current-cart {% if template != 'cart' %}toggle-cart-summary{% endif %}"><span class="cart-count">{{ cart.item_count }}</span>items <i class="icon-cart"></i></a>
+                                        </ul>
+                                    </nav>
+                                  </div>            
+                                  
+                    
+                                  {% unless settings.header_layout == 'mobile' %}
+                                  <span class="toolbar-social">
+                                    {% include 'social-links' %}
+                                  </span>
+                                  {% endunless %}
+                                </div>
+                              </div>
+                            </div>
+                           </div>
+  
+  <div id="page-wrap">
+    <div id="page-wrap-inner">
+      <div id="page-wrap-content">        
+        <div id="content"> 
+  			{% comment %}<div id="header" class="cart" style="width:100%;">
+                              <div class="container">
+                              <div class="page-header">
+                                <div id="toolbar" class="toolbar cf">
+                                    <div class="logo-nav">
+                                          <div class="logo">
+                                            {% if settings.use_logo %}{% comment %}ly_asset_replace_for_[ 'cart-header-logo.png' | asset_url | img_tag | link_to: shop.url ]_begin{% endcomment %}{% assign ly_asset = 'cart-header-logo.png' %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  | img_tag | link_to: shop.url }}{% comment %}ly_asset_replace_end{% endcomment %}{% else %}{{ langify_shop_name | link_to: shop.url }}{% endif %}
+                                          </div>                     
+                        
+                                      {% unless settings.header_layout == 'nav' %}<div class="cf">{{ logo_html }}</div>{% endunless %}
+                        
+                                      {% unless settings.header_layout == 'mobile' %}
+                                        {% include 'main-navigation' %}
+                                      {% endunless %}
+                                    </div>
+                                    {% comment %}
+                                      <span class="mobile-toolbar">
+                                        {% comment %}<a class="toggle-mob-nav" href="#"><i class="icon-nav"></i></a>{% endcomment %}
+                                        {% if settings.use_compact_mobile_header %}
+                                        <a class="compact-logo" href="{{ shop.url }}">{% if settings.use_logo %}{% comment %}ly_asset_replace_for_[ 'compact_logo.png' | asset_url | img_tag ]_begin{% endcomment %}{% assign ly_asset = 'compact_logo.png' %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  | img_tag }}{% comment %}ly_asset_replace_end{% endcomment %}{% else %}{{ langify_shop_name }}{% endif %}</a>
+                                        {% endif %}
+                                      </span>    
+                                    {% endcomment %}         
+                                
+                                  {% unless settings.header_layout == 'mobile' %}
+                                  <span class="toolbar-links">
+                                    {% if shop.customer_accounts_enabled %}
+                                    {% if customer  %}
+                                    <a href="/account">{% comment %}ly_i18n_replace_for_[ 'layout.customer.your_account' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'layout.customer.your_account' | t }}{% endcapture %}{% include 'ly-static-string' with '2473604' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</a>
+                                    <span class="divider">/</span> {% comment %}ly_i18n_replace_for_[ 'layout.customer.logout' | t | customer_logout_link ]_begin{% endcomment %}{% capture ly_template %}{{ 'layout.customer.logout' | t | customer_logout_link }}{% endcapture %}{% include 'ly-static-string' with '2473605' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape | customer_logout_link }}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}
+                                    {% else %}
+                                    {% comment %}ly_i18n_replace_for_[ 'layout.customer.login' | t | customer_login_link ]_begin{% endcomment %}{% capture ly_template %}{{ 'layout.customer.login' | t | customer_login_link }}{% endcapture %}{% include 'ly-static-string' with '2473606' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape | customer_login_link }}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}
+                                    {% if shop.customer_accounts_optional %}
+                                    <span class="divider">/</span> {% comment %}ly_i18n_replace_for_[ 'layout.customer.create_account' | t | customer_register_link ]_begin{% endcomment %}{% capture ly_template %}{{ 'layout.customer.create_account' | t | customer_register_link }}{% endcapture %}{% include 'ly-static-string' with '2473607' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape | customer_register_link }}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}
+                                    {% endif %}
+                                    {% endif %}
+                                    {% if settings.show_header_search %}<span class="divider">/</span>{% endif %}
+                                    {% endif %}
+                                    {% if settings.show_header_search %}
+                                    <form class="search-form" action="/search" method="get">
+                                      {% if settings.search_prods_only %}<input type="hidden" name="type" value="product">{% endif %}
+                                      <button class="icon-mag"></button>
+                                      <input type="text" name="q" placeholder="{% comment %}ly_i18n_replace_for_[ 'layout.header.search' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'layout.header.search' | t }}{% endcapture %}{% include 'ly-static-string' with '2473608' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}"/>
+                                    </form>
+                                    {% endif %}
+                                  </span>
+                                  {% endunless %}
+								  <div style="display:none;">
+                                  <span class="toolbar-cart">
+                                    <span class="{% unless settings.show_cart_as_button %}no-{% endunless %}btn">
+                                      <a class="current-cart {% if template != 'cart' %}toggle-cart-summary{% endif %}" href="/cart">
+                                        {{ cart.item_count }} / {% assign geolizr_price =  cart.total_price  %}{% include 'geolizr-currency' with geolizr_price %}{{ cart.total_price | money | prepend: geolizr_prepend_code | append: geolizr_append_code }} <i class="icon-cart"></i>
+                                      </a>
+                                    </span>
+                                  </span>
+                                  </div>
+                                    <div class="main-menu">
+                                    <nav class="menu">
+                                        <ul class="site-nav" id="accessibleNav">
+                                          {% for link in linklists.main-menu.links %}
+                                            {% comment %}
+                                              Create a dropdown menu by naming a linklist the same as a link in the parent nav
+                                        
+                                              More info on dropdowns:
+                                                - http://docs.shopify.com/manual/your-website/navigation/create-drop-down-menu
+                                            {% endcomment %}
+                                            {% assign child_list_handle = link.title | handleize %}
+                                            {% if linklists[child_list_handle].links != blank %}
+                                            {% comment %}  <li class="site-nav--has-dropdown{% if link.active %} site-nav--active{% endif %}" aria-haspopup="true">
+                                                <a href="{{ link.url }}">{% comment %}ly_code_replace_for_[ link.title ]_begin{% endcomment %}{% include 'ly-title' with link %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</a>
+                                                <ul class="site-nav--dropdown">
+                                                  {% for childlink in linklists[child_list_handle].links %}
+                                                    <li {% if childlink.active %}class="site-nav--active"{% endif %}><a href="{{ childlink.url }}">{% comment %}ly_code_replace_for_[ childlink.title | escape ]_begin{% endcomment %}{% include 'ly-title' with childlink %}{{ ly_translation | escape }}{% comment %}ly_code_replace_end{% endcomment %}</a></li>
+                                                  {% endfor %}
+                                                </ul>
+                                              </li>{% endcomment %}
+                                            {% else %}
+                                             {% comment %} <li {% if link.active %}class="site-nav--active"{% endif %}>
+                                                <a href="{{ link.url }}">{% comment %}ly_code_replace_for_[ link.title ]_begin{% endcomment %}{% include 'ly-title' with link %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</a>
+                                              </li>{% endcomment %}
+                                            {% endif %}
+                                          {% endfor %}
+                                          <li>
+                                            <div class="menu-cart">
+                                                <div class="{% unless settings.show_cart_as_button %}no-{% endunless %}btn">
+                                                  <a class="current-cart {% if template != 'cart' %}toggle-cart-summary{% endif %}" href="/cart">
+                                                    {% comment %}  <i class="icon-cart"></i> {% endcomment %}<span class="cart-label"><ly-as-2473600>Your Cart</ly-as-2473600></span><span class="cart-count">{{ cart.item_count }}</span>{% comment %}cart ( {% assign geolizr_price =  cart.total_price  %}{% include 'geolizr-currency' with geolizr_price %}{{ cart.total_price | money | prepend: geolizr_prepend_code | append: geolizr_append_code }} ) {% endcomment %}
+                                                  </a>
+                                                </div>
+                                            </div>
+                                          </li>
+                                        </ul>
+                                    </nav>
+                                  </div>            
+                                  
+                    
+                                  {% unless settings.header_layout == 'mobile' %}
+                                  <span class="toolbar-social">
+                                    {% include 'social-links' %}
+                                  </span>
+                                  {% endunless %}
+                                </div>
+                              </div>
+                            </div>
+                           </div>
+      			{% endcomment %}
+        	{% if template contains 'index' or template contains 'product' %}
+                {% if settings.home_show_slideshow %}
+                    <!-- Begin slider -->
+                    
+                    <div id="bicolorBanner" class="banner-index" style="{% if template contains 'product' %}display:none;{% endif %}cursor:pointer">                  
+                      <picture>
+                        <source media="(min-width: 64em)" srcset="{{ 'PC-Header.jpg' | asset_url }}">
+                        <source media="(min-width: 40em)" srcset="{{ 'Header-Mobile-Tablet.jpg' | asset_url }}">
+                        <source media="(min-width: 300px)" srcset="{{ 'Header-Mobile-Tablet.jpg' | asset_url }}">
+                        <img src="{{ 'PC-Header.jpg' | asset_url }}" alt="Sunglasses Original Bicolor">
+                      </picture>
+                    </div>
+                    
+                    {% comment %}
+                    <section class="border-top section slideshow-section">                       
+                        <div class="flexslider" style="{% if template contains 'product' %}display:none{% endif %}">
+                           
+
+                          <ul class="slides">
+                            {% for i in (1..5) %}
+                              {% capture show_slide %}slide_{{ i }}{% endcapture %}
+                              {% capture image %}slideshow_{{ i }}.jpg{% endcapture %}
+                              {% capture link %}slide_{{ i }}_link{% endcapture %}
+                              {% capture alt %}slide_{{ i }}_alt{% endcapture %}
+                              {% capture overlay_align %}slide_{{ i }}_overlay_align{% endcapture %}
+                              {% capture overlay_1 %}slide_{{ i }}_overlay_1{% endcapture %}
+                              {% capture overlay_2 %}slide_{{ i }}_overlay_2{% endcapture %}
+                              {% capture overlay_btn %}slide_{{ i }}_overlay_btn{% endcapture %}
+                              {% if settings[show_slide] %}
+                              <li class="slide slide-{{ i }} parallax-slider" style="height: 390px;
+    background: url({% comment %}ly_asset_replace_for_[ image | asset_url ]_begin{% endcomment %}{% assign ly_asset = image %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  }}{% comment %}ly_asset_replace_end{% endcomment %});
+    background-attachment: fixed;    
+    background-repeat:no-repeat">
+                               {% comment %} {% if settings[link] != blank %}<a href="{{ settings[link] }}">{% endif %}
+                                  <img src="{% comment %}ly_asset_replace_for_[ image | asset_url ]_begin{% endcomment %}{% assign ly_asset = image %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  }}{% comment %}ly_asset_replace_end{% endcomment %}" alt="{{ settings[alt] | escape }}" />
+                                {% if settings[link] != blank %}</a>{% endif %}{% endcomment %}
+                                
+                                {% if settings[overlay_1] != blank or settings[overlay_2] != blank or settings[overlay_btn] != blank %}
+                                <div class="overlay align-{{ settings[overlay_align] }}">
+                                  <div class="inner">
+                                    <div class="line-1 trans-out">
+                                      {% if settings[overlay_1] != blank %}
+                                      {{ settings[overlay_1] }}
+                                      {% endif %}
+                                    </div>
+                                    <div class="line-2 trans-out">
+                                      {% if settings[overlay_2] != blank %}
+                                      {{ settings[overlay_2] }}
+                                      {% endif %}
+                                    </div>
+                                    {% if settings[overlay_btn] != blank %}
+                                    <div class="line-3 trans-out"><a class="btn" href="{{ settings[link] }}">{{ settings[overlay_btn] }}</a></div>
+                                    {% endif %}
+                                  </div>
+                                </div>
+                                {% endif %}
+                              </li>
+                              {% endif %}
+                            {% endfor %}
+                          </ul>
+                          
+                        </div>                      
+                    </section>
+           {% endcomment %}         
+          {% comment %} 
+          [powr-countdown-timer id=9fd31ed4_1472213740]
+          {% endcomment %} 
+                    <!-- End slider -->
+                    {% if settings.shipping-banner-enable %}
+                      {% unless template contains 'product' %}
+                      <div class="shipping-banner">
+                        <div class="nn-secondary-middle">{% comment %}ly_new_settings_replace_for_[ settings.shipping-banner ]_begin{% endcomment %}{% assign language = cart.attributes["language"] %}{% if language == nil %}{% assign language = shop.metafields["languages"]["default"] %}{% endif %}{% assign namespace = language | append: "as" %}{% if shop.metafields[namespace]["id2473601"] %}{% assign ly_translation = shop.metafields[namespace]["id2473601"] %}{% else %}{% assign ly_translation = settings.shipping-banner %}{% endif %}{{ ly_translation }}{% comment %}ly_new_settings_replace_end{% endcomment %}</div>
+                      </div>
+                      {% endunless %}
+                    {% endif %}
+                {% endif %}
+                {% else %}
+                {% if template contains 'cart' or template contains 'page.support' or template contains 'index' %}
+                	{% comment %}<div id="header"{% if template contains 'cart' or template contains 'page.support'%}class="cart"{% endif %}>
+                               <div class="container">
+                                  <div class="page-header">
+                                    <div id="toolbar" class="toolbar cf">
+                                        <div class="logo-nav">
+                                              <div class="logo">
+                                                {% if settings.use_cart_logo %}{% comment %}ly_asset_replace_for_[ 'cart-header-logo.png' | asset_url | img_tag | link_to: shop.url ]_begin{% endcomment %}{% assign ly_asset = 'cart-header-logo.png' %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  | img_tag | link_to: shop.url }}{% comment %}ly_asset_replace_end{% endcomment %}{% else %}{{ langify_shop_name | link_to: shop.url }}{% endif %}
+                                              </div>                     
+                            
+                                          {% unless settings.header_layout == 'nav' %}<div class="cf">{{ logo_html }}</div>{% endunless %}
+                            
+                                          {% unless settings.header_layout == 'mobile' %}
+                                            {% include 'main-navigation' %}
+                                          {% endunless %}
+                                        </div>
+                                                                                
+                                      {% unless settings.header_layout == 'mobile' %}
+                                      <span class="toolbar-links">
+                                        {% if shop.customer_accounts_enabled %}
+                                        {% if customer  %}
+                                        <a href="/account">{% comment %}ly_i18n_replace_for_[ 'layout.customer.your_account' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'layout.customer.your_account' | t }}{% endcapture %}{% include 'ly-static-string' with '2473604' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</a>
+                                        <span class="divider">/</span> {% comment %}ly_i18n_replace_for_[ 'layout.customer.logout' | t | customer_logout_link ]_begin{% endcomment %}{% capture ly_template %}{{ 'layout.customer.logout' | t | customer_logout_link }}{% endcapture %}{% include 'ly-static-string' with '2473605' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape | customer_logout_link }}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}
+                                        {% else %}
+                                        {% comment %}ly_i18n_replace_for_[ 'layout.customer.login' | t | customer_login_link ]_begin{% endcomment %}{% capture ly_template %}{{ 'layout.customer.login' | t | customer_login_link }}{% endcapture %}{% include 'ly-static-string' with '2473606' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape | customer_login_link }}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}
+                                        {% if shop.customer_accounts_optional %}
+                                        <span class="divider">/</span> {% comment %}ly_i18n_replace_for_[ 'layout.customer.create_account' | t | customer_register_link ]_begin{% endcomment %}{% capture ly_template %}{{ 'layout.customer.create_account' | t | customer_register_link }}{% endcapture %}{% include 'ly-static-string' with '2473607' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape | customer_register_link }}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}
+                                        {% endif %}
+                                        {% endif %}
+                                        {% if settings.show_header_search %}<span class="divider">/</span>{% endif %}
+                                        {% endif %}
+                                        {% if settings.show_header_search %}
+                                        <form class="search-form" action="/search" method="get">
+                                          {% if settings.search_prods_only %}<input type="hidden" name="type" value="product">{% endif %}
+                                          <button class="icon-mag"></button>
+                                          <input type="text" name="q" placeholder="{% comment %}ly_i18n_replace_for_[ 'layout.header.search' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'layout.header.search' | t }}{% endcapture %}{% include 'ly-static-string' with '2473608' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}"/>
+                                        </form>
+                                        {% endif %}
+                                      </span>
+                                      {% endunless %}
+                                        
+                                        <div class="main-menu">
+                                        <nav class="menu">
+                                            <ul class="site-nav" id="accessibleNav">
+                                              {% for link in linklists.main-menu-2.links %}
+                                                {% comment %}
+                                                  Create a dropdown menu by naming a linklist the same as a link in the parent nav
+                                            
+                                                  More info on dropdowns:
+                                                    - http://docs.shopify.com/manual/your-website/navigation/create-drop-down-menu
+                                                {% endcomment %}
+                                                {% assign child_list_handle = link.title | handleize %}
+                                                {% if linklists[child_list_handle].links != blank %}
+                                                  <li class="site-nav--has-dropdown{% if link.active %} site-nav--active{% endif %}" aria-haspopup="true">
+                                                    <a href="{{ link.url }}">{% comment %}ly_code_replace_for_[ link.title ]_begin{% endcomment %}{% include 'ly-title' with link %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</a>
+                                                    <ul class="site-nav--dropdown">
+                                                      {% for childlink in linklists[child_list_handle].links %}
+                                                        <li {% if childlink.active %}class="site-nav--active"{% endif %}><a href="{{ childlink.url }}">{% comment %}ly_code_replace_for_[ childlink.title | escape ]_begin{% endcomment %}{% include 'ly-title' with childlink %}{{ ly_translation | escape }}{% comment %}ly_code_replace_end{% endcomment %}</a></li>
+                                                      {% endfor %}
+                                                    </ul>
+                                                  </li>
+                                                {% else %}
+                                                  <li {% if link.active %}class="site-nav--active"{% endif %}>
+                                                    <a href="{{ link.url }}">{% comment %}ly_code_replace_for_[ link.title ]_begin{% endcomment %}{% include 'ly-title' with link %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</a>
+                                                  </li>
+                                                {% endif %}
+                                              {% endfor %}
+                                              <li>
+                                                <span class="menu-cart">
+                                                    <span class="{% unless settings.show_cart_as_button %}no-{% endunless %}btn">
+                                                      <a class="current-cart {% if template != 'cart' %}toggle-cart-summary{% endif %}" href="/cart">
+                                                        <i class="icon-cart"></i> {% comment %}cart ( {% assign geolizr_price =  cart.total_price  %}{% include 'geolizr-currency' with geolizr_price %}{{ cart.total_price | money | prepend: geolizr_prepend_code | append: geolizr_append_code }} ) {% endcomment %}
+                                                      </a>
+                                                    </span>
+                                                </span>
+                                              </li>
+                                            </ul>
+                                        </nav>
+                                      </div>            
+                                      
+                        
+                                      {% unless settings.header_layout == 'mobile' %}
+                                      <span class="toolbar-social">
+                                        {% include 'social-links' %}
+                                      </span>
+                                      {% endunless %}
+                                    </div>
+                                  </div>
+                                </div>
+                        </div>
+                   {% endcomment %}                                               
+                <div class="cart-header">
+                	{% if template contains 'cart' %}
+                    	{% if settings.cart_banner %}
+                        	<img src="{% comment %}ly_asset_replace_for_[ 'cart-banner.jpg' | asset_url ]_begin{% endcomment %}{% assign ly_asset = 'cart-banner.jpg' %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  }}{% comment %}ly_asset_replace_end{% endcomment %}" alt="<ly-as-2473602>cart-banner</ly-as-2473602>"/>                        	                        
+                        {% endif %}                        
+                  	{% elsif template contains 'page.support' %}
+                    	{% if settings.cart_banner %}
+                        	<img src="{% comment %}ly_asset_replace_for_[ 'support-banner.jpg' | asset_url ]_begin{% endcomment %}{% assign ly_asset = 'support-banner.jpg' %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  }}{% comment %}ly_asset_replace_end{% endcomment %}" alt="<ly-as-2473603>support-banner</ly-as-2473603>"/>                        
+                        {% endif %}                  		
+                  	{% endif %}
+                {% else %}	
+                  <div class="header">
+                  {% endif %}
+                  
+                  {% if settings.shipping-banner-enable %}
+                	<div class="shipping-banner">
+						<div class="nn-secondary-middle">{% comment %}ly_new_settings_replace_for_[ settings.shipping-banner ]_begin{% endcomment %}{% assign language = cart.attributes["language"] %}{% if language == nil %}{% assign language = shop.metafields["languages"]["default"] %}{% endif %}{% assign namespace = language | append: "as" %}{% if shop.metafields[namespace]["id2473601"] %}{% assign ly_translation = shop.metafields[namespace]["id2473601"] %}{% else %}{% assign ly_translation = settings.shipping-banner %}{% endif %}{{ ly_translation }}{% comment %}ly_new_settings_replace_end{% endcomment %}</div>			
+		  			</div>
+                    {% endif %}
+                  
+                 
+                  
+                  {% if template contains 'cart' or template == 'page.support'%}
+                	    <div id="header" style="display:none;">                                     
+                  {% else %}	
+                  <div id="header" style="display:none;">
+                            <div class="container">
+                              <div class="page-header">
+                                <div id="toolbar" class="toolbar cf">
+                                    <div class="logo-nav">
+                                          <div class="logo">
+                                            {% if settings.use_logo %}{% comment %}ly_asset_replace_for_[ 'logo.png' | asset_url | img_tag | link_to: shop.url ]_begin{% endcomment %}{% assign ly_asset = 'logo.png' %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  | img_tag | link_to: shop.url }}{% comment %}ly_asset_replace_end{% endcomment %}{% else %}{{ langify_shop_name | link_to: shop.url }}{% endif %}
+                                          </div>                     
+                        
+                                      {% unless settings.header_layout == 'nav' %}<div class="cf">{{ logo_html }}</div>{% endunless %}
+                        
+                                      {% unless settings.header_layout == 'mobile' %}
+                                        {% include 'main-navigation' %}
+                                      {% endunless %}
+                                    </div>
+                                    {% comment %}
+                                      <span class="mobile-toolbar">
+                                        {% comment %}<a class="toggle-mob-nav" href="#"><i class="icon-nav"></i></a>{% endcomment %}
+                                        {% if settings.use_compact_mobile_header %}
+                                        <a class="compact-logo" href="{{ shop.url }}">{% if settings.use_logo %}{% comment %}ly_asset_replace_for_[ 'compact_logo.png' | asset_url | img_tag ]_begin{% endcomment %}{% assign ly_asset = 'compact_logo.png' %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  | img_tag }}{% comment %}ly_asset_replace_end{% endcomment %}{% else %}{{ langify_shop_name }}{% endif %}</a>
+                                        {% endif %}
+                                      </span>             
+                                	{% endcomment %}
+                                    
+                                  {% unless settings.header_layout == 'mobile' %}
+                                  <span class="toolbar-links">
+                                    {% if shop.customer_accounts_enabled %}
+                                    {% if customer  %}
+                                    <a href="/account">{% comment %}ly_i18n_replace_for_[ 'layout.customer.your_account' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'layout.customer.your_account' | t }}{% endcapture %}{% include 'ly-static-string' with '2473604' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</a>
+                                    <span class="divider">/</span> {% comment %}ly_i18n_replace_for_[ 'layout.customer.logout' | t | customer_logout_link ]_begin{% endcomment %}{% capture ly_template %}{{ 'layout.customer.logout' | t | customer_logout_link }}{% endcapture %}{% include 'ly-static-string' with '2473605' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape | customer_logout_link }}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}
+                                    {% else %}
+                                    {% comment %}ly_i18n_replace_for_[ 'layout.customer.login' | t | customer_login_link ]_begin{% endcomment %}{% capture ly_template %}{{ 'layout.customer.login' | t | customer_login_link }}{% endcapture %}{% include 'ly-static-string' with '2473606' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape | customer_login_link }}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}
+                                    {% if shop.customer_accounts_optional %}
+                                    <span class="divider">/</span> {% comment %}ly_i18n_replace_for_[ 'layout.customer.create_account' | t | customer_register_link ]_begin{% endcomment %}{% capture ly_template %}{{ 'layout.customer.create_account' | t | customer_register_link }}{% endcapture %}{% include 'ly-static-string' with '2473607' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape | customer_register_link }}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}
+                                    {% endif %}
+                                    {% endif %}
+                                    {% if settings.show_header_search %}<span class="divider">/</span>{% endif %}
+                                    {% endif %}
+                                    {% if settings.show_header_search %}
+                                    <form class="search-form" action="/search" method="get">
+                                      {% if settings.search_prods_only %}<input type="hidden" name="type" value="product">{% endif %}
+                                      <button class="icon-mag"></button>
+                                      <input type="text" name="q" placeholder="{% comment %}ly_i18n_replace_for_[ 'layout.header.search' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'layout.header.search' | t }}{% endcapture %}{% include 'ly-static-string' with '2473608' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}"/>
+                                    </form>
+                                    {% endif %}
+                                  </span>
+                                  {% endunless %}
+                                    
+                                    <div class="main-menu">
+                                    <nav class="menu">
+                                        <ul class="site-nav" id="accessibleNav">
+                                          {% for link in linklists.main-menu.links %}
+                                            {% comment %}
+                                              Create a dropdown menu by naming a linklist the same as a link in the parent nav
+                                        
+                                              More info on dropdowns:
+                                                - http://docs.shopify.com/manual/your-website/navigation/create-drop-down-menu
+                                            {% endcomment %}
+                                            {% assign child_list_handle = link.title | handleize %}
+                                            {% if linklists[child_list_handle].links != blank %}
+                                              <li class="site-nav--has-dropdown{% if link.active %} site-nav--active{% endif %}" aria-haspopup="true">
+                                                <a href="{{ link.url }}">{% comment %}ly_code_replace_for_[ link.title ]_begin{% endcomment %}{% include 'ly-title' with link %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</a>
+                                                <ul class="site-nav--dropdown">
+                                                  {% for childlink in linklists[child_list_handle].links %}
+                                                    <li {% if childlink.active %}class="site-nav--active"{% endif %}><a href="{{ childlink.url }}">{% comment %}ly_code_replace_for_[ childlink.title | escape ]_begin{% endcomment %}{% include 'ly-title' with childlink %}{{ ly_translation | escape }}{% comment %}ly_code_replace_end{% endcomment %}</a></li>
+                                                  {% endfor %}
+                                                </ul>
+                                              </li>
+                                            {% else %}
+                                              <li {% if link.active %}class="site-nav--active"{% endif %}>
+                                                <a href="{{ link.url }}">{% comment %}ly_code_replace_for_[ link.title ]_begin{% endcomment %}{% include 'ly-title' with link %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</a>
+                                              </li>
+                                            {% endif %}
+                                          {% endfor %}
+                                          <li>
+                                            <span class="menu-cart">
+                                                <span class="{% unless settings.show_cart_as_button %}no-{% endunless %}btn">
+                                                  <a class="current-cart {% if template != 'cart' %}toggle-cart-summary{% endif %}" href="/cart">
+                                                    <i class="icon-cart"></i> {% comment %}cart ( {% assign geolizr_price =  cart.total_price  %}{% include 'geolizr-currency' with geolizr_price %}{{ cart.total_price | money | prepend: geolizr_prepend_code | append: geolizr_append_code }} ) {% endcomment %}
+                                                  </a>
+                                                </span>
+                                            </span>
+                                          </li>
+                                        </ul>
+                                    </nav>
+                                  </div>            
+                                  
+                    
+                                  {% unless settings.header_layout == 'mobile' %}
+                                  <span class="toolbar-social">
+                                    {% include 'social-links' %}
+                                  </span>
+                                  {% endunless %}
+                                </div>
+                              </div>
+                            </div>
+                           </div> 
+            {% endif %}      
+                           </div>
+                </div>
+        	{% endif %}
+          {{content_for_layout}}
+        </div>
+      </div><!-- /#page-wrap-content -->
+
+      {% include 'footer' %}
+      {% comment %}<a id="page-overlay" href="#"></a>{% endcomment %}
+    </div>
+  </div><!-- /#page-wrap -->
+  
+  {% include 'mobile-navigation' %}
+  
+  {% include 'cart-summary' %}
+{% comment %}{% include 'popup' %} {% endcomment %}
+{% if template contains 'product' %}
+{% include 'fixed-product' %}
+<script>
+$(function($){
+  $('.bxslider').bxSlider({
+    pagerCustom: '#bxpager'
+     /*minSlides: 2,
+      maxSlides: 4,
+     slideWidth: 500,
+      slideMargin: 12,
+       moveSlides: 1,
+      pager:false,
+      speed:1000*/                                         
+  }); 
+});
+</script>
+
+
+{% endif %}
+  <script type="text/javascript" src="{% comment %}ly_asset_replace_for_[ 'libs.js' | asset_url ]_begin{% endcomment %}{% assign ly_asset = 'libs.js' %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  }}{% comment %}ly_asset_replace_end{% endcomment %}" defer></script>
+  <script type="text/javascript" src="{% comment %}ly_asset_replace_for_[ 'scripts.js' | asset_url ]_begin{% endcomment %}{% assign ly_asset = 'scripts.js' %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  }}{% comment %}ly_asset_replace_end{% endcomment %}" defer></script>
+  <script type="text/javascript" src="{% comment %}ly_asset_replace_for_[ 'instafeed.min.js' | asset_url ]_begin{% endcomment %}{% assign ly_asset = 'instafeed.min.js' %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  }}{% comment %}ly_asset_replace_end{% endcomment %}" defer></script>
+  
+                                           
+
+<input type="hidden" name="_pc_params" value="{{ shop.permanent_domain }}:{{ customer.id }}" />
+{% include 'geolizr-redirect' %}
+<script>
+ /* $(document).ready(function(){
+	$('.parallax-window').parallax({
+    naturalWidth: 600,
+    naturalHeight: 400
+  });
+  }); */
+</script>
+
+{% if template contains 'product' %}
+  <script type="text/javascript">
+  </script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        var wd = $(document).width();
+        if(wd > 768){
+          $("#zoom").elevateZoom({
+            zoomType: "inner",
+            cursor: "crosshair"
+          });
+        }
+        if(wd < 481){
+          var w = $('.product-gallery img').width();
+          $('.product-gallery').addClass('tablerow').height(w);
+        }
+      });
+    </script>
+{% endif %}
+
+<script type="text/javascript">
+var google_tag_params = {
+ecomm_prodid: '{{ product.id }}',
+ecomm_pagetype: '{{ template }}',
+ecomm_totalvalue: '{% assign geolizr_price =  product.price_min  %}{% include 'geolizr-currency' with geolizr_price %}{{ product.price_min | money_without_currency | prepend: geolizr_prepend_code | append: geolizr_append_code }}',
+};
+</script>
+
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 881110676;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+</script>
+<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+</script>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/881110676/?value=0&amp;guid=ON&amp;script=0"/>
+</div>
+</noscript>
+
+<script>
+  /*$(document).ready(function() {
+    var width = $(window).width();
+    if ((width <= 1023)) {
+    	$('#instimg-iframe').attr('src','http://imageagram.com/grid.php?q=u&search=floatiekings&wt=in&s=250&h=4&w=4&b=no&c=&p=5&ho=none&sh=yes&ww=450&as=on&at=2077099952.69c1145.aef5ef91f7d9494e9ceb1d7a672c1bfe" allowTransparency="true" frameborder="0" scrolling="no" style="border:none; overflow:hidden; width:1016px');
+    }
+  });*/
+ 
+//var stickyOffset = $('#header').offset().top;
+ /*$(window).scroll(function(){
+  var sticky = $('#header'),scroll = $(window).scrollTop();
+  //console.log(scroll);
+  if(scroll >= 2){
+    sticky.addClass('fixed');
+  }else{
+    sticky.removeClass('fixed');
+  }
+});*/ 
+</script>
+<style>
+.unavailable.buy-now {
+  /*background: #333 !important;*/
+  border-color: #333;
+  color: #fff !important;
+  padding: 10px 4.7em 8px;
+}
+</style>
+    
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-86893533-2', 'auto');
+ga('send', 'pageview');
+
+</script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $("#various1").fancybox({
+          'width'			: '502px',
+          'height'			: '340px',
+          'titlePosition'	: 'inside',
+          'transitionIn'	: 'none',
+          'transitionOut'	: 'none',
+          'type'				: 'iframe'
+        });
+      });
+    </script>  
+{% comment %}ly_static_code_begin{% endcomment %}{% include 'ly-languages' %}{% comment %}ly_static_code_end{% endcomment %}
+
+{% include 'geolizr-currency-converter' %}</body>
+</html>{% comment %}ly_static_code_begin{% endcomment %}{% endcapture %}{% include 'ly-static' with ly_content %}{% comment %}ly_static_code_end{% endcomment %}

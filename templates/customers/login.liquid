@@ -1,0 +1,85 @@
+{% comment %}ly_global_begin{% endcomment %}{% include 'ly-global' %}{% comment %}ly_global_end{% endcomment %}<div class="container">
+  <div class="reading-column">
+    <div id="login">
+      <h2 class="page-title">{% comment %}ly_i18n_replace_for_[ 'customer.login.title' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'customer.login.title' | t }}{% endcapture %}{% include 'ly-static-string' with '2473784' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</h2>
+
+      {% form 'customer_login' %}
+      {% if form.errors %}
+      <div class="notification errors">
+        {{ form.errors | default_errors }}
+      </div>
+      {% endif %}
+
+      <div class="input-row">
+        <label for="customer_email" class="label">{% comment %}ly_i18n_replace_for_[ 'customer.login.email' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'customer.login.email' | t }}{% endcapture %}{% include 'ly-static-string' with '2473785' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</label>
+        <input type="email" value="" name="customer[email]" id="customer_email" class="text" />
+      </div>
+
+      {% if form.password_needed %}
+      <div class="input-row">
+        <label for="customer_password" class="label">{% comment %}ly_i18n_replace_for_[ 'customer.login.password' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'customer.login.password' | t }}{% endcapture %}{% include 'ly-static-string' with '2473786' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</label>
+        <input type="password" value="" name="customer[password]" id="customer_password" class="text" size="16" />
+      </div>
+      
+      <p><a href="#" onclick="showRecoverPasswordForm();return false;">{% comment %}ly_i18n_replace_for_[ 'customer.login.forgot_password' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'customer.login.forgot_password' | t }}{% endcapture %}{% include 'ly-static-string' with '2473787' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</a></p>
+      {% endif %}
+
+      <div class="input-row">
+        <input class="btn" type="submit" value="{% comment %}ly_i18n_replace_for_[ 'customer.login.sign_in' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'customer.login.sign_in' | t }}{% endcapture %}{% include 'ly-static-string' with '2473788' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}" />
+      </div>
+      {% endform %}
+    </div>
+
+    <div id="recover-password" style="display:none;">
+      <h2 class="page-title">{% comment %}ly_i18n_replace_for_[ 'customer.login.reset_password' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'customer.login.reset_password' | t }}{% endcapture %}{% include 'ly-static-string' with '2473789' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</h2>
+      <p class="note">{% comment %}ly_i18n_replace_for_[ 'customer.login.reset_password_subtext' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'customer.login.reset_password_subtext' | t }}{% endcapture %}{% include 'ly-static-string' with '2473790' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</p>
+
+      {% form 'recover_customer_password' %}
+      {% if form.posted_successfully? %}
+      <script>$(function(){ showRecoverPasswordForm(); });</script>
+      <div class="notification errors">
+        {% comment %}ly_i18n_replace_for_[ 'customer.login.reset_sent' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'customer.login.reset_sent' | t }}{% endcapture %}{% include 'ly-static-string' with '2473791' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}
+      </div>
+      {% endif %}
+      {% if form.errors %}
+      <script>$(function(){ showRecoverPasswordForm(); });</script>
+      <div class="notification errors">
+        {{ form.errors | default_errors }}
+      </div>
+      {% endif %}
+      <div class="input-row">
+        <label for="email" class="label">{% comment %}ly_i18n_replace_for_[ 'customer.login.email' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'customer.login.email' | t }}{% endcapture %}{% include 'ly-static-string' with '2473785' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</label>
+        <input type="email" value="" size="30" name="email" id="recover-email" class="text" />
+      </div>
+      <div class="input-row">
+        <input class="btn" type="submit" value="{% comment %}ly_i18n_replace_for_[ 'customer.login.submit_recover' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'customer.login.submit_recover' | t }}{% endcapture %}{% include 'ly-static-string' with '2473792' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}" /> {% comment %}ly_i18n_replace_for_[ 'customer.general.or' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'customer.general.or' | t }}{% endcapture %}{% include 'ly-static-string' with '2473793' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}
+        <span class="note"><a href="#" onclick="hideRecoverPasswordForm();return false;">{% comment %}ly_i18n_replace_for_[ 'customer.login.cancel' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'customer.login.cancel' | t }}{% endcapture %}{% include 'ly-static-string' with '2473794' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</a></span>
+      </div>
+      {% endform %}
+    </div>
+
+    {% if shop.checkout.guest_login %}
+    <div id="guest">
+      <h2>{% comment %}ly_i18n_replace_for_[ 'customer.login.guest_title' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'customer.login.guest_title' | t }}{% endcapture %}{% include 'ly-static-string' with '2473795' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</h2>
+      {% form 'guest_login' %}
+      <input class="btn" type="submit" value="{% comment %}ly_i18n_replace_for_[ 'customer.login.guest_continue' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'customer.login.guest_continue' | t }}{% endcapture %}{% include 'ly-static-string' with '2473796' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}" />
+      {% endform %}
+    </div>
+    {% endif %}
+
+  </div>
+</div>
+
+<script type="text/javascript">
+  function showRecoverPasswordForm() {
+    document.getElementById('recover-password').style.display = 'block';
+    document.getElementById('login').style.display='none';
+  }
+
+  function hideRecoverPasswordForm() {
+    document.getElementById('recover-password').style.display = 'none';
+    document.getElementById('login').style.display = 'block';
+  }
+
+  if (window.location.hash == '#recover') { showRecoverPasswordForm() }
+</script>

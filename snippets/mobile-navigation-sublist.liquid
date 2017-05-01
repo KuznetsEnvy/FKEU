@@ -1,0 +1,18 @@
+{% comment %}ly_global_begin{% endcomment %}{% include 'ly-global' %}{% comment %}ly_global_end{% endcomment %}<div class="sub-nav" data-is-subnav-for="{{ child_list_handle }}">
+  <div class="header">
+    <a class="close-sub-nav" href="#"><span class="btn alt"><i class="icon-arrow3-left slim"></i></span> {% comment %}ly_i18n_replace_for_[ 'layout.mobile_navigation.back' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'layout.mobile_navigation.back' | t }}{% endcapture %}{% include 'ly-static-string' with '2473645' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</a>
+  </div>
+
+  <ul class="sub-nav-list plain">
+    {% for innerlink in linklists[child_list_handle].links %}
+    <li class="sub-nav-item{% if innerlink.active %} active{% endif %}">
+      <a class="sub-nav-item-link" href="{{ innerlink.url }}">{% comment %}ly_code_replace_for_[ innerlink.title ]_begin{% endcomment %}{% include 'ly-title' with innerlink %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</a>
+      {% assign innerlink_title = innerlink.title | strip_html %}
+      {% include 'has-drop-down' with innerlink_title %}
+      {% if has_drop_down %}
+      <button class="open-sub-nav alt" data-sub-nav="{{ child_list_handle }}"><i class="icon-arrow3-right"></i></button>
+      {% endif %}
+    </li>
+    {% endfor %}
+  </ul>
+</div>
