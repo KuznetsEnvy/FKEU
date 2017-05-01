@@ -1,6 +1,6 @@
-{% comment %}ly_global_begin{% endcomment %}{% include 'ly-global' %}{% comment %}ly_global_end{% endcomment %}<div class="container">
+<div class="container">
   <div class="reading-column">
-    {% comment %}<h1 class="page-title">{% comment %}ly_code_replace_for_[ page.title ]_begin{% endcomment %}{% include 'ly-title' with page %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</h1>{% endcomment %}
-    <div class="rte">{% comment %}ly_code_replace_for_[ page.content | replace: '<ly-as-2473867>fullwidth"</ly-as-2473867>', '<ly-as-2473868>" data-fullwidth="true"</ly-as-2473868>' ]_begin{% endcomment %}{% include 'ly-content' with page %}{{ ly_translation | replace: '<ly-as-2473867>fullwidth"</ly-as-2473867>', '<ly-as-2473868>" data-fullwidth="true"</ly-as-2473868>' }}{% comment %}ly_code_replace_end{% endcomment %}</div>
+    {% comment %}<h1 class="page-title">{{ page.title }}</h1>{% endcomment %}
+    <div class="rte">{{ page.content | replace: 'fullwidth"', '" data-fullwidth="true"' }}</div>
   </div>
 </div>

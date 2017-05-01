@@ -526,7 +526,7 @@
             'YT': 'EUR',
             'ZA': 'ZAR',
             'ZM': 'ZMK',
-            'ZW': 'ZWL',
+            'ZW': 'ZWL'
         }
     };
 
@@ -536,6 +536,10 @@
         }
 
         Geolizr.eventListeners[event].push(eventListener);
+
+        if(event == 'geolizr.geoData' && Geolizr.geoData) {
+            Geolizr.dispatchEvent('geolizr.geoData', Geolizr.geoData);
+        }
     };
 
     Geolizr.dispatchEvent = function (event, params) {
@@ -581,6 +585,32 @@
         document.getElementsByTagName('head')[0].appendChild(script);
     };
 
+    Geolizr.listCheck = function(item, filterUrls, currentUrlWithoutParams) {
+        if(item.filterlistType == undefined)
+            return false;
+
+        var result = false;
+        if(item.filterlistType == 'blacklist') {
+            result = false;
+            filterUrls.forEach(function(filter) {
+                if(currentUrlWithoutParams.match(filter) !== null)
+                    result = true;
+            });
+            return result;
+        }
+
+        if(item.filterlistType == 'whitelist') {
+            result = true;
+            filterUrls.forEach(function(filter) {
+                if(currentUrlWithoutParams.match(filter) !== null)
+                    result = false;
+            });
+            return result;
+        }
+
+        return false;
+    };
+
     Geolizr.calculate = function(calcStr) {
         return new Function('return ' + calcStr)();
     };
@@ -596,7 +626,9 @@
         return vars[name];
     };
 
-    Geolizr.getGeoData = function (callback) {
+    Geolizr.getGeoData = function (callback, ignoreCache) {
+        ignoreCache = ignoreCache ? ignoreCache === true : false;
+        var geolizr = Geolizr.getURLParameter('geolizr');
         var geolizrIP = Geolizr.getURLParameter('geolizr_ip');
         var geolizrCountry = Geolizr.getURLParameter('geolizr_country');
 
@@ -611,19 +643,32 @@
         Geolizr.dataCallbackList.push(callback);
         Geolizr.dataState = 'pending';
 
-
         var usedUrl = 'https://pro.ip-api.com/json';
         var fallBackUrl = 'https://service.geolizr.com';
 
         if (geolizrIP) {
+            ignoreCache = true;
             usedUrl = usedUrl + '/' + geolizrIP + '?key=tRmURnXYvSzbKKY';
         } else {
             usedUrl = usedUrl + '?key=tRmURnXYvSzbKKY';
         }
 
         if (geolizrCountry) {
+            ignoreCache = true;
             usedUrl = fallBackUrl + '?country=' + geolizrCountry;
         }
+
+        var saveCookie = function (geoData) {
+            if (geolizrCountry) {
+                geoData.geolizrCountry = geolizrCountry;
+            }
+
+            Geolizr.cookie('geo_data', JSON.stringify(geoData), {
+                expires: 365,
+                path: '/',
+                domain: Geolizr.shopDomain
+            });
+        };
 
         var successCallback = function (geoData) {
             var fallback = false;
@@ -634,12 +679,7 @@
             }
 
             if (status) {
-                Geolizr.cookie('geo_data', JSON.stringify(geoData), {
-                    expires: 365,
-                    path: '/',
-                    domain: Geolizr.shopDomain
-                });
-
+                saveCookie(geoData);
                 if(!fallback) {
                     geoData.currency = {'code': Geolizr.getCurrencyCode(geoData)};
                     geoData.country = {'code': geoData.countryCode, 'country': geoData.country};
@@ -654,18 +694,55 @@
             }
         };
 
-        if (Geolizr.isReady()) {
-            $.ajax({
+        var geoDataObject = false;
+        var loadData = function(usedUrl, fallBackUrl, callback) {
+            if((typeof geolizr != "undefined" && geolizr == 'off') ||
+                    (typeof geoDataObject != "undefined" && geoDataObject && geoDataObject.geolizr == "off" )) {
+                var data = {
+                    "success":true,
+                    "geolizr": 'off',
+                    "country": {"code":"--"},
+                    "currency":{"code":"---"}
+                };
+                callback(data);
+                return;
+            }
+
+            Geolizr.jquery.ajax({
                 timeout: 400,
                 url: usedUrl,
-                success: successCallback,
+                success: callback,
                 error: function() {
                     $.ajax({
                         url: fallBackUrl,
-                        success: successCallback
+                        success: callback
                     });
                 }
             });
+        };
+
+        if (Geolizr.isReady()) {
+            var geoData = Geolizr.cookie('geo_data');
+            geoDataObject = Geolizr.jquery.parseJSON(geoData);
+            if(ignoreCache === true && geoDataObject && geoDataObject['geolizr'] !== "off")
+                geoDataObject = false;
+
+            if(typeof geoDataObject != "undefined" && geoDataObject) {
+                if(!geoDataObject.geolizrCountry && geoDataObject.geolizrCountry != geolizrCountry) {
+                    geoDataObject = false;
+                }
+
+                if(geolizr && ("on" == geolizr || "off" == geolizr)) {
+                    geoDataObject = false;
+                }
+            }
+
+            if(geoDataObject) {
+                successCallback(geoDataObject);
+                loadData(usedUrl, fallBackUrl, saveCookie);
+            } else {
+                loadData(usedUrl, fallBackUrl, successCallback);
+            }
         } else {
             Geolizr.dataState = 'false';
         }

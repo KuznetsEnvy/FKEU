@@ -742,34 +742,6 @@
       },
       {
         "type": "header",
-        "content": "Layout"
-      },
-      {
-        "type": "select",
-        "id": "header_layout",
-        "label": "Choose a layout",
-        "options": [
-          {
-            "value": "center",
-            "label": "Logo in the middle"
-          },
-          {
-            "value": "left",
-            "label": "Logo to the left"
-          },
-          {
-            "value": "nav",
-            "label": "Logo as the first item in the menu"
-          },
-          {
-            "value": "mobile",
-            "label": "Mobile navigation style on desktop"
-          }
-        ],
-        "default": "center"
-      },
-      {
-        "type": "header",
         "content": "Logo"
       },
       {
@@ -784,142 +756,13 @@
       },
       {
         "type": "text",
-        "id": "logo_width",
-        "label": "Logo width (in pixels)",
-        "info": "RETINA \/ HI-RES TIP: Upload a double-sized logo image, and enter half of its width (in pixels) above, to show super-sharp on retina screens"
-      },
-      {
-        "type": "text",
-        "id": "logo_margin_top",
-        "label": "Additional space above logo (in pixels)",
-        "default": "10"
-      },
-      {
-        "type": "text",
-        "id": "logo_margin_bottom",
-        "label": "Additional space below logo (in pixels)",
-        "default": "10"
-      }
-    ]
-  },
-  {
-    "name": "Navigation",
-    "settings": [
-      {
-        "type": "paragraph",
-        "content": "[Need help? →](http:\/\/cleanthemes.co.uk\/collections\/canopy\/products\/canopy-settings-navigation)"
-      },
-      {
-        "type": "header",
-        "content": "Navigation"
-      },
-      {
-        "type": "select",
-        "id": "nav_alignment",
-        "label": "Navigation alignment",
-        "options": [
-          {
-            "value": "center",
-            "label": "Centered"
-          },
-          {
-            "value": "left",
-            "label": "Left-aligned"
-          }
-        ],
-        "default": "left"
-      },
-      {
-        "type": "text",
-        "id": "nav_col_limit",
-        "label": "Maximum number of links per column, in dropdown menus",
-        "info": "Does not apply to full-width dropdown. Maximum of 5 columns - will default to a single column if there are too many links to fit.",
-        "default": "8"
-      },
-      {
-        "type": "checkbox",
-        "id": "nav_show_images",
-        "label": "Display collection images in dropdown navigation",
-        "info": "Shows the collection featured image in dropdown menus that contain collection links. This feature only works on hover, so is limited to displaying on desktop screens only."
-      },
-      {
-        "type": "header",
-        "content": "Full Width Dropdown"
-      },
-      {
-        "type": "text",
-        "id": "nav_uber_name",
-        "label": "Enter the name of main-menu item to show as a full-width dropdown"
-      },
-      {
-        "type": "text",
-        "id": "nav_uber_list_1_title",
-        "label": "Column 1 title"
-      },
-      {
-        "type": "link_list",
-        "id": "nav_uber_list_1",
-        "label": "Column 1 link list"
-      },
-      {
-        "type": "text",
-        "id": "nav_uber_list_2_title",
-        "label": "Column 2 title"
-      },
-      {
-        "type": "link_list",
-        "id": "nav_uber_list_2",
-        "label": "Column 2 link list"
-      },
-      {
-        "type": "text",
-        "id": "nav_uber_list_3_title",
-        "label": "Column 3 title"
-      },
-      {
-        "type": "link_list",
-        "id": "nav_uber_list_3",
-        "label": "Column 3 link list"
-      },
-      {
-        "type": "text",
-        "id": "nav_uber_list_4_title",
-        "label": "Column 4 title"
-      },
-      {
-        "type": "link_list",
-        "id": "nav_uber_list_4",
-        "label": "Column 4 link list"
+        "id": "logo_width"
       }
     ]
   },
   {
     "name": "Footer",
     "settings": [
-      {
-        "type": "paragraph",
-        "content": "[Need help? →](http:\/\/cleanthemes.co.uk\/collections\/canopy\/products\/canopy-settings-footer)"
-      },
-      {
-        "type": "header",
-        "content": "Footer content"
-      },
-      {
-        "type": "select",
-        "id": "footer_complexity",
-        "label": "Footer layout",
-        "options": [
-          {
-            "value": "simple",
-            "label": "Simple"
-          },
-          {
-            "value": "kitchen_sink",
-            "label": "Fully featured"
-          }
-        ],
-        "default": "simple"
-      },
       {
         "type": "header",
         "content": "Footer logo"
@@ -933,64 +776,6 @@
       {
         "type": "image",
         "id": "footer_logo.png"
-      },
-      {
-        "type": "header",
-        "content": "Paragraph\/page text"
-      },
-      {
-        "type": "page",
-        "id": "footer_page",
-        "label": "Page content to display",
-        "info": "To display a couple of paragraphs of text in your footer, select the page containing content you want to show (inactive if 'Simple' is selected above)."
-      },
-      {
-        "type": "header",
-        "content": "Copyright area"
-      },
-      {
-        "type": "checkbox",
-        "id": "show_theme_author",
-        "label": "Display 'Theme by Clean Themes'"
-      },
-      {
-        "type": "header",
-        "content": "Newsletter"
-      },
-      {
-        "type": "text",
-        "id": "newsletter_title",
-        "label": "Enter Newsletter Title"
-      },
-      {
-        "type": "checkbox",
-        "id": "footer_display_newsletter",
-        "label": "Enable newsletter\/signup box",
-        "info": "Works for both Simple and Fully featured layouts. Uses the default Shopify newsletter engine. If you have a mailchimp account you can link to that directly by entering your Mailchimp action URL below:"
-      },
-      {
-        "type": "text",
-        "id": "mailing_list_form_action",
-        "label": "Mailchimp form action URL",
-        "info": "[Click here to learn how to find your Mailchimp action URL.](http:\/\/support.shopify.com\/customer\/portal\/articles\/640278)"
-      },
-      {
-        "type": "header",
-        "content": "Footer menus"
-      },
-      {
-        "type": "paragraph",
-        "content": "The below are only active if 'Fully Featured' option (above) is active. "
-      },
-      {
-        "type": "link_list",
-        "id": "footer_linklist2",
-        "label": "Footer link list 2"
-      },
-      {
-        "type": "link_list",
-        "id": "footer_linklist3",
-        "label": "Footer link list 3"
       }
     ]
   },
@@ -1071,6 +856,11 @@
       },
       {
         "type": "checkbox",
+        "id": "home_show_pump_product",
+        "label": "M: Pump Product"
+      },
+      {
+        "type": "checkbox",
         "id": "home_show_AaronKai_products",
         "label": "L: home show AaronKai products"
       },
@@ -1116,107 +906,6 @@
       },
       {
         "type": "header",
-        "content": "Homepage blog area"
-      },
-      {
-        "type": "checkbox",
-        "id": "home_box",
-        "label": "Homepage blog"
-      },
-      {
-        "type": "text",
-        "id": "home_blog_title",
-        "label": "Enter Homepage Blog Title"
-      },
-      {
-        "type": "textarea",
-        "id": "home_blog_text",
-        "label": "Home page blog text"
-      },
-      {
-        "type": "image",
-        "id": "Home_blog.jpg",
-        "label": "Home page blog area image"
-      },
-      {
-        "type": "text",
-        "id": "home_blog_button_url",
-        "label": "Enter Homepage Blog button url"
-      },
-      {
-        "type": "text",
-        "id": "home_blog_button_text",
-        "label": "Enter Homepage Blog button text"
-      },
-      {
-        "type": "header",
-        "content": "Homepage purchase blog area"
-      },
-      {
-        "type": "checkbox",
-        "id": "purchase",
-        "label": "purchase"
-      },
-      {
-        "type": "text",
-        "id": "home_purchase_title",
-        "label": "Enter Homepage purchase area Title"
-      },
-      {
-        "type": "text",
-        "id": "home_purchase_button_url",
-        "label": "Enter Homepage purchase button url"
-      },
-      {
-        "type": "text",
-        "id": "home_purchase_button_text",
-        "label": "Enter Homepage purchase button text"
-      },
-      {
-        "type": "header",
-        "content": "Homepage logotype section area"
-      },
-      {
-        "type": "checkbox",
-        "id": "logotype-block",
-        "label": "Logotype text block"
-      },
-      {
-        "type": "text",
-        "id": "home_logotype-section_title",
-        "label": "Enter Homepage logotype section area Title"
-      },
-      {
-        "type": "textarea",
-        "id": "logotype-section-content",
-        "label": "Enter the discripton of the logotype section."
-      },
-      {
-        "type": "header",
-        "content": "Homepage text block area"
-      },
-      {
-        "type": "checkbox",
-        "id": "text-block",
-        "label": "text block"
-      },
-      {
-        "type": "text",
-        "id": "home_text-block_title",
-        "label": "Enter Homepage text block area Title"
-      },
-      {
-        "type": "text",
-        "id": "home_text-block_bigtitle",
-        "label": "Enter Homepage text block area Big Title"
-      },
-      {
-        "type": "textarea",
-        "id": "text-block-info",
-        "label": "Enter the discripton of the Text block."
-      },
-      {
-        "type": "header",
         "content": "Enter Last Image Number"
       },
       {
@@ -1249,8 +938,22 @@
       },
       {
         "type": "image",
-        "id": "bottom-banner.png",
+        "id": "bottom-banner_new.png",
         "label": "Select Home page Badwood banner image"
+      },
+      {
+        "type": "header",
+        "content": "Homepage Pump Product banner area"
+      },
+      {
+        "type": "checkbox",
+        "id": "home_pump_product-banner",
+        "label": "Homepage Pump Product banner area."
+      },
+      {
+        "type": "image",
+        "id": "pump-banner.png",
+        "label": "Select Home page Pump Product banner image"
       }
     ]
   },
@@ -1695,374 +1398,15 @@
       },
       {
         "type": "collection",
+        "id": "homepage_collection_7",
+        "label": "Row M: 7th collection of products, single product",
+        "info": "For row M, default 1"
+      },
+      {
+        "type": "collection",
         "id": "homepage_collection_6",
         "label": "Row L: 6th collection of AaronKai products",
         "info": "For row L, default 3"
-      }
-    ]
-  },
-  {
-    "name": "Homepage Promotional Images",
-    "settings": [
-      {
-        "type": "paragraph",
-        "content": "[Need help? →](http:\/\/cleanthemes.co.uk\/collections\/canopy\/products\/canopy-settings-homepage-promo-images)"
-      },
-      {
-        "type": "header",
-        "content": "Row E: Promotional image grid"
-      },
-      {
-        "type": "paragraph",
-        "content": "Up to 10 images can be added and will be assembled automatically into a 'grid' in homepage row E. These images react dynamically depending on the device \/ screen size so they will always display beautifully."
-      },
-      {
-        "type": "text",
-        "id": "homepage_feat_img_row_size",
-        "label": "Max images per row",
-        "info": "This determines the maximum number of images that will display in each row - the actual quantity is automatically calculated based on the users screen width and the number of images you have added.",
-        "default": "3"
-      },
-      {
-        "type": "text",
-        "id": "homepage_feat_img_margin",
-        "label": "Margin between images (as % of page width). Enter 0 (zero) for no margins between images.",
-        "default": "2"
-      },
-      {
-        "type": "color",
-        "id": "homepage_feat_img_overlay_col",
-        "label": "Overlay text colour",
-        "default": "#000000"
-      },
-      {
-        "type": "color",
-        "id": "homepage_feat_img_overlay_bg",
-        "label": "Overlay text background colour",
-        "info": "Set transparent to hide",
-        "default": "#ffffff"
-      },
-      {
-        "type": "header",
-        "content": "Image 1"
-      },
-      {
-        "type": "checkbox",
-        "id": "homepage_feat_img_1_show",
-        "label": "Enable image 1"
-      },
-      {
-        "type": "image",
-        "id": "homepage_feat_img_1.jpg",
-        "label": "Image 1",
-        "max-width": 1724
-      },
-      {
-        "type": "text",
-        "id": "homepage_feat_img_1_alt",
-        "label": "Image 1 alt text"
-      },
-      {
-        "type": "text",
-        "id": "homepage_feat_img_1_url",
-        "label": "Image 1 URL"
-      },
-      {
-        "type": "text",
-        "id": "homepage_feat_img_1_overlay",
-        "label": "Image 1 overlay text"
-      },
-      {
-        "type": "header",
-        "content": "Image 2"
-      },
-      {
-        "type": "checkbox",
-        "id": "homepage_feat_img_2_show",
-        "label": "Enable image 2"
-      },
-      {
-        "type": "image",
-        "id": "homepage_feat_img_2.jpg",
-        "label": "Image 2",
-        "max-width": 1724
-      },
-      {
-        "type": "text",
-        "id": "homepage_feat_img_2_alt",
-        "label": "Image 2 alt text"
-      },
-      {
-        "type": "text",
-        "id": "homepage_feat_img_2_url",
-        "label": "Image 2 URL"
-      },
-      {
-        "type": "text",
-        "id": "homepage_feat_img_2_overlay",
-        "label": "Image 2 overlay text"
-      },
-      {
-        "type": "header",
-        "content": "Image 3"
-      },
-      {
-        "type": "checkbox",
-        "id": "homepage_feat_img_3_show",
-        "label": "Enable image 3"
-      },
-      {
-        "type": "image",
-        "id": "homepage_feat_img_3.jpg",
-        "label": "Image 3",
-        "max-width": 1724
-      },
-      {
-        "type": "text",
-        "id": "homepage_feat_img_3_alt",
-        "label": "Image 3 alt text"
-      },
-      {
-        "type": "text",
-        "id": "homepage_feat_img_3_url",
-        "label": "Image 3 URL"
-      },
-      {
-        "type": "text",
-        "id": "homepage_feat_img_3_overlay",
-        "label": "Image 3 overlay text"
-      },
-      {
-        "type": "header",
-        "content": "Image 4"
-      },
-      {
-        "type": "checkbox",
-        "id": "homepage_feat_img_4_show",
-        "label": "Enable image 4"
-      },
-      {
-        "type": "image",
-        "id": "homepage_feat_img_4.jpg",
-        "label": "Image 4",
-        "max-width": 1724
-      },
-      {
-        "type": "text",
-        "id": "homepage_feat_img_4_alt",
-        "label": "Image 4 alt text"
-      },
-      {
-        "type": "text",
-        "id": "homepage_feat_img_4_url",
-        "label": "Image 4 URL"
-      },
-      {
-        "type": "text",
-        "id": "homepage_feat_img_4_overlay",
-        "label": "Image 4 overlay text"
-      },
-      {
-        "type": "header",
-        "content": "Image 5"
-      },
-      {
-        "type": "checkbox",
-        "id": "homepage_feat_img_5_show",
-        "label": "Enable image 5"
-      },
-      {
-        "type": "image",
-        "id": "homepage_feat_img_5.jpg",
-        "label": "Image 5",
-        "max-width": 1724
-      },
-      {
-        "type": "text",
-        "id": "homepage_feat_img_5_alt",
-        "label": "Feature image 5 alt text"
-      },
-      {
-        "type": "text",
-        "id": "homepage_feat_img_5_url",
-        "label": "Image 5 URL"
-      },
-      {
-        "type": "text",
-        "id": "homepage_feat_img_5_overlay",
-        "label": "Image 5 overlay text"
-      },
-      {
-        "type": "header",
-        "content": "Image 6"
-      },
-      {
-        "type": "checkbox",
-        "id": "homepage_feat_img_6_show",
-        "label": "Enable image 6"
-      },
-      {
-        "type": "image",
-        "id": "homepage_feat_img_6.jpg",
-        "label": "Image 6",
-        "max-width": 1724
-      },
-      {
-        "type": "text",
-        "id": "homepage_feat_img_6_alt",
-        "label": "Image 6 alt text"
-      },
-      {
-        "type": "text",
-        "id": "homepage_feat_img_6_url",
-        "label": "Image 6 URL"
-      },
-      {
-        "type": "text",
-        "id": "homepage_feat_img_6_overlay",
-        "label": "Image 6 overlay text"
-      },
-      {
-        "type": "header",
-        "content": "Image 7"
-      },
-      {
-        "type": "checkbox",
-        "id": "homepage_feat_img_7_show",
-        "label": "Enable image 7"
-      },
-      {
-        "type": "image",
-        "id": "homepage_feat_img_7.jpg",
-        "label": "Feature image 7",
-        "max-width": 1724
-      },
-      {
-        "type": "text",
-        "id": "homepage_feat_img_7_alt",
-        "label": "Image 7 alt text"
-      },
-      {
-        "type": "text",
-        "id": "homepage_feat_img_7_url",
-        "label": "Image 7 URL"
-      },
-      {
-        "type": "text",
-        "id": "homepage_feat_img_7_overlay",
-        "label": "Image 7 overlay text"
-      },
-      {
-        "type": "header",
-        "content": "Image 8"
-      },
-      {
-        "type": "checkbox",
-        "id": "homepage_feat_img_8_show",
-        "label": "Enable image 8"
-      },
-      {
-        "type": "image",
-        "id": "homepage_feat_img_8.jpg",
-        "label": "Image 8",
-        "max-width": 1724
-      },
-      {
-        "type": "text",
-        "id": "homepage_feat_img_8_alt",
-        "label": "Image 8 alt text"
-      },
-      {
-        "type": "text",
-        "id": "homepage_feat_img_8_url",
-        "label": "Image 8 URL"
-      },
-      {
-        "type": "text",
-        "id": "homepage_feat_img_8_overlay",
-        "label": "Image 8 overlay text"
-      },
-      {
-        "type": "header",
-        "content": "Image 9"
-      },
-      {
-        "type": "checkbox",
-        "id": "homepage_feat_img_9_show",
-        "label": "Enable image 9"
-      },
-      {
-        "type": "image",
-        "id": "homepage_feat_img_9.jpg",
-        "label": "Image 9",
-        "max-width": 1724
-      },
-      {
-        "type": "text",
-        "id": "homepage_feat_img_9_alt",
-        "label": "Image 9 alt text"
-      },
-      {
-        "type": "text",
-        "id": "homepage_feat_img_9_url",
-        "label": "Image 9 URL"
-      },
-      {
-        "type": "text",
-        "id": "homepage_feat_img_9_overlay",
-        "label": "Image 9 overlay text"
-      },
-      {
-        "type": "header",
-        "content": "Image 10"
-      },
-      {
-        "type": "checkbox",
-        "id": "homepage_feat_img_10_show",
-        "label": "Enable image 10"
-      },
-      {
-        "type": "image",
-        "id": "homepage_feat_img_10.jpg",
-        "label": "Image 10",
-        "max-width": 1724
-      },
-      {
-        "type": "text",
-        "id": "homepage_feat_img_10_alt",
-        "label": "Image 10 alt text"
-      },
-      {
-        "type": "text",
-        "id": "homepage_feat_img_10_url",
-        "label": "Image 10 URL"
-      },
-      {
-        "type": "text",
-        "id": "homepage_feat_img_10_overlay",
-        "label": "Image 10 overlay text"
-      },
-      {
-        "type": "header",
-        "content": "Row F: Full width promotional image",
-        "info": "Display a full page width image in a single row. Suggested minimum width 1800px."
-      },
-      {
-        "type": "image",
-        "id": "homepage_ad.jpg",
-        "label": "Image",
-        "max-width": 1724
-      },
-      {
-        "type": "text",
-        "id": "homepage_ad_alt",
-        "label": "Alt text"
-      },
-      {
-        "type": "text",
-        "id": "homepage_ad_url",
-        "label": "Page to link image to",
-        "info": "For example - \/products\/your-product-page. If linking to an external site, you must prefix the address with http:\/\/"
       }
     ]
   },
@@ -2082,25 +1426,6 @@
         "id": "homepage_blog",
         "label": "Blog to show on homepage",
         "info": "Display the most recent three blog articles in a homepage row."
-      }
-    ]
-  },
-  {
-    "name": "Homepage Page Content",
-    "settings": [
-      {
-        "type": "paragraph",
-        "content": "[Need help? →](http:\/\/cleanthemes.co.uk\/collections\/canopy\/products\/canopy-settings-homepage-page-content)"
-      },
-      {
-        "type": "header",
-        "content": "Row H: Page Content"
-      },
-      {
-        "type": "page",
-        "id": "homepage",
-        "label": "Page to show on homepage",
-        "info": "Select any page to show its content in a row on your homepage. You can add video, images and text to a page and have it display by selecting it here."
       }
     ]
   },
@@ -2162,10 +1487,6 @@
     "name": "Homepage Custom HTML",
     "settings": [
       {
-        "type": "paragraph",
-        "content": "[Need help? →](http:\/\/cleanthemes.co.uk\/collections\/canopy\/products\/canopy-settings-homepage-custom-html)"
-      },
-      {
         "type": "header",
         "content": "Row J: Custom HTML"
       },
@@ -2180,25 +1501,6 @@
   {
     "name": "Product",
     "settings": [
-      {
-        "type": "paragraph",
-        "content": "[Need help? →](http:\/\/cleanthemes.co.uk\/collections\/canopy\/products\/canopy-settings-product)"
-      },
-      {
-        "type": "header",
-        "content": "Product page Banner"
-      },
-      {
-        "type": "checkbox",
-        "id": "product_page_banner",
-        "label": "Enable"
-      },
-      {
-        "type": "image",
-        "id": "productbanner_1.jpg",
-        "label": "Image",
-        "max-width": 1724
-      },
       {
         "type": "header",
         "content": "Product Detail"
@@ -3007,6 +2309,41 @@
     ]
   },
   {
+    "name": "Win Cash",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Win cash section"
+      },
+      {
+        "type": "checkbox",
+        "id": "win_banner",
+        "label": "Enable Cart Banner",
+        "default": false
+      },
+      {
+        "type": "text",
+        "id": "win-cash-banner",
+        "label": "Enter text of the banner"
+      },
+      {
+        "type": "image",
+        "id": "win-cash.jpg",
+        "label": "upload banner of the win cash page"
+      },
+      {
+        "type": "text",
+        "id": "win-cash-alt",
+        "label": "add alter text of the banner"
+      },
+      {
+        "type": "page",
+        "id": "select_winpage_content",
+        "label": "select the page for content"
+      }
+    ]
+  },
+  {
     "name": "Cart",
     "settings": [
       {
@@ -3015,17 +2352,7 @@
       },
       {
         "type": "header",
-        "content": "Cart Header Logo"
-      },
-      {
-        "type": "checkbox",
-        "id": "use_cart_logo",
-        "label": "Enable custom logo",
-        "default": false
-      },
-      {
-        "type": "image",
-        "id": "cart-header-logo.png"
+        "content": "Cart Header banner"
       },
       {
         "type": "checkbox",
@@ -3060,37 +2387,77 @@
       },
       {
         "type": "header",
-        "content": "Notification Bar"
+        "content": "Cart Page Products"
       },
       {
         "type": "checkbox",
-        "id": "cart_notification_show",
-        "label": "Display notification"
-      },
-      {
-        "type": "checkbox",
-        "id": "cart_notification_contlink_show",
-        "label": "Show continue-shopping link in notification"
+        "id": "cart_productsection_enable",
+        "label": "enable cart page product Section"
       },
       {
         "type": "text",
-        "id": "cart_notification_text",
-        "label": "Notification text"
+        "id": "product-heading",
+        "label": "Enter The Heading for Product section"
       },
       {
-        "type": "select",
-        "id": "cart_notification_pos",
-        "label": "Notification position",
-        "options": [
-          {
-            "value": "",
-            "label": "Under page title"
-          },
-          {
-            "value": "under-items",
-            "label": "Under items list"
-          }
-        ]
+        "type": "checkbox",
+        "id": "cart_product1",
+        "label": "enable cart page product 1"
+      },
+      {
+        "type": "checkbox",
+        "id": "best_deal_icon1",
+        "label": "enable Best deal icon for First Product"
+      },
+      {
+        "type": "text",
+        "id": "product-collection-title1",
+        "label": "Enter The Collection title for First Product"
+      },
+      {
+        "type": "product",
+        "id": "featured-products-product1",
+        "label": "Choose a first Product"
+      },
+      {
+        "type": "checkbox",
+        "id": "cart_product2",
+        "label": "enable cart page product 2"
+      },
+      {
+        "type": "checkbox",
+        "id": "best_deal_icon2",
+        "label": "enable Best deal icon for second product"
+      },
+      {
+        "type": "text",
+        "id": "product-collection-title2",
+        "label": "Enter The Collection title for Second Product"
+      },
+      {
+        "type": "product",
+        "id": "featured-products-product2",
+        "label": "Choose a Second Product"
+      },
+      {
+        "type": "checkbox",
+        "id": "cart_product3",
+        "label": "enable cart page product 3"
+      },
+      {
+        "type": "checkbox",
+        "id": "best_deal_icon3",
+        "label": "enable Best deal icon for Third Product"
+      },
+      {
+        "type": "text",
+        "id": "product-collection-title3",
+        "label": "Enter The Collection title for Third Product"
+      },
+      {
+        "type": "product",
+        "id": "featured-products-product3",
+        "label": "Choose a Third Product"
       },
       {
         "type": "header",

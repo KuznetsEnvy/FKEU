@@ -1,23 +1,22 @@
-{% comment %}ly_global_begin{% endcomment %}{% include 'ly-global' %}{% comment %}ly_global_end{% endcomment %}
 {% capture url %}{% if collection %}{{ product.url }}{% else %}{{ product.url }}{% endif %}{% endcapture %}
 {% assign mod6 = forloop.index | modulo: 6 %}
 {% assign mod4 = forloop.index | modulo: 4 %}
 {% assign mod3 = forloop.index | modulo: 3 %}
 {% assign mod2 = forloop.index | modulo: 2 %}
 
-{% capture max_cols %}{% if template contains 'index' %}{% comment %}ly_new_settings_replace_for_[ settings.homepage_products_per_row ]_begin{% endcomment %}{% assign language = cart.attributes["language"] %}{% if language == nil %}{% assign language = shop.metafields["languages"]["default"] %}{% endif %}{% assign namespace = language | append: "as" %}{% if shop.metafields[namespace]["id2473663"] %}{% assign ly_translation = shop.metafields[namespace]["id2473663"] %}{% else %}{% assign ly_translation = settings.homepage_products_per_row %}{% endif %}{{ ly_translation }}{% comment %}ly_new_settings_replace_end{% endcomment %}{% else %}{% comment %}ly_new_settings_replace_for_[ settings.products_per_row ]_begin{% endcomment %}{% assign language = cart.attributes["language"] %}{% if language == nil %}{% assign language = shop.metafields["languages"]["default"] %}{% endif %}{% assign namespace = language | append: "as" %}{% if shop.metafields[namespace]["id2473664"] %}{% assign ly_translation = shop.metafields[namespace]["id2473664"] %}{% else %}{% assign ly_translation = settings.products_per_row %}{% endif %}{{ ly_translation }}{% comment %}ly_new_settings_replace_end{% endcomment %}{% endif %}{% endcapture %}
+{% capture max_cols %}{% if template contains 'index' %}{{ settings.homepage_products_per_row }}{% else %}{{ settings.products_per_row }}{% endif %}{% endcapture %}
 
 <div class="product-block {% if settings.label_soldout_show and product.available == false %}sold-out {% endif %}{{ product-block | default: 'flex column' }} max-cols-{{ max_cols }} min-cols-{{ settings.mobile_products_per_row }} {% if mod2 == 1 %} nth-2{% endif %}{% if mod3 == 1 %} nth-3{% endif %}{% if mod4 == 1 %} nth-4{% endif %}{% if mod6 == 1 %} nth-6{% endif %}">
   <div class="product-grid-item-inside">
-    <div class="image">
+  <div class="image">
     <div class="inner">
       
       
-      <a class="hover" href="{{product.url}}"><img src="{{ product.featured_image | product_img_url: 'grande' }}" /> </a>
-      <a class="none-hover" href="{{product.url}}"><img src="{{ product.images.last | product_img_url: 'large'}} "/></a>
+      <a class="hover" href="{{product.url}}"><img src="{{ product.featured_image | product_img_url: 'grande' | split:'?' | first }}" /> </a>
+      <a class="none-hover" href="{{product.url}}"><img src="{{ product.images.last | product_img_url: 'large' | split:'?' | first }} "/></a>
       
       {% if settings.prod_quick_buy_show %}
-      <div class="quick-buy-wrap pos-{{ settings.prod_quick_buy_pos }}"><a class="quick-buy {% if settings.prod_quick_buy_pos == 'middle' %}giant{% else %}big{% endif %}-round-button" href="#">{% comment %}ly_i18n_replace_for_[ 'products.general.quick_buy_html' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'products.general.quick_buy_html' | t }}{% endcapture %}{% include 'ly-static-string' with '2473666' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</a></div>
+      <div class="quick-buy-wrap pos-{{ settings.prod_quick_buy_pos }}"><a class="quick-buy {% if settings.prod_quick_buy_pos == 'middle' %}giant{% else %}big{% endif %}-round-button" href="#">{{ 'products.general.quick_buy_html' | t }}</a></div>
       {% endif %}
     </div>
     
@@ -32,7 +31,7 @@
           {% assign title = product.title | split: ' ' %}
           {% assign s =  title | size %}
           <span style="font-weight:bold;">
-            <ly-as-2473665>Aaron Kai</ly-as-2473665>
+            Aaron Kai
           </span>
           {% for i in (2..s) %}
           {{ title[i] }}
@@ -52,19 +51,14 @@
       
       <div class="price ftc {% if product.compare_at_price_max > product.price %}on-sale{% endif %}">
         {% if product.price_varies %}
-        <span class="from">{% comment %}ly_i18n_replace_for_[ 'products.general.from' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'products.general.from' | t }}{% endcapture %}{% include 'ly-static-string' with '2473667' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</span>
+        <span class="from">{{ 'products.general.from' | t }}</span>
         {% endif %}
-        <span class="amount">{% assign geolizr_price =  product.price  %}{% include 'geolizr-currency' with geolizr_price %}{{ product.price | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}</span>
+        <span class="amount">{{ product.price | money }}</span>
         {% if product.compare_at_price_max > product.price %}
-        <del>{% assign geolizr_price =  product.compare_at_price  %}{% include 'geolizr-currency' with geolizr_price %}{{ product.compare_at_price | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}</del>
+        <del>{{ product.compare_at_price | money }}</del>
         {% endif %}
       </div>
     </div>
-    {% comment %}
-    {% unless product.available %}
-    <button class="unavailable buy-now">{% comment %}ly_i18n_replace_for_[ 'products.variant.out_of_stock' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'products.variant.out_of_stock' | t }}{% endcapture %}{% include 'ly-static-string' with '2473890' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</button>
-    {% endunless %}
-    {% endcomment %}
   </div>
   </div>
   <div class="cart-btn-home">
@@ -123,7 +117,7 @@
           {% else %}
           {% assign vendor_url = product.vendor | url_for_vendor %}
           {% endif %}
-          <span class="brand" itemprop="brand">{% comment %}ly_code_replace_for_[ product.vendor | link_to: vendor_url ]_begin{% endcomment %}{% include 'ly-vendor' with product %}{{ ly_translation | link_to: vendor_url }}{% comment %}ly_code_replace_end{% endcomment %}</span>
+          <span class="brand" itemprop="brand">{{ product.vendor | link_to: vendor_url }}</span>
           {% endif %}
           
           {% if settings.prod_show_type and product.type != blank %}
@@ -135,18 +129,18 @@
           {% else %}
           {% assign type_url = product.type | url_for_type %}
           {% endif %}
-          <span class="type">{% comment %}ly_code_replace_for_[ product.type | link_to: type_url ]_begin{% endcomment %}{% include 'ly-type' with product %}{{ ly_translation | link_to: type_url }}{% comment %}ly_code_replace_end{% endcomment %}</span>
+          <span class="type">{{ product.type | link_to: type_url }}</span>
           {% endif %}
         </div>
         {% endif %}
       
-        <h1 class="product-title"><span>{% comment %}ly_code_replace_for_[ product.title | split:' ' | first]_begin{% endcomment %}{% include 'ly-title' with product %}{{ ly_translation | split:' ' | first}}{% comment %}ly_code_replace_end{% endcomment %} </span>{% comment %}ly_code_replace_for_[ product.title | split:' ' | last]_begin{% endcomment %}{% include 'ly-title' with product %}{{ ly_translation | split:' ' | last}}{% comment %}ly_code_replace_end{% endcomment %}</h1>
+        <h1 class="product-title"><span>{{ product.title | split:' ' | first}} </span>{{ product.title | split:' ' | last}}</h1>
 
         <div id="price" class="product-price {% if product.variants.size == 1 and product.compare_at_price_max > product.price %}on-sale{% endif %}">
           {% if product.variants.size == 1 and product.compare_at_price_max > product.price %}
-          <del>{% assign geolizr_price =  product.compare_at_price  %}{% include 'geolizr-currency' with geolizr_price %}{{ product.compare_at_price | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}</del>
+          <del>{{ product.compare_at_price | money }}</del>
           {% endif %}
-          {% assign geolizr_price =  product.price  %}{% include 'geolizr-currency' with geolizr_price %}{{ product.price | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}
+          {{ product.price | money }}
         </div>
         
         {% include 'sharing' with product %}
@@ -154,7 +148,7 @@
       
       <div class="section border-bottom">
         {% if settings.prod_show_sku and product.variants.first.sku != blank %}
-        <div class="space-under sku-row">{% comment %}ly_i18n_replace_for_[ 'products.product.sku' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'products.product.sku' | t }}{% endcapture %}{% include 'ly-static-string' with '2473668' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %} <span id="sku">{{ product.variants.first.sku }}</span></div>
+        <div class="space-under sku-row">{{ 'products.product.sku' | t }} <span id="sku">{{ product.variants.first.sku }}</span></div>
         {% endif %}
 
         {% if product.available %}
@@ -184,7 +178,7 @@
                 <div id="product-variants" class="{% if hide_default_title %} hidden{% endif %}">
                   <select id="product-select" name="id" class="hidden">
                     {% for variant in product.variants %}
-                    <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} value="{{ variant.id }}">{% comment %}ly_code_replace_for_[ variant.title ]_begin{% endcomment %}{% include 'ly-title' with variant %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %} - {% assign geolizr_price =  variant.price  %}{% include 'geolizr-currency' with geolizr_price %}{{ variant.price | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}</option>
+                    <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}</option>
                     {% endfor %}
                   </select>
                 </div>
@@ -194,28 +188,28 @@
 
                 {% if settings.prod_show_quantity_input %}
                 <div class="quantity">
-                  <label for="quantity">{% comment %}ly_i18n_replace_for_[ 'products.product.quantity' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'products.product.quantity' | t }}{% endcapture %}{% include 'ly-static-string' with '2473669' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</label>
+                  <label for="quantity">{{ 'products.product.quantity' | t }}</label>
                   <input class="select-on-focus" type="text" size="3" id="quantity" name="quantity" value="1" />
                 </div>
                 {% else %}
                 <input type="hidden" name="quantity" value="1" />
                 {% endif %}
 
-                <button name="add" class="buy-now" id="add">{% comment %}ly_i18n_replace_for_[ 'products.product.add_to_cart_html' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'products.product.add_to_cart_html' | t }}{% endcapture %}{% include 'ly-static-string' with '2473670' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</button>
+                <button name="add" class="buy-now" id="add">{{ 'products.product.add_to_cart_html' | t }}</button>
 
           <div id="backorder" class="hidden">
-            <p><span id="selected-variant"></span> {% comment %}ly_i18n_replace_for_[ 'products.product.backorder' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'products.product.backorder' | t }}{% endcapture %}{% include 'ly-static-string' with '2473671' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</p>
+            <p><span id="selected-variant"></span> {{ 'products.product.backorder' | t }}</p>
           </div>
         </form>
         {% else %}
         <div class="rte">
-          {% comment %}ly_i18n_replace_for_[ 'products.product.product_unavailable_html' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'products.product.product_unavailable_html' | t }}{% endcapture %}{% include 'ly-static-string' with '2473672' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}
+          {{ 'products.product.product_unavailable_html' | t }}
         </div>
         {% endif %}
       </div>
       
       <div>
-        <a class="more-link" href="{{ url }}">{% comment %}ly_i18n_replace_for_[ 'products.general.full_details' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'products.general.full_details' | t }}{% endcapture %}{% include 'ly-static-string' with '2473673' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</a>
+        <a class="more-link" href="{{ url }}">{{ 'products.general.full_details' | t }}</a>
       </div>
     </div>
     </div>

@@ -1,6 +1,6 @@
-{% comment %}ly_global_begin{% endcomment %}{% include 'ly-global' %}{% comment %}ly_global_end{% endcomment %}<div id="customer-register" class="container">
+<div id="customer-register" class="container">
   <div id="register" class="reading-column">
-    <h1 class="page-title">{% comment %}ly_i18n_replace_for_[ 'customer.register.title' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'customer.register.title' | t }}{% endcapture %}{% include 'ly-static-string' with '2473815' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</h1>
+    <h1 class="page-title">{{ 'customer.register.title' | t }}</h1>
 
     {% form 'create_customer' %}
 
@@ -11,28 +11,28 @@
     {% endif %}
 
     <div id="first_name" class="input-row">
-      <label for="first_name" class="label">{% comment %}ly_i18n_replace_for_[ 'customer.register.first_name' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'customer.register.first_name' | t }}{% endcapture %}{% include 'ly-static-string' with '2473816' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</label>
+      <label for="first_name" class="label">{{ 'customer.register.first_name' | t }}</label>
       <input type="text" value="" name="customer[first_name]" id="first_name" class="text" size="30" />
     </div>
 
     <div id="last_name" class="input-row">
-      <label for="last_name" class="label">{% comment %}ly_i18n_replace_for_[ 'customer.register.last_name' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'customer.register.last_name' | t }}{% endcapture %}{% include 'ly-static-string' with '2473817' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</label>
+      <label for="last_name" class="label">{{ 'customer.register.last_name' | t }}</label>
       <input type="text" value="" name="customer[last_name]" id="last_name" class="text" size="30" />
     </div>
 
     <div id="email" class="input-row">
-      <label for="email" class="label">{% comment %}ly_i18n_replace_for_[ 'customer.register.email' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'customer.register.email' | t }}{% endcapture %}{% include 'ly-static-string' with '2473818' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</label>
+      <label for="email" class="label">{{ 'customer.register.email' | t }}</label>
       <input type="email" value="" name="customer[email]" id="email" class="text" size="30" />
     </div>
 
     <div id="password" class="input-row">
-      <label for="password" class="label">{% comment %}ly_i18n_replace_for_[ 'customer.register.password' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'customer.register.password' | t }}{% endcapture %}{% include 'ly-static-string' with '2473819' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</label>
+      <label for="password" class="label">{{ 'customer.register.password' | t }}</label>
       <input type="password" value="" name="customer[password]" id="password" class="password text" size="30" />
     </div>
 
     <div class="input-row">
-      <input class="btn" type="submit" value="{% comment %}ly_i18n_replace_for_[ 'customer.register.submit' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'customer.register.submit' | t }}{% endcapture %}{% include 'ly-static-string' with '2473820' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}" /> {% comment %}ly_i18n_replace_for_[ 'customer.general.or' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'customer.general.or' | t }}{% endcapture %}{% include 'ly-static-string' with '2473821' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}
-      <span class="note"><a href="{{ shop.url }}">{% comment %}ly_i18n_replace_for_[ 'customer.register.cancel' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'customer.register.cancel' | t }}{% endcapture %}{% include 'ly-static-string' with '2473822' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</a></span>
+      <input class="btn" type="submit" value="{{ 'customer.register.submit' | t }}" /> {{ 'customer.general.or' | t }}
+      <span class="note"><a href="{{ shop.url }}">{{ 'customer.register.cancel' | t }}</a></span>
     </div>
 
     {% endform %}

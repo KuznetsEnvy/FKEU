@@ -1,6 +1,6 @@
-{% comment %}ly_global_begin{% endcomment %}{% include 'ly-global' %}{% comment %}ly_global_end{% endcomment %}<div class="container">
+<div class="container">
   <div class="reading-column">
-    <h1 class="page-title">{% comment %}ly_i18n_replace_for_[ 'general.404.title' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'general.404.title' | t }}{% endcapture %}{% include 'ly-static-string' with '2473701' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</h1>
-    {% comment %}ly_i18n_replace_for_[ 'general.404.subtext_html' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'general.404.subtext_html' | t }}{% endcapture %}{% include 'ly-static-string' with '2473702' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}
+    <h1 class="page-title">{{ 'general.404.title' | t }}</h1>
+    {{ 'general.404.subtext_html' | t }}
   </div>
 </div>

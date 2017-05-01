@@ -2,7 +2,7 @@
   "general": {
     "404": {
       "title": "Page not found",
-      "subtext_html": "Sorry, we couldn't find this page. <a href=\"\/collections\/all\">Click here<\/a> to continue shopping."
+      "subtext_html": "Sorry, we couldn't find this page. <a href=\"\/\">Continue shopping<\/a> or <a href=\"\/pages\/support\">report a problem<\/a>."
     },
     "pagination": {
       "summary": "Page {{ current_page }} of {{ pages }}"
@@ -99,7 +99,7 @@
   },
   "cart": {
     "general": {
-      "title": "Shopping Bag Summary",
+      "title": "My Cart",
       "update": "Update",
       "checkout": "Checkout",
       "continue": "Continue shopping",
@@ -108,7 +108,7 @@
       "empty_subtext_html": "<a href=\"\/\">Click here<\/a> to continue shopping."
     },
     "label": {
-      "description": "Description",
+      "description": "Items",
       "price": "Price",
       "quantity": "Quantity",
       "note": "Add a note to your order",
@@ -168,7 +168,7 @@
       "back_to_html": "Back to:",
       "previous": "Previous",
       "next": "Next",
-      "product_unavailable_html": " Notify Me When In Stock",
+      "product_unavailable_html": "Notify Me When In Stock",
       "quantity": "Quantity",
       "add_to_cart_html": "Add to Cart",
       "pick_a": "Pick a",
@@ -176,10 +176,10 @@
       "adding_to_cart": "Adding to cart...",
       "added_to_cart_btn": "Added",
       "sku": "SKU:",
-      "related_title": "BOUGHT TOGETHER"
+      "related_title": "YOU MIGHT ALSO BE INTERESTED IN"
     },
     "variant": {
-      "out_of_stock": " Notify Me When In Stock",
+      "out_of_stock": "out of stock",
       "non_existent": "Product unavailable"
     },
     "labels": {
@@ -315,5 +315,8 @@
   },
   "date_formats": {
     "month_date_year": "%B %d, %Y"
+  },
+  "consistent_cart_addon": {
+    "merge_cart_text": "It seems you already have a cart from a previous session. Would you like to merge your previous cart with your current cart?"
   }
 }

@@ -2,8 +2,8 @@
 <script>
   Geolizr.init(function($) {
     Geolizr.getGeoData(function(geoData, refreshed) {
-      var redirects = {% comment %}ly_code_replace_for_[ shop.metafields.geolizr.redirects ]_begin{% endcomment %}{% if request.host %}{% assign host = request.host %}{% assign domains = shop.metafields.language_domains %}{% for domain in domains %}{% assign key = domain | first %}{% assign value = domain | last | split: ',' %}{% if value contains host %}{% assign language = key %}{% endif %}{% endfor %}{% if language == nil %}{% assign language = shop.metafields["languages"]["default"] %}{% endif %}{% else %}{% assign language = cart.attributes["language"] %}{% if language == nil %}{% assign language = shop.metafields["languages"]["default"] %}{% endif %}{% endif %}{% assign ns = language | append: 'geolizr' %}{% assign key = 'redirects' %}{% if shop.metafields[ns][key] %}{% assign ly_translation = shop.metafields[ns][key] %}{% else %}{% assign ly_translation =  shop.metafields.geolizr.redirects  %}{% endif %}{% assign bd9b78c3fc9fc82935c1bb6ac2937ce2 = ly_translation %}{{ bd9b78c3fc9fc82935c1bb6ac2937ce2 }}{% comment %}ly_code_replace_end{% endcomment %};
-      var countryToRedirect = {% comment %}ly_code_replace_for_[ shop.metafields.geolizr.country_to_redirect ]_begin{% endcomment %}{% if request.host %}{% assign host = request.host %}{% assign domains = shop.metafields.language_domains %}{% for domain in domains %}{% assign key = domain | first %}{% assign value = domain | last | split: ',' %}{% if value contains host %}{% assign language = key %}{% endif %}{% endfor %}{% if language == nil %}{% assign language = shop.metafields["languages"]["default"] %}{% endif %}{% else %}{% assign language = cart.attributes["language"] %}{% if language == nil %}{% assign language = shop.metafields["languages"]["default"] %}{% endif %}{% endif %}{% assign ns = language | append: 'geolizr' %}{% assign key = 'country_to_redirect' %}{% if shop.metafields[ns][key] %}{% assign ly_translation = shop.metafields[ns][key] %}{% else %}{% assign ly_translation =  shop.metafields.geolizr.country_to_redirect  %}{% endif %}{% assign 16ea840f3ff4d625d541fe6cf9c87cf4 = ly_translation %}{{ 16ea840f3ff4d625d541fe6cf9c87cf4 }}{% comment %}ly_code_replace_end{% endcomment %}
+      var redirects = {{ shop.metafields.geolizr.redirects }};
+      var countryToRedirect = {{ shop.metafields.geolizr.country_to_redirect }};
       var redirect = redirects[countryToRedirect[geoData.country.code]];
       if(redirect) {
         var currentUrl = window.location.href;
@@ -43,11 +43,8 @@
 
         if(redirect.filterlistType != 'none' && redirect.filterlistUrls != "") {
             var filterUrls = redirect.filterlistUrls.replace(/ /g,'').split(",");
-            if(redirect.filterlistType == 'blacklist' && $.inArray(currentUrlWithoutParams, filterUrls) > -1)
-                return
-
-            if(redirect.filterlistType == 'whitelist' && $.inArray(currentUrlWithoutParams, filterUrls) == -1)
-                return
+            if(Geolizr.listCheck(redirect, filterUrls, currentUrlWithoutParams))
+              return;
         }
 
         if(document.referrer && document.referrer != '') {
@@ -70,7 +67,7 @@
           }
         }
       }
-    });
+    }, true);
   });
 </script>
 {% endif %}

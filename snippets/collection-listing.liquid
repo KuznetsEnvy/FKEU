@@ -1,4 +1,4 @@
-{% comment %}ly_global_begin{% endcomment %}{% include 'ly-global' %}{% comment %}ly_global_end{% endcomment %}{% comment %}
+{% comment %}
 Be prepared to use this snippet to showcase collections specified in a link list as per this solution here: 
 "Featuring collections using a Link List" http://docs.shopify.com/support/your-store/collections/featuring-collections-using-link-lists
 If this snippet is called with an argument, we'll assume it is the handle of a link list, and we will use that list.
@@ -21,20 +21,20 @@ and don't want that collection to appear on their /collections page.
   {% if settings.collection_list_side_show == 'show' %}
   <div class="sidebar-cont cf">
     <div class="sidebar">
-      <h2>{% comment %}ly_i18n_replace_for_[ 'collections.collection_list.sidebar_title' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'collections.collection_list.sidebar_title' | t }}{% endcapture %}{% include 'ly-static-string' with '2473623' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</h2>
+      <h2>{{ 'collections.collection_list.sidebar_title' | t }}</h2>
       <ul class="plain">
         {% for link in linklists[settings.collection_list_side_list].links %}
           <li{% if link.active %} class="active"{% endif %}>
             {% if link.url == '#heading' %}
-            <h6 class="heading">{% comment %}ly_code_replace_for_[ link.title ]_begin{% endcomment %}{% include 'ly-title' with link %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</h6>
+            <h6 class="heading">{{ link.title }}</h6>
             {% else %}
-            {% comment %}ly_code_replace_for_[ link.title | link_to: link.url ]_begin{% endcomment %}{% include 'ly-title' with link %}{{ ly_translation | link_to: link.url }}{% comment %}ly_code_replace_end{% endcomment %}
+            {{ link.title | link_to: link.url }}
             {% endif %}
           </li>
           {% endfor %}
       </ul>
 
-      {% comment %}ly_code_replace_for_[ pages[settings.collection_list_side_page].content ]_begin{% endcomment %}{% include 'ly-content' with pages[settings.collection_list_side_page] %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}
+      {{ pages[settings.collection_list_side_page].content }}
     </div>
 
     <div class="beside-sidebar">
@@ -48,9 +48,9 @@ and don't want that collection to appear on their /collections page.
 
       <div class="section {% unless forloop.last %}border-bottom{% endunless %} {% if forloop.first and settings.collection_list_side_show != blank %}padless-top{% endif %}">
         <div class="opposing-items">
-          <h2 class="left section-heading">{% comment %}ly_code_replace_for_[ collection.title | link_to: collection.url ]_begin{% endcomment %}{% include 'ly-title' with collection %}{{ ly_translation | link_to: collection.url }}{% comment %}ly_code_replace_end{% endcomment %}</h2>
+          <h2 class="left section-heading">{{ collection.title | link_to: collection.url }}</h2>
           <a class="btn section-count" href="{{ collection.url }}">
-            <span class="not-tiny">{% comment %}ly_i18n_replace_for_[ 'collections.general.view_all' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'collections.general.view_all' | t }}{% endcapture %}{% include 'ly-static-string' with '2473624' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %} ({{ collection.products_count }})</span>
+            <span class="not-tiny">{{ 'collections.general.view_all' | t }} ({{ collection.products_count }})</span>
             <span class="tiny">{{ collection.products_count }}</span>
           </a>
         </div>
@@ -71,9 +71,9 @@ and don't want that collection to appear on their /collections page.
       {% for collection in collections %}
       <div class="section {% unless forloop.last %}border-bottom{% endunless %} {% if forloop.first and settings.collection_list_side_show != blank %}padless-top{% endif %}">
         <div class="opposing-items">
-          <h2 class="left section-heading">{% comment %}ly_code_replace_for_[ collection.title | link_to: collection.url ]_begin{% endcomment %}{% include 'ly-title' with collection %}{{ ly_translation | link_to: collection.url }}{% comment %}ly_code_replace_end{% endcomment %}</h2>
+          <h2 class="left section-heading">{{ collection.title | link_to: collection.url }}</h2>
           <a class="btn section-count" href="{{ collection.url }}">
-            <span class="not-tiny">{% comment %}ly_i18n_replace_for_[ 'collections.general.view_all' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'collections.general.view_all' | t }}{% endcapture %}{% include 'ly-static-string' with '2473624' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %} ({{ collection.products_count }})</span>
+            <span class="not-tiny">{{ 'collections.general.view_all' | t }} ({{ collection.products_count }})</span>
             <span class="tiny">{{ collection.products_count }}</span>
           </a>
         </div>

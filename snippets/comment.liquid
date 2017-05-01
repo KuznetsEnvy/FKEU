@@ -1,4 +1,4 @@
-{% comment %}ly_global_begin{% endcomment %}{% include 'ly-global' %}{% comment %}ly_global_end{% endcomment %}<div id="comment-{{ comment.id }}" class="comment section border-bottom row">
+<div id="comment-{{ comment.id }}" class="comment section border-bottom row">
   <div class="half column">
     {% if settings.show_gravatars %}
     <div class="gravatar">
@@ -11,5 +11,5 @@
     </div>
   </div>
 
-  <div class="half column">{% comment %}ly_code_replace_for_[ comment.content ]_begin{% endcomment %}{% include 'ly-content' with comment %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</div>
+  <div class="half column">{{ comment.content }}</div>
 </div> <!-- /.comment -->

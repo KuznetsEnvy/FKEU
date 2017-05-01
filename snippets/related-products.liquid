@@ -1,14 +1,13 @@
-{% comment %}ly_global_begin{% endcomment %}{% include 'ly-global' %}{% comment %}ly_global_end{% endcomment %}
 {% assign related_product_image_size = 'large' %}
 {% assign show_related = false %}
   {% capture related_markup %}
   <div id="related-products" class="section padless-bottom border-top">
     <div class="container">
-      <h3><span style="font-weight: bold;"><ly-as-2473679>FREQUENTLY </ly-as-2473679> </span>{% comment %}ly_i18n_replace_for_[ 'products.product.related_title' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'products.product.related_title' | t }}{% endcapture %}{% include 'ly-static-string' with '2473680' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</h3>
+      <h3>{{ 'products.product.related_title' | t }}</h3>
       
         <div class="related-product-list related-{{ settings.prod_rel_meth }} {% if settings.prod_rel_titles %}show-desc{% endif %}" data-normheights=".image-cont" data-normheights-inner="img">
             {% if settings.prod_rel_meth == 'collection' %}
-          	  <ul class="items"><!--
+          	  <ul class="items">
                 {% assign product_collection = collection %}
           		{% unless product_collection %}{% assign need_new_collection = true %}{% else %}{% assign need_new_collection = false %}{% endunless %}
                 {% if need_new_collection or product_collection.handle == 'all' or product_collection.handle contains 'frontpage' %}
@@ -19,43 +18,68 @@
                     {% endfor %}
                 {% endif %}
                 {% assign prod_rel_count = 0 %}
-                {% assign prod_rel_limit_int = 7 %}
+                {% assign prod_rel_limit_int = 4 %}
                 {% assign prod_rel_limit_plus_one = prod_rel_limit_int | plus: 1 %}
                 {% paginate product_collection.products by prod_rel_limit_plus_one %}
                     {% for relprod in product_collection.products %}
                         {% if relprod.handle != product.handle and prod_rel_limit_int > prod_rel_count %}
                             {% assign prod_rel_count = prod_rel_count | plus: 1 %}
                             {% assign show_related = true %}
-							--><li><div class="item products-section"><a class="image-cont" href="{{ relprod.url | within: collection }}" title="{% comment %}ly_code_replace_for_[ relprod.title ]_begin{% endcomment %}{% include 'ly-title' with relprod %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}">{% comment %}ly_code_replace_for_[ relprod.featured_image | product_img_url: related_product_image_size | img_tag: relprod.title ]_begin{% endcomment %}{% include 'ly-title' with relprod %}{{ relprod.featured_image | product_img_url: related_product_image_size | img_tag: ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</a><div class="desc ftr"><a class="title ftc" href="{{ relprod.url | within: collection }}">{% comment %}ly_code_replace_for_[ relprod.title ]_begin{% endcomment %}{% include 'ly-title' with relprod %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</a><div class="price ftc ">
-        
-        <span class="amount">{% assign geolizr_price =  relprod.price  %}{% include 'geolizr-currency' with geolizr_price %}{{ relprod.price | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}</span>
-        
-      </div></div></div></li><!--
+                        <li><div class="item products-section"><a class="image-cont" href="{{ relprod.url | within: collection }}" title="{{ relprod.title }}">{{ relprod.featured_image | product_img_url: related_product_image_size | img_tag: relprod.title }}</a>
+                                    <div class="desc ftr">
+                                       {% comment %} <a class="title ftc" href="{{ relprod.url | within: collection }}">{{ relprod.title }}</a>{% endcomment %}
+                                       <a class="title ftc" href="{{ relprod.url | within: collection }}">
+                                            {% if relprod.title contains 'Aaron Kai' %}
+                                                      {% assign title = relprod.title | split: ' ' %}
+                                                      {% assign s =  title | size %}
+                                                      <span style="font-weight:bold;">
+                                                        Aaron Kai
+                                                      </span>
+                                                      {% for i in (2..s) %}
+                                                      {{ title[i] }}
+                                                      {% endfor %}
+                                                      {% else %}
+                                                      {% assign title = relprod.title | split: ' ' %}
+                                                      {% assign s =  title | size %}
+                                                      <span style="font-weight:bold;">
+                                                        {{ title[0] }}
+                                                      </span>
+                                                      {% for i in (1..s) %}
+                                                      {{ title[i] }}
+                                                      {% endfor %}
+                                                      {% endif %}
+                                        </a>
+                                        <div class="price ftc ">
+                                            <span class="amount">{{ relprod.price | money }}</span>        
+                                        </div>
+                                    </div>
+                                </div>
+                          </li>
                         {% endif %}
                     {% endfor %}
                 {% endpaginate %}
-              --></ul>
+              </ul>
             {% elsif settings.prod_rel_meth == 'tag-coll' %}
-          	  <ul class="items"><!--
+          	  <ul class="items" style="display:none;">
                 {% for tag in product.tags %}
                     {% if tag contains 'meta-related-collection-' %}
                         {% assign product_collection_handle = tag | remove: 'meta-related-collection-' %}
                         {% assign product_collection = collections[product_collection_handle] %}
                         {% assign prod_rel_count = 0 %}
-                        {% assign prod_rel_limit_int = 7 %}
+                        {% assign prod_rel_limit_int = 4 %}
                         {% assign prod_rel_limit_plus_one = prod_rel_limit_int | plus: 1 %}
                         {% paginate product_collection.products by prod_rel_limit_plus_one %}
                             {% for relprod in product_collection.products %}
                                 {% if relprod.handle != product.handle and prod_rel_limit_int > prod_rel_count %}
                                     {% assign prod_rel_count = prod_rel_count | plus: 1 %}
                                     {% assign show_related = true %}
-									--><li><div class="item"><a class="image-cont" href="{{ relprod.url | within: collection }}" title="{% comment %}ly_code_replace_for_[ relprod.title ]_begin{% endcomment %}{% include 'ly-title' with relprod %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}">{% comment %}ly_code_replace_for_[ relprod.featured_image | product_img_url: related_product_image_size | img_tag: relprod.title ]_begin{% endcomment %}{% include 'ly-title' with relprod %}{{ relprod.featured_image | product_img_url: related_product_image_size | img_tag: ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</a><div class="desc"><a href="{{ relprod.url | within: collection }}">{% comment %}ly_code_replace_for_[ relprod.title ]_begin{% endcomment %}{% include 'ly-title' with relprod %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</a></div></div></li><!--
+									<li><div class="item"><a class="image-cont" href="{{ relprod.url | within: collection }}" title="{{ relprod.title }}">{{ relprod.featured_image | product_img_url: related_product_image_size | img_tag: relprod.title }}</a><div class="desc"><a href="{{ relprod.url | within: collection }}">{{ relprod.title }}</a></div></div></li>
                                 {% endif %}
                             {% endfor %}
                         {% endpaginate %}
                     {% endif %}
                 {% endfor %}
-              --></ul>
+              </ul>
             {% elsif settings.prod_rel_meth == 'tag-handle' %}
                 {% for tag in product.tags %}
                     {% if tag contains 'meta-related-product-' %}{% assign show_related = true %}{% endif %}
@@ -90,6 +114,7 @@
                 });
                 </script>
             {% endif %}
+          	<button name="add" onclick="window.location.href='/'" class="buy-now black">SEE MORE</button>
         </div>
     </div>
   </div><!-- /#related-products -->
