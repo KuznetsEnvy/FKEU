@@ -3,6 +3,9 @@
 <!--[if IE 9]><html class="no-js ie9" lang="en"> <![endif]-->
 <!--[if (gt IE 10)|!(IE)]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
+{{ 'geolizr-lib.js' | asset_url | script_tag }}
+{{ 'geolizr-lib.css' | asset_url | stylesheet_tag }}
+<script>Geolizr.config({"currency_widget_enabled":"{% if shop.metafields.geolizr.currency_widget_enabled == 'true' %}true{% else %}false{% endif %}"});</script>
     <!-- Canopy v1.0.10 -->
     <meta charset="utf-8"/>
 
@@ -157,7 +160,7 @@
 </head>
 
 <body class="template-{{ template | split: '.' | first }} {{ page_title | handle }}">
-{% include 'geolizr-lib' %}
+
 <div id="header" class="cart" style="width:100%;">
     <div class="container">
         <div class="page-header">
@@ -206,7 +209,7 @@
                     <span class="toolbar-cart">
                     <span class="{% unless settings.show_cart_as_button %}no-{% endunless %}btn">
                         <a class="current-cart {% if template != 'cart' %}toggle-cart-summary{% endif %}" href="/cart">
-                        {{ cart.item_count }} / {{ cart.total_price | money }} <i class="icon-cart"></i>
+                        {{ cart.item_count }} / {% assign geolizr_price =  cart.total_price  %}{% include 'geolizr-currency' with geolizr_price %}{{ cart.total_price | money | prepend: geolizr_prepend_code | append: geolizr_append_code }} <i class="icon-cart"></i>
                         </a>
                     </span>
                     </span>
@@ -426,7 +429,7 @@
     var google_tag_params = {
         ecomm_prodid: '{{ product.id }}',
         ecomm_pagetype: '{{ template }}',
-        ecomm_totalvalue: '{{ product.price_min | money_without_currency }}',
+        ecomm_totalvalue: '{% assign geolizr_price =  product.price_min  %}{% include 'geolizr-currency' with geolizr_price %}{{ product.price_min | money_without_currency | prepend: geolizr_prepend_code | append: geolizr_append_code }}',
     };
 </script>
 
@@ -491,5 +494,5 @@
         });
     </script>
 {% endif %}
-</body>
+{% include 'geolizr-currency-converter' %}</body>
 </html>

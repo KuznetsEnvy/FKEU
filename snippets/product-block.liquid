@@ -53,9 +53,9 @@
         {% if product.price_varies %}
         <span class="from">{{ 'products.general.from' | t }}</span>
         {% endif %}
-        <span class="amount">{{ product.price | money }}</span>
+        <span class="amount">{% assign geolizr_price =  product.price  %}{% include 'geolizr-currency' with geolizr_price %}{{ product.price | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}</span>
         {% if product.compare_at_price_max > product.price %}
-        <del>{{ product.compare_at_price | money }}</del>
+        <del>{% assign geolizr_price =  product.compare_at_price  %}{% include 'geolizr-currency' with geolizr_price %}{{ product.compare_at_price | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}</del>
         {% endif %}
       </div>
     </div>
@@ -138,9 +138,9 @@
 
         <div id="price" class="product-price {% if product.variants.size == 1 and product.compare_at_price_max > product.price %}on-sale{% endif %}">
           {% if product.variants.size == 1 and product.compare_at_price_max > product.price %}
-          <del>{{ product.compare_at_price | money }}</del>
+          <del>{% assign geolizr_price =  product.compare_at_price  %}{% include 'geolizr-currency' with geolizr_price %}{{ product.compare_at_price | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}</del>
           {% endif %}
-          {{ product.price | money }}
+          {% assign geolizr_price =  product.price  %}{% include 'geolizr-currency' with geolizr_price %}{{ product.price | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}
         </div>
         
         {% include 'sharing' with product %}
@@ -178,7 +178,7 @@
                 <div id="product-variants" class="{% if hide_default_title %} hidden{% endif %}">
                   <select id="product-select" name="id" class="hidden">
                     {% for variant in product.variants %}
-                    <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}</option>
+                    <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} value="{{ variant.id }}">{{ variant.title }} - {% assign geolizr_price =  variant.price  %}{% include 'geolizr-currency' with geolizr_price %}{{ variant.price | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}</option>
                     {% endfor %}
                   </select>
                 </div>

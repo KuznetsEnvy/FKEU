@@ -42,7 +42,7 @@
 
           {% unless item.variant.title contains 'Default' %}<span class="variant">{{ item.variant.title }}</span>{% endunless %}
           <span class="price ftc">
-            {{ item.price | money }}
+            {% assign geolizr_price =  item.price  %}{% include 'geolizr-currency' with geolizr_price %}{{ item.price | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}
           </span>
           <a data-id="{{ item.variant_id }}" class="remove feature-col">{{ 'cart.general.remove' | t }}</a>
         </span>
@@ -54,7 +54,7 @@
     </div>
     <div class="cart-summary-footer">
       <div class="cart-summary-subtotal">
-        {{ 'layout.cart_summary.subtotal' | t }}  <span class="amount">{{ cart.total_price | money }}</span>
+        {{ 'layout.cart_summary.subtotal' | t }}  <span class="amount">{% assign geolizr_price =  cart.total_price  %}{% include 'geolizr-currency' with geolizr_price %}{{ cart.total_price | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}</span>
       </div>
       {% if c < 7500 %}
       <div class="cart-summary-title shippingmsg2">

@@ -50,7 +50,7 @@
                                                       {% endif %}
                                         </a>
                                         <div class="price ftc ">
-                                            <span class="amount">{{ relprod.price | money }}</span>        
+                                            <span class="amount">{% assign geolizr_price =  relprod.price  %}{% include 'geolizr-currency' with geolizr_price %}{{ relprod.price | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}</span>        
                                         </div>
                                     </div>
                                 </div>

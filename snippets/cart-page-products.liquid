@@ -34,9 +34,9 @@
               <div class="price">
                 {% if all_products[product].compare_at_price_max > all_products[product].price %}
                 <span class="normal">Normal Price</span>
-                <del>{{ all_products[product].compare_at_price | money }}</del>
+                <del>{% assign geolizr_price =  all_products[product].compare_at_price  %}{% include 'geolizr-currency' with geolizr_price %}{{ all_products[product].compare_at_price | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}</del>
                 {% endif %}
-                <span class="amount">{{ all_products[product].price | money }}</span>
+                <span class="amount">{% assign geolizr_price =  all_products[product].price  %}{% include 'geolizr-currency' with geolizr_price %}{{ all_products[product].price | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}</span>
               </div>
               <div class="cart-btn-home">
                 {% if all_products[product].available %}

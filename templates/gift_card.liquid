@@ -1,6 +1,6 @@
 {% layout none %}
 
-{% assign formatted_initial_value = gift_card.initial_value | money_without_trailing_zeros: gift_card.currency %}
+{% assign geolizr_price =  gift_card.initial_value  %}{% include 'geolizr-currency' with geolizr_price %}{% assign formatted_initial_value = gift_card.initial_value | money_without_trailing_zeros | prepend: geolizr_prepend_code | append: geolizr_append_code : gift_card.currency %}
 {% assign formatted_initial_value_stripped = formatted_initial_value | strip_html %}
 
 <!DOCTYPE html>
@@ -84,7 +84,7 @@
                   {% assign initial_value_size = formatted_initial_value | size %}
                   <div id="gift-card-amount" class="{% if initial_value_size > 6 %}medium{% endif %}">
                     {% if gift_card.balance != gift_card.initial_value %}
-                      <span class="tooltip-container"><span class="tooltip-label">{{ gift_card.balance | money }} <small>{{ 'gift_cards.issued.left' | t }}</small></span><span class="tooltip-triangle"></span></span>
+                      <span class="tooltip-container"><span class="tooltip-label">{% assign geolizr_price =  gift_card.balance  %}{% include 'geolizr-currency' with geolizr_price %}{{ gift_card.balance | money | prepend: geolizr_prepend_code | append: geolizr_append_code }} <small>{{ 'gift_cards.issued.left' | t }}</small></span><span class="tooltip-triangle"></span></span>
                     {% endif %}
                     <strong>{{ formatted_initial_value }}</strong>
                   </div>

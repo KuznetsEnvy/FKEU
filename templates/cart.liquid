@@ -56,7 +56,7 @@
             <input class="right" type="button" onclick="incrementValue(this)" value="+" />              
           </div>
 
-          <div class="price"><h5>{{ item.line_price | money }}</h5></div>
+          <div class="price"><h5>{% assign geolizr_price =  item.line_price  %}{% include 'geolizr-currency' with geolizr_price %}{{ item.line_price | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}</h5></div>
         </li>
         {% endfor %}
       </ul>
@@ -67,7 +67,7 @@
             <div class="cart_total_left">
               <label for="checkout">{{ 'cart.label.subtotal' | t }}</label>
             </div>
-            <h2 class="cart_total_right">{{ cart.total_price | money }}</h2>
+            <h2 class="cart_total_right">{% assign geolizr_price =  cart.total_price  %}{% include 'geolizr-currency' with geolizr_price %}{{ cart.total_price | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}</h2>
 
             {% assign c = cart.total_price | times:1 %}
             {% if c < 7500 %}

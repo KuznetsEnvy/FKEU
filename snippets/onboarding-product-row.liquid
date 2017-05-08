@@ -29,7 +29,7 @@
             <span class="title ftc">{{ "home_page.onboarding.product_name" | t: number: i }}</span>
 
             <div class="price ftc">
-              <span class="amount">{{ 1000 | money }}</span>
+              <span class="amount">{% assign geolizr_price =  1000  %}{% include 'geolizr-currency' with geolizr_price %}{{ 1000 | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}</span>
             </div>
           </div>
         </div>

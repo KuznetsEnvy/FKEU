@@ -24,7 +24,7 @@
         {% endfor %}
         {% endif %}
       </h1>
-      <div class="product-price js-det-price "> {{ product.price | money }} </div>
+      <div class="product-price js-det-price "> {% assign geolizr_price =  product.price  %}{% include 'geolizr-currency' with geolizr_price %}{{ product.price | money | prepend: geolizr_prepend_code | append: geolizr_append_code }} </div>
     </div>
     {% if product.available %}
     <form class="product-form" id="product-form" action="/cart/add" method="post" enctype="multipart/form-data" data-product-id="{{ product.id }}">
