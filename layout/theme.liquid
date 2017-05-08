@@ -429,7 +429,7 @@
     var google_tag_params = {
         ecomm_prodid: '{{ product.id }}',
         ecomm_pagetype: '{{ template }}',
-        ecomm_totalvalue: '{% assign geolizr_price =  product.price_min  %}{% include 'geolizr-currency' with geolizr_price %}{{ product.price_min | money_without_currency | prepend: geolizr_prepend_code | append: geolizr_append_code }}',
+        ecomm_totalvalue: '{{ product.price_min | money_without_currency }}',
     };
 </script>
 
@@ -469,7 +469,7 @@
     document.getElementById('jquery').addEventListener('load', function () {
         $(document).ready(function () {
             $("#various1").fancybox({
-                'width': '502px',
+                'width': '502spx',
                 'height': '340px',
                 'titlePosition': 'inside',
                 'transitionIn': 'none',
@@ -478,6 +478,11 @@
             });
         });
     });
+
+    $(window).on('load', function(){
+        $('a.geolizr-currency-list-link[geolizr-currency-data="EUR"]')[0].click();
+    });
+
 </script>
 {% comment %}
 {% include 'geolizr-redirect' %}
