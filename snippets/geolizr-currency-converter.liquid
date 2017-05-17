@@ -1,4 +1,4 @@
-{% if shop.metafields.geolizr.currency_widget_enabled == 'true' %}
+{% comment %}ly_global_begin{% endcomment %}{% include 'ly-global' %}{% comment %}ly_global_end{% endcomment %}{% if shop.metafields.geolizr.currency_widget_enabled == 'true' %}
 
     {% include 'geolizr-json' json:shop.metafields.geolizr.currency_widget_options key:'auto_insert_currency_switcher' default:'false' %}
     {% if json_value == 'true' %}
@@ -11,11 +11,11 @@
         Geolizr.init(function() {
             Geolizr.loadScript('//cdn.shopify.com/s/javascripts/currencies.js', function () {
                 Geolizr.shopCurrency = '{{ shop.currency }}';
-                Geolizr.currenciesToLanguages = {{ shop.metafields.geolizr.currencies_to_language_codes }};
-                Geolizr.currencyOptions = {{ shop.metafields.geolizr.currency_widget_options }};
+                Geolizr.currenciesToLanguages = {% comment %}ly_code_replace_for_[ shop.metafields.geolizr.currencies_to_language_codes ]_begin{% endcomment %}{% assign language = cart.attributes["language"] %}{% if language == nil %}{% assign language = shop.metafields["languages"]["default"] %}{% endif %}{% assign ns = language | append: 'geolizr' %}{% assign key = 'currencies_to_language_codes' %}{% if shop.metafields[ns][key] %}{% assign ly_translation = shop.metafields[ns][key] %}{% else %}{% assign ly_translation =  shop.metafields.geolizr.currencies_to_language_codes  %}{% endif %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %};
+                Geolizr.currencyOptions = {% comment %}ly_code_replace_for_[ shop.metafields.geolizr.currency_widget_options ]_begin{% endcomment %}{% assign language = cart.attributes["language"] %}{% if language == nil %}{% assign language = shop.metafields["languages"]["default"] %}{% endif %}{% assign ns = language | append: 'geolizr' %}{% assign key = 'currency_widget_options' %}{% if shop.metafields[ns][key] %}{% assign ly_translation = shop.metafields[ns][key] %}{% else %}{% assign ly_translation =  shop.metafields.geolizr.currency_widget_options  %}{% endif %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %};
                 Geolizr.amount = '{{ amount }}';
                 Geolizr.Currency = Currency;
-                Geolizr.moneyFormats = {{ shop.metafields.geolizr.supported_currencies }};
+                Geolizr.moneyFormats = {% comment %}ly_code_replace_for_[ shop.metafields.geolizr.supported_currencies ]_begin{% endcomment %}{% assign language = cart.attributes["language"] %}{% if language == nil %}{% assign language = shop.metafields["languages"]["default"] %}{% endif %}{% assign ns = language | append: 'geolizr' %}{% assign key = 'supported_currencies' %}{% if shop.metafields[ns][key] %}{% assign ly_translation = shop.metafields[ns][key] %}{% else %}{% assign ly_translation =  shop.metafields.geolizr.supported_currencies  %}{% endif %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %};
                 if (!Geolizr.moneyFormats[Geolizr.shopCurrency]) {
                     Geolizr.moneyFormats[Geolizr.shopCurrency] = {
                         moneyFormat: '{{ shop.money_format | replace: "'", "\\'" }}',

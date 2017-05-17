@@ -1,10 +1,10 @@
-<div class="onboarding">
+{% comment %}ly_global_begin{% endcomment %}{% include 'ly-global' %}{% comment %}ly_global_end{% endcomment %}<div class="onboarding">
   <div class="onboarding-behind">
     <div class="opposing-items">
-      <h1 class="section-heading left">{{ "home_page.onboarding.collection_title" | t }}</h1>
+      <h1 class="section-heading left">{% comment %}ly_i18n_replace_for_[ "home_page.onboarding.collection_title" | t ]_begin{% endcomment %}{% capture ly_template %}{{ "home_page.onboarding.collection_title" | t }}{% endcapture %}{% include 'ly-static-string' with '4456825' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</h1>
       
       <span class="btn section-count">
-        <span class="not-tiny">{{ 'collections.general.view_all' | t }} (15)</span>
+        <span class="not-tiny">{% comment %}ly_i18n_replace_for_[ 'collections.general.view_all' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'collections.general.view_all' | t }}{% endcapture %}{% include 'ly-static-string' with '4456824' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %} (15)</span>
         <span class="tiny">10</span>
       </span>
     </div>
@@ -20,13 +20,13 @@
       <div class="product-block flex column max-cols-{{ settings.homepage_products_per_row }} min-cols-{{ settings.mobile_products_per_row }} {% if mod2 == 1 %} nth-2{% endif %}{% if mod3 == 1 %} nth-3{% endif %}{% if mod4 == 1 %} nth-4{% endif %}">
         <div class="image">
           <div class="inner">
-            {{ 'plain_square.gif' | asset_url | img_tag }}
+            {% comment %}ly_asset_replace_for_[ 'plain_square.gif' | asset_url | img_tag ]_begin{% endcomment %}{% assign ly_asset = 'plain_square.gif' %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  | img_tag }}{% comment %}ly_asset_replace_end{% endcomment %}
           </div>
         </div>
 
         <div class="{% if settings.prod_block_layout contains 'beside' %}ft ftw{% endif %}{% if settings.prod_block_layout == 'beside-exceptmobile' %} ft-nm{% endif %}">
           <div class="ftr">
-            <span class="title ftc">{{ "home_page.onboarding.product_name" | t: number: i }}</span>
+            <span class="title ftc">{% comment %}ly_i18n_replace_for_[ "home_page.onboarding.product_name" | t: number: i ]_begin{% endcomment %}{% capture ly_template %}{{ "home_page.onboarding.product_name" | t: number: i }}{% endcapture %}{% include 'ly-static-string' with '4456827' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% assign replacement = i  %}{% assign ly_template = ly_template | replace: '[[number]]', replacement %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</span>
 
             <div class="price ftc">
               <span class="amount">{% assign geolizr_price =  1000  %}{% include 'geolizr-currency' with geolizr_price %}{{ 1000 | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}</span>
@@ -40,5 +40,5 @@
     </div>
   </div>
   
-  <div class="onboarding-overlay">{{ "home_page.onboarding.collection_instruction_html" | t }}</div>
+  <div class="onboarding-overlay">{% comment %}ly_i18n_replace_for_[ "home_page.onboarding.collection_instruction_html" | t ]_begin{% endcomment %}{% capture ly_template %}{{ "home_page.onboarding.collection_instruction_html" | t }}{% endcapture %}{% include 'ly-static-string' with '4456828' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</div>
 </div>

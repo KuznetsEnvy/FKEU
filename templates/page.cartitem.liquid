@@ -1,25 +1,25 @@
-{% layout 'none' %}
+{% comment %}ly_global_begin{% endcomment %}{% include 'ly-global' %}{% comment %}ly_global_end{% endcomment %}{% layout 'none' %}
 <div id="cart-summary">
   <div class="inner">
     <p>
       <a href="/cart" style="float:left"><i class="icon-cart slim"></i></a>
-      REVIEW YOUR CART
+      <ly-as-4457061>REVIEW YOUR CART</ly-as-4457061>
       <a class="toggle-cart-summary"  style="float:right" href="#">x</a>
     </p>
     {% if cart.items.size > 0 %}
-    <h5 class="cart-summary-title shippingmsg" style="display:none;">YOU HAVE EARNED FREE SHIPPING</h5>
-    <h5 class="cart-summary-title shippingmsg err">ADD $75 FOR FREE SHIPPING</h5>
+    <h5 class="cart-summary-title shippingmsg" style="display:none;"><ly-as-4457062>YOU HAVE EARNED FREE SHIPPING</ly-as-4457062></h5>
+    <h5 class="cart-summary-title shippingmsg err"><ly-as-4457063>ADD $75 FOR FREE SHIPPING</ly-as-4457063></h5>
     <div class="cart-summary-item-list ft ftw">
       {% for item in cart.items %}
       <div class="cart-summary-item ftr cf">
-        <span class="image ftc">{{ item | img_url: 'small' | img_tag: item.title | link_to: item.url }}</span>
+        <span class="image ftc">{% comment %}ly_code_replace_for_[ item | img_url: 'small' | img_tag: item.title | link_to: item.url ]_begin{% endcomment %}{% include 'ly-title' with item %}{{ item | img_url: 'small' | img_tag: ly_translation | link_to: item.url }}{% comment %}ly_code_replace_end{% endcomment %}</span>
         <span class="title-variant ftc">
-          <a class="title" href="{{ item.url }}">{{ item.product.title }}</a>
-          {% unless item.variant.title contains 'Default' %}<span class="variant">{{ item.variant.title }}</span>{% endunless %}
+          <a class="title" href="{{ item.url }}">{% comment %}ly_code_replace_for_[ item.product.title ]_begin{% endcomment %}{% include 'ly-title' with item.product %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</a>
+          {% unless item.variant.title contains 'Default' %}<span class="variant">{% comment %}ly_code_replace_for_[ item.variant.title ]_begin{% endcomment %}{% include 'ly-title' with item.variant %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</span>{% endunless %}
           <span class="price ftc">
             {% assign geolizr_price =  item.price  %}{% include 'geolizr-currency' with geolizr_price %}{{ item.price | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}
           </span>
-          <a data-id="{{ item.id }}" class="remove feature-col">{{ 'cart.general.remove' | t }}</a>
+          <a data-id="{{ item.id }}" class="remove feature-col">{% comment %}ly_i18n_replace_for_[ 'cart.general.remove' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'cart.general.remove' | t }}{% endcapture %}{% include 'ly-static-string' with '4457066' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</a>
         </span>
         <span class="qty ftc">
           <input type="number" class="micro select-on-focus" value="{{ item.quantity }}" />
@@ -29,31 +29,31 @@
     </div>
     <div class="cart-summary-footer">
       <div class="cart-summary-subtotal">
-        {{ 'layout.cart_summary.subtotal' | t }}  <span class="amount">{% assign geolizr_price =  cart.total_price  %}{% include 'geolizr-currency' with geolizr_price %}{{ cart.total_price | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}</span>
+        {% comment %}ly_i18n_replace_for_[ 'layout.cart_summary.subtotal' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'layout.cart_summary.subtotal' | t }}{% endcapture %}{% include 'ly-static-string' with '4457067' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}  <span class="amount">{% assign geolizr_price =  cart.total_price  %}{% include 'geolizr-currency' with geolizr_price %}{{ cart.total_price | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}</span>
       </div>
       <div class="cart-summary-buttons cf">
         {% if settings.cart_side_onebutton %}
-        <a id="checkout" class="btn checkout" href="/cart">{{ 'layout.cart_summary.cart' | t }}</a>
+        <a id="checkout" class="btn checkout" href="/cart">{% comment %}ly_i18n_replace_for_[ 'layout.cart_summary.cart' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'layout.cart_summary.cart' | t }}{% endcapture %}{% include 'ly-static-string' with '4457068' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</a>
         {% else %}
         <div class="a-button">
-          <a class="btn alt cart" href="/cart">{{ 'layout.cart_summary.cart' | t }}</a>
+          <a class="btn alt cart" href="/cart">{% comment %}ly_i18n_replace_for_[ 'layout.cart_summary.cart' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'layout.cart_summary.cart' | t }}{% endcapture %}{% include 'ly-static-string' with '4457068' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</a>
         </div>
         <div class="a-button align-right">
-          {% comment %} <form action="/cart" method="post" id="cartform">{% endcomment %}
-          <a class="btn checkout" href="/checkout">{{ 'layout.cart_summary.checkout' | t }}</a>
+          {% comment %} <form action="/cart{% comment %}ly_checkout_begin{% endcomment %}{% assign language = cart.attributes["language"] %}{% if language == nil %}{% assign language = shop.metafields["languages"]["default"] %}{% endif %}{% assign checkout_code = shop.metafields.language_codes[language] %}{% if checkout_code %}{% assign checkout_code = '?locale=' | append: checkout_code %}{{ checkout_code }}{% endif %}{% comment %}ly_checkout_end{% endcomment %}" method="post" id="cartform">{% endcomment %}
+          <a class="btn checkout" href="/checkout{% comment %}ly_checkout_begin{% endcomment %}{% assign language = cart.attributes["language"] %}{% if language == nil %}{% assign language = shop.metafields["languages"]["default"] %}{% endif %}{% assign checkout_code = shop.metafields.language_codes[language] %}{% if checkout_code %}{% assign checkout_code = '?locale=' | append: checkout_code %}{{ checkout_code }}{% endif %}{% comment %}ly_checkout_end{% endcomment %}">{% comment %}ly_i18n_replace_for_[ 'layout.cart_summary.checkout' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'layout.cart_summary.checkout' | t }}{% endcapture %}{% include 'ly-static-string' with '4457069' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</a>
           {% comment %} </form> {% endcomment %}
         </div>
         {% endif %}
       </div>
     </div>
     {% else %}
-    <h5 class="cart-summary-title shippingmsg err">ADD $75 FOR FREE SHIPPING</h5>
+    <h5 class="cart-summary-title shippingmsg err"><ly-as-4457063>ADD $75 FOR FREE SHIPPING</ly-as-4457063></h5>
     <div class="cart-summary-item-list ft ftw">
-      <h5 class="cart-summary-title empty">YOUR CART IS EMPTY</h5>
+      <h5 class="cart-summary-title empty"><ly-as-4457064>YOUR CART IS EMPTY</ly-as-4457064></h5>
     </div>
     <div class="cart-summary-footer">
       <div class="cart-summary-buttons cf">
-        <a href="/" class="btn checkout">CONTINUE SHIPPING</a>
+        <a href="/" class="btn checkout"><ly-as-4457065>CONTINUE SHIPPING</ly-as-4457065></a>
       </div>
     </div>
     {% endif %}

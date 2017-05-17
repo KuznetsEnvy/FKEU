@@ -1,4 +1,4 @@
-{% comment %}
+{% comment %}ly_global_begin{% endcomment %}{% include 'ly-global' %}{% comment %}ly_global_end{% endcomment %}{% comment %}
 
   This snippet renders meta data needed to create a Twitter card
   for products and articles.
@@ -21,14 +21,14 @@
   {% endif %}
   <meta name="twitter:card" content="summary">
   {% if template contains 'product' %}
-    <meta name="twitter:title" content="{{ product.title }}">
-    <meta name="twitter:description" content="{{ product.description | strip_html | truncatewords: 140, '' | escape }}">
+    <meta name="twitter:title" content="{% comment %}ly_code_replace_for_[ product.title ]_begin{% endcomment %}{% include 'ly-title' with product %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}">
+    <meta name="twitter:description" content="{% comment %}ly_code_replace_for_[ product.description | strip_html | truncatewords: 140, '' | escape ]_begin{% endcomment %}{% include 'ly-description' with product %}{{ ly_translation | strip_html | truncatewords: 140, '' | escape }}{% comment %}ly_code_replace_end{% endcomment %}">
     <meta name="twitter:image" content="https:{{ product.featured_image.src | img_url: 'medium' }}">
     <meta name="twitter:image:width" content="240">
     <meta name="twitter:image:height" content="240">
   {% elsif template contains 'article' %}
-    <meta name="twitter:title" content="{{ article.title }}">
-    <meta name="twitter:description" content="{{ article.excerpt_or_content | strip_html | truncatewords: 140, '' | escape }}">
+    <meta name="twitter:title" content="{% comment %}ly_code_replace_for_[ article.title ]_begin{% endcomment %}{% include 'ly-title' with article %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}">
+    <meta name="twitter:description" content="{% comment %}ly_code_replace_for_[ article.excerpt_or_content | strip_html | truncatewords: 140, '' | escape ]_begin{% endcomment %}{% include 'ly-excerpt_or_content' with article %}{{ ly_translation | strip_html | truncatewords: 140, '' | escape }}{% comment %}ly_code_replace_end{% endcomment %}">
     {% comment %}
     Check if content contains an image to add to the card
     - Source: http://blog.viralica.com/2013/09/twitter-product-cards-on-shopify/

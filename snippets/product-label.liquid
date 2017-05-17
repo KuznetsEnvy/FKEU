@@ -1,16 +1,16 @@
-{% assign inv_mngmt_size = product.variants.first.inventory_management | size %}
+{% comment %}ly_global_begin{% endcomment %}{% include 'ly-global' %}{% comment %}ly_global_end{% endcomment %}{% assign inv_mngmt_size = product.variants.first.inventory_management | size %}
 {% assign limit_as_int = settings.prod_stock_warn_limit | plus: 0 %}
 {% if product.compare_at_price_max > product.price and settings.label_sale_show %}
-    <span class="product-label sale"><span>{{ 'products.labels.sale' | t }}</span></span>
+    <span class="product-label sale"><span>{% comment %}ly_i18n_replace_for_[ 'products.labels.sale' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'products.labels.sale' | t }}{% endcapture %}{% include 'ly-static-string' with '4456849' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</span></span>
 {% elsif settings.label_remain_show and product.variants.size == 1 and inv_mngmt_size > 0 and product.variants.first.inventory_quantity > 0 and product.variants.first.inventory_quantity < limit_as_int %}
-    <span class="product-label general"><span>{{ 'products.labels.only_x_left' | t: quantity: product.variants.first.inventory_quantity }}</span></span>
+    <span class="product-label general"><span>{% comment %}ly_i18n_replace_for_[ 'products.labels.only_x_left' | t: quantity: product.variants.first.inventory_quantity ]_begin{% endcomment %}{% capture ly_template %}{{ 'products.labels.only_x_left' | t: quantity: product.variants.first.inventory_quantity }}{% endcapture %}{% include 'ly-static-string' with '4456851' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% assign replacement = product.variants.first.inventory_quantity  %}{% assign ly_template = ly_template | replace: '[[quantity]]', replacement %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</span></span>
 {% else %}
     {% if product.available == false and settings.label_soldout_show %}
-        <span class="product-label soldout"><span>{{ 'products.labels.sold_out' | t }}</span></span>
+        <span class="product-label soldout"><span>{% comment %}ly_i18n_replace_for_[ 'products.labels.sold_out' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'products.labels.sold_out' | t }}{% endcapture %}{% include 'ly-static-string' with '4456852' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</span></span>
     {% else %}
         {% for tag in product.tags %}
             {% if tag contains 'meta-label-' %}
-                <span class="product-label general"><span>{{ tag | remove: 'meta-label-' }}</span></span>
+                <span class="product-label general"><span>{{ tag | remove: '<ly-as-4456848>meta-label-</ly-as-4456848>' }}</span></span>
             {% endif %}
         {% endfor %}
     {% endif %}

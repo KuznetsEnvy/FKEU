@@ -1,7 +1,7 @@
-<div class="container" style="padding-top: 3rem;">
+{% comment %}ly_global_begin{% endcomment %}{% include 'ly-global' %}{% comment %}ly_global_end{% endcomment %}<div class="container" style="padding-top: 3rem;">
   <div class="reading-column">
     <div class="win-page-confirmation">
-        {{ pages.thank-you.content }}
+        {% comment %}ly_code_replace_for_[ pages.thank-you.content ]_begin{% endcomment %}{% include 'ly-content' with pages.thank-you %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}
     </div>
     <div class="rte">
       <div style="margin-top:3rem;">

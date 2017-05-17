@@ -1,29 +1,29 @@
-<footer id="page-footer" class="page-footer">
+{% comment %}ly_global_begin{% endcomment %}{% include 'ly-global' %}{% comment %}ly_global_end{% endcomment %}<footer id="page-footer" class="page-footer">
   <div class="container">    
     <div class="row section padless-top"> 
       <div class="fourth column first">
         {% if settings.use_logo and settings.show_footer_logo %}
         <div class="logo-column column mobile-logo">
-          {{ 'footer_logo.png' | asset_url | split:"?" | first | img_tag | link_to: shop.url }}
+          {% comment %}ly_asset_replace_for_[ 'footer_logo.png' | asset_url | split:"?" | first | img_tag | link_to: shop.url ]_begin{% endcomment %}{% assign ly_asset = 'footer_logo.png' %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  | split:"?" | first | img_tag | link_to: shop.url }}{% comment %}ly_asset_replace_end{% endcomment %}
         </div>
         {% endif %} 
         <ul class="plain inline list-divide">
           {% for link in linklists.footer-2.links %}
-          <li>{{ link.title | link_to: link.url }}</li>
+          <li>{% comment %}ly_code_replace_for_[ link.title | link_to: link.url ]_begin{% endcomment %}{% include 'ly-title' with link %}{{ ly_translation | link_to: link.url }}{% comment %}ly_code_replace_end{% endcomment %}</li>
           {% endfor %}
         </ul>   
-        <div class="copy">{{ 'layout.footer.copyright' | t }} &copy; {{ "now" | date: "%Y" }} {{ shop.name }}.</div>   
+        <div class="copy">{% comment %}ly_i18n_replace_for_[ 'layout.footer.copyright' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'layout.footer.copyright' | t }}{% endcapture %}{% include 'ly-static-string' with '4456803' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %} &copy; {{ "now" | date: "%Y" }} {{ langify_shop_name }}.</div>   
       </div>     
       <div class="fourth column">
         {% if settings.footer_display_newsletter %}
-          {% if settings.newsletter_title %}<p class="newsletter-title">{{ settings.newsletter_title }}</p>{% endif %}
+          {% if settings.newsletter_title %}<p class="newsletter-title">{% comment %}ly_new_settings_replace_for_[ settings.newsletter_title ]_begin{% endcomment %}{% assign language = cart.attributes["language"] %}{% if language == nil %}{% assign language = shop.metafields["languages"]["default"] %}{% endif %}{% assign namespace = language | append: "as" %}{% if shop.metafields[namespace]["id4456799"] %}{% assign ly_translation = shop.metafields[namespace]["id4456799"] %}{% else %}{% assign ly_translation = settings.newsletter_title %}{% endif %}{{ ly_translation }}{% comment %}ly_new_settings_replace_end{% endcomment %}</p>{% endif %}
           {% include 'mailing-signup' %}
         {% else %}
             {% if template != 'product' and template != 'cart' %}
               <div class="competition">
-                <a class="title ftc" href="/pages/win-cash">WANT TO
-                  <span style="font-weight:bold;">WIN $5000 CASH</span></a>
-                <button class="buy-btn" onclick='window.location.href="/pages/win-cash"'>ENTER HERE</button>
+                <a class="title ftc" href="/pages/win-cash"><ly-as-4456800>WANT TO</ly-as-4456800>
+                  <span style="font-weight:bold;"><ly-as-4456801>WIN $5000 CASH</ly-as-4456801></span></a>
+                <button class="buy-btn" onclick='window.location.href="/pages/win-cash"'><ly-as-4456802>ENTER HERE</ly-as-4456802></button>
               </div>
             {% else %}
               &nbsp;
@@ -40,30 +40,30 @@
     <div class="row section padless-top">
       {% if settings.use_logo and settings.show_footer_logo %}
       <div class="logo-column column mobile">
-        {{ 'footer_logo.png' | asset_url | split:"?" | first | img_tag | link_to: shop.url }}
+        {% comment %}ly_asset_replace_for_[ 'footer_logo.png' | asset_url | split:"?" | first | img_tag | link_to: shop.url ]_begin{% endcomment %}{% assign ly_asset = 'footer_logo.png' %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  | split:"?" | first | img_tag | link_to: shop.url }}{% comment %}ly_asset_replace_end{% endcomment %}
       </div>
       {% endif %}
       <div class="text-column {% unless settings.use_logo and settings.show_footer_logo %}occupies-logo{% endunless %} column rte">
-        {{ pages[settings.footer_page].content }}
+        {% comment %}ly_code_replace_for_[ pages[settings.footer_page].content ]_begin{% endcomment %}{% include 'ly-content' with pages[settings.footer_page] %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}
       </div>
       <div class="links-column column">
         <ul class="plain">
           {% for link in linklists.footer.links %}
-          <li>{{ link.title | link_to: link.url }}</li>
+          <li>{% comment %}ly_code_replace_for_[ link.title | link_to: link.url ]_begin{% endcomment %}{% include 'ly-title' with link %}{{ ly_translation | link_to: link.url }}{% comment %}ly_code_replace_end{% endcomment %}</li>
           {% endfor %}
         </ul>
       </div>
       <div class="links-column column">
         <ul class="plain">
           {% for link in linklists[settings.footer_linklist2].links %}
-          <li>{{ link.title | link_to: link.url }}</li>
+          <li>{% comment %}ly_code_replace_for_[ link.title | link_to: link.url ]_begin{% endcomment %}{% include 'ly-title' with link %}{{ ly_translation | link_to: link.url }}{% comment %}ly_code_replace_end{% endcomment %}</li>
           {% endfor %}
         </ul>
       </div>
       <div class="links-column column">
         <ul class="plain">
           {% for link in linklists[settings.footer_linklist3].links %}
-          <li>{{ link.title | link_to: link.url }}</li>
+          <li>{% comment %}ly_code_replace_for_[ link.title | link_to: link.url ]_begin{% endcomment %}{% include 'ly-title' with link %}{{ ly_translation | link_to: link.url }}{% comment %}ly_code_replace_end{% endcomment %}</li>
           {% endfor %}
         </ul>
       </div>

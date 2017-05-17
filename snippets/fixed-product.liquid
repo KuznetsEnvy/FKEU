@@ -1,14 +1,14 @@
-<div class="js-btn-other btn-other hide-for-large-up fix">
+{% comment %}ly_global_begin{% endcomment %}{% include 'ly-global' %}{% comment %}ly_global_end{% endcomment %}<div class="js-btn-other btn-other hide-for-large-up fix">
   <div class="btn-other__inner">
     <div class="span12">
     <div class="other-data">
-    <img class="product-image" src="{{ featured_image | img_url: 'thumbnail' }}" alt="{{ product.title }}">
+    <img class="product-image" src="{{ featured_image | img_url: 'thumbnail' }}" alt="{% comment %}ly_code_replace_for_[ product.title ]_begin{% endcomment %}{% include 'ly-title' with product %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}">
       <h1 class="product-title" itemprop="name">
         {% if product.title contains 'Aaron Kai' %}
         {% assign title = product.title | split: ' ' %}
         {% assign s =  title | size %}
         <span style="font-weight:bold;">
-          Aaron Kai
+          <ly-as-4456796>Aaron Kai</ly-as-4456796>
         </span>
         {% for i in (2..s) %}
         {{ title[i] }}
@@ -30,11 +30,11 @@
     <form class="product-form" id="product-form" action="/cart/add" method="post" enctype="multipart/form-data" data-product-id="{{ product.id }}">
       <input type="hidden" name="quantity" value="1" />
 	  <input type="hidden" name="id[]" value="{{ product.selected_or_first_available_variant.id }}">
-      <button name="add" class="buy-now" id="add">{{ 'products.product.add_to_cart_html' | t }}</button>
+      <button name="add" class="buy-now" id="add">{% comment %}ly_i18n_replace_for_[ 'products.product.add_to_cart_html' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'products.product.add_to_cart_html' | t }}{% endcapture %}{% include 'ly-static-string' with '4456797' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</button>
     </form>
     {% else %}
       <div class="rte">
-        {{ 'products.product.product_unavailable_html' | t }}
+        {% comment %}ly_i18n_replace_for_[ 'products.product.product_unavailable_html' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'products.product.product_unavailable_html' | t }}{% endcapture %}{% include 'ly-static-string' with '4456798' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}
       </div>
     {% endif %}
     </div>

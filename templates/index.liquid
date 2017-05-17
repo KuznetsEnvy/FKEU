@@ -1,8 +1,8 @@
-{% if settings.logotype-block %}
+{% comment %}ly_global_begin{% endcomment %}{% include 'ly-global' %}{% comment %}ly_global_end{% endcomment %}{% if settings.logotype-block %}
     <section class="border-top section logotype-section">
         <div class="container">
-            <h2 class="rit-title">{{ settings.home_logotype-section_title }}</h2>
-            <p>{{ settings.logotype-section-content }}</p>
+            <h2 class="rit-title">{% comment %}ly_new_settings_replace_for_[ settings.home_logotype-section_title ]_begin{% endcomment %}{% assign language = cart.attributes["language"] %}{% if language == nil %}{% assign language = shop.metafields["languages"]["default"] %}{% endif %}{% assign namespace = language | append: "as" %}{% if shop.metafields[namespace]["id4457027"] %}{% assign ly_translation = shop.metafields[namespace]["id4457027"] %}{% else %}{% assign ly_translation = settings.home_logotype-section_title %}{% endif %}{{ ly_translation }}{% comment %}ly_new_settings_replace_end{% endcomment %}</h2>
+            <p>{% comment %}ly_new_settings_replace_for_[ settings.logotype-section-content ]_begin{% endcomment %}{% assign language = cart.attributes["language"] %}{% if language == nil %}{% assign language = shop.metafields["languages"]["default"] %}{% endif %}{% assign namespace = language | append: "as" %}{% if shop.metafields[namespace]["id4457028"] %}{% assign ly_translation = shop.metafields[namespace]["id4457028"] %}{% else %}{% assign ly_translation = settings.logotype-section-content %}{% endif %}{{ ly_translation }}{% comment %}ly_new_settings_replace_end{% endcomment %}</p>
         </div>
     </section>
 {% endif %}
@@ -24,29 +24,29 @@
     {% endif %}
 
     <div class="debug" style="display:none;">
-        show_setting_id = {{ show_setting_id }}
-        coll_setting_id = {{ coll_setting_id }}
-        max_count_setting_id = {{ max_count_setting_id }}
-        settings[show_setting_id] = {{ settings[show_setting_id] }}
-        settings[coll_setting_id] = {{ settings[coll_setting_id] }}
-        collections = {{ collections | json }}
-        collections[handle] = {{ collections[handle] | json }}
-        product_html = {{ product_html }}
+        <ly-as-4457029>show_setting_id =</ly-as-4457029> {{ show_setting_id }}
+        <ly-as-4457030>coll_setting_id =</ly-as-4457030> {{ coll_setting_id }}
+        <ly-as-4457031>max_count_setting_id =</ly-as-4457031> {{ max_count_setting_id }}
+        <ly-as-4457032>settings[show_setting_id] =</ly-as-4457032> {{ settings[show_setting_id] }}
+        <ly-as-4457033>settings[coll_setting_id] =</ly-as-4457033> {{ settings[coll_setting_id] }}
+        <ly-as-4457034>collections =</ly-as-4457034> {{ collections | json }}
+        <ly-as-4457035>collections[handle] =</ly-as-4457035> {{ collections[handle] | json }}
+        <ly-as-4457036>product_html =</ly-as-4457036> {{ product_html }}
     </div>
     <!-- Start products -->
     <section class="border-top section products-section">
         <div class="container">
             <div class="debug" style="display:none;">
-                Collection products size = {{ collection.products.size }}
+                <ly-as-4457037>Collection products size =</ly-as-4457037> {{ collection.products.size }}
             </div>
             {% if collection.products.size == 0 %}
                 {% include 'onboarding-product-row' %}
             {% else %}
                 {% comment %}
                 <div class="opposing-items">
-                    <h1 class="section-heading left">{{ collection.title | link_to: collection.url }}</h1>
+                    <h1 class="section-heading left">{% comment %}ly_code_replace_for_[ collection.title | link_to: collection.url ]_begin{% endcomment %}{% include 'ly-title' with collection %}{{ ly_translation | link_to: collection.url }}{% comment %}ly_code_replace_end{% endcomment %}</h1>
                     <a class="btn section-count" href="{{ collection.url }}">
-                        <span class="not-tiny">{{ 'collections.general.view_all' | t }} ({{ collection.products_count }})</span>
+                        <span class="not-tiny">{% comment %}ly_i18n_replace_for_[ 'collections.general.view_all' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'collections.general.view_all' | t }}{% endcapture %}{% include 'ly-static-string' with '4457055' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %} ({{ collection.products_count }})</span>
                         <span class="tiny">{{ collection.products_count }}</span>
                     </a>
                 </div>
@@ -106,7 +106,7 @@
     <section id="aron-kai" class="border-top section bottom-banner">
     	<div class="container">
             <div class="banner">
-                <img src="{{ 'aaronKai-banner.png' | asset_url | split:"?" | first }}" alt="Home AaronKai Banner" />
+                <img src="{% comment %}ly_asset_replace_for_[ 'aaronKai-banner.png' | asset_url | split:"?" | first ]_begin{% endcomment %}{% assign ly_asset = 'aaronKai-banner.png' %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  | split:"?" | first }}{% comment %}ly_asset_replace_end{% endcomment %}" alt="<ly-as-4457053>Home AaronKai Banner</ly-as-4457053>" />
             </div>
         </div>    
 	</section> 
@@ -140,7 +140,7 @@
     <section class="border-top section bottom-banner">
     	<div class="container">
             <div class="banner">
-                <img src="{{ 'bottom-banner_new.png' | asset_url | split:"?" | first }}" alt="Home Banner" />
+                <img src="{% comment %}ly_asset_replace_for_[ 'bottom-banner_new.png' | asset_url | split:"?" | first ]_begin{% endcomment %}{% assign ly_asset = 'bottom-banner_new.png' %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  | split:"?" | first }}{% comment %}ly_asset_replace_end{% endcomment %}" alt="<ly-as-4457054>Home Banner</ly-as-4457054>" />
             </div>
         </div>    
 	</section> 
@@ -175,8 +175,8 @@
     <section class="border-top section pump bottom-banner">
     	<div class="container">
             <div class="banner">
-                <h4>Accessories</h4>
-                <!--img src="{{ 'pump-banner.png' | asset_url }}" alt="Home Banner" /-->
+                <h4><ly-as-4457038>Accessories</ly-as-4457038></h4>
+                <!--img src="{% comment %}ly_asset_replace_for_[ 'pump-banner.png' | asset_url ]_begin{% endcomment %}{% assign ly_asset = 'pump-banner.png' %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  }}{% comment %}ly_asset_replace_end{% endcomment %}" alt="Home Banner" /-->
             </div>
         </div>    
 	</section> 
@@ -213,9 +213,9 @@
             <div class="row mr0">
                 <div class="col-sm-6 col-md-6 bg">
                     <div class="box-document-text">
-                    <h2 class="al-left rit-title rit-title-border-left">{{ settings.home_blog_title }}</h2>
-                    {{ settings.home_blog_text }}
-                    <a href="{{ settings.home_blog_button_url }}" class="rit-button rit-button-black">{{ settings.home_blog_button_text }}</a>
+                    <h2 class="al-left rit-title rit-title-border-left">{% comment %}ly_new_settings_replace_for_[ settings.home_blog_title ]_begin{% endcomment %}{% assign language = cart.attributes["language"] %}{% if language == nil %}{% assign language = shop.metafields["languages"]["default"] %}{% endif %}{% assign namespace = language | append: "as" %}{% if shop.metafields[namespace]["id4457039"] %}{% assign ly_translation = shop.metafields[namespace]["id4457039"] %}{% else %}{% assign ly_translation = settings.home_blog_title %}{% endif %}{{ ly_translation }}{% comment %}ly_new_settings_replace_end{% endcomment %}</h2>
+                    {% comment %}ly_new_settings_replace_for_[ settings.home_blog_text ]_begin{% endcomment %}{% assign language = cart.attributes["language"] %}{% if language == nil %}{% assign language = shop.metafields["languages"]["default"] %}{% endif %}{% assign namespace = language | append: "as" %}{% if shop.metafields[namespace]["id4457040"] %}{% assign ly_translation = shop.metafields[namespace]["id4457040"] %}{% else %}{% assign ly_translation = settings.home_blog_text %}{% endif %}{{ ly_translation }}{% comment %}ly_new_settings_replace_end{% endcomment %}
+                    <a href="{% comment %}ly_new_settings_replace_for_[ settings.home_blog_button_url ]_begin{% endcomment %}{% assign language = cart.attributes["language"] %}{% if language == nil %}{% assign language = shop.metafields["languages"]["default"] %}{% endif %}{% assign namespace = language | append: "as" %}{% if shop.metafields[namespace]["id4457041"] %}{% assign ly_translation = shop.metafields[namespace]["id4457041"] %}{% else %}{% assign ly_translation = settings.home_blog_button_url %}{% endif %}{{ ly_translation }}{% comment %}ly_new_settings_replace_end{% endcomment %}" class="rit-button rit-button-black">{% comment %}ly_new_settings_replace_for_[ settings.home_blog_button_text ]_begin{% endcomment %}{% assign language = cart.attributes["language"] %}{% if language == nil %}{% assign language = shop.metafields["languages"]["default"] %}{% endif %}{% assign namespace = language | append: "as" %}{% if shop.metafields[namespace]["id4457042"] %}{% assign ly_translation = shop.metafields[namespace]["id4457042"] %}{% else %}{% assign ly_translation = settings.home_blog_button_text %}{% endif %}{{ ly_translation }}{% comment %}ly_new_settings_replace_end{% endcomment %}</a>
                 </div>
                 </div>
                 <div class="col-sm-6 col-md-6">
@@ -231,8 +231,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12 col-sm-12 al-center">
-                        <h2 class="rit-title">{{ settings.home_purchase_title }}</h2>
-                        <a href="{{ settings.home_purchase_button_url }}" class="rit-button">{{ settings.home_purchase_button_text }}</a>
+                        <h2 class="rit-title">{% comment %}ly_new_settings_replace_for_[ settings.home_purchase_title ]_begin{% endcomment %}{% assign language = cart.attributes["language"] %}{% if language == nil %}{% assign language = shop.metafields["languages"]["default"] %}{% endif %}{% assign namespace = language | append: "as" %}{% if shop.metafields[namespace]["id4457043"] %}{% assign ly_translation = shop.metafields[namespace]["id4457043"] %}{% else %}{% assign ly_translation = settings.home_purchase_title %}{% endif %}{{ ly_translation }}{% comment %}ly_new_settings_replace_end{% endcomment %}</h2>
+                        <a href="{{ settings.home_purchase_button_url }}" class="rit-button">{% comment %}ly_new_settings_replace_for_[ settings.home_purchase_button_text ]_begin{% endcomment %}{% assign language = cart.attributes["language"] %}{% if language == nil %}{% assign language = shop.metafields["languages"]["default"] %}{% endif %}{% assign namespace = language | append: "as" %}{% if shop.metafields[namespace]["id4457044"] %}{% assign ly_translation = shop.metafields[namespace]["id4457044"] %}{% else %}{% assign ly_translation = settings.home_purchase_button_text %}{% endif %}{{ ly_translation }}{% comment %}ly_new_settings_replace_end{% endcomment %}</a>
                     </div>
                 </div>
             </div>
@@ -247,9 +247,9 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-6 col-md-6 al-right">
-                        <p>{{ settings.home_text-block_title }}</p>
-                        <h2 class="big rit-title">{{ settings.home_text-block_bigtitle }}</h2>
-                        <p>{{ settings.text-block-info }}</p>
+                        <p>{% comment %}ly_new_settings_replace_for_[ settings.home_text-block_title ]_begin{% endcomment %}{% assign language = cart.attributes["language"] %}{% if language == nil %}{% assign language = shop.metafields["languages"]["default"] %}{% endif %}{% assign namespace = language | append: "as" %}{% if shop.metafields[namespace]["id4457045"] %}{% assign ly_translation = shop.metafields[namespace]["id4457045"] %}{% else %}{% assign ly_translation = settings.home_text-block_title %}{% endif %}{{ ly_translation }}{% comment %}ly_new_settings_replace_end{% endcomment %}</p>
+                        <h2 class="big rit-title">{% comment %}ly_new_settings_replace_for_[ settings.home_text-block_bigtitle ]_begin{% endcomment %}{% assign language = cart.attributes["language"] %}{% if language == nil %}{% assign language = shop.metafields["languages"]["default"] %}{% endif %}{% assign namespace = language | append: "as" %}{% if shop.metafields[namespace]["id4457046"] %}{% assign ly_translation = shop.metafields[namespace]["id4457046"] %}{% else %}{% assign ly_translation = settings.home_text-block_bigtitle %}{% endif %}{{ ly_translation }}{% comment %}ly_new_settings_replace_end{% endcomment %}</h2>
+                        <p>{% comment %}ly_new_settings_replace_for_[ settings.text-block-info ]_begin{% endcomment %}{% assign language = cart.attributes["language"] %}{% if language == nil %}{% assign language = shop.metafields["languages"]["default"] %}{% endif %}{% assign namespace = language | append: "as" %}{% if shop.metafields[namespace]["id4457047"] %}{% assign ly_translation = shop.metafields[namespace]["id4457047"] %}{% else %}{% assign ly_translation = settings.text-block-info %}{% endif %}{{ ly_translation }}{% comment %}ly_new_settings_replace_end{% endcomment %}</p>
                     </div>
                 </div>
             </div>
@@ -272,7 +272,7 @@
 {% capture img_tiles_html %}{{ img_tiles_html }}
 <div class="tile">
   {% if settings[url_idx] != empty %}<a href="{{ settings[url_idx] | escape }}">{% endif %}
-  <img src="{{ filename | asset_url }}" alt="{{ settings[alt_idx] | escape }}" />
+  <img src="{% comment %}ly_asset_replace_for_[ filename | asset_url ]_begin{% endcomment %}{% assign ly_asset = filename %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  }}{% comment %}ly_asset_replace_end{% endcomment %}" alt="{{ settings[alt_idx] | escape }}" />
   {% if settings[overlay_idx] != blank %}
   <div class="overlay">
     <div class="inner">
@@ -309,8 +309,8 @@
     {% include 'onboarding-blog-row' %}
     {% else %}
     <div class="opposing-items">
-      <h1 class="section-heading left">{{ blogs[settings.homepage_blog].title | link_to: blogs[settings.homepage_blog].url }}</h1>
-      <a class="btn" href="{{ blogs[settings.homepage_blog].url }}">{{ 'blogs.general.view_all' | t }}</a>
+      <h1 class="section-heading left">{% comment %}ly_code_replace_for_[ blogs[settings.homepage_blog].title | link_to: blogs[settings.homepage_blog].url ]_begin{% endcomment %}{% include 'ly-title' with blogs[settings.homepage_blog] %}{{ ly_translation | link_to: blogs[settings.homepage_blog].url }}{% comment %}ly_code_replace_end{% endcomment %}</h1>
+      <a class="btn" href="{{ blogs[settings.homepage_blog].url }}">{% comment %}ly_i18n_replace_for_[ 'blogs.general.view_all' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'blogs.general.view_all' | t }}{% endcapture %}{% include 'ly-static-string' with '4457056' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</a>
     </div>
     <div class="row">
       {% for article in blogs[settings.homepage_blog].articles limit: 3 %}
@@ -331,7 +331,7 @@
 <section class="border-top section feature-section">
   <div class="container fullwidth-image">
     {% if settings.homepage_ad_url != blank %}<a href="{{ settings.homepage_ad_url }}">{% endif %}
-    <img src="{{ 'homepage_ad.jpg' | asset_url }}" alt="{{ settings.homepage_ad_alt | escape }}"/>
+    <img src="{% comment %}ly_asset_replace_for_[ 'homepage_ad.jpg' | asset_url ]_begin{% endcomment %}{% assign ly_asset = 'homepage_ad.jpg' %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  }}{% comment %}ly_asset_replace_end{% endcomment %}" alt="{{ settings.homepage_ad_alt | escape }}"/>
     {% if settings.homepage_ad_url != blank %}</a>{% endif %}
   </div>
 </section>
@@ -345,8 +345,8 @@
 <!-- start content page -->
 <section class="border-top section page-section">
   <div class="container align-centre">
-    <h1 class="section-heading">{{ pages[settings.homepage].title }}</h1>
-    <div class="reading-column rte">{{ pages[settings.homepage].content | replace: 'fullwidth"', '" data-fullwidth="true"' }}</div>
+    <h1 class="section-heading">{% comment %}ly_code_replace_for_[ pages[settings.homepage].title ]_begin{% endcomment %}{% include 'ly-title' with pages[settings.homepage] %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</h1>
+    <div class="reading-column rte">{% comment %}ly_code_replace_for_[ pages[settings.homepage].content | replace: '<ly-as-4457048>fullwidth"</ly-as-4457048>', '<ly-as-4457049>" data-fullwidth="true"</ly-as-4457049>' ]_begin{% endcomment %}{% include 'ly-content' with pages[settings.homepage] %}{{ ly_translation | replace: '<ly-as-4457048>fullwidth"</ly-as-4457048>', '<ly-as-4457049>" data-fullwidth="true"</ly-as-4457049>' }}{% comment %}ly_code_replace_end{% endcomment %}</div>
   </div>
 </section>
 <!-- end content page -->
@@ -363,7 +363,7 @@
       <h1 class="section-heading left">Instagram</h1>
       {% if settings.homepage_insta_acct != blank %}<span class="follow">Follow <a href="https://instagram.com/{{ settings.homepage_insta_acct | remove: '@' }}" class="hash-link">@{{ settings.homepage_insta_acct | remove: '@' }}</a></span>{% endif %}
     </div>
-    <div class="willstagram" {% if settings.homepage_insta_show == 'tag' %}data-tag="{{ settings.homepage_insta_tag }}"{% elsif settings.homepage_insta_show == 'user' %}data-user_id="{{ settings.homepage_insta_user_id }}"{% endif %} data-count="7"></div>
+    <div class="willstagram" {% if settings.homepage_insta_show == 'tag' %}data-tag="{{ settings.homepage_insta_tag }}"{% elsif settings.homepage_insta_show == 'user' %}data-user_id="{% comment %}ly_new_settings_replace_for_[ settings.homepage_insta_user_id ]_begin{% endcomment %}{% assign language = cart.attributes["language"] %}{% if language == nil %}{% assign language = shop.metafields["languages"]["default"] %}{% endif %}{% assign namespace = language | append: "as" %}{% if shop.metafields[namespace]["id4457051"] %}{% assign ly_translation = shop.metafields[namespace]["id4457051"] %}{% else %}{% assign ly_translation = settings.homepage_insta_user_id %}{% endif %}{{ ly_translation }}{% comment %}ly_new_settings_replace_end{% endcomment %}"{% endif %} data-count="7"></div>
   </div>
 </section>
 <!-- end instagram -->
@@ -431,7 +431,7 @@ J: Custom HTML
       
     </div>{% endcomment %}
   <div class="opposing-items">
-      <h4 class="section-heading left">Follow us on instagram <br /><nobr><a target="_blank" href="https://www.instagram.com/floatiekings/"><span class="fa fa-instagram"></span>floatiekings</a></nobr></h4>
+      <h4 class="section-heading left"><ly-as-4457052>Follow us on instagram</ly-as-4457052> <br /><nobr><a target="_blank" href="https://www.instagram.com/floatiekings/"><span class="fa fa-instagram"></span>25a86b87447b0eb84aae3aa4cc8f46aa</a></nobr></h4>
 
     </div>
     <div class="grid grid--container">
@@ -439,7 +439,7 @@ J: Custom HTML
       <!-- div -->
       {% for i in (1..9) %}
           <div class="grid-item {% if i == 4 %} grid-item--width2 grid-item--height2 {% endif %}">
-            <a href="https://www.instagram.com/{{ settings.homepage_insta_acct }}/" target="_blank">
+            <a href="https://www.instagram.com/{% comment %}ly_new_settings_replace_for_[ settings.homepage_insta_acct ]_begin{% endcomment %}{% assign language = cart.attributes["language"] %}{% if language == nil %}{% assign language = shop.metafields["languages"]["default"] %}{% endif %}{% assign namespace = language | append: "as" %}{% if shop.metafields[namespace]["id4457050"] %}{% assign ly_translation = shop.metafields[namespace]["id4457050"] %}{% else %}{% assign ly_translation = settings.homepage_insta_acct %}{% endif %}{{ ly_translation }}{% comment %}ly_new_settings_replace_end{% endcomment %}/" target="_blank">
               <img class="js-backimg" src="https://cdn.shopify.com/s/files/1/0934/6050/files/newinstag_{{ i }}.jpg" alt="" >
             </a>
           </div>
@@ -447,7 +447,7 @@ J: Custom HTML
     </div>
   
    <!-- imageagram.com -->
-{% comment %}   <script src="{{ '4mkapps.insta.min.js' | asset_url }}" type="text/javascript"></script> {% endcomment %}
+{% comment %}   <script src="{% comment %}ly_asset_replace_for_[ '4mkapps.insta.min.js' | asset_url ]_begin{% endcomment %}{% assign ly_asset = '4mkapps.insta.min.js' %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  }}{% comment %}ly_asset_replace_end{% endcomment %}" type="text/javascript"></script> {% endcomment %}
 {% comment %} <script src="//imageagram.com/js/imageagram.js"></script>
 <iframe id="instimg-iframe" src="//imageagram.com/grid.php?q=u&search=floatiekings&wt=in&s=150&h=4&w=2&b=no&c=&p=0&ho=fadeIn&sh=no&ww=450&as=on&at=" allowTransparency="true" frameborder="0" scrolling="no" style="border:none; overflow:hidden; width:1200px" ></iframe>
   <!--	<script src="//imageagram.com/js/imageagram.js"></script>-->

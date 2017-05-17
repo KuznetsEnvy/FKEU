@@ -1,12 +1,12 @@
-<div class="container">
+{% comment %}ly_global_begin{% endcomment %}{% include 'ly-global' %}{% comment %}ly_global_end{% endcomment %}<div class="container">
 
   {% comment %}
   <div class="inline-row cf">
     <!-- Begin breadcrumbs -->
     <div class="breadcrumbs inline-item left">
-      <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a href="{{ shop.url }}" title="{{ shop.name | escape }}" itemprop="url"><span itemprop="title">{{ 'general.breadcrumbs.home' | t }}</span></a></span>
-      <span class="divider">{{ 'general.breadcrumbs.divider_html' | t }}</span>
-      <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a href="/collections" title="{{ 'collections.collection_list.title' | t | escape }}" itemprop="url"><span itemprop="title">{{ 'collections.collection_list.title' | t }}</span></a></span>
+      <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a href="{{ shop.url }}" title="{{ langify_shop_name | escape }}" itemprop="url"><span itemprop="title">{% comment %}ly_i18n_replace_for_[ 'general.breadcrumbs.home' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'general.breadcrumbs.home' | t }}{% endcapture %}{% include 'ly-static-string' with '4457057' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</span></a></span>
+      <span class="divider">{% comment %}ly_i18n_replace_for_[ 'general.breadcrumbs.divider_html' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'general.breadcrumbs.divider_html' | t }}{% endcapture %}{% include 'ly-static-string' with '4457058' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</span>
+      <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a href="/collections" title="{% comment %}ly_i18n_replace_for_[ 'collections.collection_list.title' | t | escape ]_begin{% endcomment %}{% capture ly_template %}{{ 'collections.collection_list.title' | t | escape }}{% endcapture %}{% include 'ly-static-string' with '4457059' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape | escape }}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}" itemprop="url"><span itemprop="title">{% comment %}ly_i18n_replace_for_[ 'collections.collection_list.title' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'collections.collection_list.title' | t }}{% endcapture %}{% include 'ly-static-string' with '4457060' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</span></a></span>
     </div>
     <!-- End breadcrumbs -->
     
@@ -19,7 +19,7 @@
   
   <div class="collection-header">
     <div class="header-text">
-      <h1 class="page-title">{{ 'collections.collection_list.title' | t }}</h1>
+      <h1 class="page-title">{% comment %}ly_i18n_replace_for_[ 'collections.collection_list.title' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'collections.collection_list.title' | t }}{% endcapture %}{% include 'ly-static-string' with '4457060' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</h1>
     </div>
   </div>
 

@@ -1,10 +1,10 @@
-<nav class="main-nav cf desktop align-{{ settings.nav_alignment }}" role="navigation">
+{% comment %}ly_global_begin{% endcomment %}{% include 'ly-global' %}{% comment %}ly_global_end{% endcomment %}<nav class="main-nav cf desktop align-{{ settings.nav_alignment }}" role="navigation">
   <ul>
     {% if settings.header_layout == 'nav' %}<li class="logo-item logo-item-left">{{ logo_html }}</li>{% endif %}
     {% for link in linklists.main-menu.links %}
     
       {% assign has_drop_down = false %}
-      {% capture link_title %}{{ link.title | strip_html }}{% endcapture %}
+      {% capture link_title %}{% comment %}ly_code_replace_for_[ link.title | strip_html ]_begin{% endcomment %}{% include 'ly-title' with link %}{{ ly_translation | strip_html }}{% comment %}ly_code_replace_end{% endcomment %}{% endcapture %}
       {% if link_title == settings.nav_uber_name %}
      	{% assign dropdown_style = 'drop-uber' %}
     	{% assign has_drop_down = true %}
@@ -16,7 +16,7 @@
       <li class="nav-item{% if forloop.first %} first{% elsif forloop.last %} last{% endif %}{% if link.active %} active{% endif %}{% if has_drop_down %} dropdown {{ dropdown_style }}{% endif %}">
         
         <a class="nav-item-link" href="{{ link.url }}">
-          {{ link.title }}
+          {% comment %}ly_code_replace_for_[ link.title ]_begin{% endcomment %}{% include 'ly-title' with link %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}
         </a>
         
         {% if has_drop_down and dropdown_style == 'drop-uber' %}

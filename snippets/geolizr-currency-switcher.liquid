@@ -1,4 +1,4 @@
-{% assign geolizr_switcher_settings = shop.metafields.geolizr.currency_switcher %}
+{% comment %}ly_global_begin{% endcomment %}{% include 'ly-global' %}{% comment %}ly_global_end{% endcomment %}{% assign geolizr_switcher_settings = shop.metafields.geolizr.currency_switcher %}
 
 {% include 'geolizr-json' json: geolizr_switcher_settings key:'border_color' default: '#cccccc' %}
 {% assign geolizr_currency_switcher_border_color = json_value %}

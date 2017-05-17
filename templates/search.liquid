@@ -1,28 +1,28 @@
-<div class="container">
+{% comment %}ly_global_begin{% endcomment %}{% include 'ly-global' %}{% comment %}ly_global_end{% endcomment %}<div class="container">
   {% if search.performed and search.terms != "" %}
   {% paginate search.results by settings.pagination_limit %}
   
   {% if search.results == empty %}
   
-  <h1 class="page-title">{{ 'general.search.no_results_title' | t }}</h1>
-  <span class="subtext">{{ 'general.search.no_results_html' | t: search: search.terms }}</span>
+  <h1 class="page-title">{% comment %}ly_i18n_replace_for_[ 'general.search.no_results_title' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'general.search.no_results_title' | t }}{% endcapture %}{% include 'ly-static-string' with '4457121' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</h1>
+  <span class="subtext">{% comment %}ly_i18n_replace_for_[ 'general.search.no_results_html' | t: search: search.terms ]_begin{% endcomment %}{% capture ly_template %}{{ 'general.search.no_results_html' | t: search: search.terms }}{% endcapture %}{% include 'ly-static-string' with '4457123' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% assign replacement = search.terms  %}{% assign ly_template = ly_template | replace: '[[search]]', replacement %}{% if escape_content %}{{ ly_template}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</span>
 
   <form class="section" action="/search">
     <div class="inline-input-button">
       {% if settings.search_prods_only %}<input type="hidden" name="type" value="product">{% endif %}
-      <input type="text" name="q" placeholder="{{ 'general.search.placeholder' | t }}" value="{{ search.terms | escape }}"  />
-      <button>{{ 'general.search.search_button' | t }}</button>
+      <input type="text" name="q" placeholder="{% comment %}ly_i18n_replace_for_[ 'general.search.placeholder' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'general.search.placeholder' | t }}{% endcapture %}{% include 'ly-static-string' with '4457124' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}" value="{{ search.terms | escape }}"  />
+      <button>{% comment %}ly_i18n_replace_for_[ 'general.search.search_button' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'general.search.search_button' | t }}{% endcapture %}{% include 'ly-static-string' with '4457125' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</button>
     </div>
   </form>
 
   {% else %}
   
-  <h1 class="page-title">{{ 'general.search.results_title' | t }}</h1>
+  <h1 class="page-title">{% comment %}ly_i18n_replace_for_[ 'general.search.results_title' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'general.search.results_title' | t }}{% endcapture %}{% include 'ly-static-string' with '4457126' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</h1>
     
   <form class="inline-input-button lightly-spaced-row" action="/search">
     {% if settings.search_prods_only %}<input type="hidden" name="type" value="product">{% endif %}
-    <input type="text" name="q" placeholder="{{ 'general.search.placeholder' | t }}" value="{{ search.terms | escape }}"  />
-    <button>{{ 'general.search.search_button' | t }}</button>
+    <input type="text" name="q" placeholder="{% comment %}ly_i18n_replace_for_[ 'general.search.placeholder' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'general.search.placeholder' | t }}{% endcapture %}{% include 'ly-static-string' with '4457124' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}" value="{{ search.terms | escape }}"  />
+    <button>{% comment %}ly_i18n_replace_for_[ 'general.search.search_button' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'general.search.search_button' | t }}{% endcapture %}{% include 'ly-static-string' with '4457125' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</button>
   </form>
   
   <!-- Begin results -->
@@ -38,9 +38,9 @@
     {% assign mod2 = forloop.index | modulo: 2 %}
     <div class="product-block page-block flex column max-cols-{{ settings.products_per_row }} {% if mod2 == 1 %} nth-2{% endif %}{% if mod3 == 1 %} nth-3{% endif %}{% if mod4 == 1 %} nth-4{% endif %}">
       <div class="text-cont">
-        <h4><a href="{{ item.url }}">{{ item.title }}</a></h4>
-        <div><a href="{{ item.url }}">{{ item.content | strip_html | truncatewords: 25 | highlight: search.terms }}</a></div>
-        <a class="more-link" href="{{ item.url }}">{{ 'general.search.read_more' | t }}</a>
+        <h4><a href="{{ item.url }}">{% comment %}ly_code_replace_for_[ item.title ]_begin{% endcomment %}{% include 'ly-title' with item %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</a></h4>
+        <div><a href="{{ item.url }}">{% comment %}ly_code_replace_for_[ item.content | strip_html | truncatewords: 25 | highlight: search.terms ]_begin{% endcomment %}{% include 'ly-content' with item %}{{ ly_translation | strip_html | truncatewords: 25 | highlight: search.terms }}{% comment %}ly_code_replace_end{% endcomment %}</a></div>
+        <a class="more-link" href="{{ item.url }}">{% comment %}ly_i18n_replace_for_[ 'general.search.read_more' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'general.search.read_more' | t }}{% endcapture %}{% include 'ly-static-string' with '4457127' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</a>
       </div>
     </div>
     {% endif %}
@@ -53,7 +53,7 @@
   <div class="border-top">
     <div class="container">
       <div class="inline-row cf">
-        <span class="inline-item left pagination">{{ paginate.items }} {{ 'collections.general.results' | t }}</span>
+        <span class="inline-item left pagination">{{ paginate.items }} {% comment %}ly_i18n_replace_for_[ 'collections.general.results' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'collections.general.results' | t }}{% endcapture %}{% include 'ly-static-string' with '4457128' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</span>
         <div class="inline-item right last">{% include 'pagination' %}</div>
       </div>
     </div>
@@ -68,8 +68,8 @@
   <form class="section align-centre" action="/search">
     <div class="inline-input-button">
       {% if settings.search_prods_only %}<input type="hidden" name="type" value="product">{% endif %}
-      <input type="text" name="q" placeholder="{{ 'general.search.placeholder' | t }}" value="{{ search.terms | escape }}"  />
-      <button>{{ 'general.search.search_button' | t }}</button>
+      <input type="text" name="q" placeholder="{% comment %}ly_i18n_replace_for_[ 'general.search.placeholder' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'general.search.placeholder' | t }}{% endcapture %}{% include 'ly-static-string' with '4457124' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}" value="{{ search.terms | escape }}"  />
+      <button>{% comment %}ly_i18n_replace_for_[ 'general.search.search_button' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'general.search.search_button' | t }}{% endcapture %}{% include 'ly-static-string' with '4457125' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</button>
     </div>
   </form>
 

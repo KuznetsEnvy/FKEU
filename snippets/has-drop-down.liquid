@@ -1,4 +1,4 @@
-{% assign has_drop_down = false %}
+{% comment %}ly_global_begin{% endcomment %}{% include 'ly-global' %}{% comment %}ly_global_end{% endcomment %}{% assign has_drop_down = false %}
 {% assign child_list_handle = has-drop-down | handle %}
 {% comment %}If the link uses the arabic, hebrew or cyrillic alphabet, or is in Chinese or Japanese, the handle will be empty.{% endcomment %}
 {% if child_list_handle == '' %}

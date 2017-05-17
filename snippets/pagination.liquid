@@ -1,4 +1,4 @@
-{% if paginate.pages > 1 %}
+{% comment %}ly_global_begin{% endcomment %}{% include 'ly-global' %}{% comment %}ly_global_end{% endcomment %}{% if paginate.pages > 1 %}
 <ul class="pagination">
   {% if paginate.previous %}
   	<li><a href="{{ paginate.previous.url }}" class="prev"><i class="icon-arrow-left"></i></a></li>
@@ -9,9 +9,9 @@
   {% for part in paginate.parts %}
     <li {% if paginate.current_page == part.title %}class="active"{% endif %}>
       {% if part.is_link %}
-        {{ part.title | link_to: part.url }}
+        {% comment %}ly_code_replace_for_[ part.title | link_to: part.url ]_begin{% endcomment %}{% include 'ly-title' with part %}{{ ly_translation | link_to: part.url }}{% comment %}ly_code_replace_end{% endcomment %}
       {% else %}
-        <span class="linkless">{{ part.title }}</span>
+        <span class="linkless">{% comment %}ly_code_replace_for_[ part.title ]_begin{% endcomment %}{% include 'ly-title' with part %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</span>
       {% endif %}
     </li>
   {% endfor %}
