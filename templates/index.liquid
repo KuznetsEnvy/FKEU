@@ -23,22 +23,9 @@
         {% elsif i == 3 %}{% assign product_3_html = product_html %}
     {% endif %}
 
-    <div class="debug" style="display:none;">
-        <ly-as-4457029>show_setting_id =</ly-as-4457029> {{ show_setting_id }}
-        <ly-as-4457030>coll_setting_id =</ly-as-4457030> {{ coll_setting_id }}
-        <ly-as-4457031>max_count_setting_id =</ly-as-4457031> {{ max_count_setting_id }}
-        <ly-as-4457032>settings[show_setting_id] =</ly-as-4457032> {{ settings[show_setting_id] }}
-        <ly-as-4457033>settings[coll_setting_id] =</ly-as-4457033> {{ settings[coll_setting_id] }}
-        <ly-as-4457034>collections =</ly-as-4457034> {{ collections | json }}
-        <ly-as-4457035>collections[handle] =</ly-as-4457035> {{ collections[handle] | json }}
-        <ly-as-4457036>product_html =</ly-as-4457036> {{ product_html }}
-    </div>
     <!-- Start products -->
     <section class="border-top section products-section">
         <div class="container">
-            <div class="debug" style="display:none;">
-                <ly-as-4457037>Collection products size =</ly-as-4457037> {{ collection.products.size }}
-            </div>
             {% if collection.products.size == 0 %}
                 {% include 'onboarding-product-row' %}
             {% else %}
@@ -431,9 +418,14 @@ J: Custom HTML
       
     </div>{% endcomment %}
   <div class="opposing-items">
-      <h4 class="section-heading left"><ly-as-4457052>Follow us on instagram</ly-as-4457052> <br /><nobr><a target="_blank" href="https://www.instagram.com/floatiekings/"><span class="fa fa-instagram"></span>25a86b87447b0eb84aae3aa4cc8f46aa</a></nobr></h4>
+    <h4 class="section-heading left">
+      <ly-as-4457052>Follow us on instagram</ly-as-4457052>
+      <br/>
+      <nobr><a target="_blank" href="https://www.instagram.com/floatiekings/"><span class="fa fa-instagram"></span>floatiekings</a>
+      </nobr>
+    </h4>
 
-    </div>
+  </div>
     <div class="grid grid--container">
     <div class="grid-sizer"></div>
       <!-- div -->

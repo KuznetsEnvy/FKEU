@@ -239,6 +239,10 @@
                         <a class="current-cart {% if template != 'cart' %}toggle-cart-summary{% endif %}"><span class="cart-count">{{ cart.item_count }}</span><ly-as-4456736>items</ly-as-4456736>
                             <i class="icon-cart"></i></a>
                     </nav>
+
+                    <div class="selector-wrapper" style="display: none;">
+                      {% include 'ly-languages-switcher' %}
+                    </div>
                 </div>
                 {% unless settings.header_layout == 'mobile' %}
                 <span class="toolbar-social">{% include 'social-links' %}</span>
@@ -500,7 +504,3 @@
 {% endif %}
 {% include 'geolizr-currency-converter' %}{% comment %}ly_static_code_begin{% endcomment %}{% include 'ly-languages' %}{% comment %}ly_static_code_end{% endcomment %}</body>
 </html>{% comment %}ly_static_code_begin{% endcomment %}{% endcapture %}{% include 'ly-static' with ly_content %}{% comment %}ly_static_code_end{% endcomment %}
-
-{% comment %}
-{% include 'ly-languages-switcher' %}
-{% endcomment %}
