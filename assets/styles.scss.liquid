@@ -1947,19 +1947,34 @@ a#upsellclosebtn{bottom:80px;padding:5px 11px !important;width:44.6%;text-align:
 
   .text {
     display: inline-block;
-    padding: 0 1rem;
+    padding: 0 1rem 0 0.3rem;
     vertical-align: middle;
   }
   i {
     display: none;
   }
+
+  &:before {
+    content: '';
+    background: url('{{ "icon_globe_white.svg" | asset_url }}') no-repeat center center;
+    background-size: cover;
+    display: inline-block;
+    vertical-align: middle;
+    width: 2rem;
+    height: 2rem;
+  }
 }
 
 @media screen and (max-width: 640px){
-  .main-menu .selector-wrapper {
-    display:none;
-  }
+  .pretty-select.id-ly-languages-switcher {
+    .text {
+      display: none;
+    }
 
+    &:before {
+      margin-right: 0.3rem;
+    }
+  }
 }
 
 .reading-column{width:auto}
