@@ -13,7 +13,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="format-detection" content="telephone=no">
 
-  <title>{% comment %}ly_i18n_replace_for_[ 'gift_cards.issued.title_html' | t: value: formatted_initial_value_stripped, shop: langify_shop_name ]_begin{% endcomment %}{% capture ly_template %}{{ 'gift_cards.issued.title_html' | t: value: formatted_initial_value_stripped, shop: langify_shop_name }}{% endcapture %}{% include 'ly-static-string' with '4457018' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% assign replacement = formatted_initial_value_stripped %}{% assign ly_template = ly_template | replace: '[[value]]', replacement %}{% assign replacement = langify_shop_name  %}{% assign ly_template = ly_template | replace: '[[shop]]', replacement %}{% if escape_content %}{{ ly_template}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</title>
+  <title>{% comment %}ly_i18n_replace_for_[ 'gift_cards.issued.title_html' | t: value: formatted_initial_value_stripped, shop: langify_shop_name ]_begin{% endcomment %}{% capture ly_template %}{{ 'gift_cards.issued.title_html' | t: value: formatted_initial_value_stripped, shop: langify_shop_name }}{% endcapture %}{% include 'ly-static-string' with '4473243' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% assign replacement = formatted_initial_value_stripped %}{% assign ly_template = ly_template | replace: '[[value]]', replacement %}{% assign replacement = langify_shop_name  %}{% assign ly_template = ly_template | replace: '[[shop]]', replacement %}{% if escape_content %}{{ ly_template}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</title>
   <meta name="description" content="Here's your gift card!">
 
   {{ 'gift-card.css' | shopify_asset_url | stylesheet_tag }}
@@ -52,8 +52,8 @@
   <div class="wrap">
 
     <header role="banner" id="header">
-      <a href="{{ shop.url }}" class="logo">{{ langify_shop_name }}</a>
-      <a href="{{ shop.url }}" class="shop-url">{{ shop.url | remove: 'http://' }}</a>
+      <a href="{{ langify_shop_url }}" class="logo">{{ langify_shop_name }}</a>
+      <a href="{{ langify_shop_url }}" class="shop-url">{{ langify_shop_url | remove: 'http://' }}</a>
     </header>
 
       <main role="main">
@@ -110,7 +110,7 @@
               </script>
 
               <div id="gift-card-actions">
-                <a href="{{ shop.url }}" class="btn center" target="_blank">{% comment %}ly_i18n_replace_for_[ 'gift_cards.issued.shop_link' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'gift_cards.issued.shop_link' | t }}{% endcapture %}{% include 'ly-static-string' with '4457025' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</a>
+                <a href="{{ langify_shop_url }}" class="btn center" target="_blank">{% comment %}ly_i18n_replace_for_[ 'gift_cards.issued.shop_link' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'gift_cards.issued.shop_link' | t }}{% endcapture %}{% include 'ly-static-string' with '4457025' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</a>
                 <a href="#" class="action-link left" onclick="window.print();"><i class="ico-16 print"></i>{% comment %}ly_i18n_replace_for_[ 'gift_cards.issued.print' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'gift_cards.issued.print' | t }}{% endcapture %}{% include 'ly-static-string' with '4457026' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</a>
               </div>
 

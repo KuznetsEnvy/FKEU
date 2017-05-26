@@ -5,12 +5,12 @@
   
   {% if template contains 'product' or sharing.featured_image %}
   
-  {% assign url_to_share = shop.url | append: product.url %}
+  {% assign url_to_share = langify_shop_url | append: product.url %}
   {% capture img_to_share %}http:{{ product.featured_image | product_img_url: 'master' }}{% endcapture %}
   {% assign title_to_share = product.title %}
 
   {% else %}
-  {% assign url_to_share = shop.url | append: sharing.url %}
+  {% assign url_to_share = langify_shop_url | append: sharing.url %}
   {% assign img_to_share = false %}
   {% assign title_to_share = sharing.title %}
   {% endif %}

@@ -3,7 +3,7 @@
     <h1 class="page-title">{% comment %}ly_code_replace_for_[ page.title ]_begin{% endcomment %}{% include 'ly-title' with page %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</h1>
 
     <div class="page-with-contact-form">
-      <div class="rte">{% comment %}ly_code_replace_for_[ page.content | replace: '<ly-as-4457070>fullwidth"</ly-as-4457070>', '<ly-as-4457071>" data-fullwidth="true"</ly-as-4457071>' ]_begin{% endcomment %}{% include 'ly-content' with page %}{{ ly_translation | replace: '<ly-as-4457070>fullwidth"</ly-as-4457070>', '<ly-as-4457071>" data-fullwidth="true"</ly-as-4457071>' }}{% comment %}ly_code_replace_end{% endcomment %}</div>
+      <div class="rte">{% comment %}ly_code_replace_for_[ page.content | replace: 'fullwidth"', '" data-fullwidth="true"' ]_begin{% endcomment %}{% include 'ly-content' with page %}{{ ly_translation | replace: 'fullwidth"', '" data-fullwidth="true"' }}{% comment %}ly_code_replace_end{% endcomment %}</div>
 
       <div class="section">
       <h1 class="page-title" style="text-align:left;margin: 0px;"><ly-as-4457072>Contact Us</ly-as-4457072></h1>
