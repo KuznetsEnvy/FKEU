@@ -5,6 +5,9 @@
       var redirects = {% comment %}ly_code_replace_for_[ shop.metafields.geolizr.redirects ]_begin{% endcomment %}{% assign language = cart.attributes["language"] %}{% if language == nil %}{% assign language = shop.metafields["languages"]["default"] %}{% endif %}{% assign ns = language | append: 'geolizr' %}{% assign key = 'redirects' %}{% if shop.metafields[ns][key] %}{% assign ly_translation = shop.metafields[ns][key] %}{% else %}{% assign ly_translation =  shop.metafields.geolizr.redirects  %}{% endif %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %};
       var countryToRedirect = {% comment %}ly_code_replace_for_[ shop.metafields.geolizr.country_to_redirect ]_begin{% endcomment %}{% assign language = cart.attributes["language"] %}{% if language == nil %}{% assign language = shop.metafields["languages"]["default"] %}{% endif %}{% assign ns = language | append: 'geolizr' %}{% assign key = 'country_to_redirect' %}{% if shop.metafields[ns][key] %}{% assign ly_translation = shop.metafields[ns][key] %}{% else %}{% assign ly_translation =  shop.metafields.geolizr.country_to_redirect  %}{% endif %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %};
       var redirect = redirects[countryToRedirect[geoData.country.code]];
+      console.log("Country: " + geoData.country.country);
+
+      return false;
       if(geoData.country.country == 'Russia')
           return false;
 

@@ -154,7 +154,12 @@
         {% else %}Shopify.customer_logged_in = false;
         Shopify.customer_email = "";{% endif %}</script><!-- EndConsistentCartAddon -->
     <script src="//code.jquery.com/ui/1.12.0/jquery-ui.js" defer></script>
-{% comment %}ly_dir_styles_begin{% endcomment %}{% assign language = cart.attributes["language"] %}{% if language == nil %}{% assign language = shop.metafields["languages"]["default"] %}{% endif %}{% if shop.metafields.languages_dir[language] == 'rtl' %}{% comment %}ly_asset_replace_for_[ 'ly-rtl.css' | asset_url | stylesheet_tag ]_begin{% endcomment %}{% assign ly_asset = 'ly-rtl.css' %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  | stylesheet_tag }}{% comment %}ly_asset_replace_end{% endcomment %}{% endif %}{% comment %}ly_dir_styles_end{% endcomment %}</head>
+{% comment %}ly_dir_styles_begin{% endcomment %}{% assign language = cart.attributes["language"] %}{% if language == nil %}{% assign language = shop.metafields["languages"]["default"] %}{% endif %}{% if shop.metafields.languages_dir[language] == 'rtl' %}{% comment %}ly_asset_replace_for_[ 'ly-rtl.css' | asset_url | stylesheet_tag ]_begin{% endcomment %}{% assign ly_asset = 'ly-rtl.css' %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  | stylesheet_tag }}{% comment %}ly_asset_replace_end{% endcomment %}{% endif %}{% comment %}ly_dir_styles_end{% endcomment %}
+    <!-- Multi country pricing app -->
+    <script>
+        $("<style type=\"text/css\">span.money{ display: none; }</style>").appendTo("head");
+    </script>
+</head>
 
 <body class="template-{{ template | split: '.' | first }} {{ langify_title | handle }}">
 
@@ -487,9 +492,9 @@
     });
 
 </script>
-{% comment %}
+
 {% include 'geolizr-redirect' %}
-{% endcomment %}
+
 <script src="https://use.fontawesome.com/791a439b99.js"></script>
 
 {% if gfonts != '' %}
@@ -502,5 +507,7 @@
         });
     </script>
 {% endif %}
-{% include 'geolizr-currency-converter' %}{% comment %}ly_static_code_begin{% endcomment %}{% include 'ly-languages' %}{% comment %}ly_static_code_end{% endcomment %}</body>
+{% include 'geolizr-currency-converter' %}{% comment %}ly_static_code_begin{% endcomment %}{% include 'ly-languages' %}{% comment %}ly_static_code_end{% endcomment %}
+{% include 'mlveda-multipricing-updateprice' %}
+</body>
 </html>{% comment %}ly_static_code_begin{% endcomment %}{% endcapture %}{% include 'ly-static' with ly_content %}{% comment %}ly_static_code_end{% endcomment %}
