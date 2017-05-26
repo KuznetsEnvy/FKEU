@@ -207,47 +207,53 @@
                     {% endif %}
                   </span>
                 {% endunless %}
-                <div style="display:none;">
-                    <span class="toolbar-cart">
-                    <span class="{% unless settings.show_cart_as_button %}no-{% endunless %}btn">
-                        <a class="current-cart {% if template != 'cart' %}toggle-cart-summary{% endif %}" href="/cart">
-                        {{ cart.item_count }} / {% assign geolizr_price =  cart.total_price  %}{% include 'geolizr-currency' with geolizr_price %}{{ cart.total_price | money | prepend: geolizr_prepend_code | append: geolizr_append_code }} <i class="icon-cart"></i>
-                        </a>
-                    </span>
-                    </span>
+                {% comment %}
+                    <div style="display:none;">
+                        <span class="toolbar-cart">
+                        <span class="{% unless settings.show_cart_as_button %}no-{% endunless %}btn">
+                            <a class="current-cart {% if template != 'cart' %}toggle-cart-summary{% endif %}" href="/cart">
+                            {{ cart.item_count }} / {% assign geolizr_price =  cart.total_price  %}{% include 'geolizr-currency' with geolizr_price %}{{ cart.total_price | money | prepend: geolizr_prepend_code | append: geolizr_append_code }} <i class="icon-cart"></i>
+                            </a>
+                        </span>
+                        </span>
+                    </div>
+                {% endcomment %}
+                <div class="selector-wrapper" style="display: none;">
+                  {% include 'ly-languages-switcher' %}
                 </div>
                 <div class="main-menu">
                     <nav class="menu">
                         <ul class="site-nav" id="accessibleNav">
-                            {% for link in linklists.main-menu.links %}
-                                {% assign child_list_handle = link.title | handleize %}
-                                {% if linklists[child_list_handle].links != blank %}
-                                    {% comment %}
+                          {% for link in linklists.main-menu.links %}
+                            {% assign child_list_handle = link.title | handleize %}
+                            {% if linklists[child_list_handle].links != blank %}
+                              {% comment %}
                                 <li class="site-nav--has-dropdown{% if link.active %} site-nav--active{% endif %}" aria-haspopup="true">
                                     <a href="{{ link.url }}">{% comment %}ly_code_replace_for_[ link.title ]_begin{% endcomment %}{% include 'ly-title' with link %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</a>
                                     <ul class="site-nav--dropdown">
-                                        {% for childlink in linklists[child_list_handle].links %}
-                                            <li {% if childlink.active %}class="site-nav--active"{% endif %}>
-                                                <a href="{{ childlink.url }}">{% comment %}ly_code_replace_for_[ childlink.title | escape ]_begin{% endcomment %}{% include 'ly-title' with childlink %}{{ ly_translation | escape }}{% comment %}ly_code_replace_end{% endcomment %}</a></li>
-                                        {% endfor %}
+                                      {% for childlink in linklists[child_list_handle].links %}
+                                          <li {% if childlink.active %}class="site-nav--active"{% endif %}>
+                                              <a href="{{ childlink.url }}">{% comment %}ly_code_replace_for_[ childlink.title | escape ]_begin{% endcomment %}{% include 'ly-title' with childlink %}{{ ly_translation | escape }}{% comment %}ly_code_replace_end{% endcomment %}</a>
+                                          </li>
+                                      {% endfor %}
                                     </ul>
-                                    </li>{% endcomment %}
-                                {% else %}
-                                    {% comment %}
-                                    <li {% if link.active %}class="site-nav--active"{% endif %}>
-                                        <a href="{{ link.url }}">{% comment %}ly_code_replace_for_[ link.title ]_begin{% endcomment %}{% include 'ly-title' with link %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</a>
-                                    </li>
-                                    {% endcomment %}
-                                {% endif %}
-                            {% endfor %}
+                                </li>
+                              {% endcomment %}
+                            {% else %}
+                              {% comment %}
+                                <li {% if link.active %}class="site-nav--active"{% endif %}>
+                                    <a href="{{ link.url }}">{% comment %}ly_code_replace_for_[ link.title ]_begin{% endcomment %}{% include 'ly-title' with link %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</a>
+                                </li>
+                              {% endcomment %}
+                            {% endif %}
+                          {% endfor %}
                         </ul>
-                        <a class="current-cart {% if template != 'cart' %}toggle-cart-summary{% endif %}"><span class="cart-count">{{ cart.item_count }}</span><ly-as-4456736>items</ly-as-4456736>
-                            <i class="icon-cart"></i></a>
+                        <a class="current-cart {% if template != 'cart' %}toggle-cart-summary{% endif %}">
+                            <i class="icon-cart"></i>
+                            <div><nobr><ly-as-4456736>Cart</ly-as-4456736> (<span class="cart-count">{{ cart.item_count }}</span>)
+                            </nobr></div>
+                            </a>
                     </nav>
-
-                    <div class="selector-wrapper" style="display: none;">
-                      {% include 'ly-languages-switcher' %}
-                    </div>
                 </div>
                 {% unless settings.header_layout == 'mobile' %}
                 <span class="toolbar-social">{% include 'social-links' %}</span>
