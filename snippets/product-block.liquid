@@ -54,7 +54,7 @@
 
 
         <div class="price ftc {% if product.compare_at_price_max > product.price %}on-sale{% endif %}">
-          {% if product.price_varies %}
+          {% if false and product.price_varies %}
             <span class="from">{% comment %}ly_i18n_replace_for_[ 'products.general.from' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'products.general.from' | t }}{% endcapture %}{% include 'ly-static-string' with '4456840' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</span>
           {% endif %}
           <span class="amount">{% assign geolizr_price =  product.price %}{% include 'geolizr-currency' with geolizr_price %}{{ product.price | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}</span>
