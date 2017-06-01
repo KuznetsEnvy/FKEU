@@ -1,7 +1,6 @@
 {% comment %}ly_global_begin{% endcomment %}{% include 'ly-global' %}{% comment %}ly_global_end{% endcomment %}
 {% assign variant = product.selected_or_first_available_variant %}
 {% assign featured_image = product.selected_or_first_available_variant.featured_image | default: product.featured_image %}
-
 <div class="mlvedaform">
 <div itemscope itemtype="http://schema.org/Product">
   <meta itemprop="url" content="{{ langify_shop_url }}{{ product.url }}"/>
@@ -34,7 +33,12 @@
               </li>
             {% endfor %}
           </ul>
+        {% else %}
+          <ul>
+            <li><img id="zoom" data-zoom-image="{{ featured_image | product_img_url: 'original' }}" class="main-img" src="{{ featured_image | product_img_url: '1024x1024' }}" alt="{{ featured_image.alt | escape }}" /></li>
+          </ul>
         {% endif %}
+
       </div>
     </div>
     <!-- end gallery -->
@@ -151,9 +155,9 @@
           <div class="symbols mobile1">
             <ul>
               {% unless product.handle == 'super-pump-2000' %}
-              <li>
-                <img class="icon" src="{% comment %}ly_asset_replace_for_[ 'icon-handmade.svg' | asset_url ]_begin{% endcomment %}{% assign ly_asset = 'icon-handmade.svg' %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  }}{% comment %}ly_asset_replace_end{% endcomment %}"><span><ly-as-4457096>Hand</ly-as-4457096></span><span><ly-as-4457097>made</ly-as-4457097></span>
-              </li>
+                <li>
+                  <img class="icon" src="{% comment %}ly_asset_replace_for_[ 'icon-handmade.svg' | asset_url ]_begin{% endcomment %}{% assign ly_asset = 'icon-handmade.svg' %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  }}{% comment %}ly_asset_replace_end{% endcomment %}"><span><ly-as-4457096>Hand</ly-as-4457096></span><span><ly-as-4457097>made</ly-as-4457097></span>
+                </li>
               {% endunless %}
               <li>
                 <img class="icon" src="{% comment %}ly_asset_replace_for_[ 'icon-high-quality.svg' | asset_url ]_begin{% endcomment %}{% assign ly_asset = 'icon-high-quality.svg' %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  }}{% comment %}ly_asset_replace_end{% endcomment %}"><span><ly-as-4457098>High</ly-as-4457098></span><span><ly-as-4457099>quality</ly-as-4457099></span>
@@ -180,14 +184,14 @@
         {% assign banner_desktop = info.banner_desktop %}
         {% assign banner_mobile = info.banner_mobile %}
 
-        {% if banner_desktop != "blank" %}
+        {% if banner_desktop and banner_desktop != "blank" %}
           <ul>
             <li class="desktop-visible">
               <img src="{{ banner_desktop }}" title="{% comment %}ly_code_replace_for_[ product.title | escape ]_begin{% endcomment %}{% include 'ly-title' with product %}{{ ly_translation | escape }}{% comment %}ly_code_replace_end{% endcomment %}"/>
             </li>
           </ul>
         {% endif %}
-        {% if banner_mobile != "blank" %}
+        {% if banner_mobile and banner_mobile != "blank" %}
           <ul>
             <li class="mobile-visible">
               <img src="{{ banner_mobile }}" title="{% comment %}ly_code_replace_for_[ product.title | escape ]_begin{% endcomment %}{% include 'ly-title' with product %}{{ ly_translation | escape }}{% comment %}ly_code_replace_end{% endcomment %}"/>
@@ -197,7 +201,8 @@
 
       </div>
 
-      <div class="container parent">
+      {% if info.large %}
+        <div class="container parent">
         <form id="product-form" action="/cart/add" method="post" enctype="multipart/form-data" data-product-id="{{ product.id }}">
           {% assign small_1_image = info.small_1_image %}
           {% assign small_1_text = info.small_1_text %}
@@ -341,7 +346,7 @@
           </div>
         </form>
       </div>
-
+      {% endif %}
 
       {% endunless %}
     </div>
