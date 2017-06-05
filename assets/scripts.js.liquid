@@ -981,9 +981,9 @@ $('a[rel=lightbox]').colorbox({ minWidth: '200', maxWidth: '96%', maxHeight: '96
 
     var replaceDollarWithEuro = function (self) {
         // console.log(self.text());
-        var text = self.text().replace('\$', '\€');
+        var text = self.html().replace('\$', '\€');
         // console.log(text);
-        self.text(text);
+        self.html(text);
     };
 
     $(window).on('load', function () {
