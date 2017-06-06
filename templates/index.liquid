@@ -19,9 +19,11 @@
     {% endcapture %}
 
     {% if i == 1 %}
-        {% assign product_1_html = product_html %}
-        {% elsif i == 2 %}{% assign product_2_html = product_html %}
-        {% elsif i == 3 %}{% assign product_3_html = product_html %}
+      {% assign product_1_html = product_html %}
+    {% elsif i == 2 %}
+      {% assign product_2_html = product_html %}
+    {% elsif i == 3 %}
+      {% assign product_3_html = product_html %}
     {% endif %}
 
     <!-- Start products -->
