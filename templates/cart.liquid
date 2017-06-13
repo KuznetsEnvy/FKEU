@@ -23,9 +23,11 @@
             </a>
             <div class="left">
               <div>{% comment %}ly_code_replace_for_[ item.product.title | link_to: item.product.url ]_begin{% endcomment %}{% include 'ly-title' with item.product %}{{ ly_translation | link_to: item.product.url }}{% comment %}ly_code_replace_end{% endcomment %}</div>
-              {% if item.product.variants.size > 1 %}
-              <span class="variant">{% comment %}ly_code_replace_for_[ item.variant.title ]_begin{% endcomment %}{% include 'ly-title' with item.variant %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</span>
-              {% endif %}
+              {% comment %}
+                {% if item.product.variants.size > 1 %}
+                <span class="variant">{% comment %}ly_code_replace_for_[ item.variant.title ]_begin{% endcomment %}{% include 'ly-title' with item.variant %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</span>
+                {% endif %}
+              {% endcomment %}
               {% comment %}
               Line Item Properties
               {% endcomment %}

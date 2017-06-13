@@ -29,6 +29,14 @@
               <span class="title-variant ftc">
           <a class="title" href="{{ item.product.url | within: collection }}">
             {% include 'ly-title' with item %}
+            <div class="debug">
+                <div class="item">{{ item | json }}</div>
+                <div class="metafields">{{ item.metafields | json }}</div>
+                <div class="product">{{ item.product | json }}</div>
+                <div class="title">{{ item.product.title }}</div>
+                <div class="ly-translation">{{ ly_translation }}</div>
+            </div>
+
             {% if ly_translation contains 'Aaron Kai' %}
               {% assign title = ly_translation | split: ' ' %}
               {% assign s =  title | size %}
@@ -37,7 +45,8 @@
                 {{ title[i] }}
               {% endfor %}
             {% else %}
-              {% assign title = ly_translation | split: ' ' %}
+              {% assign title = ly_translation | split: ' - ' %}
+              {% assign title = title[0] | split: ' ' %}
               {% assign s =  title | size %}
               <span style="font-weight:bold;">{{ title[0] }}</span>
               {% for i in (1..s) %}
@@ -46,8 +55,11 @@
             {% endif %}
           </a>
 
-                {% unless item.variant.title contains 'Default' %}
-                <span class="variant">{% comment %}ly_code_replace_for_[ item.variant.title ]_begin{% endcomment %}{% include 'ly-title' with item.variant %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</span>{% endunless %}
+                {% comment %}
+                  {% unless item.variant.title contains 'Default' %}
+                    <span class="variant">{% comment %}ly_code_replace_for_[ item.variant.title ]_begin{% endcomment %}{% include 'ly-title' with item.variant %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</span>
+                  {% endunless %}
+                {% endcomment %}
                 <span class="price ftc">
             {% assign geolizr_price =  item.price %}{% include 'geolizr-currency' with geolizr_price %}{{ item.price | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}
           </span>

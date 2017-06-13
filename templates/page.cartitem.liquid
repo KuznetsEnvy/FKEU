@@ -12,10 +12,19 @@
     <div class="cart-summary-item-list ft ftw">
       {% for item in cart.items %}
       <div class="cart-summary-item ftr cf">
-        <span class="image ftc">{% comment %}ly_code_replace_for_[ item | img_url: 'small' | img_tag: item.title | link_to: item.url ]_begin{% endcomment %}{% include 'ly-title' with item %}{{ item | img_url: 'small' | img_tag: ly_translation | link_to: item.url }}{% comment %}ly_code_replace_end{% endcomment %}</span>
+        <span class="image ftc">
+          {% comment %}ly_code_replace_for_[ item | img_url: 'small' | img_tag: item.title | link_to: item.url ]_begin{% endcomment %}
+          {% include 'ly-title' with item %}{{ item | img_url: 'small' | img_tag: ly_translation | link_to: item.url }}
+          {% comment %}ly_code_replace_end{% endcomment %}
+        </span>
         <span class="title-variant ftc">
+          <div class="debug">
+            <div class="item">{{ item }}</div>
+            <div class="product">{{ item.product }}</div>
+            <div class="title">{{ item.product.title }}</div>
+          </div>
           <a class="title" href="{{ item.url }}">{% comment %}ly_code_replace_for_[ item.product.title ]_begin{% endcomment %}{% include 'ly-title' with item.product %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</a>
-          {% unless item.variant.title contains 'Default' %}<span class="variant">{% comment %}ly_code_replace_for_[ item.variant.title ]_begin{% endcomment %}{% include 'ly-title' with item.variant %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</span>{% endunless %}
+          {% comment %}{% unless item.variant.title contains 'Default' %}<span class="variant">{% comment %}ly_code_replace_for_[ item.variant.title ]_begin{% endcomment %}{% include 'ly-title' with item.variant %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</span>{% endunless %}{% endcomment %}
           <span class="price ftc">
             {% assign geolizr_price =  item.price  %}{% include 'geolizr-currency' with geolizr_price %}{{ item.price | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}
           </span>

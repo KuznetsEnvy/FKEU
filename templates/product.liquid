@@ -83,8 +83,17 @@
                 <input type="hidden" name="quantity" value="1"/>
               {% endif %}
 
-              <div id="price" class="product-price {% if product.variants.size == 1 and product.compare_at_price_max > product.price %}on-sale{% endif %}">
-                {% assign geolizr_price =  product.price %}{% include 'geolizr-currency' with geolizr_price %}{{ product.price | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}
+              <div class="price-wrap">
+                {% assign has_eu_variant = false %}
+                {% for variant in product.variants %}
+                  {% if variant.title == 'eu' %}
+                    {% assign has_eu_variant = true %}
+                    <div id="price" class="product-price price-eu">{{ variant.price | money }}</div>
+                  {% endif %}
+                {% endfor %}
+                <div id="price" class="product-price price-intl {% if has_eu_variant == true %}hide {% endif %}{% if product.variants.size == 1 and product.compare_at_price_max > product.price %} on-sale{% endif %}">
+                  {% assign geolizr_price =  product.price %}{% include 'geolizr-currency' with geolizr_price %}{{ product.price | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}
+                </div>
               </div>
             {% endif %}
           </div>
@@ -119,10 +128,11 @@
               {% endunless %}
 
 
+
               <div id="product-variants" class="{% if hide_default_title %} hidden{% endif %}">
                 <select id="product-select" name="id" class="hidden">
                   {% for variant in product.variants %}
-                    <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} value="{{ variant.id }}">{% comment %}ly_code_replace_for_[ variant.title ]_begin{% endcomment %}{% include 'ly-title' with variant %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %} - {% assign geolizr_price =  variant.price %}{% include 'geolizr-currency' with geolizr_price %}{{ variant.price | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}</option>
+                    <option data-variant-title="{{ variant.title }}" {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} value="{{ variant.id }}">{% comment %}ly_code_replace_for_[ variant.title ]_begin{% endcomment %}{% include 'ly-title' with variant %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %} - {% assign geolizr_price =  variant.price %}{% include 'geolizr-currency' with geolizr_price %}{{ variant.price | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}</option>
                   {% endfor %}
                 </select>
               </div>
@@ -139,7 +149,6 @@
                 </p>
               </div>
             {% else %}
-
               <div class="rte">
                 <a href="https://form.jotform.me/70724374625458" id="various1" style="text-align:center" class="add-to-cart notify button button--black-gradient cart-btn cart-btn-desktop unavailable"> {% comment %}ly_i18n_replace_for_['products.product.product_unavailable_html' | t ]_begin{% endcomment %}{% capture ly_template %}{{'products.product.product_unavailable_html' | t }}{% endcapture %}{% include 'ly-static-string' with '4457113' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</a>
               </div>
@@ -280,9 +289,17 @@
                 <input type="hidden" name="quantity" value="1"/>
               {% endif %}
 
-
-              <div id="price" class="product-price {% if product.variants.size == 1 and product.compare_at_price_max > product.price %}on-sale{% endif %}">
-                {% assign geolizr_price =  product.price %}{% include 'geolizr-currency' with geolizr_price %}{{ product.price | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}
+              <div class="price-wrap">
+                {% assign has_eu_variant = false %}
+                {% for variant in product.variants %}
+                  {% if variant.title == 'eu' %}
+                    {% assign has_eu_variant = true %}
+                    <div id="price" class="product-price price-eu">{{ variant.price | money }}</div>
+                  {% endif %}
+                {% endfor %}
+                <div id="price" class="product-price price-intl {% if has_eu_variant == true %}hide {% endif %}{% if product.variants.size == 1 and product.compare_at_price_max > product.price %} on-sale{% endif %}">
+                  {% assign geolizr_price =  product.price %}{% include 'geolizr-currency' with geolizr_price %}{{ product.price | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}
+                </div>
               </div>
             {% endif %}
           </div>
@@ -315,7 +332,6 @@
                 </div>
               {% endif %}
               {% endunless %}
-
 
               <div id="product-variants" class="{% if hide_default_title %} hidden{% endif %}">
                 <select id="product-select" name="id" class="hidden">
