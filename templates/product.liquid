@@ -88,10 +88,10 @@
                 {% for variant in product.variants %}
                   {% if variant.title == 'eu' %}
                     {% assign has_eu_variant = true %}
-                    <div id="price" class="product-price price-eu">{{ variant.price | money }}</div>
+                    <div id="price" class="product-price price-eu hide">{{ variant.price | money }}</div>
                   {% endif %}
                 {% endfor %}
-                <div id="price" class="product-price price-intl {% if has_eu_variant == true %}hide {% endif %}{% if product.variants.size == 1 and product.compare_at_price_max > product.price %} on-sale{% endif %}">
+                <div id="price" class="product-price price-intl {% if product.variants.size == 1 and product.compare_at_price_max > product.price %} on-sale{% endif %}">
                   {% assign geolizr_price =  product.price %}{% include 'geolizr-currency' with geolizr_price %}{{ product.price | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}
                 </div>
               </div>
@@ -294,10 +294,10 @@
                 {% for variant in product.variants %}
                   {% if variant.title == 'eu' %}
                     {% assign has_eu_variant = true %}
-                    <div id="price" class="product-price price-eu">{{ variant.price | money }}</div>
+                    <div id="price" class="product-price price-eu hide">{{ variant.price | money }}</div>
                   {% endif %}
                 {% endfor %}
-                <div id="price" class="product-price price-intl {% if has_eu_variant == true %}hide {% endif %}{% if product.variants.size == 1 and product.compare_at_price_max > product.price %} on-sale{% endif %}">
+                <div id="price" class="product-price price-intl {% if product.variants.size == 1 and product.compare_at_price_max > product.price %} on-sale{% endif %}">
                   {% assign geolizr_price =  product.price %}{% include 'geolizr-currency' with geolizr_price %}{{ product.price | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}
                 </div>
               </div>

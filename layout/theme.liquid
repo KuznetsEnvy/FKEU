@@ -166,6 +166,13 @@
 
 </div>
 <div id="header" class="cart" style="width:100%;">
+  {% if settings.shipping-banner-enable %}
+    {% unless template contains 'product' %}
+      <div class="shipping-banner-top visible-mobile">
+          {% comment %}ly_new_settings_replace_for_[ settings.shipping-banner ]_begin{% endcomment %}{% if request.host %}{% assign host = request.host %}{% assign domains = shop.metafields.language_domains %}{% for domain in domains %}{% assign key = domain | first %}{% assign value = domain | last | split: ',' %}{% if value contains host %}{% assign language = key %}{% endif %}{% endfor %}{% if language == nil %}{% assign language = shop.metafields["languages"]["default"] %}{% endif %}{% else %}{% assign language = cart.attributes["language"] %}{% if language == nil %}{% assign language = shop.metafields["languages"]["default"] %}{% endif %}{% endif %}{% assign namespace = language | append: "as" %}{% if shop.metafields[namespace]["id4456737"] %}{% assign ly_translation = shop.metafields[namespace]["id4456737"] %}{% else %}{% assign ly_translation = settings.shipping-banner %}{% endif %}{{ ly_translation }}{% comment %}ly_new_settings_replace_end{% endcomment %}
+      </div>
+    {% endunless %}
+  {% endif %}
     <div class="container">
         <div class="page-header">
             <div id="toolbar" class="toolbar cf">
@@ -225,7 +232,7 @@
                 </div>
                 <div class="main-menu">
                     <nav class="menu">
-                        <ul class="site-nav" id="accessibleNav">
+                        {% comment %}<ul class="site-nav" id="accessibleNav">
                           {% for link in linklists.main-menu.links %}
                             {% assign child_list_handle = link.title | handleize %}
                             {% if linklists[child_list_handle].links != blank %}
@@ -249,12 +256,11 @@
                               {% endcomment %}
                             {% endif %}
                           {% endfor %}
-                        </ul>
+                        </ul>{% endcomment %}
                         <a class="current-cart {% if template != 'cart' %}toggle-cart-summary{% endif %}">
                             <i class="icon-cart"></i>
-                            <div><nobr><ly-as-4456736>Cart</ly-as-4456736> (<span class="cart-count">{{ cart.item_count }}</span>)
-                            </nobr></div>
-                            </a>
+                            <div><ly-as-4456736>Cart</ly-as-4456736> (<span class="cart-count">{{ cart.item_count }}</span>)</div>
+                        </a>
                     </nav>
                 </div>
                 {% unless settings.header_layout == 'mobile' %}
@@ -269,6 +275,13 @@
 <div id="page-wrap">
     <div id="page-wrap-inner">
         <div id="page-wrap-content">
+          {% if template contains 'index' %}
+            <header class="welcome visible-mobile">
+                <div class="subheader">Welcome to the</div>
+                <h4>Float Life</h4>
+            </header>
+          {% endif %}
+
             <div id="content" data-template="{{ template }}">
 
                 {% if template contains 'index' or template contains 'product' %}
@@ -293,13 +306,15 @@
                         [powr-countdown-timer id=9fd31ed4_1472213740]
                         {% endcomment %}
 
+
                         {% if settings.shipping-banner-enable %}
                             {% unless template contains 'product' %}
-                            <div class="shipping-banner">
+                            <div class="shipping-banner hidden-mobile">
                                 <div class="nn-secondary-middle">{% comment %}ly_new_settings_replace_for_[ settings.shipping-banner ]_begin{% endcomment %}{% if request.host %}{% assign host = request.host %}{% assign domains = shop.metafields.language_domains %}{% for domain in domains %}{% assign key = domain | first %}{% assign value = domain | last | split: ',' %}{% if value contains host %}{% assign language = key %}{% endif %}{% endfor %}{% if language == nil %}{% assign language = shop.metafields["languages"]["default"] %}{% endif %}{% else %}{% assign language = cart.attributes["language"] %}{% if language == nil %}{% assign language = shop.metafields["languages"]["default"] %}{% endif %}{% endif %}{% assign namespace = language | append: "as" %}{% if shop.metafields[namespace]["id4456737"] %}{% assign ly_translation = shop.metafields[namespace]["id4456737"] %}{% else %}{% assign ly_translation = settings.shipping-banner %}{% endif %}{{ ly_translation }}{% comment %}ly_new_settings_replace_end{% endcomment %}</div>
                             </div>
                             {% endunless %}
                         {% endif %}
+
                     {% endif %}
 
                 {% else %}

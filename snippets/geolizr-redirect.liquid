@@ -7,38 +7,40 @@
       var redirect = redirects[countryToRedirect[geoData.country.code]];
       console.log("Country: " + geoData.country.country);
 
-      if(geoData.country.country != 'France' && geoData.country.country != 'Spain' && geoData.country.country != 'Russia') {
-          if (window.jQuery) {
-              // prices
-              $('.price-intl').each(function(){
-                  intl = $(this);
-                  eu = intl.closest('.price-wrap').find('.price-eu');
-                  if (eu) {
-                      eu.addClass('hide');
-                      intl.removeClass('hide');
-                  } else {
-                      intl.removeClass('hide');
-                  }
-              });
+      if (false) {
+          if (geoData.country.country != 'France' && geoData.country.country != 'Spain' && geoData.country.country != 'Russia') {
+              if (window.jQuery) {
+                  // prices
+                  $('.price-intl').each(function () {
+                      intl = $(this);
+                      eu = intl.closest('.price-wrap').find('.price-eu');
+                      if (eu) {
+                          eu.addClass('hide');
+                          intl.removeClass('hide');
+                      } else {
+                          intl.removeClass('hide');
+                      }
+                  });
 
-              //forms
-              $('.product-form-intl').each(function(){
-                  intl = $(this);
-                  eu = intl.closest('.product-form-wrap').find('.product-form-eu');
-                  if (eu) {
-                      eu.addClass('hide');
-                      intl.removeClass('hide');
-                  } else {
-                      intl.removeClass('hide');
-                  }
-              });
+                  //forms
+                  $('.product-form-intl').each(function () {
+                      intl = $(this);
+                      eu = intl.closest('.product-form-wrap').find('.product-form-eu');
+                      if (eu) {
+                          eu.addClass('hide');
+                          intl.removeClass('hide');
+                      } else {
+                          intl.removeClass('hide');
+                      }
+                  });
+              } else {
+                  console.log('jQuery is not loaded yet');// jQuery is not loaded
+              }
           } else {
-              console.log('jQuery is not loaded yet');// jQuery is not loaded
+              $('#product-select option:selected').removeAttr("selected");
+              $('#product-select option[data-variant-title="eu"]').attr("selected", "selected");
+              console.log('chenging selectied variant');
           }
-      } else {
-          $('#product-select option:selected').removeAttr("selected");
-          $('#product-select option[data-variant-title="eu"]').attr("selected", "selected");
-          console.log('chenging selectied variant');
       }
 
       return false;
