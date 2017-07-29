@@ -476,10 +476,9 @@ Geolizr.popup = function(popup, assetUrl) {
 
         // Listen to message from child window
         eventCatcher(messageEvent,function(e) {
-            console.log('parent received message!:  ',e.data);
-
             var geolizrPopup = $('#geolizr-popup');
-            if(geolizrPopup.length > 0 && e.data == "GeolizrClosePopup") {
+            var data = e.data || "";
+            if(geolizrPopup.length > 0 && data.startsWith("GeolizrClosePopup") === true) {
                 e.preventDefault();
 
                 if(Geolizr.activePopup)
@@ -490,8 +489,12 @@ Geolizr.popup = function(popup, assetUrl) {
                 if(Geolizr.activePopup && Geolizr.activePopup.rememberCloseState === 'true') {
                     Geolizr.cookie.set('geolizr-dismissed-popup-' + Geolizr.activePopup.id, 'true', {expires: 365, path: '/', domain: Geolizr.shopDomain });
                 }
-
                 Geolizr.activePopup = null;
+                if(data !== "GeolizrClosePopup") {
+                    var dataArray = data.split("=>");
+                    var url = dataArray[1];
+                    window.location.href = url;
+                }
             }
         },false);
 
@@ -600,8 +603,20 @@ Geolizr.notification = function(notification, geoData, geolizrNotificationShadow
                     return;
             }
 
+            var randomNumber = function(regex,from,to,gc,cookie) {
+                cookie = cookie == "1";
+                var cookieKey = "rndNr_" + from + "," + to + location.href;
+                if(cookie && Geolizr.cookie.get(cookieKey)) {
+                    return Geolizr.cookie.get(cookieKey);
+                }
+                var random = Math.floor(Math.random() * parseInt(to) ) + parseInt(from);
+                if(cookie) Geolizr.cookie.set(cookieKey, random, {expire: 1});
+                return random;
+            };
+
             notification.message = notification.message.replace('{{ country_name }}', Geolizr.countries[geoData.country.code])
                 .replace('{{ country_code }}', geoData.country.code)
+                .replace(/{{ random_number\((\d+),(\d+)(,(\d+))?\) }}/g, randomNumber)
                 .replace('{{ currency }}', geoData.currency.code);
 
             notification.linkColor = notification.linkColor || "";
@@ -614,9 +629,9 @@ Geolizr.notification = function(notification, geoData, geolizrNotificationShadow
             var geolizrNotificationTemplate = '<div id="geolizr-notification">';
             geolizrNotificationTemplate += '<div id="geolizr-notification-message-wrapper" style="background-color: ' + notification.backgroundColor + '; border-bottom:4px solid ' + notification.textColor + ';">';
             // text
-            geolizrNotificationTemplate += '<span style="color:' +  notification.textColor + ' !important; font-family:' + notification.font + ' !important;">' + notification.message + '&nbsp;</span>';
+            geolizrNotificationTemplate += '<span style=\'color:' +  notification.textColor + ' !important; font-family:' + notification.font + ';\'>' + notification.message + '&nbsp;</span>';
             // link
-            geolizrNotificationTemplate += '<a style="color:' + notification.linkColor + ' !important;text-decoration:underline !important;font-family:' + notification.font + ' !important;" href="' + notification.linkUrl + '">' + notification.linkText + '</a>';
+            geolizrNotificationTemplate += '<a style=\'color:' + notification.linkColor + ' !important;text-decoration:underline !important;font-family:' + notification.font + ';\' href="' + notification.linkUrl + '">' + notification.linkText + '</a>';
 
             if(notification.dismissible === 'true') {
                 // close
@@ -796,58 +811,60 @@ Geolizr.fixedFormatMoney = function formatMoney(cents, format) {
     }
 
     return formatString.replace(placeholderRegex, value);
-}
+};
 
 Geolizr.setCurrency = function (currency) {
-    if(Geolizr.observeElements.length > 0) {
-        Geolizr.disconnectObserver();
-    }
-
-    var moneyFormat = Geolizr.moneyFormats[currency].moneyFormat;
-    var customCalculation = Geolizr.moneyFormats[currency].calculationString || false;
-    $('.geolizr-currency').each(function () {
-        var originalPrice = parseInt($(this).attr('data-geolizr-price'), 10);
-        //noinspection JSUnresolvedVariable,JSUnresolvedFunction
-        var convertedPrice = Geolizr.Currency.convert(originalPrice, Geolizr.shopCurrency, currency);
-
-        if (customCalculation) {
-            convertedPrice = Geolizr.calculate(customCalculation.replace('{{amount}}', convertedPrice));
+    Geolizr.init(function($) {
+        if(Geolizr.observeElements.length > 0) {
+            Geolizr.disconnectObserver();
         }
 
-        var placeholderRegex = /\{\{\s*(\w+)\s*\}\}/;
-        var output = Geolizr.shopifyFormatMoney(convertedPrice, moneyFormat);
-        if(moneyFormat.match(placeholderRegex)[1] == 'amount_no_decimals') {
-            output = Geolizr.fixedFormatMoney(convertedPrice, moneyFormat);
-        }
+        var moneyFormat = Geolizr.moneyFormats[currency].moneyFormat;
+        var customCalculation = Geolizr.moneyFormats[currency].calculationString || false;
+        Geolizr.jquery('.geolizr-currency').each(function () {
+            var originalPrice = parseInt($(this).attr('data-geolizr-price'), 10);
+            //noinspection JSUnresolvedVariable,JSUnresolvedFunction
+            var convertedPrice = Geolizr.Currency.convert(originalPrice, Geolizr.shopCurrency, currency);
 
-        $(this).html(output);
-    });
+            if (customCalculation) {
+                convertedPrice = Geolizr.calculate(customCalculation.replace('{{amount}}', convertedPrice));
+            }
 
-    var removeDomains = Geolizr.shopDomain.split(".").reverse();
-    var baseEnding = removeDomains.shift();
-    var baseDomain = removeDomains.shift() + '.' + baseEnding;
-    Geolizr.cookie.remove('geolizr-currency', {domain: baseDomain});
-    if(removeDomains.length > 0) {
-        removeDomains.forEach(function(subDomain) {
-            baseDomain = subDomain + '.' + baseDomain
-            Geolizr.cookie.remove('geolizr-currency', {domain: baseDomain});
+            var placeholderRegex = /\{\{\s*(\w+)\s*\}\}/;
+            var output = Geolizr.shopifyFormatMoney(convertedPrice, moneyFormat);
+            if(moneyFormat.match(placeholderRegex)[1] == 'amount_no_decimals') {
+                output = Geolizr.fixedFormatMoney(convertedPrice, moneyFormat);
+            }
+
+            Geolizr.jquery(this).html(output);
         });
-    }
-    Geolizr.cookie.set('geolizr-currency', currency, {expires: 365, path: '/', domain: Geolizr.shopDomain});
 
-    var usedLanguageCode = Geolizr.currenciesToLanguages[currency];
-    if (!usedLanguageCode) {
-        usedLanguageCode = Geolizr.currenciesToLanguages[Geolizr.shopCurrency]
-    }
+        var removeDomains = Geolizr.shopDomain.split(".").reverse();
+        var baseEnding = removeDomains.shift();
+        var baseDomain = removeDomains.shift() + '.' + baseEnding;
+        Geolizr.cookie.remove('geolizr-currency', {domain: baseDomain});
+        if(removeDomains.length > 0) {
+            removeDomains.forEach(function(subDomain) {
+                baseDomain = subDomain + '.' + baseDomain
+                Geolizr.cookie.remove('geolizr-currency', {domain: baseDomain});
+            });
+        }
+        Geolizr.cookie.set('geolizr-currency', currency, {expires: 365, path: '/', domain: Geolizr.shopDomain});
 
-    $('#geolizr-currency-switcher').find('> i').replaceWith($('<i class="famfamfam-flag-' + usedLanguageCode + '"></i>'));
-    $('.geolizr-currency-switcher-value').text(currency);
+        var usedLanguageCode = Geolizr.currenciesToLanguages[currency];
+        if (!usedLanguageCode) {
+            usedLanguageCode = Geolizr.currenciesToLanguages[Geolizr.shopCurrency]
+        }
 
-    Geolizr.dispatchEvent('currency.change', currency);
+        Geolizr.jquery('#geolizr-currency-switcher').find('> i').replaceWith($('<i class="famfamfam-flag-' + usedLanguageCode + '"></i>'));
+        Geolizr.jquery('.geolizr-currency-switcher-value').text(currency);
 
-    if(Geolizr.observeElements.length > 0) {
-        Geolizr.observe();
-    }
+        Geolizr.dispatchEvent('currency.change', currency);
+
+        if(Geolizr.observeElements.length > 0) {
+            Geolizr.observe();
+        }
+    });
 };
 
 Geolizr.getCurrency = function () {

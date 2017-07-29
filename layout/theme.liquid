@@ -3,6 +3,8 @@
 <!--[if IE 9]><html class="no-js ie9" lang="{% comment %}ly_lang_replace_for_[en]_begin{% endcomment %}{% if request.host %}{% assign language = '' %}{% assign domains = shop.metafields.language_domains %}{% for domain in domains %}{% assign key = domain | first %}{% assign value = domain | last | split: ',' %}{% if value contains request.host %}{% assign language = key %}{% endif %}{% endfor %}{% if shop.metafields.language_codes[language] %}{% assign code = shop.metafields.language_codes[language] %}{% else %}{% assign code = 'en' %}{% endif %}{% else %}{% assign code = 'en' %}{% endif %}{{ code }}{% comment %}ly_lang_replace_end{% endcomment %}"{% comment %}ly_dir_replace_for_[]_begin{% endcomment %}{% if request.host %}{% assign host = request.host %}{% assign domains = shop.metafields.language_domains %}{% for domain in domains %}{% assign key = domain | first %}{% assign value = domain | last | split: ',' %}{% if value contains host %}{% assign language = key %}{% endif %}{% endfor %}{% if language == nil %}{% assign language = shop.metafields["languages"]["default"] %}{% endif %}{% else %}{% assign language = cart.attributes["language"] %}{% if language == nil %}{% assign language = shop.metafields["languages"]["default"] %}{% endif %}{% endif %}{% if shop.metafields.languages_dir[language] == 'rtl' %} dir="rtl" {% endif %}{% comment %}ly_dir_replace_end{% endcomment %}> <![endif]-->
 <!--[if (gt IE 10)|!(IE)]><!--> <html class="no-js" lang="{% comment %}ly_lang_replace_for_[en]_begin{% endcomment %}{% if request.host %}{% assign language = '' %}{% assign domains = shop.metafields.language_domains %}{% for domain in domains %}{% assign key = domain | first %}{% assign value = domain | last | split: ',' %}{% if value contains request.host %}{% assign language = key %}{% endif %}{% endfor %}{% if shop.metafields.language_codes[language] %}{% assign code = shop.metafields.language_codes[language] %}{% else %}{% assign code = 'en' %}{% endif %}{% else %}{% assign code = 'en' %}{% endif %}{{ code }}{% comment %}ly_lang_replace_end{% endcomment %}"{% comment %}ly_dir_replace_for_[]_begin{% endcomment %}{% if request.host %}{% assign host = request.host %}{% assign domains = shop.metafields.language_domains %}{% for domain in domains %}{% assign key = domain | first %}{% assign value = domain | last | split: ',' %}{% if value contains host %}{% assign language = key %}{% endif %}{% endfor %}{% if language == nil %}{% assign language = shop.metafields["languages"]["default"] %}{% endif %}{% else %}{% assign language = cart.attributes["language"] %}{% if language == nil %}{% assign language = shop.metafields["languages"]["default"] %}{% endif %}{% endif %}{% if shop.metafields.languages_dir[language] == 'rtl' %} dir="rtl" {% endif %}{% comment %}ly_dir_replace_end{% endcomment %}> <!--<![endif]-->
 <head>
+{{ 'geolizr-lib.js' | asset_url | script_tag }}
+{{ 'geolizr-lib.css' | asset_url | stylesheet_tag }}
 {% comment %}ly_asset_replace_for_[ 'geolizr-lib.js' | asset_url | script_tag ]_begin{% endcomment %}{% assign ly_asset = 'geolizr-lib.js' %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  | script_tag }}{% comment %}ly_asset_replace_end{% endcomment %}
 {% comment %}ly_asset_replace_for_[ 'geolizr-lib.css' | asset_url | stylesheet_tag ]_begin{% endcomment %}{% assign ly_asset = 'geolizr-lib.css' %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  | stylesheet_tag }}{% comment %}ly_asset_replace_end{% endcomment %}
 <script>Geolizr.config({"currency_widget_enabled":"{% if shop.metafields.geolizr.currency_widget_enabled == 'true' %}true{% else %}false{% endif %}"});</script>
@@ -89,55 +91,6 @@
     {% comment %}ly_asset_replace_for_[ 'jquery.fancybox.css' | asset_url | split:'?' | first | stylesheet_tag ]_begin{% endcomment %}{% assign ly_asset = 'jquery.fancybox.css' %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  | split:'?' | first | stylesheet_tag }}{% comment %}ly_asset_replace_end{% endcomment %}
     <!-- Pinterest Pixel Code -->
     <img height="1" width="1" style="display:none;" alt="" src="https://ct.pinterest.com/?tid=8HcMxz0bQxu&value=0.00&quantity=1"/>
-
-    <!-- Facebook Pixel Code -->
-    <script>
-        !function (f, b, e, v, n, t, s) {
-            if (f.fbq)return;
-            n = f.fbq = function () {
-                n.callMethod ?
-
-                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
-            };
-            if (!f._fbq) f._fbq = n;
-            n.push = n;
-            n.loaded = !0;
-            n.version = '2.0';
-            n.queue = [];
-            t = b.createElement(e);
-            t.async = !0;
-            t.src = v;
-            s = b.getElementsByTagName(e)[0];
-            s.parentNode.insertBefore(t, s)
-        }(window,
-            document, 'script', '//connect.facebook.net/en_US/fbevents.js');
-
-        fbq('init', '1034963433252089');
-        fbq('track', "PageView");
-
-        {% if template == 'cart' and cart.items.size > 0 %}
-        fbq('track', 'AddToCart', {
-            content_ids: [
-                {% for item in cart.items %}
-                '{{ item.sku }}'
-                {% unless forloop.last %}, {% endunless %}
-                {% endfor %}
-            ],
-            content_type: 'product'
-        });
-
-        {% elsif template == "product" %}
-        fbq('track', 'ViewContent', {
-            content_ids: ['{{ product.variants[0].sku }}'],
-            content_type: 'product'
-        });
-        {% endif %}
-
-    </script>
-    <noscript><img height="1" width="1" style="display:none"
-                   src="https://www.facebook.com/tr?id=1034963433252089&ev=PageView&noscript=1"
-        /></noscript>
-    <!-- End Facebook Pixel Code -->
 
     <!-- Pinterest visitor -->
     <img height="1" width="1" style="display:none;" alt="" src="https://ct.pinterest.com/?tid=8HcMxz0bQxu&value=0.00&quantity=1"/>
@@ -289,15 +242,12 @@
 
                         <div id="bicolorBanner" class="banner-index" style="{% if template contains 'product' %}display:none;{% endif %}">
                             <picture>
-                                <source media="(min-width: 1920px)" srcset="{% comment %}ly_asset_replace_for_[ 'PC-Header-3-1920.jpg' | asset_url | split:"?" | first ]_begin{% endcomment %}{% assign ly_asset = 'PC-Header-3-1920.jpg' %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  | split:"?" | first }}{% comment %}ly_asset_replace_end{% endcomment %}">
-                                <source media="(min-width: 1400px)" srcset="{% comment %}ly_asset_replace_for_[ 'PC-Header-3-1400.jpg' | asset_url | split:"?" | first ]_begin{% endcomment %}{% assign ly_asset = 'PC-Header-3-1400.jpg' %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  | split:"?" | first }}{% comment %}ly_asset_replace_end{% endcomment %}">
-                                <source media="(min-width: 1366px)" srcset="{% comment %}ly_asset_replace_for_[ 'PC-Header-3-1366.jpg' | asset_url | split:"?" | first ]_begin{% endcomment %}{% assign ly_asset = 'PC-Header-3-1366.jpg' %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  | split:"?" | first }}{% comment %}ly_asset_replace_end{% endcomment %}">
-                                <source media="(min-width: 1024px)" srcset="{% comment %}ly_asset_replace_for_[ 'PC-Header-3-1024.jpg' | asset_url | split:"?" | first ]_begin{% endcomment %}{% assign ly_asset = 'PC-Header-3-1024.jpg' %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  | split:"?" | first }}{% comment %}ly_asset_replace_end{% endcomment %}">
-                                <source media="(min-width: 768px)" srcset="{% comment %}ly_asset_replace_for_[ 'Mobile-Header-optimised.jpg' | asset_url | split:"?" | first ]_begin{% endcomment %}{% assign ly_asset = 'Mobile-Header-optimised.jpg' %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  | split:"?" | first }}{% comment %}ly_asset_replace_end{% endcomment %}">
-                                <source media="only screen and (-webkit-min-device-pixel-ratio: 2)" srcset="{% comment %}ly_asset_replace_for_[ 'Mobile-Header-@2x.jpg' | asset_url | split:"?" | first ]_begin{% endcomment %}{% assign ly_asset = 'Mobile-Header-@2x.jpg' %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  | split:"?" | first }}{% comment %}ly_asset_replace_end{% endcomment %}">
-                                <source media="(min-width: 480px)" srcset="{% comment %}ly_asset_replace_for_[ 'Mobile-Header-optimised-480.jpg' | asset_url | split:"?" | first ]_begin{% endcomment %}{% assign ly_asset = 'Mobile-Header-optimised-480.jpg' %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  | split:"?" | first }}{% comment %}ly_asset_replace_end{% endcomment %}">
-                                <source media="(min-width: 320px)" srcset="{% comment %}ly_asset_replace_for_[ 'Mobile-Header-optimised-320.jpg' | asset_url | split:"?" | first ]_begin{% endcomment %}{% assign ly_asset = 'Mobile-Header-optimised-320.jpg' %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  | split:"?" | first }}{% comment %}ly_asset_replace_end{% endcomment %}">
-                                <img src="{% comment %}ly_asset_replace_for_[ 'PC-Header-3-1920.jpg' | asset_url | split:"?" | first ]_begin{% endcomment %}{% assign ly_asset = 'PC-Header-3-1920.jpg' %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  | split:"?" | first }}{% comment %}ly_asset_replace_end{% endcomment %}" alt="<ly-as-4456739>Homepage banner</ly-as-4456739>">
+                                <source media="(min-width: 1920px)" srcset="{{ 'PC-Header-4-1920-sale.jpg' | asset_url | split:"?" | first }}">
+                                <source media="(min-width: 1400px)" srcset="{{ 'PC-Header-4-1400-sale.jpg' | asset_url | split:"?" | first }}">
+                                <source media="(min-width: 1024px)" srcset="{{ 'PC-Header-4-1024-sale.jpg' | asset_url | split:"?" | first }}">
+                                <source media="(min-width: 768px)" srcset="{{ 'PC-Header-4-1024-sale.jpg' | asset_url | split:"?" | first }}">
+                                <source srcset="{{ 'Mobile-Header-4-optimised-sale.jpg' | asset_url | split:"?" | first }}">
+                                <img src="{{ 'PC-Header-4-1920-sale.jpg' | asset_url | split:"?" | first }}" alt="Homepage banner">
                             </picture>
                         </div>
 
@@ -516,7 +466,7 @@
 
 </script>
 
-{% include 'geolizr-redirect' %}
+
 
 <script src="https://use.fontawesome.com/791a439b99.js"></script>
 
@@ -532,6 +482,6 @@
 {% endif %}
 {% include 'geolizr-currency-converter' %}
 {% include 'mlveda-multipricing-updateprice' %}
-{% comment %}ly_static_code_begin{% endcomment %}{% include 'ly-languages' %}{% comment %}ly_static_code_end{% endcomment %}</body>
+{% comment %}ly_static_code_begin{% endcomment %}{% include 'ly-languages' %}{% comment %}ly_static_code_end{% endcomment %}{% include 'geolizr-redirect' %}</body>
 </html>
 {% comment %}ly_static_code_begin{% endcomment %}{% endcapture %}{% include 'ly-static' with ly_content %}{% comment %}ly_static_code_end{% endcomment %}

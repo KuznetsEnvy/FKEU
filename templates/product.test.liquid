@@ -7,7 +7,7 @@
   {% for variant in product.variants %}
   <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
     <meta itemprop="price" content="{{ variant.price | money_without_currency | strip_html }}" />
-    <meta itemprop="priceCurrency" content="{{ shop.currency }}" />
+    <meta itemprop="priceCurrency" content="{{ shop.money_without_currency }}" />
     {% if product.available %}
     <link itemprop="availability" href="http://schema.org/InStock" />
     {% else %}
