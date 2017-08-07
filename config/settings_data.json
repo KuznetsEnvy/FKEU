@@ -62,7 +62,7 @@
     "manual-image-number": "8",
     "home_AaronKai-banner": false,
     "home_bottom-banner": false,
-    "home_pump_product-banner": false,
+    "home_pump_product-banner": true,
     "slide_1": false,
     "slide_1_link": "#",
     "slide_1_alt": "Pizza Floatie Slide 1",

@@ -227,6 +227,30 @@
                     <li class="info-sec-small-1">
                       <img src="{{ small_1_image }}" title="{{ small_1_text | escape }}"/>
                       <span class="nn-secondary-middle">{{ small_1_text }}</span>
+                      {% comment %}
+                        <!-- This is the part that correctly fetches Langify meta fields translations -->
+                        <!-- It also cancels custom translations from applying to the string -->
+                        <span class="nn-secondary-middle">
+                        {% assign language = cart.attributes.language %}
+                        {% assign ns = language | append: 'info' %}
+                        {% assign ly_translation = product.metafields[ns]['small_1_text'] %}
+                        {% if ly_translation %}
+                          {{ ly_translation }}
+                        {% else %}
+                          {% assign info = product.metafields.info %}
+                          {% assign small_1_text = info.small_1_text %}
+                          {{ small_1_text | escape }}
+                        {% endif %}
+                        </span>
+                        <div class="debug">
+                          <div class="language">{{ language }}</div>
+                          <div class="ns">{{ ns }}</div>
+                          <div class="ly_translation">{{ ly_translation }}</div>
+                          <div class="info">{{ info }}</div>
+                          <div class="small_1_text">{{ small_1_text }}</div>
+                        </div>
+                        <!-- /This is the part that correctly fetches Langify meta fields translations -->
+                      {% endcomment %}
                     </li>
                   {% endif %}
                   {% if small_2_image != blank and small_2_text != blank %}
