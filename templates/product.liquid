@@ -271,8 +271,22 @@
               {% assign large_text = info.large_text %}
               {% if large != blank %}
                 <div class="column flex sixth info-sec-large">
+                  <!-- -->
+                  {% assign language = cart.attributes.language %}
+                  {% assign ns = language | append: 'info' %}
+                  {% assign ly_translation = product.metafields[ns]['large'] %}
+                  {% if ly_translation %}
+                    <img src="{{ ly_translation }}" title="{% comment %}ly_code_replace_for_[ product.title | escape ]_begin{% endcomment %}{% include 'ly-title' with product %}{{ ly_translation | escape }}{% comment %}ly_code_replace_end{% endcomment %}"/>
+                  {% else %}
+                    {% assign info = product.metafields.info %}
+                    {% assign large = info.large %}
+                    <img src="{{ large }}" title="{% comment %}ly_code_replace_for_[ product.title | escape ]_begin{% endcomment %}{% include 'ly-title' with product %}{{ ly_translation | escape }}{% comment %}ly_code_replace_end{% endcomment %}"/>
+                  {% endif %}
+                  <!-- -->
+                  {% comment %}
                   <img src="{{ info.large }}" title="{% comment %}ly_code_replace_for_[ product.title | escape ]_begin{% endcomment %}{% include 'ly-title' with product %}{{ ly_translation | escape }}{% comment %}ly_code_replace_end{% endcomment %}"/>
-                  <span class="nn-secondary-middle">{{ smallarge_textl_3_text }}</span>
+                  <span class="nn-secondary-middle">{% comment %}{{ large_text }}{% endcomment %}</span>
+                  {% endcomment %}
                 </div>
               {% endif %}
             </div>
