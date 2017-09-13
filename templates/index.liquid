@@ -415,14 +415,13 @@ J: Custom HTML
 
   {% comment %}	<div class="opposing-items">
       <h1 class="section-heading left">Instagram</h1>  
-      
-      
+
     </div>{% endcomment %}
   <div class="opposing-items">
     <h4 class="section-heading left">
       <ly-as-4457052>Follow us on instagram</ly-as-4457052>
       <br/>
-      <nobr><a target="_blank" href="https://www.instagram.com/floatiekings/"><span class="fa fa-instagram"></span>Floatiekings</a>
+      <nobr><a target="_blank" href="https://www.instagram.com/floatiekings/"><span class="fa fa-instagram"></span><ly-as-5191070>Floatiekings</ly-as-5191070></a>
       </nobr>
     </h4>
 
@@ -455,7 +454,7 @@ J: Custom HTML
 
 <section id="insta" class="border-top section instagram-section instagram-section-mobile">
   <div class="opposing-items">
-      <h4 class="section-heading left">Follow us on instagram <br /><nobr><a target="_blank" href="https://www.instagram.com/floatiekings/"><span class="fa fa-instagram"></span>floatiekings</a></nobr></h4>
+      <h4 class="section-heading left"><ly-as-4457052>Follow us on instagram</ly-as-4457052> <br /><nobr><a target="_blank" href="https://www.instagram.com/floatiekings/"><span class="fa fa-instagram"></span><ly-as-5315162>25a86b87447b0eb84aae3aa4cc8f46aa</ly-as-5315162></a></nobr></h4>
 
     </div>
     <div class="images-container-wrap"> 
@@ -463,7 +462,7 @@ J: Custom HTML
           <!-- div -->
           {% for i in (1..9) %}
               <div>
-                <a href="https://www.instagram.com/{{ settings.homepage_insta_acct }}/" target="_blank">
+                <a href="https://www.instagram.com/{% comment %}ly_new_settings_replace_for_[ settings.homepage_insta_acct ]_begin{% endcomment %}{% if request.host %}{% assign host = request.host %}{% assign domains = shop.metafields.language_domains %}{% for domain in domains %}{% assign key = domain | first %}{% assign value = domain | last | split: ',' %}{% if value contains host %}{% assign language = key %}{% endif %}{% endfor %}{% if language == nil %}{% assign language = shop.metafields["languages"]["default"] %}{% endif %}{% else %}{% assign language = cart.attributes["language"] %}{% if language == nil %}{% assign language = shop.metafields["languages"]["default"] %}{% endif %}{% endif %}{% assign namespace = language | append: "as" %}{% if shop.metafields[namespace]["id4457050"] %}{% assign ly_translation = shop.metafields[namespace]["id4457050"] %}{% else %}{% assign ly_translation = settings.homepage_insta_acct %}{% endif %}{{ ly_translation }}{% comment %}ly_new_settings_replace_end{% endcomment %}/" target="_blank">
                   <img class="js-backimg" src="https://cdn.shopify.com/s/files/1/0934/6050/files/newinstag_{{ i }}.jpg" alt="" >
                 </a>
               </div>

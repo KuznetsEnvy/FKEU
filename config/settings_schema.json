@@ -2415,6 +2415,11 @@
         "label": "Enter The Collection title for First Product"
       },
       {
+        "type": "text",
+        "id": "product-collection-title1-ly17558",
+        "label": "Collection title for First Product - Spanish"
+      },
+      {
         "type": "product",
         "id": "featured-products-product1",
         "label": "Choose a first Product"
@@ -2435,6 +2440,11 @@
         "label": "Enter The Collection title for Second Product"
       },
       {
+        "type": "text",
+        "id": "product-collection-title2-ly17558",
+        "label": "Collection title for Second Product - Spanish"
+      },
+      {
         "type": "product",
         "id": "featured-products-product2",
         "label": "Choose a Second Product"
@@ -2453,6 +2463,11 @@
         "type": "text",
         "id": "product-collection-title3",
         "label": "Enter The Collection title for Third Product"
+      },
+      {
+        "type": "text",
+        "id": "product-collection-title3-ly17558",
+        "label": "Collection title for Third Product - Spanish"
       },
       {
         "type": "product",

@@ -17,7 +17,7 @@
     <link rel="shortcut icon" href="{% comment %}ly_asset_replace_for_[ 'favicon.png' | asset_url ]_begin{% endcomment %}{% assign ly_asset = 'favicon.png' %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  }}{% comment %}ly_asset_replace_end{% endcomment %}" type="image/png"/>
 
     <title>
-        {{ langify_title }}{% if current_tags %} &ndash; {{ 'general.meta.tagged' | t }} "{{ current_tags | join: ', ' }}"{% endif %}{% if current_page != 1 %} &ndash; {{ 'general.meta.page' | t }} {{ current_page }}{% endif %}{% unless langify_title contains langify_shop_name %} &ndash; {{ langify_shop_name }}{% endunless %}
+        {{ langify_title }}{% if current_tags %} – {{ 'general.meta.tagged' | t }} "{{ current_tags | join: ', ' }}"{% endif %}{% if current_page != 1 %} – {{ 'general.meta.page' | t }} {{ current_page }}{% endif %}{% unless langify_title contains langify_shop_name %} – {{ langify_shop_name }}{% endunless %}
     </title>
 
     {% if langify_description %}
@@ -53,6 +53,22 @@
     {% comment %}ly_asset_replace_for_[ 'styles.scss.css' | asset_url | stylesheet_tag ]_begin{% endcomment %}{% assign ly_asset = 'styles.scss.css' %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  | stylesheet_tag }}{% comment %}ly_asset_replace_end{% endcomment %}
 
     <script id="jquery" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script>
+      $.fn.wrapStart = function (numWords) {
+          var node = this.contents().filter(function () {
+                  return this.nodeType == 3
+              }).first(),
+              text = node.text(),
+              first = text.split(" ", numWords).join(" ");
+
+          if (!node.length)
+              return;
+
+          node[0].nodeValue = text.slice(first.length);
+          node.before('<span>' + first + '</span><br/>');
+      };
+  </script>
+    <script id="nthEverything" src="{{ 'jquery.nthEverything.min.js' | asset_url }}"></script>
     <script src="{% comment %}ly_asset_replace_for_[ 'exitintent.js' | asset_url | split:'?' | first ]_begin{% endcomment %}{% assign ly_asset = 'exitintent.js' %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  | split:'?' | first }}{% comment %}ly_asset_replace_end{% endcomment %}" defer></script>
     <!--{{ 'api.jquery.js' | shopify_asset_url | script_tag }}-->
     <!--script src="{% comment %}ly_asset_replace_for_[ 'api.jquery.js' | asset_url ]_begin{% endcomment %}{% assign ly_asset = 'api.jquery.js' %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  }}{% comment %}ly_asset_replace_end{% endcomment %}" defer></script-->
@@ -212,7 +228,7 @@
                         </ul>{% endcomment %}
                         <a class="current-cart {% if template != 'cart' %}toggle-cart-summary{% endif %}">
                             <i class="icon-cart"></i>
-                            <div><ly-as-4456736>Cart</ly-as-4456736> (<span class="cart-count">{{ cart.item_count }}</span>)</div>
+                            <div><ly-as-5186244>Cart (</ly-as-5186244><span class="cart-count">{{ cart.item_count }}</span>)</div>
                         </a>
                     </nav>
                 </div>
@@ -229,9 +245,9 @@
     <div id="page-wrap-inner">
         <div id="page-wrap-content">
           {% if template contains 'index' %}
-            <header class="welcome visible-mobile">
-                <div class="subheader">Welcome to the</div>
-                <h4>Float Life</h4>
+            <header class="welcome{% comment %} visible-mobile{% endcomment %}" style="display: none;">
+                <div class="subheader"><ly-as-5186245>Welcome to the</ly-as-5186245></div>
+                <h4><ly-as-5186246>Float Life</ly-as-5186246></h4>
             </header>
           {% endif %}
 
@@ -240,16 +256,14 @@
                 {% if template contains 'index' or template contains 'product' %}
                     {% if settings.home_show_slideshow %}
 
-                        <div id="bicolorBanner" class="banner-index" style="{% if template contains 'product' %}display:none;{% endif %}">
+                        <div id="bicolorBanner" class="banner-index hidden-mobile" style="{% if template contains 'product' %}display:none;{% endif %}">
                             <picture>
-                                <source media="(min-width: 1920px)" srcset="{{ 'PC-Header-3-1920.jpg' | asset_url | split:"?" | first }}">
-                                <source media="(min-width: 1400px)" srcset="{{ 'PC-Header-3-1400.jpg' | asset_url | split:"?" | first }}">
-                                <source media="(min-width: 1366px)" srcset="{{ 'PC-Header-3-1366.jpg' | asset_url | split:"?" | first }}">
-                                <source media="(min-width: 1024px)" srcset="{{ 'PC-Header-3-1024.jpg' | asset_url | split:"?" | first }}">
-                                <source media="(min-width: 768px)" srcset="{{ 'PC-Header-3-768.jpg' | asset_url | split:"?" | first }}">
-                                <source media="(min-width: 480px)" srcset="{{ 'PC-Header-3-480.jpg' | asset_url | split:"?" | first }}">
-                                <source media="(min-width: 320px)" srcset="{{ 'PC-Header-3-320.jpg' | asset_url | split:"?" | first }}">
-                                <img src="{{ 'PC-Header-3-1920.jpg' | asset_url | split:"?" | first }}" alt="Homepage banner">
+                                <source media="(min-width: 1920px)" srcset="{{ 'PC-Header-3-1920-sale.jpg' | asset_url | split:"?" | first }}">
+                                <source media="(min-width: 1400px)" srcset="{{ 'PC-Header-3-1400-sale.jpg' | asset_url | split:"?" | first }}">
+                                <source media="(min-width: 1024px)" srcset="{{ 'PC-Header-3-1024-sale.jpg' | asset_url | split:"?" | first }}">
+                                <source media="(min-width: 751px)" srcset="{{ 'PC-Header-3-1024-sale.jpg' | asset_url | split:"?" | first }}">
+                                <source media="(min-width: 300px)" srcset="{{ 'Mobile-Header-sale.jpg' | asset_url | split:"?" | first }}">
+                                <img src="{{ 'PC-Header-3-1920-sale.jpg' | asset_url | split:"?" | first }}" alt="Homepage banner">
                             </picture>
                         </div>
 
@@ -257,7 +271,49 @@
                         {% comment %}
                         [powr-countdown-timer id=9fd31ed4_1472213740]
                         {% endcomment %}
+                        
+                        <div class="sale-header-mobile mobile">
+                            <div>Summer Sale</div>
+                            <div>Up to 50% Off</div>
+                        </div> 
+                        
+                        <div id="countdown-stripe">
+                        </div>
+                        <script>
+                        // Set the date we're counting down to
+                        var countDownDate = new Date("Sep 14, 2017 00:00:00").getTime();
 
+                        // Update the count down every 1 second
+                        var x = setInterval(function() {
+
+                          // Get todays date and time
+                          var now = new Date().getTime();
+
+                          // Find the distance between now an the count down date
+                          var distance = countDownDate - now;
+
+                          // Time calculations for days, hours, minutes and seconds
+                          var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                          var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                          var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                          var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                          
+                          hours += days*24;
+                          if (hours   < 10) {hours   = "0"+hours;}
+                          if (minutes < 10) {minutes = "0"+minutes;}
+                          if (seconds < 10) {seconds = "0"+seconds;}
+                          
+                          // Display the result in the element with id="demo"
+                          document.getElementById("countdown-stripe").innerHTML = "<span><b>Hurry!</b> <span>Sale ends in</span> <span>" +(hours) + ":"
+                          + minutes + ":" + seconds + "</span></span> <span>While stocks last.</span>";
+
+                          // If the count down is finished, write some text 
+                          if (distance < 0) {
+                            clearInterval(x);
+                            document.getElementById("countdown-stripe").innerHTML = "EXPIRED";
+                          }
+                        }, 1000);
+                        </script>   
 
                         {% if settings.shipping-banner-enable %}
                             {% unless template contains 'product' %}
@@ -427,7 +483,7 @@
 </script>
 <noscript>
     <div style="display:inline;">
-        <img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/881110676/?value=0&amp;guid=ON&amp;script=0"/>
+        <img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/881110676/?value=0&guid=ON&script=0"/>
     </div>
 </noscript>
 

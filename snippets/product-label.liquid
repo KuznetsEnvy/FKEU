@@ -1,4 +1,5 @@
-{% comment %}ly_global_begin{% endcomment %}{% include 'ly-global' %}{% comment %}ly_global_end{% endcomment %}{% assign inv_mngmt_size = product.variants.first.inventory_management | size %}
+{% comment %}ly_global_begin{% endcomment %}{% include 'ly-global' %}{% comment %}ly_global_end{% endcomment %}
+{% assign inv_mngmt_size = product.variants.first.inventory_management | size %}
 {% assign limit_as_int = settings.prod_stock_warn_limit | plus: 0 %}
 {% if product.compare_at_price_max > product.price and settings.label_sale_show %}
     <span class="product-label sale"><span>{% comment %}ly_i18n_replace_for_[ 'products.labels.sale' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'products.labels.sale' | t }}{% endcapture %}{% include 'ly-static-string' with '4456849' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</span></span>

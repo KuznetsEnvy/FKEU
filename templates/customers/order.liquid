@@ -1,7 +1,7 @@
 {% comment %}ly_global_begin{% endcomment %}{% include 'ly-global' %}{% comment %}ly_global_end{% endcomment %}<div id="customer-order" class="container account-area">
   <h1 class="page-title">
     {% comment %}ly_i18n_replace_for_[ 'customer.order.title' | t: name: order.name ]_begin{% endcomment %}{% capture ly_template %}{{ 'customer.order.title' | t: name: order.name }}{% endcapture %}{% include 'ly-static-string' with '4456986' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% assign replacement = order.name  %}{% assign ly_template = ly_template | replace: '[[name]]', replacement %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}
-    <span class="note order_date">&mdash; {{ order.created_at | date: format: 'month_date_year' }}</span>
+    <span class="note order_date">— {{ order.created_at | date: format: 'month_date_year' }}</span>
   </h1>
 
   <a class="back-link" href="/account"><i class="icon-arrow3-left slim"></i> <span>{% comment %}ly_i18n_replace_for_[ 'customer.general.back_to_account' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'customer.general.back_to_account' | t }}{% endcapture %}{% include 'ly-static-string' with '4456987' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</span></a>

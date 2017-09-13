@@ -86,7 +86,7 @@
             <form class="product-form product-form-eu hide" id="product-form" action="/cart/add" method="post" enctype="multipart/form-data" data-product-id="{{ product.id }}">
               <input type="hidden" value="{{ variant.id }}" id="product-select" name="id" class="hidden" />
               <input type="hidden" name="quantity" value="1" />
-              <button name="add" class="add-to-cart buy-now button button--black-gradient cart-btn cart-btn-desktop" id="add">{{ 'products.product.add_to_cart_html' | t }}</button>
+              <button name="add" class="add-to-cart buy-now button button--black-gradient cart-btn cart-btn-desktop" id="add">{% comment %}ly_i18n_replace_for_[ 'products.product.add_to_cart_html' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'products.product.add_to_cart_html' | t }}{% endcapture %}{% include 'ly-static-string' with '4456841' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</button>
             </form>
           {% endif %}
         {% endfor %}

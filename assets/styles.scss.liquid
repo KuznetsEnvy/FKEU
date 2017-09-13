@@ -207,7 +207,7 @@ img,iframe{max-width:100%}img{height:auto;vertical-align:top}
 .grid .column.fifth.nth-5{clear:left}
 .grid .column.flex.max-cols-6.nth-6{clear:left}
 .row.one-row .column{margin-bottom:0px}
-.mobile,.mobile-inline{display:none}
+.tablet,.mobile,.mobile-inline{display:none}
 
 @media (max-width: 1250px) {
   .column.flex.max-cols-6 {
@@ -243,11 +243,20 @@ img,iframe{max-width:100%}img{height:auto;vertical-align:top}
   .grid .column.flex.max-cols-3.nth-2, .grid .column.flex.max-cols-2.nth-2 {
     clear: left
   }
+  .tablet {
+    display: block;
+  }
 }
 
 @media (max-width: 767px) {
+  .tablet{
+      display: none;
+  }
   .mobile {
     display: block
+  }
+  .hidden-mobile{
+    display: none;
   }
   .mobile-inline {
     display: inline
@@ -1594,7 +1603,21 @@ section.products-section-single.bottom .product-block .ftr{border-top:1px solid 
 @media (max-width: 767px){.products-section .product-block .image{min-height:initial !important}.product-block .image img{display:block;margin:0 auto;width:400px}.product-block .title{color:#333}.product-block .ft .ftr,.template-product .product-title-row{display:inline-block;width:100%}.box-content .img-document{height:450px}.template-product .thumbnails{display:none}.inline-row{margin:0}.template-product .product-title-row .product-price{float:none;text-align:center;width:100%;font-size:60px;color:#515151;border-right:none;margin-top:0px}.tect-block .al-center p{color:#333;font-size:16px;line-height:22px;margin:0px}span.description{margin-bottom:-20px0}}
 @media (max-width: 640px){.related-product-list ul li .item img{min-height:initial}.box-content .img-document{height:400px}#box-text-block .col-md-6{width:60%}
   }@media (max-width: 639px){.main-menu{display:none}section.logotype-section h2,section.logotype-section .product-block .price .amount,.product-block .price section.logotype-section .amount{font-size:33px}section.logotype-section p{font-size:11pt}}
-@media (max-width: 580px){ul li.heading span.description{width: 54% !important;}}@media (max-width: 550px){related-product-list ul li .item img{min-height:100px}}@media (max-width: 550px){.related-product-list ul li .item img { max-height: none;}}@media screen and (-webkit-min-device-pixel-ratio: 0){.payment-methods img{width:auto;height:auto} .i-block-chrome,.payment-methods img{width:40px;height:30px}}.product-block .image .product-label{width:100%;display:block;position:relative;display:none}
+@media (max-width: 580px){ul li.heading span.description{width: 54% !important;}}@media (max-width: 550px){related-product-list ul li .item img{min-height:100px}}@media (max-width: 550px){.related-product-list ul li .item img { max-height: none;}}@media screen and (-webkit-min-device-pixel-ratio: 0){.payment-methods img{width:auto;height:auto} .i-block-chrome,.payment-methods img{width:40px;height:30px}}
+
+.product-block .image .product-label{
+    display: block;
+    position: absolute;
+    top: 2%;
+    bottom: auto;
+    width: auto;
+    background: #fff;
+    border: 2px solid #fe3c00;
+    border-radius: 3px;
+    color: #fe3c00;
+    font-weight: 600;
+    padding: 2% 4%;
+}
 
 .template-index .products-section .ftr a.title, .template-index section.products-section-single .ftr a.title {
   float: left;
@@ -2101,7 +2124,7 @@ a#upsellclosebtn{bottom:80px;padding:5px 11px !important;width:44.6%;text-align:
 .cart-items .description{width:59% !important}
 .cart-items .description.cf{text-transform:uppercase;color:black;font-family:brandon-grotesque-bold;font-size:16px;}
 .cart-items .description .remove {font-family:brandon-grotesque-medium; font-size: 14px;}
-.cart-items .description .left p{ margin-bottom: 0;}
+ul.cart-items .description .left p{ margin-bottom: 0;}
 .cart-items .quantity input,.cart-items .price h5{text-transform:uppercase;color:black;font-family:brandon-grotesque-medium;}
 #cartform .border-bottom input[name="checkout"]{color:#000 !important;background:#aee9d8 !important;text-transform:uppercase;font-family: brandon-grotesque-bold;font-size: 16px;letter-spacing:1px;padding: 12px 0;}
 #cartform .border-bottom .continue{color:white !important;background:#ddd !important;text-transform:uppercase;font-family: brandon-grotesque-bold;letter-spacing:1px;padding:12px 0 !important;display:block;margin-top:0px !important}
@@ -2143,6 +2166,9 @@ a#upsellclosebtn{bottom:80px;padding:5px 11px !important;width:44.6%;text-align:
   position: fixed;
   z-index: 99;
 }
+
+
+
 
 #header.cart .main-menu .menu {
   margin-top: 0;
@@ -2767,8 +2793,9 @@ width: 40%;
 @media only screen and (max-width: 500px){
   .shipping-banner {
     background-size: 120%;
-    width: 96%;	
+    width: 96%;    
     margin-bottom: 20px;
+    margin-top: 1rem;
   }
 }
 @media only screen and (max-width: 767px){
@@ -3394,7 +3421,7 @@ input[type=number]::-webkit-outer-spin-button {
   text-transform: uppercase;
   font-family: brandon-grotesque-bold;
 }
-.cart-products span.head strong{ font-family: brandon-grotesque-bold;}
+.cart-products span.head strong, .cart-products span.head .strong { font-family: brandon-grotesque-bold;}
 .clear{clear:both;}     
 .template-cart .page-title{ text-transform: uppercase; }
 .shipping-banner.cart{
@@ -4101,6 +4128,59 @@ a.current-cart.toggle-cart-summary .cart-count {
   display: inline;
 }
 
+.strong {
+  font-weight: bold;
+}
 .debug {
   display: none !important;
+}
+#countdown-stripe{
+    background: #000;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 28px;
+    line-height: 1;
+    padding: 15px 20px 15px;
+    text-align: center;
+}
+@media(max-width: 766px){
+    #countdown-stripe{
+        margin-bottom: 20px;
+    }
+}
+#countdown-stripe>span{
+    white-space: nowrap;
+}
+#countdown-stripe>span>span:nth-child(2){
+    color: #44f0bf;
+}
+#countdown-stripe>span>span:last-child {
+    color: #fe3c00;
+    font-family: Consolas;
+    font-size: 32px;
+}
+@media(max-width: 550px){
+    #countdown-stripe{
+        font-size: 5.1vw;
+    }  
+    #countdown-stripe>span>span:last-child {
+        font-size: 5.6vw;
+    }  
+}
+.sale-header-mobile{
+    text-align: center;
+}
+.sale-header-mobile>div:first-child{
+    font-family: Have Heart One;
+    font-size: 12vw;
+    line-height: 1;
+    margin-top: 0;
+}
+.sale-header-mobile>div:last-child{
+    font-family: brandon-grotesque-bold;
+    text-transform: uppercase;
+    color: #fe3c00;
+    font-size: 6vw;
+    padding-top: 4vw;
+    padding-bottom: 4vw;
 }

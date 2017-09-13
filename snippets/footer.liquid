@@ -12,7 +12,7 @@
           <li>{% comment %}ly_code_replace_for_[ link.title | link_to: link.url ]_begin{% endcomment %}{% include 'ly-title' with link %}{{ ly_translation | link_to: link.url }}{% comment %}ly_code_replace_end{% endcomment %}</li>
           {% endfor %}
         </ul>   
-        <div class="copy">{% comment %}ly_i18n_replace_for_[ 'layout.footer.copyright' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'layout.footer.copyright' | t }}{% endcapture %}{% include 'ly-static-string' with '4456803' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %} &copy; {{ "now" | date: "%Y" }} {{ langify_shop_name }}.</div>   
+        <div class="copy">{% comment %}ly_i18n_replace_for_[ 'layout.footer.copyright' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'layout.footer.copyright' | t }}{% endcapture %}{% include 'ly-static-string' with '4456803' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %} © {{ "now" | date: "%Y" }} {{ langify_shop_name }}.</div>   
       </div>     
       <div class="fourth column">
         {% if settings.footer_display_newsletter %}
@@ -26,7 +26,7 @@
                 <button class="buy-btn" onclick='window.location.href="/pages/win-cash"'><ly-as-4456802>ENTER HERE</ly-as-4456802></button>
               </div>
             {% else %}
-              &nbsp;
+               
             {% endif %}
         {% endif %}
       </div>
