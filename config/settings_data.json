@@ -150,7 +150,7 @@
     "coll_align_heights": true,
     "coll_infiniscroll": true,
     "prod_block_layout": "beside-exceptmobile",
-    "label_sale_show": true,
+    "label_sale_show": false,
     "label_soldout_show": false,
     "label_remain_show": false,
     "prod_stock_warn_limit": "5",
