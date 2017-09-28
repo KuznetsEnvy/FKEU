@@ -411,134 +411,33 @@ J: Custom HTML
 {% endif %}
 {% endfor %}
 
-<section id="insta" class="border-top section instagram-section">
 
-  {% comment %}	<div class="opposing-items">
-      <h1 class="section-heading left">Instagram</h1>  
 
-    </div>{% endcomment %}
-  <div class="opposing-items">
-    <h4 class="section-heading left">
-      <ly-as-4457052>Follow us on instagram</ly-as-4457052>
-      <br/>
-      <nobr><a target="_blank" href="https://www.instagram.com/floatiekings/"><span class="fa fa-instagram"></span>Floatiekings</a>
-      </nobr>
-    </h4>
-
+<section id="insta">
+  <h4 class="center">{{ 'layout.misc.summer_story_html' | t }}</h4>
+  <div class="header">
+    {{ 'layout.misc.follow_us_html' | t }} <span class="fa fa-instagram"></span> <strong>floatie</strong>kings
   </div>
-    <div class="grid grid--container">
-    <div class="grid-sizer"></div>
-      <!-- div -->
-      {% for i in (1..9) %}
-          <div class="grid-item {% if i == 4 %} grid-item--width2 grid-item--height2 {% endif %}">
-            <a href="https://www.instagram.com/{% comment %}ly_new_settings_replace_for_[ settings.homepage_insta_acct ]_begin{% endcomment %}{% if request.host %}{% assign host = request.host %}{% assign domains = shop.metafields.language_domains %}{% for domain in domains %}{% assign key = domain | first %}{% assign value = domain | last | split: ',' %}{% if value contains host %}{% assign language = key %}{% endif %}{% endfor %}{% if language == nil %}{% assign language = shop.metafields["languages"]["default"] %}{% endif %}{% else %}{% assign language = cart.attributes["language"] %}{% if language == nil %}{% assign language = shop.metafields["languages"]["default"] %}{% endif %}{% endif %}{% assign namespace = language | append: "as" %}{% if shop.metafields[namespace]["id4457050"] %}{% assign ly_translation = shop.metafields[namespace]["id4457050"] %}{% else %}{% assign ly_translation = settings.homepage_insta_acct %}{% endif %}{{ ly_translation }}{% comment %}ly_new_settings_replace_end{% endcomment %}/" target="_blank">
-              <img class="js-backimg" src="https://cdn.shopify.com/s/files/1/0934/6050/files/newinstag_{{ i }}.jpg" alt="" >
-            </a>
-          </div>
-      {% endfor %}
-    </div>
-  
-   <!-- imageagram.com -->
-{% comment %}   <script src="{% comment %}ly_asset_replace_for_[ '4mkapps.insta.min.js' | asset_url ]_begin{% endcomment %}{% assign ly_asset = '4mkapps.insta.min.js' %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  }}{% comment %}ly_asset_replace_end{% endcomment %}" type="text/javascript"></script> {% endcomment %}
-{% comment %} <script src="//imageagram.com/js/imageagram.js"></script>
-<iframe id="instimg-iframe" src="//imageagram.com/grid.php?q=u&search=floatiekings&wt=in&s=150&h=4&w=2&b=no&c=&p=0&ho=fadeIn&sh=no&ww=450&as=on&at=" allowTransparency="true" frameborder="0" scrolling="no" style="border:none; overflow:hidden; width:1200px" ></iframe>
-  <!--	<script src="//imageagram.com/js/imageagram.js"></script>-->
-  {% endcomment %}  
-  {% comment %}<script src="//imageagram.com/js/imageagram.js"></script>
-<iframe id="instimg-iframe" src="//imageagram.com/grid.php?q=u&search=floatiekings&wt=in&s=250&h=4&w=1&b=no&c=&p=5&ho=none&sh=yes&ww=450&as=on&at=2077099952.69c1145.aef5ef91f7d9494e9ceb1d7a672c1bfe" allowTransparency="true" frameborder="0" scrolling="no" style="border:none; overflow:hidden; width:1026px" ></iframe>    
- 
-    {% if settings.homepage_insta_acct != blank %}<span class="follow"><a target="_blank" href="https://instagram.com/{{ settings.homepage_insta_acct | remove: '@' }}" class="hash-link">FOLLOW FLOATIE KINGS</a></span>{% endif %}
- 
-  {% endcomment %}
+
+  <div id="instafeed" class="grid"></div>
 </section>
+<script type="text/javascript">
+    function instafeed_ig(callback) {
+      {% assign instafeed_template = '<a class="grid-item" href="https://www.instagram.com/floatiekings/" target="_blank"><img class="{{orientation}}" src="{{image}}" alt="{{caption}}" /></a>' %}
+        var feed = new Instafeed({
+            accessToken: '2077099952.1677ed0.9304752d4bff4ab49f5eabae56f5bec8',
+            target: 'instafeed',
+            get: 'user',
+            userId: '2077099952',
+            resolution: 'standard_resolution',
+            limit: 15,
+            sortBy: 'most-recent',
+            template: '{{ instafeed_template }}'
+        });
 
-<section id="insta" class="border-top section instagram-section instagram-section-mobile">
-  <div class="opposing-items">
-      <h4 class="section-heading left"><ly-as-4457052>Follow us on instagram</ly-as-4457052> <br /><nobr><a target="_blank" href="https://www.instagram.com/floatiekings/"><span class="fa fa-instagram"></span><ly-as-5315162>25a86b87447b0eb84aae3aa4cc8f46aa</ly-as-5315162></a></nobr></h4>
-
-    </div>
-    <div class="images-container-wrap"> 
-        <div class="images-container">   
-          <!-- div -->
-          {% for i in (1..9) %}
-              <div>
-                <a href="https://www.instagram.com/{% comment %}ly_new_settings_replace_for_[ settings.homepage_insta_acct ]_begin{% endcomment %}{% if request.host %}{% assign host = request.host %}{% assign domains = shop.metafields.language_domains %}{% for domain in domains %}{% assign key = domain | first %}{% assign value = domain | last | split: ',' %}{% if value contains host %}{% assign language = key %}{% endif %}{% endfor %}{% if language == nil %}{% assign language = shop.metafields["languages"]["default"] %}{% endif %}{% else %}{% assign language = cart.attributes["language"] %}{% if language == nil %}{% assign language = shop.metafields["languages"]["default"] %}{% endif %}{% endif %}{% assign namespace = language | append: "as" %}{% if shop.metafields[namespace]["id4457050"] %}{% assign ly_translation = shop.metafields[namespace]["id4457050"] %}{% else %}{% assign ly_translation = settings.homepage_insta_acct %}{% endif %}{{ ly_translation }}{% comment %}ly_new_settings_replace_end{% endcomment %}/" target="_blank">
-                  <img class="js-backimg" src="https://cdn.shopify.com/s/files/1/0934/6050/files/newinstag_{{ i }}.jpg" alt="" >
-                </a>
-              </div>
-          {% endfor %}
-        </div>
-    </div>
-  
-   <!-- imageagram.com -->
-{% comment %}   <script src="{{ '4mkapps.insta.min.js' | asset_url }}" type="text/javascript"></script> {% endcomment %}
-{% comment %} <script src="//imageagram.com/js/imageagram.js"></script>
-<iframe id="instimg-iframe" src="//imageagram.com/grid.php?q=u&search=floatiekings&wt=in&s=150&h=4&w=2&b=no&c=&p=0&ho=fadeIn&sh=no&ww=450&as=on&at=" allowTransparency="true" frameborder="0" scrolling="no" style="border:none; overflow:hidden; width:1200px" ></iframe>
-  <!--    <script src="//imageagram.com/js/imageagram.js"></script>-->
-  {% endcomment %}  
-  {% comment %}<script src="//imageagram.com/js/imageagram.js"></script>
-<iframe id="instimg-iframe" src="//imageagram.com/grid.php?q=u&search=floatiekings&wt=in&s=250&h=4&w=1&b=no&c=&p=5&ho=none&sh=yes&ww=450&as=on&at=2077099952.69c1145.aef5ef91f7d9494e9ceb1d7a672c1bfe" allowTransparency="true" frameborder="0" scrolling="no" style="border:none; overflow:hidden; width:1026px" ></iframe>    
- 
-    {% if settings.homepage_insta_acct != blank %}<span class="follow"><a target="_blank" href="https://instagram.com/{{ settings.homepage_insta_acct | remove: '@' }}" class="hash-link">FOLLOW FLOATIE KINGS</a></span>{% endif %}
- 
-  {% endcomment %}
-</section>
- 
-<script>
-
-  var imagesRep = [];
-  var numImages = {{settings.manual-image-number}};
-  var imagesInvisibles = [];
-  var url1 = "https://cdn.shopify.com/s/files/1/0934/6050/files/instagram_";
-  var url3 = ".jpg";
-  var randTotal = 0, randInvisible, imgInvisible, targetIndex;
-  var randGrid = 0;
-  var $todasImg, $targetElem, srcTemp1;
-  
-  function cambioDeFoto() {
-      randTotal = Math.floor( (Math.random() * imagesInvisibles.length ) );
-      imgInvisible = imagesRep[imagesInvisibles[randTotal]].name;
-      randGrid = Math.floor( (Math.random() * $todasImg.length) );
-
-      $targetElem = $($todasImg.get(randGrid - 1));
-      targetIndex = parseInt($($targetElem).attr('data-index'));
-
-
-      $($targetElem).attr('data-index',imagesInvisibles[randTotal]);
-      $($targetElem).fadeOut(200, function() {
-        $(this).attr('src',imgInvisible).fadeIn();
-      });
-      imagesInvisibles.splice(randTotal, 1);
-      imagesInvisibles.push(targetIndex);
-  }
-
-  document.getElementById('jquery').addEventListener('load', function () {
-      $(document).ready( function() {
-          $todasImg = $('.js-backimg');
-
-          /*  Relleno la estructura con los SRC de las imagenes */
-          for (var c = 1; c <= numImages; c++) {
-              imagesRep[c] = new Object();
-              c = c + "";
-              switch( c.length ) {
-                  case (0, 1): imagesRep[c].name = url1 + c + url3; break;
-                  case (2): imagesRep[c].name = url1 + c + url3; break;
-                  case (3): imagesRep[c].name = url1 + c + url3; break;
-              }
-          }
-
-          /* Actualizo el array de invisibles */
-          for ( var d = numImages; d > $todasImg.length ; d-- ) {
-              imagesInvisibles.push(d);
-          }
-
-
-          /*setInterval( function(){
-           cambioDeFoto();
-           }, 3000);*/
-
-      });
-  });
-
+        feed.run();
+        if(typeof callback === "function") callback();
+    }
+    window.addEventListener('load', function() { instafeed_ig() });
 
 </script>
