@@ -3,7 +3,7 @@
   <h2 class="page-title text-center">{% comment %}ly_i18n_replace_for_[ 'cart.general.title' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'cart.general.title' | t }}{% endcapture %}{% include 'ly-static-string' with '4456913' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</h2>
   {% if cart.item_count == 0 %}
 
-  <h2 class="page-title">{% comment %}ly_i18n_replace_for_[ 'cart.general.empty_title' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'cart.general.empty_title' | t }}{% endcapture %}{% include 'ly-static-string' with '3918409' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</h2>
+  <h2 class="page-title">{{ 'cart.general.empty_title' | t }}</h2>
   <div class="rte">{% comment %}ly_i18n_replace_for_[ 'cart.general.empty_subtext_html' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'cart.general.empty_subtext_html' | t }}{% endcapture %}{% include 'ly-static-string' with '3918410' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</div>
 
   {% else %}  

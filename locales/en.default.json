@@ -111,8 +111,8 @@
     "general": {
       "title": "My Cart",
       "title_short": "Cart",
-      "review_cart": "REVIEW YOUR CART",
-      "empty": "YOUR CART IS EMPTY",
+      "review_cart": "Review your cart",
+      "empty": "Your cart is empty",
       "no_items": "You have no items in your cart",
       "update": "Update",
       "remove": "Remove",
@@ -120,7 +120,7 @@
       "keep": "Keep shopping",
       "click_to_continue_html": "<a href=\"\/\">Click here<\/a> to continue shopping.",
       "checkout": "Checkout",
-      "to_checkout": "PROCEED TO CHECKOUT"
+      "to_checkout": "Proceed to checkout"
     },
     "label": {
       "description": "Items",
@@ -132,7 +132,7 @@
     },
     "shipping": {
       "shipping-banner_html": "<b>Free shipping<\/b> for all orders over",
-      "got_free_shipping": "YOU HAVE EARNED FREE SHIPPING",
+      "earned_free_shipping": "You have earned free shipping",
       "add_for_free_shipping": "Add {{ dif }} for Free shipping.",
       "add_for_free_shipping_html": "Add {{ dif }} for <b>Free shipping<\/b>.",
       "free_shipping_added": "FREE SHIPPING added!",

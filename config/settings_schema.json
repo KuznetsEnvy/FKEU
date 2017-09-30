@@ -2491,5 +2491,16 @@
         "info": "The checkout button in the right hand cart summary window allows your customers to go directly to the checkout page. Disable the checkout button if you need your customers to visit your cart page first."
       }
     ]
+  },
+  {
+    "name": "Shop",
+    "settings": [
+      {
+        "type": "text",
+        "id": "free_shipping_from",
+        "label": "Free shipping from (order price)",
+        "default": "7500"
+      }
+    ]
   }
 ]
