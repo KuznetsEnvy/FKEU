@@ -185,7 +185,7 @@
       <div class="cart-wrap">
         {% include 'ly-languages-switcher' %}
 
-        <a class="current-cart {% if template != 'cart' %}toggle-cart-summary{% endif %}">{{ cart.item_count }}</a>
+        <a class="current-cart cart-count {% if template != 'cart' %}toggle-cart-summary{% endif %}">{{ cart.item_count }}</a>
       </div>
     </div>
 
