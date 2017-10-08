@@ -3,7 +3,6 @@ $mobile: "screen and (max-width: 767px)";
 $desktop: "screen and (min-width: 768px)";
 //endregion
 
-
 //region Fonts
 @font-face {
   font-family: "Brandon Grotesque";
@@ -26,8 +25,8 @@ $desktop: "screen and (min-width: 768px)";
 @font-face {
   font-family: "Have Heart One";
   font-weight: 400;
-  src: url("{{ 'Have Heart One.ttf' | asset_url | split:'?' | first }}") format("truetype"),
-  url("{{ 'Have Heart One.otf' | asset_url | split:'?' | first }}") format("opentype");
+  src: url("{{ 'Have Heart One.otf' | asset_url | split:'?' | first }}") format("opentype"),
+  url("{{ 'Have Heart One.ttf' | asset_url | split:'?' | first }}") format("truetype");
 }
 
 //Fonts below have to be deleted eventually
@@ -86,8 +85,8 @@ $desktop: "screen and (min-width: 768px)";
   font-family: brandon-grotesque-regular;
   src: url("{{ 'brandon-grotesque-regular.otf' }}");
 }
-//endregion
 
+//endregion
 
 .clearfix, .cf {
   zoom: 1;
@@ -8181,7 +8180,6 @@ a.current-cart.toggle-cart-summary .cart-count {
         font-size: 10vw;
         font-family: "Have Heart One";
       }
-
 
       @media #{$desktop} {
         left: 58%;

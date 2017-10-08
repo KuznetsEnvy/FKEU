@@ -1,8 +1,8 @@
 <div class="product-block">
   <a class="img-wrap" href="{{ product.url }}"><img src="{{ product.images.last | product_img_url: 'large' | split:'?' | first }} "/>
     <div class="label {{ product.handle }}">
-      <div class="bestseller-title">{{ 'layout.misc.definite_article' | t }} {{ product.title }}</div>
-      <div class="bestseller-shop">{{ 'pages.buttons.shop_now' | t}}</div>
+      <div class="bestseller-title">{% comment %}ly_i18n_replace_for_[ 'layout.misc.definite_article' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'layout.misc.definite_article' | t }}{% endcapture %}{% include 'ly-static-string' with '5866621' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %} {{ product.title }}</div>
+      <div class="bestseller-shop">{% comment %}ly_i18n_replace_for_[ 'pages.buttons.shop_now' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'pages.buttons.shop_now' | t }}{% endcapture %}{% include 'ly-static-string' with '5866622' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</div>
     </div>
   </a>
 </div>
