@@ -33,9 +33,9 @@
             {% include 'ly-title' with item %}
             <div class="debug">
                 <div class="item">{{ item | json }}</div>
-                <div class="metafields">{{ item.metafields | json }}</div>
+                <div class="metafields">{% comment %}ly_code_replace_for_[ item.metafields | json ]_begin{% endcomment %}{{ ly_translation | json }}{% comment %}ly_code_replace_end{% endcomment %}</div>
                 <div class="product">{{ item.product | json }}</div>
-                <div class="title">{{ item.product.title }}</div>
+                <div class="title">{% comment %}ly_code_replace_for_[ item.product.title ]_begin{% endcomment %}{% include 'ly-title' with item.product %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</div>
                 <div class="ly-translation">{{ ly_translation }}</div>
             </div>
 

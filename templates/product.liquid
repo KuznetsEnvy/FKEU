@@ -132,7 +132,7 @@
               <div id="product-variants" class="{% if hide_default_title %} hidden{% endif %}">
                 <select id="product-select" name="id" class="hidden">
                   {% for variant in product.variants %}
-                    <option data-variant-title="{{ variant.title }}" {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} value="{{ variant.id }}">{% comment %}ly_code_replace_for_[ variant.title ]_begin{% endcomment %}{% include 'ly-title' with variant %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %} - {% assign geolizr_price =  variant.price %}{% include 'geolizr-currency' with geolizr_price %}{{ variant.price | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}</option>
+                    <option data-variant-title="{% comment %}ly_code_replace_for_[ variant.title ]_begin{% endcomment %}{% include 'ly-title' with variant %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}" {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} value="{{ variant.id }}">{% comment %}ly_code_replace_for_[ variant.title ]_begin{% endcomment %}{% include 'ly-title' with variant %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %} - {% assign geolizr_price =  variant.price %}{% include 'geolizr-currency' with geolizr_price %}{{ variant.price | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}</option>
                   {% endfor %}
                 </select>
               </div>

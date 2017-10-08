@@ -13,15 +13,13 @@
       {% for item in cart.items %}
       <div class="cart-summary-item ftr cf">
         <span class="image ftc">
-          {% comment %}ly_code_replace_for_[ item | img_url: 'small' | img_tag: item.title | link_to: item.url ]_begin{% endcomment %}
-          {% include 'ly-title' with item %}{{ item | img_url: 'small' | img_tag: ly_translation | link_to: item.url }}
-          {% comment %}ly_code_replace_end{% endcomment %}
+          {% comment %}ly_code_replace_for_[ item | img_url: 'small' | img_tag: item.title | link_to: item.url ]_begin{% endcomment %}{% include 'ly-title' with item %}{{ item | img_url: 'small' | img_tag: ly_translation | link_to: item.url }}{% comment %}ly_code_replace_end{% endcomment %}
         </span>
         <span class="title-variant ftc">
           <div class="debug">
             <div class="item">{{ item }}</div>
             <div class="product">{{ item.product }}</div>
-            <div class="title">{{ item.product.title }}</div>
+            <div class="title">{% comment %}ly_code_replace_for_[ item.product.title ]_begin{% endcomment %}{% include 'ly-title' with item.product %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</div>
           </div>
           <a class="title" href="{{ item.url }}">{% comment %}ly_code_replace_for_[ item.product.title ]_begin{% endcomment %}{% include 'ly-title' with item.product %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</a>
           {% comment %}{% unless item.variant.title contains 'Default' %}<span class="variant">{% comment %}ly_code_replace_for_[ item.variant.title ]_begin{% endcomment %}{% include 'ly-title' with item.variant %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</span>{% endunless %}{% endcomment %}
@@ -48,7 +46,7 @@
           <a class="btn alt cart" href="/cart">{% comment %}ly_i18n_replace_for_[ 'layout.cart_summary.cart' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'layout.cart_summary.cart' | t }}{% endcapture %}{% include 'ly-static-string' with '4457068' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</a>
         </div>
         <div class="a-button align-right">
-          {% comment %} <form action="/cart" method="post" id="cartform">{% endcomment %}
+          {% comment %} <form action="/cart{% comment %}ly_checkout_begin{% endcomment %}{% if request.host %}{% assign host = request.host %}{% assign domains = shop.metafields.language_domains %}{% for domain in domains %}{% assign key = domain | first %}{% assign value = domain | last | split: ',' %}{% if value contains host %}{% assign language = key %}{% endif %}{% endfor %}{% if language == nil %}{% assign language = shop.metafields["languages"]["default"] %}{% endif %}{% else %}{% assign language = cart.attributes["language"] %}{% if language == nil %}{% assign language = shop.metafields["languages"]["default"] %}{% endif %}{% endif %}{% assign checkout_code = shop.metafields.language_codes[language] %}{% if checkout_code %}{% assign checkout_code = '?locale=' | append: checkout_code %}{{ checkout_code }}{% endif %}{% comment %}ly_checkout_end{% endcomment %}" method="post" id="cartform">{% endcomment %}
           <a class="btn checkout" href="/checkout{% comment %}ly_checkout_begin{% endcomment %}{% if request.host %}{% assign host = request.host %}{% assign domains = shop.metafields.language_domains %}{% for domain in domains %}{% assign key = domain | first %}{% assign value = domain | last | split: ',' %}{% if value contains host %}{% assign language = key %}{% endif %}{% endfor %}{% if language == nil %}{% assign language = shop.metafields["languages"]["default"] %}{% endif %}{% else %}{% assign language = cart.attributes["language"] %}{% if language == nil %}{% assign language = shop.metafields["languages"]["default"] %}{% endif %}{% endif %}{% assign checkout_code = shop.metafields.language_codes[language] %}{% if checkout_code %}{% assign checkout_code = '?locale=' | append: checkout_code %}{{ checkout_code }}{% endif %}{% comment %}ly_checkout_end{% endcomment %}">{% comment %}ly_i18n_replace_for_[ 'layout.cart_summary.checkout' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'layout.cart_summary.checkout' | t }}{% endcapture %}{% include 'ly-static-string' with '4457069' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</a>
           {% comment %} </form> {% endcomment %}
         </div>

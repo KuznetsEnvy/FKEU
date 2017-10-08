@@ -71,6 +71,13 @@
       "definite_article": "The",
       "summer_story_html": "<nobr>Every summer has<\/nobr> <nobr>it’s own story ;)<\/nobr>",
       "follow_us_html": "<em>Follow us<\/em> at"
+    },
+    "bestsellers": {
+      "header": "#Floatie Bestsellers",
+      "full_title": "The {{ title }}"
+    },
+    "general": {
+      "company_title_html": "<strong>Floatie<\/strong>Kings"
     }
   },
   "blogs": {

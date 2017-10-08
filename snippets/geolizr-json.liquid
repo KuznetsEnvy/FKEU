@@ -1,4 +1,4 @@
-{% assign used_json = json | replace: '{', '' | replace: '}', '' | replace: '"', '' %}
+{% comment %}ly_global_begin{% endcomment %}{% include 'ly-global' %}{% comment %}ly_global_end{% endcomment %}{% assign used_json = json | replace: '{', '' | replace: '}', '' | replace: '"', '' %}
 {% assign used_json = used_json | split: ',' %}
 
 {% assign json_value = '' %}
