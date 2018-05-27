@@ -14,7 +14,11 @@
 
         <a class="hover" href="{{ product.url }}"><img src="{{ product.featured_image | product_img_url: 'grande' | split:'?' | first }}"/>
         </a>
-        <a class="none-hover" href="{{ product.url }}"><img src="{{ product.images.last | product_img_url: 'large' | split:'?' | first }} "/></a>
+        {% if product.handle contains 'tube' %}
+          <a class="none-hover" href="{{ product.url }}"><img src="{{ product.images.first | product_img_url: 'large' | split:'?' | first }} "/></a>
+        {% else %}
+          <a class="none-hover" href="{{ product.url }}"><img src="{{ product.images.last | product_img_url: 'large' | split:'?' | first }} "/></a>
+        {% endif %}
 
         {% if settings.prod_quick_buy_show %}
           <div class="quick-buy-wrap pos-{{ settings.prod_quick_buy_pos }}">

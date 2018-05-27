@@ -9,6 +9,18 @@
   {% endunless %}
 {% endif %}
 
+
+
+<section class="section products-section product-list">
+  <div class="container">
+    <div class="row grid">
+      {% for product in collections['tubes'].products %}
+        {% include 'product-block' %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
 <!-- Desktop -->
 <section class="section products-section bestsellers visible-desktop">
   <div class="header">{% comment %}ly_i18n_replace_for_[ 'layout.bestsellers.header' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'layout.bestsellers.header' | t }}{% endcapture %}{% include 'ly-static-string' with '5866669' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</div>
