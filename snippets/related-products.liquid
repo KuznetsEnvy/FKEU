@@ -1,7 +1,7 @@
-{% assign related_product_image_size = 'large' %}
+{% comment %}ly_global_begin{% endcomment %}{% include 'ly-global' %}{% comment %}ly_global_end{% endcomment %}{% assign related_product_image_size = 'large' %}
 {% assign show_related = false %}
 <div class="debug">
-  <div class="prod_rel_meth">{{ settings.prod_rel_meth }}</div>
+  <div class="prod_rel_meth">{% comment %}ly_new_settings_replace_for_[ settings.prod_rel_meth ]_begin{% endcomment %}{% if request.host %}{% assign host = request.host %}{% assign domains = shop.metafields.language_domains %}{% for domain in domains %}{% assign key = domain | first %}{% assign value = domain | last | split: ',' %}{% if value contains host %}{% assign language = key %}{% endif %}{% endfor %}{% if language == nil %}{% assign language = shop.metafields["languages"]["default"] %}{% endif %}{% else %}{% assign language = cart.attributes["language"] %}{% if language == nil %}{% assign language = shop.metafields["languages"]["default"] %}{% endif %}{% endif %}{% assign namespace = language | append: "as" %}{% if shop.metafields[namespace]["id9024232"] %}{% assign ly_translation = shop.metafields[namespace]["id9024232"] %}{% else %}{% assign ly_translation = settings.prod_rel_meth %}{% endif %}{{ ly_translation }}{% comment %}ly_new_settings_replace_end{% endcomment %}</div>
 
   {% assign product_collection = collection %}
   <div class="collection">{{ collection }}</div>
@@ -12,8 +12,8 @@
 {% capture related_markup %}
   <div id="related-products" class="section padless-bottom border-top">
     <div class="container">
-      <h3 class="line-framed">{{ 'products.product.related_title' | t }}</h3>
-      <div class="related-product-list related-{{ settings.prod_rel_meth }} {% if settings.prod_rel_titles %}show-desc{% endif %}" data-normheights=".image-cont" data-normheights-inner="img">
+      <h3 class="line-framed">{% comment %}ly_i18n_replace_for_[ 'products.product.related_title' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'products.product.related_title' | t }}{% endcapture %}{% include 'ly-static-string' with '4456855' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</h3>
+      <div class="related-product-list related-{% comment %}ly_new_settings_replace_for_[ settings.prod_rel_meth ]_begin{% endcomment %}{% if request.host %}{% assign host = request.host %}{% assign domains = shop.metafields.language_domains %}{% for domain in domains %}{% assign key = domain | first %}{% assign value = domain | last | split: ',' %}{% if value contains host %}{% assign language = key %}{% endif %}{% endfor %}{% if language == nil %}{% assign language = shop.metafields["languages"]["default"] %}{% endif %}{% else %}{% assign language = cart.attributes["language"] %}{% if language == nil %}{% assign language = shop.metafields["languages"]["default"] %}{% endif %}{% endif %}{% assign namespace = language | append: "as" %}{% if shop.metafields[namespace]["id9024232"] %}{% assign ly_translation = shop.metafields[namespace]["id9024232"] %}{% else %}{% assign ly_translation = settings.prod_rel_meth %}{% endif %}{{ ly_translation }}{% comment %}ly_new_settings_replace_end{% endcomment %} {% if settings.prod_rel_titles %}show-desc{% endif %}" data-normheights=".image-cont" data-normheights-inner="img">
         {% if settings.prod_rel_meth == 'collection' %}
           <ul class="items">
             {% assign product_collection = collection %}
@@ -30,8 +30,8 @@
               {% endfor %}
             {% endif %}
             <div class="debug">
-              <div class="prod_rel_meth">{{ settings.prod_rel_meth }}</div>
-              <div class="product_collection">{{ product_collection.title }}</div>
+              <div class="prod_rel_meth">{% comment %}ly_new_settings_replace_for_[ settings.prod_rel_meth ]_begin{% endcomment %}{% if request.host %}{% assign host = request.host %}{% assign domains = shop.metafields.language_domains %}{% for domain in domains %}{% assign key = domain | first %}{% assign value = domain | last | split: ',' %}{% if value contains host %}{% assign language = key %}{% endif %}{% endfor %}{% if language == nil %}{% assign language = shop.metafields["languages"]["default"] %}{% endif %}{% else %}{% assign language = cart.attributes["language"] %}{% if language == nil %}{% assign language = shop.metafields["languages"]["default"] %}{% endif %}{% endif %}{% assign namespace = language | append: "as" %}{% if shop.metafields[namespace]["id9024232"] %}{% assign ly_translation = shop.metafields[namespace]["id9024232"] %}{% else %}{% assign ly_translation = settings.prod_rel_meth %}{% endif %}{{ ly_translation }}{% comment %}ly_new_settings_replace_end{% endcomment %}</div>
+              <div class="product_collection">{% comment %}ly_code_replace_for_[ product_collection.title ]_begin{% endcomment %}{% include 'ly-title' with product_collection %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</div>
             </div>
             {% assign prod_rel_count = 0 %}
             {% assign prod_rel_limit_int = 4 %}
@@ -43,16 +43,16 @@
                   {% assign show_related = true %}
                   <li>
                     <div class="item products-section">
-                      <a class="image-cont" href="{{ relprod.url | within: collection }}" title="{{ relprod.title }}">{{ relprod.featured_image | product_img_url: related_product_image_size | img_tag: relprod.title }}</a>
+                      <a class="image-cont" href="{{ relprod.url | within: collection }}" title="{% comment %}ly_code_replace_for_[ relprod.title ]_begin{% endcomment %}{% include 'ly-title' with relprod %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}">{% comment %}ly_code_replace_for_[ relprod.featured_image | product_img_url: related_product_image_size | img_tag: relprod.title ]_begin{% endcomment %}{% include 'ly-title' with relprod %}{{ relprod.featured_image | product_img_url: related_product_image_size | img_tag: ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</a>
                       <div class="desc ftr">
-                        <a class="title ftc" href="{{ relprod.url | within: collection }}">{{ relprod.title }}</a>
+                        <a class="title ftc" href="{{ relprod.url | within: collection }}">{% comment %}ly_code_replace_for_[ relprod.title ]_begin{% endcomment %}{% include 'ly-title' with relprod %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</a>
                         <div class="price ftc ">
                           <span class="amount">
                             {% if relprod.compare_at_price_max > relprod.price %}<del>{{ relprod.compare_at_price_max | money }}</del><br />{% endif %}
                             {{ relprod.price | money }}</span>
                         </div>
                       </div>
-                      <div class='jdgm-widget jdgm-preview-badge' data-id='{{ product.id }}'>{{ product.metafields.judgeme.badge }}</div>
+                      <div class='jdgm-widget jdgm-preview-badge' data-id='{{ product.id }}'>{% comment %}ly_code_replace_for_[ product.metafields.judgeme.badge ]_begin{% endcomment %}{% if request.host %}{% assign host = request.host %}{% assign domains = shop.metafields.language_domains %}{% for domain in domains %}{% assign key = domain | first %}{% assign value = domain | last | split: ',' %}{% if value contains host %}{% assign language = key %}{% endif %}{% endfor %}{% if language == nil %}{% assign language = shop.metafields["languages"]["default"] %}{% endif %}{% else %}{% assign language = cart.attributes["language"] %}{% if language == nil %}{% assign language = shop.metafields["languages"]["default"] %}{% endif %}{% endif %}{% assign ns = language | append: 'judgeme' %}{% assign key = 'badge' %}{% if product.metafields[ns][key] %}{% assign ly_translation = product.metafields[ns][key] %}{% else %}{% assign ly_translation =  product.metafields.judgeme.badge  %}{% endif %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</div>
                     </div>
                   </li>
                 {% endif %}
@@ -75,8 +75,8 @@
                       {% assign show_related = true %}
                       <li>
                         <div class="item">
-                          <a class="image-cont" href="{{ relprod.url | within: collection }}" title="{{ relprod.title }}">{{ relprod.featured_image | product_img_url: related_product_image_size | img_tag: relprod.title }}</a>
-                          <div class="desc"><a href="{{ relprod.url | within: collection }}">{{ relprod.title }}</a></div>
+                          <a class="image-cont" href="{{ relprod.url | within: collection }}" title="{% comment %}ly_code_replace_for_[ relprod.title ]_begin{% endcomment %}{% include 'ly-title' with relprod %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}">{% comment %}ly_code_replace_for_[ relprod.featured_image | product_img_url: related_product_image_size | img_tag: relprod.title ]_begin{% endcomment %}{% include 'ly-title' with relprod %}{{ relprod.featured_image | product_img_url: related_product_image_size | img_tag: ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</a>
+                          <div class="desc"><a href="{{ relprod.url | within: collection }}">{% comment %}ly_code_replace_for_[ relprod.title ]_begin{% endcomment %}{% include 'ly-title' with relprod %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</a></div>
                         </div>
                       </li>
                     {% endif %}
@@ -120,7 +120,7 @@
           </script>
         {% endif %}
 
-        <button name="add" onclick="window.location.href='/'" class="add-to-cart">{{ 'pages.buttons.see_more' | t }}</button>
+        <button name="add" onclick="window.location.href='/'" class="add-to-cart">{% comment %}ly_i18n_replace_for_[ 'pages.buttons.see_more' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'pages.buttons.see_more' | t }}{% endcapture %}{% include 'ly-static-string' with '9024233' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</button>
       </div>
     </div>
   </div><!-- /#related-products -->

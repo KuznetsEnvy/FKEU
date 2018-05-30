@@ -1,6 +1,6 @@
-<section class="section products-section product-list">
+{% comment %}ly_global_begin{% endcomment %}{% include 'ly-global' %}{% comment %}ly_global_end{% endcomment %}<section class="section products-section product-list">
   <a name="top-sellers"></a>
-  <h2 class="section-header line-framed visible-desktop ride-ons"><span>Floatie </span><em>{{ collections['top-sellers'].title }}</em></h2>
+  <h2 class="section-header line-framed visible-desktop ride-ons"><span><ly-as-9024193>Floatie</ly-as-9024193> </span><em>{% comment %}ly_code_replace_for_[ collections['top-sellers'].title ]_begin{% endcomment %}{% include 'ly-title' with collections['top-sellers'] %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</em></h2>
   <div class="container">
     <div class="row grid">
       {% for product in collections['top-sellers'].products %}
@@ -12,7 +12,7 @@
 
 <section class="section products-section bestsellers visible-desktop">
   <a name="bestsellers"></a>
-  <h2 class="section-header line-framed"><span>Giant </span><em>Pizzas</em></h2>
+  <h2 class="section-header line-framed"><span><ly-as-9024194>Giant</ly-as-9024194> </span><em><ly-as-9024195>Pizzas</ly-as-9024195></em></h2>
   <div class="container">
     <div class="row grid">
       {% for product in collections['giant-pizzas'].products limit: 2 %}
@@ -23,34 +23,34 @@
 </section>
 
 <section class="section visible-desktop">
-  <h2 class="section-header"><span>Celebrity spotting </span><em>Hall of Fame</em></h2>
+  <h2 class="section-header"><span><ly-as-9024196>Celebrity spotting</ly-as-9024196> </span><em><ly-as-9024197>Hall of Fame</ly-as-9024197></em></h2>
   <div class="celebrities">
     <div class="celebrity-item">
       <img class="responsively-lazy" alt="" src="{{ 'celeb-DianeKruger.png' | asset_img_url: '1024x1024', crop: 'center' | split:"?" | first }}" data-srcset="{{ 'celeb-DianeKruger.png' | asset_img_url: '100x100', crop: 'center' }} 100w, {{ 'celeb-DianeKruger.png' | asset_img_url: '200x200', crop: 'center' }} 200w, {{ 'celeb-DianeKruger.png' | asset_img_url: '300x300', crop: 'center' }} 300w, {{ 'celeb-DianeKruger.png' | asset_img_url: '400x400', crop: 'center' }} 400w, {{ 'celeb-DianeKruger.png' | asset_img_url: '500x500', crop: 'center' }} 500w, {{ 'celeb-DianeKruger.png' | asset_img_url: '600x600', crop: 'center' }} 600w, {{ 'celeb-DianeKruger.png' | asset_img_url: '1024x1024', crop: 'center' }} 700w" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" />
-      <div class="overlay"><span class="fa fa-instagram"></span><span class="celebrity-name">Diane Kruger</span></div>
+      <div class="overlay"><span class="fa fa-instagram"></span><span class="celebrity-name"><ly-as-9024198>Diane Kruger</ly-as-9024198></span></div>
       <a class="overlay" href="/products/flamingo-float">
-        <div class="title">Shop flamingo</div>
+        <div class="title"><ly-as-9024199>Shop flamingo</ly-as-9024199></div>
       </a>
     </div>
     <div class="celebrity-item">
       <img class="responsively-lazy" alt="" src="{{ 'celeb-JustinBieber.png' | asset_img_url: '1024x1024', crop: 'center' | split:"?" | first }}" data-srcset="{{ 'celeb-JustinBieber.png' | asset_img_url: '100x100', crop: 'center' }} 100w, {{ 'celeb-JustinBieber.png' | asset_img_url: '200x200', crop: 'center' }} 200w, {{ 'celeb-JustinBieber.png' | asset_img_url: '300x300', crop: 'center' }} 300w, {{ 'celeb-JustinBieber.png' | asset_img_url: '400x400', crop: 'center' }} 400w, {{ 'celeb-JustinBieber.png' | asset_img_url: '500x500', crop: 'center' }} 500w, {{ 'celeb-JustinBieber.png' | asset_img_url: '600x600', crop: 'center' }} 600w, {{ 'celeb-JustinBieber.png' | asset_img_url: '1024x1024', crop: 'center' }} 700w" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" />
-      <div class="overlay"><span class="fa fa-instagram"></span><span class="celebrity-name">Justin Bieber</span></div>
+      <div class="overlay"><span class="fa fa-instagram"></span><span class="celebrity-name"><ly-as-9024200>Justin Bieber</ly-as-9024200></span></div>
       <a class="overlay" href="/products/donut-floatie-strawberry">
-        <div class="title">Shop Donut Strawberry</div>
+        <div class="title"><ly-as-9024201>Shop Donut Strawberry</ly-as-9024201></div>
       </a>
     </div>
     <div class="celebrity-item">
       <img class="responsively-lazy" alt="" src="{{ 'celeb-KendallJenner.png' | asset_img_url: '1024x1024', crop: 'center' | split:"?" | first }}" data-srcset="{{ 'celeb-KendallJenner.png' | asset_img_url: '100x100', crop: 'center' }} 100w, {{ 'celeb-KendallJenner.png' | asset_img_url: '200x200', crop: 'center' }} 200w, {{ 'celeb-KendallJenner.png' | asset_img_url: '300x300', crop: 'center' }} 300w, {{ 'celeb-KendallJenner.png' | asset_img_url: '400x400', crop: 'center' }} 400w, {{ 'celeb-KendallJenner.png' | asset_img_url: '500x500', crop: 'center' }} 500w, {{ 'celeb-KendallJenner.png' | asset_img_url: '600x600', crop: 'center' }} 600w, {{ 'celeb-KendallJenner.png' | asset_img_url: '1024x1024', crop: 'center' }} 700w" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" />
-      <div class="overlay"><span class="fa fa-instagram"></span><span class="celebrity-name">Kendall Jenner</span></div>
+      <div class="overlay"><span class="fa fa-instagram"></span><span class="celebrity-name"><ly-as-9024202>Kendall Jenner</ly-as-9024202></span></div>
       <a class="overlay" href="/products/white-swan">
-        <div class="title">Shop White Swan</div>
+        <div class="title"><ly-as-9024203>Shop White Swan</ly-as-9024203></div>
       </a>
     </div>
     <div class="celebrity-item">
       <img class="responsively-lazy" alt="" src="{{ 'celeb-ReeseWitherspoon.png' | asset_img_url: '1024x1024', crop: 'center' | split:"?" | first }}" data-srcset="{{ 'celeb-ReeseWitherspoon.png' | asset_img_url: '100x100', crop: 'center' }} 100w, {{ 'celeb-ReeseWitherspoon.png' | asset_img_url: '200x200', crop: 'center' }} 200w, {{ 'celeb-ReeseWitherspoon.png' | asset_img_url: '300x300', crop: 'center' }} 300w, {{ 'celeb-ReeseWitherspoon.png' | asset_img_url: '400x400', crop: 'center' }} 400w, {{ 'celeb-ReeseWitherspoon.png' | asset_img_url: '500x500', crop: 'center' }} 500w, {{ 'celeb-ReeseWitherspoon.png' | asset_img_url: '600x600', crop: 'center' }} 600w, {{ 'celeb-ReeseWitherspoon.png' | asset_img_url: '1024x1024', crop: 'center' }} 700w" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" />
-      <div class="overlay"><span class="fa fa-instagram"></span><span class="celebrity-name">Reese Witherspoon</span></div>
+      <div class="overlay"><span class="fa fa-instagram"></span><span class="celebrity-name"><ly-as-9024204>Reese Witherspoon</ly-as-9024204></span></div>
       <a class="overlay" href="/products/donut-floatie-strawberry">
-        <div class="title">Shop Donut Strawberry</div>
+        <div class="title"><ly-as-9024201>Shop Donut Strawberry</ly-as-9024201></div>
       </a>
     </div>
   </div>
@@ -58,7 +58,7 @@
 
 <section class="section products-section product-list">
   <a name="tubes"></a>
-  <h2 class="section-header line-framed visible-desktop ride-ons"><span>Floatie </span><em>{{ collections['tubes'].title }}</em></h2>
+  <h2 class="section-header line-framed visible-desktop ride-ons"><span><ly-as-9024193>Floatie</ly-as-9024193> </span><em>{% comment %}ly_code_replace_for_[ collections['tubes'].title ]_begin{% endcomment %}{% include 'ly-title' with collections['tubes'] %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</em></h2>
   <div class="container">
     <div class="row grid">
       {% for product in collections['tubes'].products %}
@@ -71,7 +71,7 @@
 <section class="section products-section product-list">
   <a name="ride-ons"></a>
   <a name="fun-rides"></a>
-  <h2 class="section-header line-framed visible-desktop ride-ons"><span>Floatie </span><em>{{ collections['ride-ons'].title }}</em></h2>
+  <h2 class="section-header line-framed visible-desktop ride-ons"><span><ly-as-9024193>Floatie</ly-as-9024193> </span><em>{% comment %}ly_code_replace_for_[ collections['ride-ons'].title ]_begin{% endcomment %}{% include 'ly-title' with collections['ride-ons'] %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</em></h2>
   <div class="container">
     <div class="row grid">
       {% for product in collections['ride-ons'].products %}
@@ -83,7 +83,7 @@
 
 <section class="section products-section product-list">
   <a name="emojis"></a>
-  <h2 class="section-header line-framed visible-desktop"><span>Floatie </span><em>{{ collections['emojis'].title }}</em></h2>
+  <h2 class="section-header line-framed visible-desktop"><span><ly-as-9024193>Floatie</ly-as-9024193> </span><em>{% comment %}ly_code_replace_for_[ collections['emojis'].title ]_begin{% endcomment %}{% include 'ly-title' with collections['emojis'] %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</em></h2>
   <div class="container">
     <div class="row grid">
       {% for product in collections['emojis'].products %}
@@ -94,13 +94,13 @@
 </section>
 
 <div class="banner banner-memories-forever visible-mobile">
-  <img src="{{ 'transparent_pixel.png' | asset_url | split:"?" | first }}" data-src="{{ 'banner-memories-forever.png' | asset_url | split: '?' | first }}" alt="" />
-  <div><span>{{ 'layout.banners.memories_last_forever' | t }}</span></div>
+  <img src="{% comment %}ly_asset_replace_for_[ 'transparent_pixel.png' | asset_url | split:"?" | first ]_begin{% endcomment %}{% assign ly_asset = 'transparent_pixel.png' %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  | split:"?" | first }}{% comment %}ly_asset_replace_end{% endcomment %}" data-src="{% comment %}ly_asset_replace_for_[ 'banner-memories-forever.png' | asset_url | split: '?' | first ]_begin{% endcomment %}{% assign ly_asset = 'banner-memories-forever.png' %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  | split: '?' | first }}{% comment %}ly_asset_replace_end{% endcomment %}" alt="" />
+  <div><span>{% comment %}ly_i18n_replace_for_[ 'layout.banners.memories_last_forever' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'layout.banners.memories_last_forever' | t }}{% endcapture %}{% include 'ly-static-string' with '9024219' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</span></div>
 </div>
 
 <section class="section products-section product-list">
   <a name="snacks"></a>
-  <h2 class="section-header line-framed visible-desktop"><span>Floatie </span><em>{{ collections['snacks'].title }}</em></h2>
+  <h2 class="section-header line-framed visible-desktop"><span><ly-as-9024193>Floatie</ly-as-9024193> </span><em>{% comment %}ly_code_replace_for_[ collections['snacks'].title ]_begin{% endcomment %}{% include 'ly-title' with collections['snacks'] %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</em></h2>
   <div class="container">
     <div class="row grid">
       {% for product in collections['snacks'].products %}
@@ -112,25 +112,25 @@
 
 <div class="container">
   <div class='jdgm-carousel-wrapper'>
-    <h2 class="section-header line-framed"><span>Customer </span><em>Reviews</em></h2>
+    <h2 class="section-header line-framed"><span><ly-as-9024205>Customer</ly-as-9024205> </span><em><ly-as-9024206>Reviews</ly-as-9024206></em></h2>
 
-    {{ shop.metafields.judgeme.featured_carousel }}
+    {% comment %}ly_code_replace_for_[ shop.metafields.judgeme.featured_carousel ]_begin{% endcomment %}{% if request.host %}{% assign host = request.host %}{% assign domains = shop.metafields.language_domains %}{% for domain in domains %}{% assign key = domain | first %}{% assign value = domain | last | split: ',' %}{% if value contains host %}{% assign language = key %}{% endif %}{% endfor %}{% if language == nil %}{% assign language = shop.metafields["languages"]["default"] %}{% endif %}{% else %}{% assign language = cart.attributes["language"] %}{% if language == nil %}{% assign language = shop.metafields["languages"]["default"] %}{% endif %}{% endif %}{% assign ns = language | append: 'judgeme' %}{% assign key = 'featured_carousel' %}{% if shop.metafields[ns][key] %}{% assign ly_translation = shop.metafields[ns][key] %}{% else %}{% assign ly_translation =  shop.metafields.judgeme.featured_carousel  %}{% endif %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}
   </div>
 </div>
 
 
 <div class="banner banner-best-friend visible-mobile">
-  <img src="{{ 'transparent_pixel.png' | asset_url | split:"?" | first }}" data-src="{{ 'banner-bg-bring-your-friend.png' | asset_url | split: '?' | first }}" alt="" />
-  <div>{{ 'layout.banners.bring_best_friend_html' | t }}</div>
+  <img src="{% comment %}ly_asset_replace_for_[ 'transparent_pixel.png' | asset_url | split:"?" | first ]_begin{% endcomment %}{% assign ly_asset = 'transparent_pixel.png' %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  | split:"?" | first }}{% comment %}ly_asset_replace_end{% endcomment %}" data-src="{% comment %}ly_asset_replace_for_[ 'banner-bg-bring-your-friend.png' | asset_url | split: '?' | first ]_begin{% endcomment %}{% assign ly_asset = 'banner-bg-bring-your-friend.png' %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  | split: '?' | first }}{% comment %}ly_asset_replace_end{% endcomment %}" alt="" />
+  <div>{% comment %}ly_i18n_replace_for_[ 'layout.banners.bring_best_friend_html' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'layout.banners.bring_best_friend_html' | t }}{% endcapture %}{% include 'ly-static-string' with '9024220' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</div>
 </div>
 
 <!-- Aaron Kai banner -->
 <section id="aron-kai" class="section bottom-banner visible-desktop">
   <div class="container">
-    <h2 class="section-header line-framed"><em>Exclusive Collaborations</em></h2>
-    <h3 class="align-center">Only on FloatieKings!</h3>
+    <h2 class="section-header line-framed"><em><ly-as-9024207>Exclusive Collaborations</ly-as-9024207></em></h2>
+    <h3 class="align-center"><ly-as-9024208>Only on FloatieKings!</ly-as-9024208></h3>
     <div class="banner">
-      <img src="{{ 'transparent_pixel.png' | asset_url | split:"?" | first }}" data-src="{{ 'aaronKai-banner.png' | asset_url | split:"?" | first }}" alt="Home AaronKai Banner" />
+      <img src="{% comment %}ly_asset_replace_for_[ 'transparent_pixel.png' | asset_url | split:"?" | first ]_begin{% endcomment %}{% assign ly_asset = 'transparent_pixel.png' %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  | split:"?" | first }}{% comment %}ly_asset_replace_end{% endcomment %}" data-src="{% comment %}ly_asset_replace_for_[ 'aaronKai-banner.png' | asset_url | split:"?" | first ]_begin{% endcomment %}{% assign ly_asset = 'aaronKai-banner.png' %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  | split:"?" | first }}{% comment %}ly_asset_replace_end{% endcomment %}" alt="<ly-as-9024216>Home AaronKai Banner</ly-as-9024216>" />
     </div>
   </div>
 </section>
@@ -153,7 +153,7 @@
 <section class="section bottom-banner">
   <div class="container">
     <div class="banner">
-      <img src="{{ 'transparent_pixel.png' | asset_url | split:"?" | first }}" data-src="{{ 'bottom-banner_new.png' | asset_url | split:"?" | first }}" alt="Home Banner" />
+      <img src="{% comment %}ly_asset_replace_for_[ 'transparent_pixel.png' | asset_url | split:"?" | first ]_begin{% endcomment %}{% assign ly_asset = 'transparent_pixel.png' %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  | split:"?" | first }}{% comment %}ly_asset_replace_end{% endcomment %}" data-src="{% comment %}ly_asset_replace_for_[ 'bottom-banner_new.png' | asset_url | split:"?" | first ]_begin{% endcomment %}{% assign ly_asset = 'bottom-banner_new.png' %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  | split:"?" | first }}{% comment %}ly_asset_replace_end{% endcomment %}" alt="<ly-as-9024217>Home Banner</ly-as-9024217>" />
     </div>
   </div>
 </section>
@@ -171,12 +171,12 @@
 
 
 <div class="banner shop-collection visible-mobile">
-  <img src="{{ 'transparent_pixel.png' | asset_url | split:"?" | first }}" data-src="{{ 'shop-fun-rides.png' | asset_url | split: '?' | first }}" alt="" />
+  <img src="{% comment %}ly_asset_replace_for_[ 'transparent_pixel.png' | asset_url | split:"?" | first ]_begin{% endcomment %}{% assign ly_asset = 'transparent_pixel.png' %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  | split:"?" | first }}{% comment %}ly_asset_replace_end{% endcomment %}" data-src="{% comment %}ly_asset_replace_for_[ 'shop-fun-rides.png' | asset_url | split: '?' | first ]_begin{% endcomment %}{% assign ly_asset = 'shop-fun-rides.png' %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  | split: '?' | first }}{% comment %}ly_asset_replace_end{% endcomment %}" alt="" />
 </div>
 
 <section class="section products-section product-list">
   <div class="container">
-    <h2 class="section-header line-framed"><span>Fun </span><em>Accessories</em></h2>
+    <h2 class="section-header line-framed"><span><ly-as-9024209>Fun</ly-as-9024209> </span><em><ly-as-9024210>Accessories</ly-as-9024210></em></h2>
     <div class="row grid">
       {% for product in collections['pump'].products limit: 1 %}
         {% include 'product-block' %}
@@ -186,20 +186,20 @@
 </section>
 
 <section id="insta">
-  <div class="container"><h2 class="section-header line-framed"><span>As seen on </span><em>Instagram</em></h2></div>
+  <div class="container"><h2 class="section-header line-framed"><span><ly-as-9024211>As seen on</ly-as-9024211> </span><em><ly-as-9024212>Instagram</ly-as-9024212></em></h2></div>
   <div class="header visible-desktop">
-    {{ 'layout.misc.follow_us_html' | t }} <span class="fa fa-instagram"></span> <strong>floatie</strong>kings
+    {% comment %}ly_i18n_replace_for_[ 'layout.misc.follow_us_html' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'layout.misc.follow_us_html' | t }}{% endcapture %}{% include 'ly-static-string' with '9024221' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %} <span class="fa fa-instagram"></span> <strong><ly-as-9024213>floatie</ly-as-9024213></strong><ly-as-9024214>kings</ly-as-9024214>
   </div>
 
   <div id="instafeed" class="grid">
-    <a class="grid-item" href="{{ all_products["white-swan"].url }}"><img class="square responsively-lazy" alt="#FloatieKings" src="{{ 'FK_insta_2018-03_01.png' | file_img_url: '1024x' | split:"?" | first }}" data-srcset="{{ 'FK_insta_2018-03_01.png' | file_img_url: '100x' }} 100w, {{ 'FK_insta_2018-03_01.png' | file_img_url: '200x' }} 200w, {{ 'FK_insta_2018-03_01.png' | file_img_url: '300x' }} 300w, {{ 'FK_insta_2018-03_01.png' | file_img_url: '400x' }} 400w, {{ 'FK_insta_2018-03_01.png' | file_img_url: '500x' }} 500w, {{ 'FK_insta_2018-03_01.png' | file_img_url: '600x' }} 600w, {{ 'FK_insta_2018-03_01.png' | file_img_url: '1024x' }} 700w" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" /><div class="ig-hover"><span class="text">Shop</span><span class="title">{{ all_products["white-swan"].title }}</span></div></a>
-    <a class="grid-item" href="{{ all_products["peacock"].url }}"><img class="square responsively-lazy" alt="#FloatieKings" src="{{ 'FK_insta_2018-03_02.png' | file_img_url: '1024x' | split:"?" | first }}" data-srcset="{{ 'FK_insta_2018-03_02.png' | file_img_url: '100x' }} 100w, {{ 'FK_insta_2018-03_02.png' | file_img_url: '200x' }} 200w, {{ 'FK_insta_2018-03_02.png' | file_img_url: '300x' }} 300w, {{ 'FK_insta_2018-03_02.png' | file_img_url: '400x' }} 400w, {{ 'FK_insta_2018-03_02.png' | file_img_url: '500x' }} 500w, {{ 'FK_insta_2018-03_02.png' | file_img_url: '600x' }} 600w, {{ 'FK_insta_2018-03_02.png' | file_img_url: '1024x' }} 700w" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" /><div class="ig-hover"><span class="text">Shop</span><span class="title">{{ all_products["peacock"].title }}</span></div></a>
-    <a class="grid-item" href="{{ all_products["pink-swan-float"].url }}"><img class="square responsively-lazy" alt="#FloatieKings" src="{{ 'FK_insta_2018-03_03.png' | file_img_url: '1024x' | split:"?" | first }}" data-srcset="{{ 'FK_insta_2018-03_03.png' | file_img_url: '100x' }} 100w, {{ 'FK_insta_2018-03_03.png' | file_img_url: '200x' }} 200w, {{ 'FK_insta_2018-03_03.png' | file_img_url: '300x' }} 300w, {{ 'FK_insta_2018-03_03.png' | file_img_url: '400x' }} 400w, {{ 'FK_insta_2018-03_03.png' | file_img_url: '500x' }} 500w, {{ 'FK_insta_2018-03_03.png' | file_img_url: '600x' }} 600w, {{ 'FK_insta_2018-03_03.png' | file_img_url: '1024x' }} 700w" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" /><div class="ig-hover"><span class="text">Shop</span><span class="title">{{ all_products["pink-swan-float"].title }}</span></div></a>
-    <a class="grid-item" href="{{ all_products["donut-box-set-of-2"].url }}"><img class="square responsively-lazy" alt="#FloatieKings" src="{{ 'FK_insta_2018-03_04.png' | file_img_url: '1024x' | split:"?" | first }}" data-srcset="{{ 'FK_insta_2018-03_04.png' | file_img_url: '100x' }} 100w, {{ 'FK_insta_2018-03_04.png' | file_img_url: '200x' }} 200w, {{ 'FK_insta_2018-03_04.png' | file_img_url: '300x' }} 300w, {{ 'FK_insta_2018-03_04.png' | file_img_url: '400x' }} 400w, {{ 'FK_insta_2018-03_04.png' | file_img_url: '500x' }} 500w, {{ 'FK_insta_2018-03_04.png' | file_img_url: '600x' }} 600w, {{ 'FK_insta_2018-03_04.png' | file_img_url: '1024x' }} 700w" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" /><div class="ig-hover"><span class="text">Shop</span><span class="title">{{ all_products["donut-box-set-of-2"].title }}</span></div></a>
-    <a class="grid-item" href="{{ all_products["pizza-floatie"].url }}"><img class="square responsively-lazy" alt="#FloatieKings" src="{{ 'FK_insta_2018-03_05.png' | file_img_url: '1024x' | split:"?" | first }}" data-srcset="{{ 'FK_insta_2018-03_05.png' | file_img_url: '100x' }} 100w, {{ 'FK_insta_2018-03_05.png' | file_img_url: '200x' }} 200w, {{ 'FK_insta_2018-03_05.png' | file_img_url: '300x' }} 300w, {{ 'FK_insta_2018-03_05.png' | file_img_url: '400x' }} 400w, {{ 'FK_insta_2018-03_05.png' | file_img_url: '500x' }} 500w, {{ 'FK_insta_2018-03_05.png' | file_img_url: '600x' }} 600w, {{ 'FK_insta_2018-03_05.png' | file_img_url: '1024x' }} 700w" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" /><div class="ig-hover"><span class="text">Shop</span><span class="title">{{ all_products["pizza-floatie"].title }}</span></div></a>
-    <a class="grid-item" href="{{ all_products["aaronkai-waves"].url }}"><img class="square responsively-lazy" alt="#FloatieKings" src="{{ 'FK_insta_2018-03_06.png' | file_img_url: '1024x' | split:"?" | first }}" data-srcset="{{ 'FK_insta_2018-03_06.png' | file_img_url: '100x' }} 100w, {{ 'FK_insta_2018-03_06.png' | file_img_url: '200x' }} 200w, {{ 'FK_insta_2018-03_06.png' | file_img_url: '300x' }} 300w, {{ 'FK_insta_2018-03_06.png' | file_img_url: '400x' }} 400w, {{ 'FK_insta_2018-03_06.png' | file_img_url: '500x' }} 500w, {{ 'FK_insta_2018-03_06.png' | file_img_url: '600x' }} 600w, {{ 'FK_insta_2018-03_06.png' | file_img_url: '1024x' }} 700w" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" /><div class="ig-hover"><span class="text">Shop</span><span class="title">{{ all_products["aaronkai-waves"].title }}</span></div></a>
-    <a class="grid-item" href="{{ all_products["unicorn"].url }}"><img class="square responsively-lazy" alt="#FloatieKings" src="{{ 'FK_insta_2018-03_07.png' | file_img_url: '1024x' | split:"?" | first }}" data-srcset="{{ 'FK_insta_2018-03_07.png' | file_img_url: '100x' }} 100w, {{ 'FK_insta_2018-03_07.png' | file_img_url: '200x' }} 200w, {{ 'FK_insta_2018-03_07.png' | file_img_url: '300x' }} 300w, {{ 'FK_insta_2018-03_07.png' | file_img_url: '400x' }} 400w, {{ 'FK_insta_2018-03_07.png' | file_img_url: '500x' }} 500w, {{ 'FK_insta_2018-03_07.png' | file_img_url: '600x' }} 600w, {{ 'FK_insta_2018-03_07.png' | file_img_url: '1024x' }} 700w" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" /><div class="ig-hover"><span class="text">Shop</span><span class="title">{{ all_products["unicorn"].title }}</span></div></a>
-    <a class="grid-item" href="{{ all_products["lol-emoji"].url }}"><img class="square responsively-lazy" alt="#FloatieKings" src="{{ 'FK_insta_2018-03_08.png' | file_img_url: '1024x' | split:"?" | first }}" data-srcset="{{ 'FK_insta_2018-03_08.png' | file_img_url: '100x' }} 100w, {{ 'FK_insta_2018-03_08.png' | file_img_url: '200x' }} 200w, {{ 'FK_insta_2018-03_08.png' | file_img_url: '300x' }} 300w, {{ 'FK_insta_2018-03_08.png' | file_img_url: '400x' }} 400w, {{ 'FK_insta_2018-03_08.png' | file_img_url: '500x' }} 500w, {{ 'FK_insta_2018-03_08.png' | file_img_url: '600x' }} 600w, {{ 'FK_insta_2018-03_08.png' | file_img_url: '1024x' }} 700w" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" /><div class="ig-hover"><span class="text">Shop</span><span class="title">{{ all_products["lol-emoji"].title }}</span></div></a>
+    <a class="grid-item" href="{{ all_products["white-swan"].url }}"><img class="square responsively-lazy" alt="<ly-as-9024218>#FloatieKings</ly-as-9024218>" src="{{ 'FK_insta_2018-03_01.png' | file_img_url: '1024x' | split:"?" | first }}" data-srcset="{{ 'FK_insta_2018-03_01.png' | file_img_url: '100x' }} 100w, {{ 'FK_insta_2018-03_01.png' | file_img_url: '200x' }} 200w, {{ 'FK_insta_2018-03_01.png' | file_img_url: '300x' }} 300w, {{ 'FK_insta_2018-03_01.png' | file_img_url: '400x' }} 400w, {{ 'FK_insta_2018-03_01.png' | file_img_url: '500x' }} 500w, {{ 'FK_insta_2018-03_01.png' | file_img_url: '600x' }} 600w, {{ 'FK_insta_2018-03_01.png' | file_img_url: '1024x' }} 700w" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" /><div class="ig-hover"><span class="text"><ly-as-9024215>Shop</ly-as-9024215></span><span class="title">{% comment %}ly_code_replace_for_[ all_products["white-swan"].title ]_begin{% endcomment %}{% include 'ly-title' with all_products["white-swan"] %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</span></div></a>
+    <a class="grid-item" href="{{ all_products["peacock"].url }}"><img class="square responsively-lazy" alt="<ly-as-9024218>#FloatieKings</ly-as-9024218>" src="{{ 'FK_insta_2018-03_02.png' | file_img_url: '1024x' | split:"?" | first }}" data-srcset="{{ 'FK_insta_2018-03_02.png' | file_img_url: '100x' }} 100w, {{ 'FK_insta_2018-03_02.png' | file_img_url: '200x' }} 200w, {{ 'FK_insta_2018-03_02.png' | file_img_url: '300x' }} 300w, {{ 'FK_insta_2018-03_02.png' | file_img_url: '400x' }} 400w, {{ 'FK_insta_2018-03_02.png' | file_img_url: '500x' }} 500w, {{ 'FK_insta_2018-03_02.png' | file_img_url: '600x' }} 600w, {{ 'FK_insta_2018-03_02.png' | file_img_url: '1024x' }} 700w" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" /><div class="ig-hover"><span class="text"><ly-as-9024215>Shop</ly-as-9024215></span><span class="title">{% comment %}ly_code_replace_for_[ all_products["peacock"].title ]_begin{% endcomment %}{% include 'ly-title' with all_products["peacock"] %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</span></div></a>
+    <a class="grid-item" href="{{ all_products["pink-swan-float"].url }}"><img class="square responsively-lazy" alt="<ly-as-9024218>#FloatieKings</ly-as-9024218>" src="{{ 'FK_insta_2018-03_03.png' | file_img_url: '1024x' | split:"?" | first }}" data-srcset="{{ 'FK_insta_2018-03_03.png' | file_img_url: '100x' }} 100w, {{ 'FK_insta_2018-03_03.png' | file_img_url: '200x' }} 200w, {{ 'FK_insta_2018-03_03.png' | file_img_url: '300x' }} 300w, {{ 'FK_insta_2018-03_03.png' | file_img_url: '400x' }} 400w, {{ 'FK_insta_2018-03_03.png' | file_img_url: '500x' }} 500w, {{ 'FK_insta_2018-03_03.png' | file_img_url: '600x' }} 600w, {{ 'FK_insta_2018-03_03.png' | file_img_url: '1024x' }} 700w" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" /><div class="ig-hover"><span class="text"><ly-as-9024215>Shop</ly-as-9024215></span><span class="title">{% comment %}ly_code_replace_for_[ all_products["pink-swan-float"].title ]_begin{% endcomment %}{% include 'ly-title' with all_products["pink-swan-float"] %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</span></div></a>
+    <a class="grid-item" href="{{ all_products["donut-box-set-of-2"].url }}"><img class="square responsively-lazy" alt="<ly-as-9024218>#FloatieKings</ly-as-9024218>" src="{{ 'FK_insta_2018-03_04.png' | file_img_url: '1024x' | split:"?" | first }}" data-srcset="{{ 'FK_insta_2018-03_04.png' | file_img_url: '100x' }} 100w, {{ 'FK_insta_2018-03_04.png' | file_img_url: '200x' }} 200w, {{ 'FK_insta_2018-03_04.png' | file_img_url: '300x' }} 300w, {{ 'FK_insta_2018-03_04.png' | file_img_url: '400x' }} 400w, {{ 'FK_insta_2018-03_04.png' | file_img_url: '500x' }} 500w, {{ 'FK_insta_2018-03_04.png' | file_img_url: '600x' }} 600w, {{ 'FK_insta_2018-03_04.png' | file_img_url: '1024x' }} 700w" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" /><div class="ig-hover"><span class="text"><ly-as-9024215>Shop</ly-as-9024215></span><span class="title">{% comment %}ly_code_replace_for_[ all_products["donut-box-set-of-2"].title ]_begin{% endcomment %}{% include 'ly-title' with all_products["donut-box-set-of-2"] %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</span></div></a>
+    <a class="grid-item" href="{{ all_products["pizza-floatie"].url }}"><img class="square responsively-lazy" alt="<ly-as-9024218>#FloatieKings</ly-as-9024218>" src="{{ 'FK_insta_2018-03_05.png' | file_img_url: '1024x' | split:"?" | first }}" data-srcset="{{ 'FK_insta_2018-03_05.png' | file_img_url: '100x' }} 100w, {{ 'FK_insta_2018-03_05.png' | file_img_url: '200x' }} 200w, {{ 'FK_insta_2018-03_05.png' | file_img_url: '300x' }} 300w, {{ 'FK_insta_2018-03_05.png' | file_img_url: '400x' }} 400w, {{ 'FK_insta_2018-03_05.png' | file_img_url: '500x' }} 500w, {{ 'FK_insta_2018-03_05.png' | file_img_url: '600x' }} 600w, {{ 'FK_insta_2018-03_05.png' | file_img_url: '1024x' }} 700w" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" /><div class="ig-hover"><span class="text"><ly-as-9024215>Shop</ly-as-9024215></span><span class="title">{% comment %}ly_code_replace_for_[ all_products["pizza-floatie"].title ]_begin{% endcomment %}{% include 'ly-title' with all_products["pizza-floatie"] %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</span></div></a>
+    <a class="grid-item" href="{{ all_products["aaronkai-waves"].url }}"><img class="square responsively-lazy" alt="<ly-as-9024218>#FloatieKings</ly-as-9024218>" src="{{ 'FK_insta_2018-03_06.png' | file_img_url: '1024x' | split:"?" | first }}" data-srcset="{{ 'FK_insta_2018-03_06.png' | file_img_url: '100x' }} 100w, {{ 'FK_insta_2018-03_06.png' | file_img_url: '200x' }} 200w, {{ 'FK_insta_2018-03_06.png' | file_img_url: '300x' }} 300w, {{ 'FK_insta_2018-03_06.png' | file_img_url: '400x' }} 400w, {{ 'FK_insta_2018-03_06.png' | file_img_url: '500x' }} 500w, {{ 'FK_insta_2018-03_06.png' | file_img_url: '600x' }} 600w, {{ 'FK_insta_2018-03_06.png' | file_img_url: '1024x' }} 700w" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" /><div class="ig-hover"><span class="text"><ly-as-9024215>Shop</ly-as-9024215></span><span class="title">{% comment %}ly_code_replace_for_[ all_products["aaronkai-waves"].title ]_begin{% endcomment %}{% include 'ly-title' with all_products["aaronkai-waves"] %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</span></div></a>
+    <a class="grid-item" href="{{ all_products["unicorn"].url }}"><img class="square responsively-lazy" alt="<ly-as-9024218>#FloatieKings</ly-as-9024218>" src="{{ 'FK_insta_2018-03_07.png' | file_img_url: '1024x' | split:"?" | first }}" data-srcset="{{ 'FK_insta_2018-03_07.png' | file_img_url: '100x' }} 100w, {{ 'FK_insta_2018-03_07.png' | file_img_url: '200x' }} 200w, {{ 'FK_insta_2018-03_07.png' | file_img_url: '300x' }} 300w, {{ 'FK_insta_2018-03_07.png' | file_img_url: '400x' }} 400w, {{ 'FK_insta_2018-03_07.png' | file_img_url: '500x' }} 500w, {{ 'FK_insta_2018-03_07.png' | file_img_url: '600x' }} 600w, {{ 'FK_insta_2018-03_07.png' | file_img_url: '1024x' }} 700w" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" /><div class="ig-hover"><span class="text"><ly-as-9024215>Shop</ly-as-9024215></span><span class="title">{% comment %}ly_code_replace_for_[ all_products["unicorn"].title ]_begin{% endcomment %}{% include 'ly-title' with all_products["unicorn"] %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</span></div></a>
+    <a class="grid-item" href="{{ all_products["lol-emoji"].url }}"><img class="square responsively-lazy" alt="<ly-as-9024218>#FloatieKings</ly-as-9024218>" src="{{ 'FK_insta_2018-03_08.png' | file_img_url: '1024x' | split:"?" | first }}" data-srcset="{{ 'FK_insta_2018-03_08.png' | file_img_url: '100x' }} 100w, {{ 'FK_insta_2018-03_08.png' | file_img_url: '200x' }} 200w, {{ 'FK_insta_2018-03_08.png' | file_img_url: '300x' }} 300w, {{ 'FK_insta_2018-03_08.png' | file_img_url: '400x' }} 400w, {{ 'FK_insta_2018-03_08.png' | file_img_url: '500x' }} 500w, {{ 'FK_insta_2018-03_08.png' | file_img_url: '600x' }} 600w, {{ 'FK_insta_2018-03_08.png' | file_img_url: '1024x' }} 700w" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" /><div class="ig-hover"><span class="text"><ly-as-9024215>Shop</ly-as-9024215></span><span class="title">{% comment %}ly_code_replace_for_[ all_products["lol-emoji"].title ]_begin{% endcomment %}{% include 'ly-title' with all_products["lol-emoji"] %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</span></div></a>
   </div>
   <div class="debug all_products">
     {% for product in collections.all.products %}
@@ -207,8 +207,8 @@
     {% endfor %}
   </div>
   <div class="insta-control visible-mobile">
-    <img class="insta-control-left" src="{{ 'transparent_pixel.png' | asset_url | split:"?" | first }}" data-src="{{ 'icon-chevron-right.svg' | asset_url | split: '?' | first }}" />
-    <img align="right" class="insta-control-right" src="{{ 'transparent_pixel.png' | asset_url | split:"?" | first }}" data-src="{{ 'icon-chevron-right.svg' | asset_url | split: '?' | first }}" />
+    <img class="insta-control-left" src="{% comment %}ly_asset_replace_for_[ 'transparent_pixel.png' | asset_url | split:"?" | first ]_begin{% endcomment %}{% assign ly_asset = 'transparent_pixel.png' %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  | split:"?" | first }}{% comment %}ly_asset_replace_end{% endcomment %}" data-src="{% comment %}ly_asset_replace_for_[ 'icon-chevron-right.svg' | asset_url | split: '?' | first ]_begin{% endcomment %}{% assign ly_asset = 'icon-chevron-right.svg' %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  | split: '?' | first }}{% comment %}ly_asset_replace_end{% endcomment %}" />
+    <img align="right" class="insta-control-right" src="{% comment %}ly_asset_replace_for_[ 'transparent_pixel.png' | asset_url | split:"?" | first ]_begin{% endcomment %}{% assign ly_asset = 'transparent_pixel.png' %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  | split:"?" | first }}{% comment %}ly_asset_replace_end{% endcomment %}" data-src="{% comment %}ly_asset_replace_for_[ 'icon-chevron-right.svg' | asset_url | split: '?' | first ]_begin{% endcomment %}{% assign ly_asset = 'icon-chevron-right.svg' %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  | split: '?' | first }}{% comment %}ly_asset_replace_end{% endcomment %}" />
   </div>
 
 </section>

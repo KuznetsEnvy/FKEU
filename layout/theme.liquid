@@ -1,10 +1,10 @@
-<!doctype html>
+{% comment %}ly_global_begin{% endcomment %}{% include 'ly-global' %}{% comment %}ly_global_end{% endcomment %}{% comment %}ly_static_code_begin{% endcomment %}{% capture ly_content %}{% comment %}ly_static_code_end{% endcomment %}<!doctype html>
 <!--[if IE]>
-<html class="no-js ie" lang="en"> <![endif]-->
+<html class="no-js ie" lang="{% comment %}ly_lang_replace_for_[en]_begin{% endcomment %}{% if request.host %}{% assign language = '' %}{% assign domains = shop.metafields.language_domains %}{% for domain in domains %}{% assign key = domain | first %}{% assign value = domain | last | split: ',' %}{% if value contains request.host %}{% assign language = key %}{% endif %}{% endfor %}{% if shop.metafields.language_codes[language] %}{% assign code = shop.metafields.language_codes[language] %}{% else %}{% assign code = 'en' %}{% endif %}{% else %}{% assign code = 'en' %}{% endif %}{{ code }}{% comment %}ly_lang_replace_end{% endcomment %}"{% comment %}ly_dir_replace_for_[]_begin{% endcomment %}{% if request.host %}{% assign host = request.host %}{% assign domains = shop.metafields.language_domains %}{% for domain in domains %}{% assign key = domain | first %}{% assign value = domain | last | split: ',' %}{% if value contains host %}{% assign language = key %}{% endif %}{% endfor %}{% if language == nil %}{% assign language = shop.metafields["languages"]["default"] %}{% endif %}{% else %}{% assign language = cart.attributes["language"] %}{% if language == nil %}{% assign language = shop.metafields["languages"]["default"] %}{% endif %}{% endif %}{% if shop.metafields.languages_dir[language] == 'rtl' %} dir="rtl" {% endif %}{% comment %}ly_dir_replace_end{% endcomment %}> <![endif]-->
 <!--[if !(IE)]><!-->
-<html class="no-js" lang="en"> <!--<![endif]-->
+<html class="no-js" lang="{% comment %}ly_lang_replace_for_[en]_begin{% endcomment %}{% if request.host %}{% assign language = '' %}{% assign domains = shop.metafields.language_domains %}{% for domain in domains %}{% assign key = domain | first %}{% assign value = domain | last | split: ',' %}{% if value contains request.host %}{% assign language = key %}{% endif %}{% endfor %}{% if shop.metafields.language_codes[language] %}{% assign code = shop.metafields.language_codes[language] %}{% else %}{% assign code = 'en' %}{% endif %}{% else %}{% assign code = 'en' %}{% endif %}{{ code }}{% comment %}ly_lang_replace_end{% endcomment %}"{% comment %}ly_dir_replace_for_[]_begin{% endcomment %}{% if request.host %}{% assign host = request.host %}{% assign domains = shop.metafields.language_domains %}{% for domain in domains %}{% assign key = domain | first %}{% assign value = domain | last | split: ',' %}{% if value contains host %}{% assign language = key %}{% endif %}{% endfor %}{% if language == nil %}{% assign language = shop.metafields["languages"]["default"] %}{% endif %}{% else %}{% assign language = cart.attributes["language"] %}{% if language == nil %}{% assign language = shop.metafields["languages"]["default"] %}{% endif %}{% endif %}{% if shop.metafields.languages_dir[language] == 'rtl' %} dir="rtl" {% endif %}{% comment %}ly_dir_replace_end{% endcomment %}> <!--<![endif]-->
 <head>
-  {{ 'geolizr-lib.js' | asset_url | script_tag }}
+  {% comment %}ly_asset_replace_for_[ 'geolizr-lib.js' | asset_url | script_tag ]_begin{% endcomment %}{% assign ly_asset = 'geolizr-lib.js' %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  | script_tag }}{% comment %}ly_asset_replace_end{% endcomment %}
 
   <!-- Canopy v1.0.10 -->
   <meta charset="utf-8"/>
@@ -12,14 +12,14 @@
   <!--[if IE]>
   <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'/><![endif]-->
 
-  <link rel="shortcut icon" href="{{ 'favicon.png' | asset_url | split: '?' | first }}" type="image/png"/>
+  <link rel="shortcut icon" href="{% comment %}ly_asset_replace_for_[ 'favicon.png' | asset_url | split: '?' | first ]_begin{% endcomment %}{% assign ly_asset = 'favicon.png' %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  | split: '?' | first }}{% comment %}ly_asset_replace_end{% endcomment %}" type="image/png"/>
 
   <title>
-    {{ page_title }}{% if current_tags %} &ndash; {{ 'general.meta.tagged' | t }} "{{ current_tags | join: ', ' }}"{% endif %}{% if current_page != 1 %} &ndash; {{ 'general.meta.page' | t }} {{ current_page }}{% endif %}{% unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless %}
+    {{ langify_title }}{% if current_tags %} &ndash; {{ 'general.meta.tagged' | t }} "{{ current_tags | join: ', ' }}"{% endif %}{% if current_page != 1 %} &ndash; {{ 'general.meta.page' | t }} {{ current_page }}{% endif %}{% unless langify_title contains langify_shop_name %} &ndash; {{ langify_shop_name }}{% endunless %}
   </title>
 
-  {% if page_description %}
-    <meta name="description" content="{{ page_description | escape }}"/>
+  {% if langify_description %}
+    <meta name="description" content="{{ langify_description | escape }}"/>
   {% endif %}
   <meta name="google-site-verification" content="7_hBlyoMBrJA-t3GikJzqVY1SlNa84j0gvInIV42WS0"/>
   <meta name="google-site-verification" content="llbVWBEQ_JnNIeMNkq6UuWfaVcjN3TK1h45sbi7HRnA"/>
@@ -27,11 +27,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1 user-scalable=yes"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="msvalidate.01" content="0C0638265DB078357F8582F42D67896E"/>
-  <link rel="canonical" href="{{ canonical_url }}"/>
+  <link rel="canonical" href="{{ canonical_langify_url }}"/>
 
   <script type="text/javascript">
       /**
-       * to defer the loading of stylesheets this should go before the </body>
+       * to defer the loading of stylesheets this should go before the {% comment %}ly_static_code_begin{% endcomment %}{% include 'ly-languages' %}{% comment %}ly_static_code_end{% endcomment %}</body>
        * tag and before any javaScript file inclusion (for performance)
        * */
       function loadStyleSheet(src) {
@@ -45,9 +45,9 @@
           }
       }
 
-      loadStyleSheet("{{ 'styles.scss.css' | asset_url }}");
+      loadStyleSheet("{% comment %}ly_asset_replace_for_[ 'styles.scss.css' | asset_url ]_begin{% endcomment %}{% assign ly_asset = 'styles.scss.css' %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  }}{% comment %}ly_asset_replace_end{% endcomment %}");
       {% if template contains 'product' %}
-        loadStyleSheet("{{ 'jquery.bxslider.css' | asset_url | split:'?' | first }}");
+        loadStyleSheet("{% comment %}ly_asset_replace_for_[ 'jquery.bxslider.css' | asset_url | split:'?' | first ]_begin{% endcomment %}{% assign ly_asset = 'jquery.bxslider.css' %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  | split:'?' | first }}{% comment %}ly_asset_replace_end{% endcomment %}");
       {% endif %}
 
   </script>
@@ -56,13 +56,13 @@
   {% include 'twitter-card' %}
 
   <script id="jquery" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js" defer></script>
-  <script id="jquery-cookies" src="{{ 'js.cookies-2.2.0.min.js' | asset_url | split:"?" | first }}" defer></script>
+  <script id="jquery-cookies" src="{% comment %}ly_asset_replace_for_[ 'js.cookies-2.2.0.min.js' | asset_url | split:"?" | first ]_begin{% endcomment %}{% assign ly_asset = 'js.cookies-2.2.0.min.js' %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  | split:"?" | first }}{% comment %}ly_asset_replace_end{% endcomment %}" defer></script>
 
   <script src="{{ 'api.jquery.js' | shopify_asset_url }}" defer></script>
 
   <!--[if lt IE 9]>
   {{ '//html5shiv.googlecode.com/svn/trunk/html5.js' | script_tag }}
-  {{ 'selectivizr-min.js' | asset_url | script_tag }}
+  {% comment %}ly_asset_replace_for_[ 'selectivizr-min.js' | asset_url | script_tag ]_begin{% endcomment %}{% assign ly_asset = 'selectivizr-min.js' %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  | script_tag }}{% comment %}ly_asset_replace_end{% endcomment %}
   <![endif]-->
 
   {% if template contains 'customers' %}
@@ -87,8 +87,8 @@
   <!-- Pinterest visitor -->
   <img height="1" width="1" style="display:none;" alt="" src="https://ct.pinterest.com/?tid=8HcMxz0bQxu&value=0.00&quantity=1"/>
 
-  <!-- BeginConsistentCartAddon --><script src="{{ "consistent_cart_addon.min.js" | asset_url | split:'?' | first }}" defer></script>
-  <script>{% if customer %}Shopify.merge_cart_text = '{{ "consistent_cart_addon.merge_cart_text" | t }}';
+  <!-- BeginConsistentCartAddon --><script src="{% comment %}ly_asset_replace_for_[ "consistent_cart_addon.min.js" | asset_url | split:'?' | first ]_begin{% endcomment %}{% assign ly_asset = "consistent_cart_addon.min.js" %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  | split:'?' | first }}{% comment %}ly_asset_replace_end{% endcomment %}" defer></script>
+  <script>{% if customer %}Shopify.merge_cart_text = '{% comment %}ly_i18n_replace_for_[ "consistent_cart_addon.merge_cart_text" | t ]_begin{% endcomment %}{% capture ly_template %}{{ "consistent_cart_addon.merge_cart_text" | t }}{% endcapture %}{% include 'ly-static-string' with '4456748' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}';
       Shopify.customer_logged_in = true;
       Shopify.customer_email = "{{ customer.email }}";
     {% else %}Shopify.customer_logged_in = false;
@@ -96,12 +96,12 @@
   <script src="//code.jquery.com/ui/1.12.0/jquery-ui.min.js" defer></script>
   {% include 'judgeme_core' %}
 
-  <link rel="stylesheet" href="{{ 'responsivelyLazy.min.css' | asset_url | split: '?' | first }}">
-  <script async src="{{ 'responsivelyLazy.min.js' | asset_url | split: '?' | first }}"></script>
-</head>
-<body class="template-{{ template | split: '.' | first }} {{ template | split: '.' | join: '-' }} {{ page_title | handle }} {% if template contains 'discount' or template contains 'list-collections' %}template-index{% endif %}">
+  <link rel="stylesheet" href="{% comment %}ly_asset_replace_for_[ 'responsivelyLazy.min.css' | asset_url | split: '?' | first ]_begin{% endcomment %}{% assign ly_asset = 'responsivelyLazy.min.css' %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  | split: '?' | first }}{% comment %}ly_asset_replace_end{% endcomment %}">
+  <script async src="{% comment %}ly_asset_replace_for_[ 'responsivelyLazy.min.js' | asset_url | split: '?' | first ]_begin{% endcomment %}{% assign ly_asset = 'responsivelyLazy.min.js' %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  | split: '?' | first }}{% comment %}ly_asset_replace_end{% endcomment %}"></script>
+{% comment %}ly_dir_styles_begin{% endcomment %}{% if request.host %}{% assign host = request.host %}{% assign domains = shop.metafields.language_domains %}{% for domain in domains %}{% assign key = domain | first %}{% assign value = domain | last | split: ',' %}{% if value contains host %}{% assign language = key %}{% endif %}{% endfor %}{% if language == nil %}{% assign language = shop.metafields["languages"]["default"] %}{% endif %}{% else %}{% assign language = cart.attributes["language"] %}{% if language == nil %}{% assign language = shop.metafields["languages"]["default"] %}{% endif %}{% endif %}{% if shop.metafields.languages_dir[language] == 'rtl' %}{% comment %}ly_asset_replace_for_[ 'ly-rtl.css' | asset_url | stylesheet_tag ]_begin{% endcomment %}{% assign ly_asset = 'ly-rtl.css' %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  | stylesheet_tag }}{% comment %}ly_asset_replace_end{% endcomment %}{% endif %}{% comment %}ly_dir_styles_end{% endcomment %}{% comment %}ly_static_code_begin{% endcomment %}{% if langify_shop_url contains 'https://' %}{% assign used_protocol = 'https://' %}{% else %}{% assign used_protocol = 'http://' %}{% endif %}{% for language in shop.metafields.languages %}{% assign language_key = language | first %}{% if language_key != 'default' %}{% assign split_domains = shop.metafields.language_domains[language_key] | split: ',' %}{% assign language_domain = split_domains[0] %}{% if language_domain %}{% assign language_code = shop.metafields.language_codes[language_key] %}{% if language_code %}{% capture tmp %}{{ content_for_header }}{% endcapture %}{% assign current_url = tmp | split: '<script id="__st">' %}{% assign current_url = current_url | last | split: '</script>' %}{% assign current_url = current_url | first %}{% assign current_url = current_url | split: '"pageurl":"' | last %}{% assign current_url = current_url | split: '"' | first %}{% assign current_url = current_url | replace: '\', '' | replace: request.host, '' %}{{ '<link rel="alternate" hreflang="' | append: language_code | append: '" href="' | append:used_protocol | append: language_domain | append: current_url | append: '" />' }}{% endif %}{% endif %}{% endif %}{% endfor %}{% comment %}ly_static_code_end{% endcomment %}</head>
+<body class="template-{{ template | split: '.' | first }} {{ template | split: '.' | join: '-' }} {{ langify_title | handle }} {% if template contains 'discount' or template contains 'list-collections' %}template-index{% endif %}">
 <div id="loading-overlay" style="z-index: 999; position: fixed; top:0; left: 0; width: 100%; height: 100%; display: flex; justify-content: center; align-items:center; background-color: white; display: none;">
-  <img src="{{ 'FK_Crown_Loader2.gif' | asset_url | split:'?' | first }}" alt="loading"/></div>
+  <img src="{% comment %}ly_asset_replace_for_[ 'FK_Crown_Loader2.gif' | asset_url | split:'?' | first ]_begin{% endcomment %}{% assign ly_asset = 'FK_Crown_Loader2.gif' %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  | split:'?' | first }}{% comment %}ly_asset_replace_end{% endcomment %}" alt="<ly-as-5866639>loading</ly-as-5866639>"/></div>
 <script>
     document.getElementById("loading-overlay").style.display = "flex";
 
@@ -114,7 +114,7 @@
 
 <div id="header" class="cart">
   <div class="page-header">
-    <a class="text-logo" href="{{ shop.url }}"><strong>Floatie</strong> Kings</a>
+    <a class="text-logo" href="{{ langify_shop_url }}"><strong><ly-as-5765342>Floatie</ly-as-5765342></strong> <ly-as-5765343>Kings</ly-as-5765343></a>
     <div class="top-nav">
       <div id="nav-icon3" class="visible-mobile">
         <span></span>
@@ -123,16 +123,16 @@
         <span></span>
       </div>
       <nav class="visible-desktop">
-        <a href="/">Shop</a>
-        <a href="/pages/our-story" >Our story</a>
-        <a href="javascript:void(0)" class="invoke-popup-hello">Join the family</a>
+        <a href="/"><ly-as-9024161>Shop</ly-as-9024161></a>
+        <a href="/pages/our-story" ><ly-as-9024162>Our story</ly-as-9024162></a>
+        <a href="javascript:void(0)" class="invoke-popup-hello"><ly-as-9024163>Join the family</ly-as-9024163></a>
       </nav>
     </div>
     <div class="cart-wrap">
       {% include 'ly-languages-switcher' %}
       <a class="current-cart {% if template != 'cart' %}toggle-cart-summary{% endif %}">
         <svg id="icon-cart" data-name="Cart icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 242.3 242.65">
-          <title>icon-cart</title>
+          <title><ly-as-9024164>icon-cart</ly-as-9024164></title>
           <path class="cls-1" d="M25.65,244.65A23.55,23.55,0,0,1,8.2,236.9a23.1,23.1,0,0,1-5.78-17.39L18.17,74.21a7.73,7.73,0,0,1,8-7.12H51.41l.19-1.79C55.33,29.21,86.35,2,123.75,2a73.32,73.32,0,0,1,48.83,18.37,68.32,68.32,0,0,1,22.92,44.9l.17,1.82h25.18a8.18,8.18,0,0,1,8,7.12l15.76,145.38a23.05,23.05,0,0,1-5.79,17.32l-.07.08a21.65,21.65,0,0,1-16.82,7.66Zm-6.73-23.33v.11a6.51,6.51,0,0,0,6.73,6.73H221.91a6.6,6.6,0,0,0,6.78-6.69v-.13L213.79,83.52H195.85v18.81a8,8,0,0,1-8,8,8.53,8.53,0,0,1-8.52-8.52V83.52H68.29v18.81a8.52,8.52,0,0,1-17,0V83.52H33.82ZM123.75,17.93c-28.28,0-52,20.17-55.14,46.92l-.26,2.23H179.16l-.27-2.24a52.15,52.15,0,0,0-18.14-33.29A56.84,56.84,0,0,0,123.75,17.93Z" transform="translate(-2.35 -2)" />
         </svg>
         <span class="cart-count">{{ cart.item_count }}</span>
@@ -150,8 +150,8 @@
         {% if template contains 'index' or template contains 'product' %}
 
           <div class="shipping-banner-top">
-            ☀️ Last Month's <a href="/products/peacock">Best Seller</a> ☀️
-            {% comment %}☀️ {{ 'cart.shipping.shipping-banner_html' | t }} <nobr>{{ settings.free_shipping_from | money }}</nobr> ☀️{% endcomment %}
+            <ly-as-9024165>☀️ Last Month's</ly-as-9024165> <a href="/products/peacock"><ly-as-9024166>Best Seller</ly-as-9024166></a> <ly-as-9024167>☀️</ly-as-9024167>
+            {% comment %}☀️ {% comment %}ly_i18n_replace_for_[ 'cart.shipping.shipping-banner_html' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'cart.shipping.shipping-banner_html' | t }}{% endcapture %}{% include 'ly-static-string' with '5765347' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %} <nobr>{{ settings.free_shipping_from | money }}</nobr> ☀️{% endcomment %}
           </div>
 
         {% else %}
@@ -159,14 +159,14 @@
           {% if template contains 'cart' %}
             <div class="banner">
               <picture>
-                <source media="(min-width: 64em)" srcset="{{ 'cart-banner.jpg' | asset_url | split:"?" | first }}">
-                <source media="(min-width: 300px)" srcset="{{ 'Cart-Header-Mobile.jpg' | asset_url | split:"?" | first }}">
-                <img src="{{ 'cart-banner.jpg' | asset_url | split:"?" | first }}" alt="Sunglasses Original Bicolor">
+                <source media="(min-width: 64em)" srcset="{% comment %}ly_asset_replace_for_[ 'cart-banner.jpg' | asset_url | split:"?" | first ]_begin{% endcomment %}{% assign ly_asset = 'cart-banner.jpg' %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  | split:"?" | first }}{% comment %}ly_asset_replace_end{% endcomment %}">
+                <source media="(min-width: 300px)" srcset="{% comment %}ly_asset_replace_for_[ 'Cart-Header-Mobile.jpg' | asset_url | split:"?" | first ]_begin{% endcomment %}{% assign ly_asset = 'Cart-Header-Mobile.jpg' %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  | split:"?" | first }}{% comment %}ly_asset_replace_end{% endcomment %}">
+                <img src="{% comment %}ly_asset_replace_for_[ 'cart-banner.jpg' | asset_url | split:"?" | first ]_begin{% endcomment %}{% assign ly_asset = 'cart-banner.jpg' %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  | split:"?" | first }}{% comment %}ly_asset_replace_end{% endcomment %}" alt="<ly-as-9024169>Sunglasses Original Bicolor</ly-as-9024169>">
               </picture>
             </div>
           {% elsif template contains 'page.support' %}
             <div class="banner">
-              <img src="{{ 'support-banner.jpg' | asset_url | split:"?" | first }}" alt="support-banner"/>
+              <img src="{% comment %}ly_asset_replace_for_[ 'support-banner.jpg' | asset_url | split:"?" | first ]_begin{% endcomment %}{% assign ly_asset = 'support-banner.jpg' %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  | split:"?" | first }}{% comment %}ly_asset_replace_end{% endcomment %}" alt="<ly-as-9024170>support-banner</ly-as-9024170>"/>
             </div>
           {% endif %}
 
@@ -186,9 +186,9 @@
 {% include 'popup-stock' %}
 {% include 'popup-hello' %}
 
-<script src="{{ 'libs.js' | asset_url | split:"?" | first }}" defer></script>
-<script src="{{ 'scripts.js' | asset_url }}" defer></script>
-{% comment %}<script src="{{ 'instafeed.min.js' | asset_url | split:"?" | first }}" defer></script>{% endcomment %}
+<script src="{% comment %}ly_asset_replace_for_[ 'libs.js' | asset_url | split:"?" | first ]_begin{% endcomment %}{% assign ly_asset = 'libs.js' %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  | split:"?" | first }}{% comment %}ly_asset_replace_end{% endcomment %}" defer></script>
+<script src="{% comment %}ly_asset_replace_for_[ 'scripts.js' | asset_url ]_begin{% endcomment %}{% assign ly_asset = 'scripts.js' %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  }}{% comment %}ly_asset_replace_end{% endcomment %}" defer></script>
+{% comment %}<script src="{% comment %}ly_asset_replace_for_[ 'instafeed.min.js' | asset_url | split:"?" | first ]_begin{% endcomment %}{% assign ly_asset = 'instafeed.min.js' %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  | split:"?" | first }}{% comment %}ly_asset_replace_end{% endcomment %}" defer></script>{% endcomment %}
 
 <input type="hidden" name="_pc_params" value="{{ shop.permanent_domain }}:{{ customer.id }}"/>
 {% if template contains 'product' or template contains 'cart' %}
@@ -264,5 +264,5 @@
 <script src="https://use.fontawesome.com/791a439b99.js"></script>
 
 <!--<script type="text/javascript">!function(e,t,n){function a(){var e=t.getElementsByTagName("script")[0],n=t.createElement("script");n.type="text/javascript",n.async=!0,n.src="https://beacon-v2.helpscout.net",e.parentNode.insertBefore(n,e)}if(e.Beacon=n=function(t,n,a){e.Beacon.readyQueue.push({method:t,options:n,data:a})},n.readyQueue=[],"complete"===t.readyState)return a();e.attachEvent?e.attachEvent("onload",a):e.addEventListener("load",a,!1)}(window,document,window.Beacon||function(){});</script><script>window.Beacon('init', '205b524c-0e1f-4507-8c0a-dbf65d85e7a9')</script>-->
-</body>
-</html>
+{% comment %}ly_static_code_begin{% endcomment %}{% include 'ly-languages' %}{% comment %}ly_static_code_end{% endcomment %}</body>
+</html>{% comment %}ly_static_code_begin{% endcomment %}{% endcapture %}{% include 'ly-static' with ly_content %}{% comment %}ly_static_code_end{% endcomment %}
