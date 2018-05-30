@@ -1,0 +1,234 @@
+<section class="section products-section product-list">
+  <a name="top-sellers"></a>
+  <h2 class="section-header line-framed visible-desktop ride-ons"><span>Floatie </span><em>{{ collections['top-sellers'].title }}</em></h2>
+  <div class="container">
+    <div class="row grid">
+      {% for product in collections['top-sellers'].products %}
+        {% include 'product-block' %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section products-section bestsellers visible-desktop">
+  <a name="bestsellers"></a>
+  <h2 class="section-header line-framed"><span>Giant </span><em>Pizzas</em></h2>
+  <div class="container">
+    <div class="row grid">
+      {% for product in collections['giant-pizzas'].products limit: 2 %}
+        {% include 'product-bestseller' %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section visible-desktop">
+  <h2 class="section-header"><span>Celebrity spotting </span><em>Hall of Fame</em></h2>
+  <div class="celebrities">
+    <div class="celebrity-item">
+      <img class="responsively-lazy" alt="" src="{{ 'celeb-DianeKruger.png' | asset_img_url: '1024x1024', crop: 'center' | split:"?" | first }}" data-srcset="{{ 'celeb-DianeKruger.png' | asset_img_url: '100x100', crop: 'center' }} 100w, {{ 'celeb-DianeKruger.png' | asset_img_url: '200x200', crop: 'center' }} 200w, {{ 'celeb-DianeKruger.png' | asset_img_url: '300x300', crop: 'center' }} 300w, {{ 'celeb-DianeKruger.png' | asset_img_url: '400x400', crop: 'center' }} 400w, {{ 'celeb-DianeKruger.png' | asset_img_url: '500x500', crop: 'center' }} 500w, {{ 'celeb-DianeKruger.png' | asset_img_url: '600x600', crop: 'center' }} 600w, {{ 'celeb-DianeKruger.png' | asset_img_url: '1024x1024', crop: 'center' }} 700w" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" />
+      <div class="overlay"><span class="fa fa-instagram"></span><span class="celebrity-name">Diane Kruger</span></div>
+      <a class="overlay" href="/products/flamingo-float">
+        <div class="title">Shop flamingo</div>
+      </a>
+    </div>
+    <div class="celebrity-item">
+      <img class="responsively-lazy" alt="" src="{{ 'celeb-JustinBieber.png' | asset_img_url: '1024x1024', crop: 'center' | split:"?" | first }}" data-srcset="{{ 'celeb-JustinBieber.png' | asset_img_url: '100x100', crop: 'center' }} 100w, {{ 'celeb-JustinBieber.png' | asset_img_url: '200x200', crop: 'center' }} 200w, {{ 'celeb-JustinBieber.png' | asset_img_url: '300x300', crop: 'center' }} 300w, {{ 'celeb-JustinBieber.png' | asset_img_url: '400x400', crop: 'center' }} 400w, {{ 'celeb-JustinBieber.png' | asset_img_url: '500x500', crop: 'center' }} 500w, {{ 'celeb-JustinBieber.png' | asset_img_url: '600x600', crop: 'center' }} 600w, {{ 'celeb-JustinBieber.png' | asset_img_url: '1024x1024', crop: 'center' }} 700w" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" />
+      <div class="overlay"><span class="fa fa-instagram"></span><span class="celebrity-name">Justin Bieber</span></div>
+      <a class="overlay" href="/products/donut-floatie-strawberry">
+        <div class="title">Shop Donut Strawberry</div>
+      </a>
+    </div>
+    <div class="celebrity-item">
+      <img class="responsively-lazy" alt="" src="{{ 'celeb-KendallJenner.png' | asset_img_url: '1024x1024', crop: 'center' | split:"?" | first }}" data-srcset="{{ 'celeb-KendallJenner.png' | asset_img_url: '100x100', crop: 'center' }} 100w, {{ 'celeb-KendallJenner.png' | asset_img_url: '200x200', crop: 'center' }} 200w, {{ 'celeb-KendallJenner.png' | asset_img_url: '300x300', crop: 'center' }} 300w, {{ 'celeb-KendallJenner.png' | asset_img_url: '400x400', crop: 'center' }} 400w, {{ 'celeb-KendallJenner.png' | asset_img_url: '500x500', crop: 'center' }} 500w, {{ 'celeb-KendallJenner.png' | asset_img_url: '600x600', crop: 'center' }} 600w, {{ 'celeb-KendallJenner.png' | asset_img_url: '1024x1024', crop: 'center' }} 700w" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" />
+      <div class="overlay"><span class="fa fa-instagram"></span><span class="celebrity-name">Kendall Jenner</span></div>
+      <a class="overlay" href="/products/white-swan">
+        <div class="title">Shop White Swan</div>
+      </a>
+    </div>
+    <div class="celebrity-item">
+      <img class="responsively-lazy" alt="" src="{{ 'celeb-ReeseWitherspoon.png' | asset_img_url: '1024x1024', crop: 'center' | split:"?" | first }}" data-srcset="{{ 'celeb-ReeseWitherspoon.png' | asset_img_url: '100x100', crop: 'center' }} 100w, {{ 'celeb-ReeseWitherspoon.png' | asset_img_url: '200x200', crop: 'center' }} 200w, {{ 'celeb-ReeseWitherspoon.png' | asset_img_url: '300x300', crop: 'center' }} 300w, {{ 'celeb-ReeseWitherspoon.png' | asset_img_url: '400x400', crop: 'center' }} 400w, {{ 'celeb-ReeseWitherspoon.png' | asset_img_url: '500x500', crop: 'center' }} 500w, {{ 'celeb-ReeseWitherspoon.png' | asset_img_url: '600x600', crop: 'center' }} 600w, {{ 'celeb-ReeseWitherspoon.png' | asset_img_url: '1024x1024', crop: 'center' }} 700w" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" />
+      <div class="overlay"><span class="fa fa-instagram"></span><span class="celebrity-name">Reese Witherspoon</span></div>
+      <a class="overlay" href="/products/donut-floatie-strawberry">
+        <div class="title">Shop Donut Strawberry</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section products-section product-list">
+  <a name="tubes"></a>
+  <h2 class="section-header line-framed visible-desktop ride-ons"><span>Floatie </span><em>{{ collections['tubes'].title }}</em></h2>
+  <div class="container">
+    <div class="row grid">
+      {% for product in collections['tubes'].products %}
+        {% include 'product-block' %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section products-section product-list">
+  <a name="ride-ons"></a>
+  <a name="fun-rides"></a>
+  <h2 class="section-header line-framed visible-desktop ride-ons"><span>Floatie </span><em>{{ collections['ride-ons'].title }}</em></h2>
+  <div class="container">
+    <div class="row grid">
+      {% for product in collections['ride-ons'].products %}
+        {% include 'product-block' %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section products-section product-list">
+  <a name="emojis"></a>
+  <h2 class="section-header line-framed visible-desktop"><span>Floatie </span><em>{{ collections['emojis'].title }}</em></h2>
+  <div class="container">
+    <div class="row grid">
+      {% for product in collections['emojis'].products %}
+        {% include 'product-block' %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<div class="banner banner-memories-forever visible-mobile">
+  <img src="{{ 'transparent_pixel.png' | asset_url | split:"?" | first }}" data-src="{{ 'banner-memories-forever.png' | asset_url | split: '?' | first }}" alt="" />
+  <div><span>{{ 'layout.banners.memories_last_forever' | t }}</span></div>
+</div>
+
+<section class="section products-section product-list">
+  <a name="snacks"></a>
+  <h2 class="section-header line-framed visible-desktop"><span>Floatie </span><em>{{ collections['snacks'].title }}</em></h2>
+  <div class="container">
+    <div class="row grid">
+      {% for product in collections['snacks'].products %}
+        {% include 'product-block' %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<div class="container">
+  <div class='jdgm-carousel-wrapper'>
+    <h2 class="section-header line-framed"><span>Customer </span><em>Reviews</em></h2>
+
+    {{ shop.metafields.judgeme.featured_carousel }}
+  </div>
+</div>
+
+
+<div class="banner banner-best-friend visible-mobile">
+  <img src="{{ 'transparent_pixel.png' | asset_url | split:"?" | first }}" data-src="{{ 'banner-bg-bring-your-friend.png' | asset_url | split: '?' | first }}" alt="" />
+  <div>{{ 'layout.banners.bring_best_friend_html' | t }}</div>
+</div>
+
+<!-- Aaron Kai banner -->
+<section id="aron-kai" class="section bottom-banner visible-desktop">
+  <div class="container">
+    <h2 class="section-header line-framed"><em>Exclusive Collaborations</em></h2>
+    <h3 class="align-center">Only on FloatieKings!</h3>
+    <div class="banner">
+      <img src="{{ 'transparent_pixel.png' | asset_url | split:"?" | first }}" data-src="{{ 'aaronKai-banner.png' | asset_url | split:"?" | first }}" alt="Home AaronKai Banner" />
+    </div>
+  </div>
+</section>
+
+<section class="section products-section product-list">
+  <div class="container">
+    <div class="row grid">
+      {% for product in collections['aaron-kai'].products limit: 3 %}
+        {% include 'product-block' %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+
+{% section 'as-seen-on' %}
+
+
+<!-- Badwood banner -->
+<section class="section bottom-banner">
+  <div class="container">
+    <div class="banner">
+      <img src="{{ 'transparent_pixel.png' | asset_url | split:"?" | first }}" data-src="{{ 'bottom-banner_new.png' | asset_url | split:"?" | first }}" alt="Home Banner" />
+    </div>
+  </div>
+</section>
+
+<section class="section products-section product-list">
+  <div class="container">
+    <div class="row grid">
+      {% for product in collections['ski-mask'].products limit: 1 %}
+        {% include 'product-block' %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+
+
+<div class="banner shop-collection visible-mobile">
+  <img src="{{ 'transparent_pixel.png' | asset_url | split:"?" | first }}" data-src="{{ 'shop-fun-rides.png' | asset_url | split: '?' | first }}" alt="" />
+</div>
+
+<section class="section products-section product-list">
+  <div class="container">
+    <h2 class="section-header line-framed"><span>Fun </span><em>Accessories</em></h2>
+    <div class="row grid">
+      {% for product in collections['pump'].products limit: 1 %}
+        {% include 'product-block' %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section id="insta">
+  <div class="container"><h2 class="section-header line-framed"><span>As seen on </span><em>Instagram</em></h2></div>
+  <div class="header visible-desktop">
+    {{ 'layout.misc.follow_us_html' | t }} <span class="fa fa-instagram"></span> <strong>floatie</strong>kings
+  </div>
+
+  <div id="instafeed" class="grid">
+    <a class="grid-item" href="{{ all_products["white-swan"].url }}"><img class="square responsively-lazy" alt="#FloatieKings" src="{{ 'FK_insta_2018-03_01.png' | file_img_url: '1024x' | split:"?" | first }}" data-srcset="{{ 'FK_insta_2018-03_01.png' | file_img_url: '100x' }} 100w, {{ 'FK_insta_2018-03_01.png' | file_img_url: '200x' }} 200w, {{ 'FK_insta_2018-03_01.png' | file_img_url: '300x' }} 300w, {{ 'FK_insta_2018-03_01.png' | file_img_url: '400x' }} 400w, {{ 'FK_insta_2018-03_01.png' | file_img_url: '500x' }} 500w, {{ 'FK_insta_2018-03_01.png' | file_img_url: '600x' }} 600w, {{ 'FK_insta_2018-03_01.png' | file_img_url: '1024x' }} 700w" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" /><div class="ig-hover"><span class="text">Shop</span><span class="title">{{ all_products["white-swan"].title }}</span></div></a>
+    <a class="grid-item" href="{{ all_products["peacock"].url }}"><img class="square responsively-lazy" alt="#FloatieKings" src="{{ 'FK_insta_2018-03_02.png' | file_img_url: '1024x' | split:"?" | first }}" data-srcset="{{ 'FK_insta_2018-03_02.png' | file_img_url: '100x' }} 100w, {{ 'FK_insta_2018-03_02.png' | file_img_url: '200x' }} 200w, {{ 'FK_insta_2018-03_02.png' | file_img_url: '300x' }} 300w, {{ 'FK_insta_2018-03_02.png' | file_img_url: '400x' }} 400w, {{ 'FK_insta_2018-03_02.png' | file_img_url: '500x' }} 500w, {{ 'FK_insta_2018-03_02.png' | file_img_url: '600x' }} 600w, {{ 'FK_insta_2018-03_02.png' | file_img_url: '1024x' }} 700w" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" /><div class="ig-hover"><span class="text">Shop</span><span class="title">{{ all_products["peacock"].title }}</span></div></a>
+    <a class="grid-item" href="{{ all_products["pink-swan-float"].url }}"><img class="square responsively-lazy" alt="#FloatieKings" src="{{ 'FK_insta_2018-03_03.png' | file_img_url: '1024x' | split:"?" | first }}" data-srcset="{{ 'FK_insta_2018-03_03.png' | file_img_url: '100x' }} 100w, {{ 'FK_insta_2018-03_03.png' | file_img_url: '200x' }} 200w, {{ 'FK_insta_2018-03_03.png' | file_img_url: '300x' }} 300w, {{ 'FK_insta_2018-03_03.png' | file_img_url: '400x' }} 400w, {{ 'FK_insta_2018-03_03.png' | file_img_url: '500x' }} 500w, {{ 'FK_insta_2018-03_03.png' | file_img_url: '600x' }} 600w, {{ 'FK_insta_2018-03_03.png' | file_img_url: '1024x' }} 700w" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" /><div class="ig-hover"><span class="text">Shop</span><span class="title">{{ all_products["pink-swan-float"].title }}</span></div></a>
+    <a class="grid-item" href="{{ all_products["donut-box-set-of-2"].url }}"><img class="square responsively-lazy" alt="#FloatieKings" src="{{ 'FK_insta_2018-03_04.png' | file_img_url: '1024x' | split:"?" | first }}" data-srcset="{{ 'FK_insta_2018-03_04.png' | file_img_url: '100x' }} 100w, {{ 'FK_insta_2018-03_04.png' | file_img_url: '200x' }} 200w, {{ 'FK_insta_2018-03_04.png' | file_img_url: '300x' }} 300w, {{ 'FK_insta_2018-03_04.png' | file_img_url: '400x' }} 400w, {{ 'FK_insta_2018-03_04.png' | file_img_url: '500x' }} 500w, {{ 'FK_insta_2018-03_04.png' | file_img_url: '600x' }} 600w, {{ 'FK_insta_2018-03_04.png' | file_img_url: '1024x' }} 700w" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" /><div class="ig-hover"><span class="text">Shop</span><span class="title">{{ all_products["donut-box-set-of-2"].title }}</span></div></a>
+    <a class="grid-item" href="{{ all_products["pizza-floatie"].url }}"><img class="square responsively-lazy" alt="#FloatieKings" src="{{ 'FK_insta_2018-03_05.png' | file_img_url: '1024x' | split:"?" | first }}" data-srcset="{{ 'FK_insta_2018-03_05.png' | file_img_url: '100x' }} 100w, {{ 'FK_insta_2018-03_05.png' | file_img_url: '200x' }} 200w, {{ 'FK_insta_2018-03_05.png' | file_img_url: '300x' }} 300w, {{ 'FK_insta_2018-03_05.png' | file_img_url: '400x' }} 400w, {{ 'FK_insta_2018-03_05.png' | file_img_url: '500x' }} 500w, {{ 'FK_insta_2018-03_05.png' | file_img_url: '600x' }} 600w, {{ 'FK_insta_2018-03_05.png' | file_img_url: '1024x' }} 700w" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" /><div class="ig-hover"><span class="text">Shop</span><span class="title">{{ all_products["pizza-floatie"].title }}</span></div></a>
+    <a class="grid-item" href="{{ all_products["aaronkai-waves"].url }}"><img class="square responsively-lazy" alt="#FloatieKings" src="{{ 'FK_insta_2018-03_06.png' | file_img_url: '1024x' | split:"?" | first }}" data-srcset="{{ 'FK_insta_2018-03_06.png' | file_img_url: '100x' }} 100w, {{ 'FK_insta_2018-03_06.png' | file_img_url: '200x' }} 200w, {{ 'FK_insta_2018-03_06.png' | file_img_url: '300x' }} 300w, {{ 'FK_insta_2018-03_06.png' | file_img_url: '400x' }} 400w, {{ 'FK_insta_2018-03_06.png' | file_img_url: '500x' }} 500w, {{ 'FK_insta_2018-03_06.png' | file_img_url: '600x' }} 600w, {{ 'FK_insta_2018-03_06.png' | file_img_url: '1024x' }} 700w" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" /><div class="ig-hover"><span class="text">Shop</span><span class="title">{{ all_products["aaronkai-waves"].title }}</span></div></a>
+    <a class="grid-item" href="{{ all_products["unicorn"].url }}"><img class="square responsively-lazy" alt="#FloatieKings" src="{{ 'FK_insta_2018-03_07.png' | file_img_url: '1024x' | split:"?" | first }}" data-srcset="{{ 'FK_insta_2018-03_07.png' | file_img_url: '100x' }} 100w, {{ 'FK_insta_2018-03_07.png' | file_img_url: '200x' }} 200w, {{ 'FK_insta_2018-03_07.png' | file_img_url: '300x' }} 300w, {{ 'FK_insta_2018-03_07.png' | file_img_url: '400x' }} 400w, {{ 'FK_insta_2018-03_07.png' | file_img_url: '500x' }} 500w, {{ 'FK_insta_2018-03_07.png' | file_img_url: '600x' }} 600w, {{ 'FK_insta_2018-03_07.png' | file_img_url: '1024x' }} 700w" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" /><div class="ig-hover"><span class="text">Shop</span><span class="title">{{ all_products["unicorn"].title }}</span></div></a>
+    <a class="grid-item" href="{{ all_products["lol-emoji"].url }}"><img class="square responsively-lazy" alt="#FloatieKings" src="{{ 'FK_insta_2018-03_08.png' | file_img_url: '1024x' | split:"?" | first }}" data-srcset="{{ 'FK_insta_2018-03_08.png' | file_img_url: '100x' }} 100w, {{ 'FK_insta_2018-03_08.png' | file_img_url: '200x' }} 200w, {{ 'FK_insta_2018-03_08.png' | file_img_url: '300x' }} 300w, {{ 'FK_insta_2018-03_08.png' | file_img_url: '400x' }} 400w, {{ 'FK_insta_2018-03_08.png' | file_img_url: '500x' }} 500w, {{ 'FK_insta_2018-03_08.png' | file_img_url: '600x' }} 600w, {{ 'FK_insta_2018-03_08.png' | file_img_url: '1024x' }} 700w" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" /><div class="ig-hover"><span class="text">Shop</span><span class="title">{{ all_products["lol-emoji"].title }}</span></div></a>
+  </div>
+  <div class="debug all_products">
+    {% for product in collections.all.products %}
+      {{ forloop.index }}. {{ product.handle }}
+    {% endfor %}
+  </div>
+  <div class="insta-control visible-mobile">
+    <img class="insta-control-left" src="{{ 'transparent_pixel.png' | asset_url | split:"?" | first }}" data-src="{{ 'icon-chevron-right.svg' | asset_url | split: '?' | first }}" />
+    <img align="right" class="insta-control-right" src="{{ 'transparent_pixel.png' | asset_url | split:"?" | first }}" data-src="{{ 'icon-chevron-right.svg' | asset_url | split: '?' | first }}" />
+  </div>
+
+</section>
+<script type="text/javascript">
+    function instafeed_ig(callback) {
+      {% assign instafeed_template = '<a class="grid-item" href="https://www.instagram.com/floatiekings/" target="_blank"><img class="{{orientation}}" src="{{image}}" alt="{{caption}}" /></a>' %}
+        var feed = new Instafeed({
+            accessToken: '2077099952.1677ed0.9304752d4bff4ab49f5eabae56f5bec8',
+            target: 'instafeed',
+            get: 'user',
+            userId: '2077099952',
+            resolution: 'standard_resolution',
+            limit: 8,
+            sortBy: 'most-recent',
+            template: '{{ instafeed_template }}'
+        });
+
+        feed.run();
+        if(typeof callback === "function") callback();
+    }
+    // window.addEventListener('load', function() { instafeed_ig() });
+
+</script>

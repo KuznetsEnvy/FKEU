@@ -16,7 +16,7 @@
           {% comment %}ly_code_replace_for_[ item | img_url: 'small' | img_tag: item.title | link_to: item.url ]_begin{% endcomment %}{% include 'ly-title' with item %}{{ item | img_url: 'small' | img_tag: ly_translation | link_to: item.url }}{% comment %}ly_code_replace_end{% endcomment %}
         </span>
         <span class="title-variant ftc">
-          <div class="debug">
+          <div class="debug template-cartitem">
             <div class="item">{{ item }}</div>
             <div class="product">{{ item.product }}</div>
             <div class="title">{% comment %}ly_code_replace_for_[ item.product.title ]_begin{% endcomment %}{% include 'ly-title' with item.product %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</div>

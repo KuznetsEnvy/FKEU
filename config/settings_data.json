@@ -222,6 +222,7 @@
     "featured-products-product3": "donut-box-deal",
     "use_side_cart_summary": true,
     "cart_side_onebutton": true,
+    "free_shipping_from": "7500",
     "checkout_header_image": "",
     "checkout_use_storefront_logo": false,
     "checkout_logo_image": "",
@@ -470,6 +471,35 @@
     "hide_dividers": false,
     "homepage_feat_img_box": true,
     "hide_nav_home_dividers": false,
+    "sections": {
+      "as-seen-on": {
+        "type": "as-seen-on",
+        "blocks": {
+          "1527671206068": {
+            "type": "item",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/globo-logo-4.png"
+            }
+          },
+          "1527671224560": {
+            "type": "item",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/vogue-logo-4.png"
+            }
+          }
+        },
+        "block_order": [
+          "1527671206068",
+          "1527671224560"
+        ],
+        "settings": {
+          "header": "As seen on",
+          "quote": "Floatie Kings is the perfect example of how a demand for a product builds into brand!",
+          "style": "font-size:1.5em; font-weight: 500; margin-bottom: 0.5em;",
+          "author": "Vogue Magazine"
+        }
+      }
+    },
     "content_for_index": [
 
     ]
