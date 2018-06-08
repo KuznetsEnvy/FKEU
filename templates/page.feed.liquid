@@ -6,7 +6,7 @@
     {% for product in collections.all.products %}
     <!-- Item #{{ forloop.index }} -->
     <item>
-      <title>{% comment %}ly_code_replace_for_[ product.title | strip_html | strip_newlines | replace: '&', '<ly-as-9024246>and</ly-as-9024246>' ]_begin{% endcomment %}{% include 'ly-title' with product %}{{ ly_translation | strip_html | strip_newlines | replace: '&', '<ly-as-9024246>and</ly-as-9024246>' }}{% comment %}ly_code_replace_end{% endcomment %}</title>
+      <title>{% comment %}ly_code_replace_for_[ product.title | strip_html | strip_newlines | replace: '&', 'and' ]_begin{% endcomment %}{% include 'ly-title' with product %}{{ ly_translation | strip_html | strip_newlines | replace: '&', 'and' }}{% comment %}ly_code_replace_end{% endcomment %}</title>
       <id><ly-as-9024247>shopify_</ly-as-9024247>{{product.id}}_{{product.selected_or_first_available_variant.id}}</id>
       <description>{% comment %}ly_code_replace_for_[ product.description | strip_html | strip_newlines ]_begin{% endcomment %}{% include 'ly-description' with product %}{{ ly_translation | strip_html | strip_newlines }}{% comment %}ly_code_replace_end{% endcomment %}</description>
       <image_link>https:{{product.featured_image | product_img_url: 'master' }}</image_link>

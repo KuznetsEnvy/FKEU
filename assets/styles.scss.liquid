@@ -3531,45 +3531,6 @@ a#upsellclosebtn {
   display: none !important
 }
 
-.pretty-select.id-ly-languages-switcher {
-  background-color: inherit;
-  color: #000;
-  border-width: 0;
-  float: right;
-  width: unset;
-
-  .text {
-    display: inline-block;
-    padding: 0 1rem 0 0.3rem;
-    vertical-align: middle;
-  }
-  i {
-    display: none;
-  }
-
-  &:before {
-    content: '';
-    background: url('{{ "icon_globe.svg" | asset_url }}') no-repeat center center;
-    background-size: cover;
-    display: inline-block;
-    vertical-align: middle;
-    width: 2rem;
-    height: 2rem;
-  }
-}
-
-@media screen and (max-width: 640px) {
-  .pretty-select.id-ly-languages-switcher {
-    .text {
-      /*display: none;*/
-    }
-
-    &:before {
-      margin-right: 0.3rem;
-    }
-  }
-}
-
 .reading-column {
   width: auto
 }
@@ -4845,56 +4806,52 @@ b {
   width: 30px !important;
   height: 30px !important;
   margin: 0 1em !important;
+}
 
-
-  .dd-container {
-    img {
-      width: 30px !important;
-      height: 30px !important;
-    }
-  }
-
-  .dd-select {
-    width: unset !important;
-    background: transparent !important;
-    border: 0 !important;
-  }
-
-  .dd-selected {
-    padding: 0 !important;
-  }
-
-  .dd-pointer-down {
-    border: 0 !important;
-  }
-
-  .dd-options {
-    right: 0 !important;
-    white-space: nowrap !important;
-    width: unset !important;
-
-    li {
-      display: inline-block !important;
-      vertical-align: middle !important;
-    }
-  }
-
-  .dd-option {
-    border: 0 !important;
-  }
-
-  .dd-option-image, .dd-selected-image {
-    margin: 0 auto !important;
+.dd-container {
+  img {
+    width: 30px !important;
+    height: 30px !important;
   }
 }
 
+.dd-select {
+  width: unset !important;
+  background: transparent !important;
+  border: 0 !important;
+}
+
+.dd-selected {
+  padding: 0 !important;
+}
+
+.dd-pointer-down {
+  border: 0 !important;
+}
+
+.dd-options {
+  right: 0 !important;
+  white-space: nowrap !important;
+  width: unset !important;
+
+  li {
+    display: inline-block !important;
+    vertical-align: middle !important;
+  }
+}
+
+.dd-option {
+  border: 0 !important;
+}
+
+.dd-option-image, .dd-selected-image {
+  margin: 0 auto !important;
+}
 
 .icon-arrow3-down {
   display: none;
 }
-
 //endregion
-
 .banner-index {
   position: relative;
   display: flex;
